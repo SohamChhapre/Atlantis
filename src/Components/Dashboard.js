@@ -26,12 +26,12 @@ const Dashboard=()=>{
             <div className="flex-container" >
             <div className="icon-card" >
             </div>
-            <div className="icon-card" style={{marginLeft:"2%"}} >
+            <div className="icon-card" style={{marginLeft:"12px"}} >
             </div>
             
-            <div className="icon-card" >
+            <div className="icon-card" style={{marginTop:"12px"}}>
             </div>
-            <div className="icon-card" style={{marginLeft:"2%"}}>
+            <div className="icon-card" style={{marginLeft:"12px",marginTop:"12px"}}>
             </div>
             </div>
 
@@ -39,12 +39,12 @@ const Dashboard=()=>{
 
             
             
-            <nav class="navbar fixed-bottom dash-nav" style={{backgroundColor:"#E5F5EE",borderRadius:"0px 0px 30px 30px"}}>
+            {/* <nav class="navbar fixed-bottom dash-nav" style={{backgroundColor:"#E5F5EE",borderRadius:"0px 0px 30px 30px"}}>
                 <img src={home_icon} className="nav-icon" alt="home" />
                 <img src={payment_icon}  className="nav-icon" alt="payment" />
                 <img src={food_icon} className="nav-icon" alt="food" />
                 <img src={support_icon} className="nav-icon" alt="Support"/>
-            </nav> 
+            </nav>  */}
             </div>
 
 
