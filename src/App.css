@@ -72,7 +72,7 @@
     }
     .dash-banner{
       width:auto;
-      height: 28vh;
+      height: 22vh;
     }
     .main-container{
       width:auto;
@@ -91,6 +91,8 @@
     display:flex;
     flex-wrap: wrap;
     margin-top: 12px;
+   
+    justify-content: center;
   }
   .icon-card{
     background-color:#E5F5EE;
@@ -102,24 +104,41 @@
     /* margin:5px 0px 0px 0px; */
   }
     }
-  @media (max-height:900px){
+    @media (max-height:750px){
+      .nav-icon{
+        height:2.5rem;
+      }
+      .dash-banner{
+        width:auto;
+        height: 25vh;
+      }
+      .icon-card{
+        background-color:#E5F5EE;
+        border:0px;
+        width:calc(45% - 6px);
+        border-radius:5px;
+        /* height:22vh; */
+        height: calc(45vw - 20px);
+      }
+    }
+  @media (max-height:700px){
     .nav-icon{
       height:2.5rem;
     }
     .dash-banner{
       width:auto;
-      height: 30vh;
+      height: 23vh;
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(50% - 6px);
+      width:calc(42% - 6px);
       border-radius:5px;
       /* height:22vh; */
-      height: calc(50vw - 20px);
+      height: calc(42vw - 20px);
     }
   }
-  @media (max-height:713px){
+  @media (max-height:650px){
     .nav-icon{
       height:2.0em;
     }
@@ -140,10 +159,10 @@
   .icon-card{
     background-color:#E5F5EE;
     border:0px;
-    width:calc(50% - 6px);
+    width:calc(40% - 6px);
     border-radius:5px;
     /* height:22vh; */
-    height: calc(50vw - 20px);
+    height: calc(40vw - 20px);
     /* margin:5px 0px 0px 0px; */
   }
   .dash-banner{
@@ -159,16 +178,17 @@
     }
     .dash-banner{
       width:auto;
-      height: 23vh;
+      height: 25vh;
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(50% - 6px);
+      width:calc(30% - 6px);
       border-radius:5px;
       /* height:22vh; */
-      height: calc(49vw - 20px);
+      height: calc(30vw - 20px);
       /* margin:5px 0px 0px 0px; */
+      /* flex-basis: 33%; */
     }
     .dash-text{
       color:#00A852;
@@ -191,26 +211,43 @@
       height:1.4rem;
     }
     .dash-banner{
-      width:auto;
-      height: 20vh;
+      width:calc(80vw - 10px);
+      height: 25vh;
+      padding:0px 10px 0px 10px
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(50% - 6px);
+      width:calc(25% - 6px);
       border-radius:5px;
       /* height:18vh; */
-      height: calc(50vw - 20px);
+      height: calc(25vw - 10px);
+      /* flex-basis: 33%; */
       
     }
+    .flex-container{
+      display:flex;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      /* padding:0 25% 0px 25%; */
+      justify-content: center;
+    }
+    
     .dash-text{
       color:#00A852;
       font-size:18px;
       
     }
+    .flex-container{
+      display:flex;
+      flex-wrap: wrap;
+      margin-top: 12px;
+     
+      justify-content: center;
+    }
     .dash-profile{
       height:40px ;
-      margin-top: -42px;
+      margin-top: -36px;
       margin-left: -74px;
       /* margin-right: 62px; */
       float:right;

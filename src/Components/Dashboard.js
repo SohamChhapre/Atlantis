@@ -28,10 +28,11 @@ const Dashboard=()=>{
             </div>
             <div className="icon-card" style={{marginLeft:"12px"}} >
             </div>
-            
-            <div className="icon-card" style={{marginTop:"12px"}}>
             </div>
-            <div className="icon-card" style={{marginLeft:"12px",marginTop:"12px"}}>
+            <div className="flex-container">
+            <div className="icon-card" >
+            </div>
+            <div className="icon-card" style={{marginLeft:"12px"}}>
             </div>
             </div>
 
