@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+@font-face {
+	font-family: 'Anteb-Black';
+	src: url('./Icons/Font/Anteb-Black.otf'); 
+	
+}
+@font-face {
+	font-family: 'Anteb-Medium';
+	src: url('./Icons/Font/Anteb-Medium.otf'); 	
+	
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dash-text{
+  color:#00A852;
+  font-size:25px;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dash-banner{
+  width:498px ;
+  height:273px
+}
+@media screen and (min-width:641px){
+.dashboard-container{
+  
+  margin:0 10%;
+}
+.main-container{
+  
+  width:540px;
+  margin:50px auto 0px auto;
+}
+.dash-banner{
+  width:498px ;
+  height:273px
+}
+.dash-nav{
+  width:498px ;
+  margin:0px auto 10px auto;
+}
+.dash-profile{
+    height:74px ;
+    margin-top: -68px;
+    margin-left: -74px;
+    margin-right: 62px;
+    float:right;
+    width:74px;
+    background-color:#9BE0B8
+}
+.flex-container{
+  display:flex;
+  flex-wrap: wrap;
+}
+.icon-card{
+  background-color:#E5F5EE;
+  border:0px;
+  width:49% ;
+  border-radius:5px;
+  height:212px;
+  margin:5px 0px 0px 1%
+}
+}
+@media screen and (max-width:480px){
+  @media (max-height:1200px){
+ 
+    .dashboard-container{
+      margin: 0 10px;
+    }
+    .dash-nav{
+      width:auto;
+      margin:0 5% 10px 5%;
+    }
+    .dash-banner{
+      width:auto;
+      height: 30vh;
+    }
+    .main-container{
+      width:auto;
+      margin:30px 5% 0px 5%;
+    }
+    .dash-profile{
+      height:54px ;
+      margin-top: -52px;
+      margin-left: -74px;
+      /* margin-right: 62px; */
+      float:right;
+      width:54px;
+      background-color:#9BE0B8
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .flex-container{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  .icon-card{
+    background-color:#E5F5EE;
+    border:0px;
+    width:49%;
+    border-radius:5px;
+    height:20vh;
+    margin:5px 0px 0px 0px;
   }
-}
+    }
+  @media (max-height:900px){
+    .nav-icon{
+      height:3.2rem;
+    }
+  }
+  @media (max-height:713px){
+    .nav-icon{
+      height:2.2em;
+    }
+    
+  }
+  @media(max-height:602px){
+    .nav-icon{
+      height:2.2rem;
+    }
+    .dash-banner{
+      width:auto;
+      height: 26vh;
+    }
+    .icon-card{
+      background-color:#E5F5EE;
+      border:0px;
+      width:49%;
+      border-radius:5px;
+      height:20vh;
+      margin:5px 0px 0px 0px;
+    }
+
+  }
+  @media(max-height:530px){
+    .nav-icon{
+      height:2.0rem;
+    }
+    .dash-banner{
+      width:auto;
+      height: 26vh;
+    }
+    .icon-card{
+      background-color:#E5F5EE;
+      border:0px;
+      width:49%;
+      border-radius:5px;
+      height:18vh;
+      margin:5px 0px 0px 0px;
+    }
+
+  }
+  
+} 
+
+ @-o-viewport{
+  zoom: 1.0;
+  width: extend-to-zoom;
+ }
+
+ /* 320 568 */
