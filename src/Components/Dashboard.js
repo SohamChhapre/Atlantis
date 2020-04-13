@@ -9,7 +9,7 @@ const Dashboard=()=>{
     return(
             <div className="main-container" >
             
-            <div className="mt-2 mb-4"> 
+            <div className="mt-1 mb-4"> 
             <div className="text-left dash-text" >
            <span style={{fontFamily:"Anteb-Medium"}}> Hi</span>, <span style={{fontFamily:"Anteb-Black"}} >Alizabeth</span>
             </div>

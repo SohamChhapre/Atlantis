@@ -71,7 +71,7 @@
     }
     .dash-banner{
       width:auto;
-      height: 30vh;
+      height: 28vh;
     }
     .main-container{
       width:auto;
@@ -96,46 +96,46 @@
     border:0px;
     width:49%;
     border-radius:5px;
-    height:20vh;
+    height:19vh;
     margin:5px 0px 0px 0px;
   }
     }
   @media (max-height:900px){
     .nav-icon{
-      height:3.2rem;
+      height:2.5rem;
     }
   }
   @media (max-height:713px){
     .nav-icon{
-      height:2.2em;
+      height:2.0em;
     }
     
   }
   @media(max-height:602px){
     .nav-icon{
-      height:2.2rem;
+      height:1.6rem;
     }
     .dash-banner{
       width:auto;
-      height: 26vh;
+      height: 25vh;
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
       width:49%;
       border-radius:5px;
-      height:20vh;
+      height:18vh;
       margin:5px 0px 0px 0px;
     }
 
   }
   @media(max-height:530px){
     .nav-icon{
-      height:2.0rem;
+      height:1.4rem;
     }
     .dash-banner{
       width:auto;
-      height: 26vh;
+      height: 25vh;
     }
     .icon-card{
       background-color:#E5F5EE;
