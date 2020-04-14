@@ -61,7 +61,7 @@ const Dashboard=()=>{
 
             
             
-            <nav class="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 30px 30px",padding:"0px 1rem 0rem 1rem"}}>
+            <nav class="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 18px 18px",padding:"0px 1rem 0rem 1rem"}}>
                {/* <div className="text-center pt-1"> <img src={home_icon} className="nav-icon" alt="home" /><p className="mb-1">Home</p></div>
                 <div className="text-center pt-1"><img src={payment_icon}  className="nav-icon" alt="payment" /><p className="mb-1">Payments</p></div>
                 <div className="text-center pt-1"><img src={food_icon} className="nav-icon" alt="food" /><p className="mb-1">Orders</p></div>
