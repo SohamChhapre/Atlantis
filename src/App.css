@@ -131,7 +131,7 @@ background-color: white;
       margin:0px 1rem 0.5rem 1rem;
     }
     .mg-left{
-      margin-left: 12px;
+      margin-left: 20px;
     }
     .dash-nav{
       width:auto;
@@ -233,7 +233,8 @@ background-color: white;
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(45% - 6px);
+      /* width:calc(45% - 6px); */
+      width: calc(45vw - 20px);;
       border-radius:5px;
       /* height:22vh; */
       height: calc(45vw - 20px);
@@ -268,7 +269,8 @@ background-color: white;
   .icon-card{
     background-color:#E5F5EE;
     border:0px;
-    width:calc(45% - 6px);
+    /* width:calc(45% - 6px); */
+    width: calc(45vw - 20px);;
     border-radius:5px;
     /* height:22vh; */
     height: calc(45vw - 20px);
@@ -303,7 +305,8 @@ background-color: white;
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(45% - 6px);
+      /* width:calc(45% - 6px); */
+      width: calc(45vw - 20px);
       border-radius:5px;
       /* height:22vh; */
       height: calc(45vw - 20px);
@@ -349,7 +352,8 @@ background-color: white;
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(45% - 6px);
+      /* width:calc(45% - 6px); */
+      width:calc(40vw - 10px); ;
       border-radius:5px;
       /* height:18vh; */
       height: calc(40vw - 10px);
