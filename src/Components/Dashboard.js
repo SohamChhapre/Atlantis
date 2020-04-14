@@ -41,6 +41,8 @@ const Dashboard=()=>{
             console.log(10);
     },[active])
     return(
+            <div>
+            <p className="view-block">Rotate to portrait mode </p>
             <div className="main-container" >
             
             <div className="mt-1 mb-4"> 
@@ -87,7 +89,7 @@ const Dashboard=()=>{
 
             
             </div>
-
+            </div>
 
     )
 }

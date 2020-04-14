@@ -26,14 +26,19 @@
   width:498px ;
   height:273px
 }
-@media screen and (min-width:641px){
+@media screen and (min-width:481px){
 .dashboard-container{
   
   margin:0 10%;
 }
-
+.view-block{
+  display: block;
+  text-align: center;
+  color: red;
+  margin:44vh 0px 0px 0px
+}
 .main-container{
-  
+  display:none;
   width:540px;
   margin:50px auto 0px auto;
 }
@@ -76,6 +81,9 @@ box-shadow: 0 0 5px 0 #eee;
 
   @media (max-height:1200px){
  
+    .view-block{
+      display: none;
+    }
     .dashboard-container{
       margin: 0 10px;
     }
