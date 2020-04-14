@@ -146,6 +146,9 @@ background-color: white;
       width:auto;
       height: 22vh;
     }
+    .swiper-container{
+      height: calc(50vw + 20px);
+    }
     .main-container{
       width:auto;
       margin:20px 5% 0px 5%;
@@ -172,8 +175,8 @@ background-color: white;
     width:calc(50% - 6px);
     border-radius:5px;
     /* height:19vh; */
-    /* height: calc(50vw - 20px); */
-    height:calc(50vw - 50px);
+    height: calc(50vw - 30px);
+    /* height:calc(50vw - 50px); */
     /* margin:5px 0px 0px 0px; */
   }
     }
@@ -197,17 +200,20 @@ background-color: white;
         width:auto;
         height: 25vh;
       }
+      .swiper-container {
+        height: calc(50vw + 5px);
+    }
       .mg-left{
         margin-left: 7%;
       }
       .icon-card{
         background-color:#E5F5EE;
         border:0px;
-        width:calc(42% - 6px);
+        width:calc(45% - 6px);
         border-radius:5px;
         /* height:22vh; */
-        /* height: calc(42vw - 20px); */
-        height: calc(50vw - 50px);
+        height: calc(45vw - 20px);
+        /* height: calc(50vw - 50px); */
       }
     }
   @media (max-height:700px){
@@ -227,11 +233,11 @@ background-color: white;
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(42% - 6px);
+      width:calc(45% - 6px);
       border-radius:5px;
       /* height:22vh; */
-      /* height: calc(42vw - 20px); */
-      height: calc(50vw - 50px);
+      height: calc(45vw - 20px);
+      /* height: calc(50vw - 50px); */
 
     }
   }
@@ -262,11 +268,11 @@ background-color: white;
   .icon-card{
     background-color:#E5F5EE;
     border:0px;
-    width:calc(40% - 6px);
+    width:calc(45% - 6px);
     border-radius:5px;
     /* height:22vh; */
-    /* height: calc(40vw - 20px); */
-    height: calc(50vw - 50px);
+    height: calc(45vw - 20px);
+    /* height: calc(50vw - 50px); */
     /* margin:5px 0px 0px 0px; */
   }
   .dash-banner{
@@ -274,6 +280,9 @@ background-color: white;
     /* height: 20vh; */
     height: 30vh
   }
+  .swiper-container {
+    height: calc(50vw + 5px);
+}
   
 
   }
@@ -289,16 +298,16 @@ background-color: white;
       height: 25vh;
     }
     .mg-left{
-      margin-left: 13%;
+      margin-left: 10%;
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(35% - 6px);
+      width:calc(45% - 6px);
       border-radius:5px;
       /* height:22vh; */
-      /* height: calc(35vw - 20px); */
-      height: calc(50vw - 50px);
+      height: calc(45vw - 20px);
+      /* height: calc(50vw - 50px); */
       /* margin:5px 0px 0px 0px; */
       /* flex-basis: 33%; */
     }
@@ -325,6 +334,9 @@ background-color: white;
     .nav-p-sty{
       font-size:9px;
   }
+  .swiper-container {
+    height: calc(50vw);
+}
     .dash-banner{
       /* width:calc(100vw - 10px); */
       /* height: 25vh; */
@@ -332,16 +344,16 @@ background-color: white;
       padding:0px 10px 0px 10px
     }
     .mg-left{
-      margin-left: 20%;
+      margin-left: 10%;
     }
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(25% - 6px);
+      width:calc(45% - 6px);
       border-radius:5px;
       /* height:18vh; */
-      /* height: calc(25vw - 10px); */
-      height: calc(50vw - 50px);
+      height: calc(40vw - 10px);
+      /* height: calc(50vw - 50px); */
 
       /* flex-basis: 33%; */
       

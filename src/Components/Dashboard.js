@@ -41,7 +41,7 @@ const Dashboard=()=>{
       type: 'bullets',
       clickable: true
     },
-  slidesPerView: 2,
+//   slidesPerView: 2,
   paginationClickable: true,
   spaceBetween: 30
     }
@@ -73,13 +73,18 @@ const Dashboard=()=>{
             </div>
             <div className="swipper-sty">
         <Swiper {...params} >
+        <div style={{display:"flex",justifyContent:"center"}}>
              <div className="icon-card swipper-card-1" >
+            </div >
+            <div className="icon-card swipper-card-2 mg-left" >
             </div>
+        </div>
+        <div style={{display:"flex",justifyContent:"center"}}>
             <div className="icon-card swipper-card-2" >
-            </div><div className="icon-card swipper-card-2" >
             </div>
-            <div className="icon-card swipper-card-3" >
+            <div className="icon-card swipper-card-3 mg-left" >
             </div>
+        </div>
         </Swiper>
         </div>
          
