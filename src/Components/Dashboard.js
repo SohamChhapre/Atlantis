@@ -18,14 +18,14 @@ const defaultState={
 const NavActiveicon=({img,name})=>{
 
     return (
-        <div className="text-center pt-1" style={{borderTop:"2px solid #00a852 "}}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
+        <div className="text-center" style={{borderTop:"2px solid #00a852 ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
     )
 }
 
 const NavIcon=({img,name,setActive})=>{
 
     return (
-        <div className="text-center pt-1" onClick={()=>{
+        <div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
             setActive({...defaultState,[name]:true})
         }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
     )
@@ -43,6 +43,7 @@ const Dashboard=()=>{
     return(
             <div>
             <p className="view-block">Rotate to portrait mode </p>
+            <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" >
             
             <div className="mt-1 mb-4"> 
