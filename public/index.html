@@ -27,7 +27,8 @@
     -->
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css"> -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <title>React App</title>
   </head>
   <body>
@@ -53,5 +54,26 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+
+
+
+<!-- <script src="https://unpkg.com/swiper/js/swiper.js"></script> -->
+<!-- <script src="https://unpkg.com/swiper/js/swiper.min.js"></script> -->
+ 
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<script src="https://unpkg.com/react-id-swiper@2.3.1/lib/react-id-swiper.js"></script>
+<script src="https://unpkg.com/react-id-swiper@2.3.1/lib/react-id-swiper.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+
   </body>
 </html>

@@ -7,6 +7,8 @@ import default_home from './../Icons/Icons-Footer/home_default.png';
 import default_payment from './../Icons/Icons-Footer/payment_default.png';
 import default_support from './../Icons/Icons-Footer/support_default.png';
 import default_food_delivery from './../Icons/Icons-Footer/food_delivery_default.png';
+import Swiper from 'react-id-swiper';
+// import 'swiper/css/swiper.css';
 const defaultState={
     "Home":false,
     "Orders":false,
@@ -33,6 +35,16 @@ const NavIcon=({img,name,setActive})=>{
 
 
 const Dashboard=()=>{
+    const params = {
+    pagination: {
+      el: '.swiper-pagination.customized-swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+  slidesPerView: 2,
+  paginationClickable: true,
+  spaceBetween: 40
+    }
     const [active,setActive]=useState({'Home':true,"Payments":false,"Orders":false,"Support":false})
     useEffect(()=>{
         setActive({...defaultState,"Home":true})
@@ -59,8 +71,19 @@ const Dashboard=()=>{
             <div className="card mx-auto dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
             
             </div>
-
-            <div className="flex-container" >
+            <div className="swipper-sty">
+        <Swiper {...params} >
+             <div className="icon-card swipper-card-1" >
+            </div>
+            <div className="icon-card swipper-card-2" >
+            </div><div className="icon-card swipper-card-2" >
+            </div>
+            <div className="icon-card swipper-card-3" >
+            </div>
+        </Swiper>
+        </div>
+         
+            {/* <div className="flex-container" >
             <div className="icon-card" >
             </div>
             <div className="icon-card mg-left" >
@@ -71,7 +94,7 @@ const Dashboard=()=>{
             </div>
             <div className="icon-card mg-left" >
             </div>
-            </div>
+            </div> */}
 
             
 
