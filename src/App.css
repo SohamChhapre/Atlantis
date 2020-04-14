@@ -1,5 +1,9 @@
 .customized-swiper-pagination{
   color:black;
+  bottom: 10px;
+}
+.swiper-container{
+  height: calc(50vw - 10px);
 }
 .swiper-pagination-bullet{
   border-radius: 50%;

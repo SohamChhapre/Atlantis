@@ -43,7 +43,7 @@ const Dashboard=()=>{
     },
   slidesPerView: 2,
   paginationClickable: true,
-  spaceBetween: 40
+  spaceBetween: 30
     }
     const [active,setActive]=useState({'Home':true,"Payments":false,"Orders":false,"Support":false})
     useEffect(()=>{
