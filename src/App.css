@@ -8,7 +8,14 @@
 	src: url('./Icons/Font/Anteb-Medium.otf'); 	
 	
 }
-
+@font-face {
+	font-family: 'Poppins-SemiBold';
+	src: url('./Icons/Font/Poppins-SemiBold.ttf'); 	
+	
+}
+.mg-left{
+  margin-left: 12px;
+}
 .dash-text{
   color:#00A852;
   font-size:25px;
@@ -24,6 +31,7 @@
   
   margin:0 10%;
 }
+
 .main-container{
   
   width:540px;
@@ -35,7 +43,8 @@
 }
 .dash-nav{
   width:498px ;
-  margin:0px auto 10px auto;
+  margin:0px auto 5px auto;
+  box-shadow: 0 15px 20px   #bfbfbf; 
 }
 .dash-profile{
     height:74px ;
@@ -61,14 +70,22 @@
 }
 
 @media screen and (max-width:480px){
+
   @media (max-height:1200px){
  
     .dashboard-container{
       margin: 0 10px;
     }
+    .navbar{
+      margin:0px 1rem 0.5rem 1rem;
+    }
     .dash-nav{
       width:auto;
-      margin:0 5% 10px 5%;
+      margin:0 5% 5px 5%;
+      box-shadow: 0px 0px 7px 4px #bfbfbf;
+    }
+    .nav-icon{
+      height:2.5rem;
     }
     .dash-banner{
       width:auto;
@@ -104,9 +121,20 @@
     /* margin:5px 0px 0px 0px; */
   }
     }
+    @media (max-height:900px){
+      .nav-icon{
+        height:2.4rem;
+      }
+      .nav-p-sty{
+          font-size:14px;
+      }
+    }
     @media (max-height:750px){
       .nav-icon{
-        height:2.5rem;
+        height:2.2rem;
+      }
+      .nav-p-sty{
+          font-size:12px;
       }
       .dash-banner{
         width:auto;
@@ -115,15 +143,15 @@
       .icon-card{
         background-color:#E5F5EE;
         border:0px;
-        width:calc(45% - 6px);
+        width:calc(43% - 6px);
         border-radius:5px;
         /* height:22vh; */
-        height: calc(45vw - 20px);
+        height: calc(43vw - 20px);
       }
     }
   @media (max-height:700px){
     .nav-icon{
-      height:2.5rem;
+      height:2.0rem;
     }
     .dash-banner{
       width:auto;
@@ -140,7 +168,7 @@
   }
   @media (max-height:650px){
     .nav-icon{
-      height:2.0em;
+      height:1.9em;
     }
     .dash-text{
       color:#00A852;
@@ -183,10 +211,10 @@
     .icon-card{
       background-color:#E5F5EE;
       border:0px;
-      width:calc(30% - 6px);
+      width:calc(35% - 6px);
       border-radius:5px;
       /* height:22vh; */
-      height: calc(30vw - 20px);
+      height: calc(35vw - 20px);
       /* margin:5px 0px 0px 0px; */
       /* flex-basis: 33%; */
     }
