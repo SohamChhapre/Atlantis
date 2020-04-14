@@ -91,7 +91,7 @@ box-shadow: 0 0 5px 0 #eee;
       box-shadow: 0 0 5px 0 #eee;
     }
     .nav-icon{
-      height:2.5rem;
+      height:2.4rem;
     }
     .dash-banner{
       width:auto;
@@ -129,19 +129,19 @@ box-shadow: 0 0 5px 0 #eee;
     }
     @media (max-height:900px){
       .nav-icon{
-        height:2.4rem;
+        height:2.2rem;
       }
       .nav-p-sty{
-          font-size:14px;
+          font-size:12px;
       }
       
     }
     @media (max-height:750px){
       .nav-icon{
-        height:2.2rem;
+        height:2.0rem;
       }
       .nav-p-sty{
-          font-size:12px;
+          font-size:10px;
       }
       .dash-banner{
         width:auto;
@@ -161,8 +161,11 @@ box-shadow: 0 0 5px 0 #eee;
     }
   @media (max-height:700px){
     .nav-icon{
-      height:2.0rem;
+      height:1.9rem;
     }
+    .nav-p-sty{
+      font-size:9px;
+  }
     .dash-banner{
       width:auto;
       height: 23vh;
@@ -181,8 +184,11 @@ box-shadow: 0 0 5px 0 #eee;
   }
   @media (max-height:650px){
     .nav-icon{
-      height:1.9em;
+      height:1.8em;
     }
+    .nav-p-sty{
+      font-size:8px;
+  }
     .dash-text{
       color:#00A852;
       font-size:20px;
@@ -220,6 +226,9 @@ box-shadow: 0 0 5px 0 #eee;
     .nav-icon{
       height:1.6rem;
     }
+    .nav-p-sty{
+      font-size:7px;
+  }
     .dash-banner{
       width:auto;
       height: 25vh;
@@ -257,6 +266,9 @@ box-shadow: 0 0 5px 0 #eee;
     .nav-icon{
       height:1.4rem;
     }
+    .nav-p-sty{
+      font-size:6px;
+  }
     .dash-banner{
       width:calc(80vw - 10px);
       height: 25vh;
