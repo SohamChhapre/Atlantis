@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {Link} from 'react-router-dom'
 import payment_icon from './../Icons/Icons-Footer/payment.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
 import support_icon from './../Icons/Icons-Footer/online_support.png';
@@ -74,8 +75,9 @@ const Dashboard=()=>{
             <div className="swipper-sty">
         <Swiper {...params} >
         <div style={{display:"flex",justifyContent:"center"}}>
-             <div className="icon-card swipper-card-1" >
+             <Link to="/firstcard"><div className="icon-card swipper-card-1" >
             </div >
+            </Link>
             <div className="icon-card swipper-card-2 mg-left" >
             </div>
         </div>
