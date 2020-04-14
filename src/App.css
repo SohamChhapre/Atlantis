@@ -44,7 +44,9 @@
 .dash-nav{
   width:498px ;
   margin:0px auto 5px auto;
-  box-shadow: 0 15px 20px   #bfbfbf; 
+  /* box-shadow: 0 15px 20px   #bfbfbf;  */
+  -webkit-box-shadow: 0px 0px 10px -6px rgba(158,158,158,0.26);
+box-shadow: 0px 0px 10px -6px rgba(158,158,158,0.26);
 }
 .dash-profile{
     height:74px ;
@@ -79,10 +81,13 @@
     .navbar{
       margin:0px 1rem 0.5rem 1rem;
     }
+    .mg-left{
+      margin-left: 12px;
+    }
     .dash-nav{
       width:auto;
       margin:0 5% 5px 5%;
-      box-shadow: 0px 0px 7px 4px #bfbfbf;
+      box-shadow: 0px 0px 22px 0px #bfbfbf;
     }
     .nav-icon{
       height:2.5rem;
@@ -128,6 +133,7 @@
       .nav-p-sty{
           font-size:14px;
       }
+      
     }
     @media (max-height:750px){
       .nav-icon{
@@ -140,13 +146,16 @@
         width:auto;
         height: 25vh;
       }
+      .mg-left{
+        margin-left: 7%;
+      }
       .icon-card{
         background-color:#E5F5EE;
         border:0px;
-        width:calc(43% - 6px);
+        width:calc(42% - 6px);
         border-radius:5px;
         /* height:22vh; */
-        height: calc(43vw - 20px);
+        height: calc(42vw - 20px);
       }
     }
   @media (max-height:700px){
@@ -156,6 +165,9 @@
     .dash-banner{
       width:auto;
       height: 23vh;
+    }
+    .mg-left{
+      margin-left: 7%;
     }
     .icon-card{
       background-color:#E5F5EE;
@@ -184,6 +196,9 @@
       width:45px;
       background-color:#9BE0B8
   }
+  .mg-left{
+    margin-left: 10%;
+  }
   .icon-card{
     background-color:#E5F5EE;
     border:0px;
@@ -207,6 +222,9 @@
     .dash-banner{
       width:auto;
       height: 25vh;
+    }
+    .mg-left{
+      margin-left: 13%;
     }
     .icon-card{
       background-color:#E5F5EE;
@@ -242,6 +260,9 @@
       width:calc(80vw - 10px);
       height: 25vh;
       padding:0px 10px 0px 10px
+    }
+    .mg-left{
+      margin-left: 20%;
     }
     .icon-card{
       background-color:#E5F5EE;
