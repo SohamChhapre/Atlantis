@@ -51,6 +51,8 @@ function App() {
     },[active])
   return (
     <div className="App mx-auto">
+    <p className="view-block">Rotate to portrait mode </p>
+            <p className="desktop-block">We Support Mobile View Only</p>
     <BrowserRouter>
       <Route exact path="/" >
       <Dashboard />
