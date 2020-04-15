@@ -176,7 +176,7 @@ background-color: white;
   .icon-card{
     background-color:#E5F5EE;
     border:0px;
-    width:calc(50% - 6px);
+    width:calc(50% - 10px);
     border-radius:5px;
     /* height:19vh; */
     height: calc(50vw - 30px);
@@ -413,6 +413,9 @@ background-color: white;
   .desktop-block{
     display: none;
   }
+  .dash-nav{
+    display: none;
+  }
  }
  @media screen and (min-width:1024px) {
   .desktop-block{
@@ -427,6 +430,9 @@ background-color: white;
   .main-container{
     display:none;
 
+  }
+  .dash-nav{
+    display: none;
   }
  }
 
