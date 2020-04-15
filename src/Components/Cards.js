@@ -1,7 +1,7 @@
 import React from 'react';
 import check_right from './../Icons/Icons-Footer/check_tick.jpg'
-
-
+import Swiper from 'react-id-swiper';
+import './Cards.css'
 const MenuCard=()=>{
     return (
         <div className="horizontal-card" >
@@ -12,7 +12,19 @@ const MenuCard=()=>{
     )
 }
 const Cards=()=>{
-
+    // const container = document.querySelector('. container')
+    // console.log(container.scrollTop)
+    // container.scrollLeft
+    const params = {
+    pagination: {
+      el: '.swiper-pagination.customized-swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+//   slidesPerView: 2,
+  paginationClickable: true,
+  spaceBetween: 30
+    }
 
     return (
 
@@ -23,14 +35,14 @@ const Cards=()=>{
             
             </div>
 
-
-        
+         <Swiper {...params} >
+        <div>
          <div className="flex-container" >
          
             <div className="food-icon-card" >
             </div>
-            <div className="food-icon-card mg-left" >
-            </div>
+            {/* <div className="food-icon-card mg-left" >
+            </div> */}
             </div>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-1</p>
         <div className="flex-container my-0" >
@@ -47,6 +59,32 @@ const Cards=()=>{
            <MenuCard/>
             
         </div>
+        </div>
+        <div>
+         <div className="flex-container" >
+         
+            <div className="food-icon-card" >
+            </div>
+            {/* <div className="food-icon-card mg-left" >
+            </div> */}
+            </div>
+        <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-1</p>
+        <div className="flex-container my-0" >
+           
+            <MenuCard/>
+            <MenuCard/>
+        </div>
+        <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p>
+            <div className="flex-container my-0" >
+           <MenuCard/>
+           <MenuCard/>
+           <MenuCard/>
+           <MenuCard/>
+           <MenuCard/>
+            
+        </div>
+        </div>
+        
             {/* <div className="flex-container">
             <div className="icon-card" >
             </div>
@@ -71,6 +109,8 @@ const Cards=()=>{
             <div className="icon-card mg-left" >
             </div>
             </div> */}
+        
+        </Swiper>
         </div>
     )
 }
