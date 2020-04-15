@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import check_right from './../Icons/Icons-Footer/check_tick.jpg'
 import Swiper from 'react-id-swiper';
 import payment_icon from './../Icons/Icons-Footer/payment.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
 import './Cards.css'
+import { useSwipeable, Swipeable } from 'react-swipeable'
 const MenuCard=()=>{
     return (
         <div className="horizontal-card" >
@@ -13,10 +14,24 @@ const MenuCard=()=>{
         </div>
     )
 }
+const display={
+    display:"none"
+}
+const defaultswipe={
+    "left":false,
+    "right":false
+}
 const Cards=()=>{
+    const [swipe,setSwipe]=useState({"left":false,"right":true})
     // const container = document.querySelector('. container')
     // console.log(container.scrollTop)
     // container.scrollLeft
+    useEffect(()=>{
+        setSwipe({"left":false,"right":true});
+    },[])
+    useEffect(()=>{
+        console.log("UseEffect");
+    },[swipe])
     const params = {
     pagination: {
       
@@ -27,6 +42,13 @@ const Cards=()=>{
   paginationClickable: true,
   spaceBetween: 15
     }
+
+    const handlers = useSwipeable({
+    onSwipedLeft: () => setSwipe({...defaultswipe,"left":true}),
+    onSwipedRight: () => setSwipe({...defaultswipe,"right":true}),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
 
     return (
 
@@ -45,18 +67,18 @@ const Cards=()=>{
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             {/* </div> */}
-         <Swiper {...params} >
-        <div>
+         {/* <Swiper {...params} > */}
+        <div style={{display: swipe.left ? 'none': 'block'}} {...handlers}>
                   <div className="flex-container" >
          
             <div className="food-icon-card" >
             1
-            <img src={home_icon}/>
+            
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
-        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"4%"}}>
+        <div  style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"4%"}}>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p>
                 <div className="flex-container my-0" >
                 
@@ -74,12 +96,12 @@ const Cards=()=>{
                 </div>
         </div>
         </div>
-        <div>
+        <div {...handlers} style={{display:swipe.right?'none':'block'}}>
          <div className="flex-container" >
          
             <div className="food-icon-card" >
             2
-             <img src={payment_icon}/>
+            
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
@@ -130,7 +152,7 @@ const Cards=()=>{
             </div>
             </div> */}
         
-        </Swiper>
+        {/* </Swiper> */}
         </div>
     )
 }
