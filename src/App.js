@@ -61,7 +61,7 @@ function App() {
       <Cards />
       </Route>
     
-    <Route to="/">
+    {/* <Route to="/">
     <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 18px 18px",padding:"0px 1rem 0rem 1rem"}}>
                
 
@@ -72,7 +72,7 @@ function App() {
             
             
             </nav> 
-            </Route>
+            </Route> */}
             </BrowserRouter>
     </div>
   );

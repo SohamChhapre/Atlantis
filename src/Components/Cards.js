@@ -23,17 +23,19 @@ const Cards=()=>{
     },
     // effect: 'fade',
     // effect:"cube",
-  slidesPerView: 1.07,
+  slidesPerView: 1.08,
   paginationClickable: true,
   spaceBetween: 15
     }
 
     return (
 
-        <div className="main-container" style={{height:"calc(100vh - 100px)",overflowY:"scroll",padding:"20px 5%",marginTop:"0px",backgroundColor:"#9BE0B8",marginLeft:"0px",marginRight:"0px"}}>
+        <div className="main-container" style={{
+            // maxHeight:"calc(100vh - 110px)",overflowY:"scroll",
+            padding:"20px 0%",margin:"0",backgroundColor:"#9BE0B8",marginLeft:"0px",marginRight:"0px"}}>
 
 
-        <div className="card mx-auto dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
+        <div className="card  dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
             
             </div>
          {/* <div className="flex-container" > */}
@@ -54,7 +56,7 @@ const Cards=()=>{
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
-        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px"}}>
+        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"4%"}}>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p>
                 <div className="flex-container my-0" >
                 
@@ -83,7 +85,7 @@ const Cards=()=>{
             </div> */}
             </div>
             <div></div>
-        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px"}}>
+        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginRight:"4%"}}>
         
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p>
         <div className="flex-container my-0" >
