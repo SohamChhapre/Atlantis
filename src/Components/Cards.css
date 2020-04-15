@@ -1,3 +1,8 @@
 .swiper-container{
     height:auto;
 }
+.swiper-wrapper {
+
+    transform: translate3d(0px,0,0);
+    transition-duration: 50ms;
+}

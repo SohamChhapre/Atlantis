@@ -1,6 +1,8 @@
 import React from 'react';
 import check_right from './../Icons/Icons-Footer/check_tick.jpg'
 import Swiper from 'react-id-swiper';
+import payment_icon from './../Icons/Icons-Footer/payment.png';
+import home_icon from './../Icons/Icons-Footer/home.png';
 import './Cards.css'
 const MenuCard=()=>{
     return (
@@ -19,15 +21,16 @@ const Cards=()=>{
     pagination: {
       
     },
-    effect: 'fade',
+    // effect: 'fade',
+    // effect:"cube",
 //   slidesPerView: 2,
   paginationClickable: true,
-//   spaceBetween: 30
+  spaceBetween: 30
     }
 
     return (
 
-        <div className="main-container" style={{height:"calc(100vh - 150px)",overflowY:"scroll",padding:"0px 5%",marginLeft:"0px",marginRight:"0px"}}>
+        <div className="main-container" style={{height:"calc(100vh - 150px)",overflowY:"scroll",padding:"20px 5%",marginTop:"0px",backgroundColor:"#9BE0B8",marginLeft:"0px",marginRight:"0px"}}>
 
 
         <div className="card mx-auto dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
@@ -46,25 +49,27 @@ const Cards=()=>{
          
             <div className="food-icon-card" >
             1
+            <img src={home_icon}/>
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
-
+        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px"}}>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-1</p>
-        <div className="flex-container my-0" >
-           
-            <MenuCard/>
-            <MenuCard/>
-        </div>
+                <div className="flex-container my-0" >
+                
+                    <MenuCard/>
+                    <MenuCard/>
+                </div>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p>
-            <div className="flex-container my-0" >
-           <MenuCard/>
-           <MenuCard/>
-           <MenuCard/>
-           <MenuCard/>
-           <MenuCard/>
-            
+                    <div className="flex-container my-0" >
+                <MenuCard/>
+                <MenuCard/>
+                <MenuCard/>
+                <MenuCard/>
+                <MenuCard/>
+                    
+                </div>
         </div>
         </div>
         <div>
@@ -72,10 +77,13 @@ const Cards=()=>{
          
             <div className="food-icon-card" >
             2
+             <img src={payment_icon}/>
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
+        <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px"}}>
+        
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-1</p>
         <div className="flex-container my-0" >
            
@@ -92,7 +100,7 @@ const Cards=()=>{
             
         </div>
         </div>
-        
+        </div>
             {/* <div className="flex-container">
             <div className="icon-card" >
             </div>
