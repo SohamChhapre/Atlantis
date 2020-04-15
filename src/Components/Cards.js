@@ -17,13 +17,12 @@ const Cards=()=>{
     // container.scrollLeft
     const params = {
     pagination: {
-      el: '.swiper-pagination.customized-swiper-pagination',
-      type: 'bullets',
-      clickable: true
+      
     },
+    effect: 'fade',
 //   slidesPerView: 2,
   paginationClickable: true,
-  spaceBetween: 30
+//   spaceBetween: 30
     }
 
     return (
@@ -34,16 +33,24 @@ const Cards=()=>{
         <div className="card mx-auto dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
             
             </div>
-
+         {/* <div className="flex-container" > */}
+         
+            {/* <div className="food-icon-card" > */}
+            {/* </div> */}
+            {/* <div className="food-icon-card mg-left" >
+            </div> */}
+            {/* </div> */}
          <Swiper {...params} >
         <div>
-         <div className="flex-container" >
+                  <div className="flex-container" >
          
             <div className="food-icon-card" >
+            1
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
+
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-1</p>
         <div className="flex-container my-0" >
            
@@ -64,6 +71,7 @@ const Cards=()=>{
          <div className="flex-container" >
          
             <div className="food-icon-card" >
+            2
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
