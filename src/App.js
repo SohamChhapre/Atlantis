@@ -4,6 +4,7 @@ import {BrowserRouter,Route,Link} from 'react-router-dom'
 import './App.css';
 import Dashboard from './Components/Dashboard.js';
 import Cards from './Components/Cards.js'
+// import Cards2 from './Components/Cards.js'
 
 import payment_icon from './Icons/Icons-Footer/payment.png';
 import home_icon from './Icons/Icons-Footer/home.png';
@@ -61,7 +62,7 @@ function App() {
       <Cards />
       </Route>
     
-    {/* <Route to="/">
+    <Route to="/">
     <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 18px 18px",padding:"0px 1rem 0rem 1rem"}}>
                
 
@@ -72,7 +73,7 @@ function App() {
             
             
             </nav> 
-            </Route> */}
+            </Route>
             </BrowserRouter>
     </div>
   );

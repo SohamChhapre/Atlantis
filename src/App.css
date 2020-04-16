@@ -232,7 +232,7 @@ background-color: white;
       .icon-card{
         background-color:#E5F5EE;
         border:0px;
-        width:calc(45% - 6px);
+        width:calc(45vw - 20px);
         border-radius:5px;
         /* height:22vh; */
         height: calc(45vw - 20px);
