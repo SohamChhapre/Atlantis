@@ -1,14 +1,18 @@
 import React,{useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import check_right from './../Icons/Icons-Footer/check_tick.jpg'
 import Swiper from 'react-id-swiper';
 import plus_icon from './../Icons/Icons-Footer/plus_math.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
+import cart_icon from './../Icons/Icons-Footer/shopping_cart.png';
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
 import mobiscroll from 'mobiscroll';
+import {AddOrder} from './Redux/index.js';
+import {connect } from 'react-redux'
 // import 'mobiscroll/react/dist/css/mobiscroll.min.css';
 // import {SwipeableList,SwipeableListItem} from '@sandstreamdev/react-swipeable-list'
-const MenuCard=()=>{
+const MenuCard=({AddOrder,item})=>{
     const handlers = useSwipeable({
     onSwipedLeft: () => {console.log("left")},
     // onSwipedRight: () => {};
@@ -18,9 +22,9 @@ const MenuCard=()=>{
   });
     return (
         
-        <div className="horizontal-card"  {...handlers} >
-            <div className="float-right" style={{margin:"5px 5px 5px 0px"}}>
-            <img className="" src={plus_icon} height="70px" width="70px" style={{border:"2px solid white"}}/>
+        <div className="horizontal-card"  {...handlers}  >
+            <div className="float-right" style={{margin:"15px 5px 5px 0px"}} onClick={()=>{AddOrder({Category:"cat-1",id:"002",item:1})}}>
+            <img className="" src={plus_icon} height="50px" width="50px" style={{border:"2px solid white"}}/>
             </div>
             
         </div>
@@ -33,11 +37,10 @@ const defaultswipe={
     "left":false,
     "right":false
 }
-const Cards=()=>{
+const Cards=({setOrders,order,AddOrder})=>{
     const [swipe,setSwipe]=useState({"left":false,"right":true})
-    // const container = document.querySelector('. container')
-    // console.log(container.scrollTop)
-    // container.scrollLeft
+    const [cate1,setCate1]=useState([]);
+
     useEffect(()=>{
         setSwipe({"left":false,"right":true});
     },[])
@@ -63,7 +66,7 @@ const Cards=()=>{
             maxHeight:"calc(100vh - 110px)",overflowY:"scroll",
             padding:"20px 0%",margin:"0",backgroundColor:"#9BE0B8",marginLeft:"0px",marginRight:"0px"}}>
 
-
+        <Link to="/cart"> <div className="text-right"><img src={cart_icon}/><span className="text-center" style={{position:"relative",right:"32px"}}>{order.length}</span></div></Link>
         <div className="card  dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
             
             </div>
@@ -89,11 +92,11 @@ const Cards=()=>{
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
-        <div  style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"5%",marginRight:"5%"}}>
+        <div  style={{marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"1%",marginRight:"1%"}}>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p>
                 <div className="flex-container my-0" >
                 
-                    <MenuCard  />
+                    <MenuCard  AddOrder={AddOrder}/>
                     <MenuCard/>
                 </div>
         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p>
@@ -142,153 +145,21 @@ const Cards=()=>{
 }
 
 
-class ListItem extends React.Component {
-    render() {
-        return <li data-icon="image2">{this.props.item.name}</li>;
+
+const mapStateToprops=state=>{
+    return {
+        order:state.orders
+    }
+}
+const mapDispatchToprops=dispatch=>{
+    return {
+            AddOrder:(item)=> dispatch(AddOrder(item))
     }
 }
 
-class Cards2 extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            listImages: [
-                { id: 1, name: 'Image 1' },
-                { id: 2, name: 'Image 2' },
-                { id: 3, name: 'Image 3' },
-                { id: 4, name: 'Image 4' },
-                { id: 5, name: 'Image 5' }
-            ],
-            menuImages: [
-                { id: 1, name: 'My Image 1' },
-                { id: 2, name: 'My Image 2' },
-                { id: 3, name: 'My Image 3' },
-                { id: 4, name: 'My Image 4' },
-                { id: 5, name: 'My Image 5' }
-            ]
-        };
-    }
-    
-    removeItem(index) {
-        const listImages = this.state.listImages.slice(0);
-        listImages.splice(index, 1);
-        this.setState({
-            listImages: listImages
-        });
-    }
-    
-    removeItem2(index) {
-        const menuImages = this.state.menuImages.slice(0);
-        menuImages.splice(index, 1);
-        this.setState({
-            menuImages: menuImages
-        });
-    }
-    
-    toast(message) {
-        mobiscroll.toast({
-            message: message
-        });
-    }
-    
-    stages = {
-        left: [ {
-            percent: 25,
-            icon: 'link',
-            text: 'Get link',
-            action: (event, inst) => {
-                this.toast('Link copied');
-            }
-        }, {
-            percent: 50,
-            icon: 'download',
-            text: 'Download',
-            action: (event, inst) => {
-                this.toast('Downloaded');
-            }
-        }],
-        right: [{
-           percent: -25,
-            icon: 'print',
-            text: 'Print',
-            action: (event, inst) => {
-                this.toast('Printing...');
-            } 
-        }, {
-            percent: -50,
-            icon: 'remove',
-            text: 'Delete',
-            confirm: true,
-            action: (event, inst) => {
-                inst.remove(event.target, null, () => {
-                    this.removeItem(event.index);
-                });
-                return false;
-            }
-        }]
-    };
-    
-    actions = [{
-        icon: 'link',
-        action: (event, inst) => {
-            this.toast('Link copied');
-        }
-    }, {
-        icon: 'star3',
-        action: (event, inst) => {
-            this.toast('Starred');
-        }
-    }, {
-        icon: 'download',
-        action: (event, inst) => {
-            this.toast('Downloaded');
-        }
-    }, {
-        icon: 'print',
-        action: (event, inst) => {
-            this.toast('Printing...');
-        }
-    }, {
-        icon: 'remove',
-        action: (event, inst) => {
-            inst.remove(event.target, null, () => {
-                this.removeItem2(event.index);
-            });
-            return false;
-        }
-    }];
-    
-    render() {
-        return (
-            <mobiscroll.Form theme="ios"  themeVariant="light">
-                <mobiscroll.FormGroup>
-                    <mobiscroll.FormGroupTitle>Action list</mobiscroll.FormGroupTitle>
-                    <mobiscroll.Listview
-                        theme="ios" 
-                        themeVariant="light"
-                        itemType={ListItem} 
-                        data={this.state.listImages}
-                        enhance={true}
-                        stages={this.stages}
-                    />
-                </mobiscroll.FormGroup>
-                <mobiscroll.FormGroup>
-                    <mobiscroll.FormGroupTitle>Action menu</mobiscroll.FormGroupTitle>
-                    <mobiscroll.Listview
-                        theme="ios" 
-                        themeVariant="light"
-                        itemType={ListItem} 
-                        data={this.state.menuImages}
-                        enhance={true}
-                        actions={this.actions}
-                    />
-                </mobiscroll.FormGroup>
-            </mobiscroll.Form>
-        );
-    }    
-}
-export default Cards;
+// export default Orders;
+export default connect(mapStateToprops,mapDispatchToprops)(Cards);
+// export default Cards;
 // export default Cards2;
 
 

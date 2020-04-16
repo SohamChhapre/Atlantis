@@ -75,7 +75,7 @@ const Dashboard=()=>{
             <div className="swipper-sty">
         <Swiper {...params} >
         <div style={{display:"flex",justifyContent:"center"}}>
-             <Link to="/firstcard" className="icon-card">
+             <Link exact to="/food" className="icon-card">
              <div className="icon-card swipper-card-1" >
             </div >
             </Link>
