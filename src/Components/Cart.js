@@ -1,11 +1,14 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import minus_icon from './../Icons/Icons-Footer/subtract.png';
 import plus_icon from './../Icons/Icons-Footer/plus_math.png';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
 import {AddOrder,RemoveOrder} from './Redux/index.js';
 import {connect } from 'react-redux'
-const CartCard=({item})=>{
-    
+const CartCard=({item,AddOrder,RemoveOrder})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        console.log("hello")
+    },[toggler])
     return (
         
         <div className="horizontal-card" style={{display:"flex"}}  >
@@ -21,9 +24,9 @@ const CartCard=({item})=>{
         </div>
         
             <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}}/>
-            <span style={{padding:"0px 10px"}}>4</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}}/>
+            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <span style={{padding:"0px 10px"}}>{item.items}</span>
+            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
             
         </div>
@@ -32,9 +35,11 @@ const CartCard=({item})=>{
     )
 }
 
-const Cart =({order})=>{
+const Cart =({order,AddOrder,RemoveOrder})=>{
     
+useEffect(()=>{
 
+},[])
     return(
 <div className="main-container"  style={{
             height:"calc(100vh - 115px)",overflowY:"scroll",
@@ -65,7 +70,7 @@ const Cart =({order})=>{
         {/* <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p> */}
                 <div className="flex-container my-0" >
                 {order && order.length==0 && (<p className="text-danger my-5">No items in cart</p>)}               
-                  {order && order.length>0 && order.map((e,i)=>( <CartCard  item={e} key={i}/>
+                  {order && order.length>0 && order.map((e,i)=>( <CartCard  item={e} key={i} AddOrder={AddOrder} RemoveOrder={RemoveOrder}/>
 ))}                     
                 {order && order.length>0 && <div className="text-right"><button className="btn " style={{background: 'white',margin: '10px 0px 0px 70vw'}}>Confirm</button></div>}
                 </div>

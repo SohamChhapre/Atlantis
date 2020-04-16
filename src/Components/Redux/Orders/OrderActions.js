@@ -7,7 +7,7 @@ export const RemoveOrder = (item={category:"",id:""})=>{
         payload:item
     }
 }
-export const AddOrder=(item={category:"",id:""})=>{
+export const AddOrder = (item={category:"",id:""})=>{
     return {
         type:ADD_ORDER,
         payload:item
