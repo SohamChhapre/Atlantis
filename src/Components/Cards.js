@@ -53,7 +53,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
     return (
         
         <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"",height:"auto"}}  >
-        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"45vw",height:"45vw"}}>
+        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"40vw",height:"40vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
