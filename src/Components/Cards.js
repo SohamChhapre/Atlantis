@@ -14,6 +14,7 @@ import mobiscroll from 'mobiscroll';
 import {AddOrder,RemoveOrder} from './Redux/index.js';
 import {connect } from 'react-redux'
 import {initialdata} from './CategoryData.js'
+import './Cards.css'
 // import 'mobiscroll/react/dist/css/mobiscroll.min.css';
 // import {SwipeableList,SwipeableListItem} from '@sandstreamdev/react-swipeable-list'
 // const MenuCard=({AddOrder,item})=>{
@@ -52,8 +53,8 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
 
     return (
         
-        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"",height:"auto"}}  >
-        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"40vw",height:"40vw"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"auto"}}  >
+        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
@@ -62,14 +63,14 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:""}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-        style={{fontSize:"34px",fontFamily:"Poppins-Bold",color:"#525252",lineHeight:"30px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
         </div>
-        <div 
+        <div className="food-menu-qty"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-        marginTop:"2px",fontFamily:"Poppins-SemiBold",color:"#828282",fontSize:"21px"}}>
+        marginTop:"-6px",fontFamily:"Poppins-SemiBold",color:"#828282",fontSize:"21px"}}>
         250 grams
         </div>
             <div className="" style={{margin:"5px 5px 5px 0px"}}>
@@ -153,8 +154,8 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
-        <div  style={{marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"1%",marginRight:"1%"}}>
-        <p style={{margin:"20px 0px 0px 0px",fontSize:"53px",color:"#00A852"}} className="mt-4"> 1.Popular</p>
+        <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
+        <p style={{margin:"20px 0px 0px 0px",fontSize:"36px",color:"#00A852"}} className="mt-4"> 1.Popular</p>
                 <div className="flex-container my-0" >
                 
                                        

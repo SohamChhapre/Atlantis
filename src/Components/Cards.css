@@ -1,13 +1,33 @@
+@media screen and (max-width:481px){
+    .food-menu-name{
+        font-size: 32px;
+    }
 
-.swiper-wrapper {
-
-    transform: translate3d(0px,0,0);
-    transition-duration: 50ms;
 }
-/* .swiper-pagination-bullet-active{
-    width:17px;
-    border-radius: 10px 10px 10px 10px;
-    background-color: #00a852;
-    opacity: 1;
-    
-  } */
+@media all and (max-width:420px){
+    .food-menu-name{
+        font-size:28px;
+    }
+}
+@media all and (max-width:400px){
+    .food-menu-name{
+        font-size: 26px;
+    }
+}
+@media all and (max-width:380px){
+    .food-menu-name{
+        font-size: 26px;
+    }
+}
+@media all and (max-width:360px){
+    .food-menu-name{
+        font-size: 24px;
+    }
+
+}
+@media all and (max-width:340px){
+    .food-menu-name{
+        font-size: 22px;
+    }
+
+}
