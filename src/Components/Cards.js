@@ -72,16 +72,16 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
         <div className="food-menu-qty"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-        marginTop:"-6px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
+        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
         250 grams
         </div>
             <div className="" style={{margin:"5px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee",padding:"3px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee",padding:"3px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
 
-        <div style={{marginBottom:"5px",marginTop:"19px"}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 24px 0px 24px",fontFamily:"Poppins-Bold"}}>Add</button></div>
+        <div style={{marginBottom:"5px",marginTop:"19px"}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 24px 0px 27px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
         </div>
         
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>

@@ -19,31 +19,31 @@
         font-size: 25px;
     }
     .food-menu-qty{
-        font-size: 16px;
+        font-size: 13px;
     }
 }
 @media all and (max-width:380px){
     .food-menu-name{
-        font-size: 24px;
+        font-size: 21px;
     }
     .food-menu-qty{
-        font-size: 15px;
+        font-size: 11px;
     }
 }
 @media all and (max-width:360px){
     .food-menu-name{
-        font-size: 22px;
+        font-size: 19px;
     }
     .food-menu-qty{
-        font-size: 14px;
+        font-size: 10px;
     }
 }
 @media all and (max-width:340px){
     .food-menu-name{
-        font-size: 20px;
+        font-size: 17px;
     }
     .food-menu-qty{
-        font-size: 13px;
+        font-size: 9px;
     }
 
 }
