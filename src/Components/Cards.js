@@ -55,7 +55,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
     return (
         
         <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"auto"}}  >
-        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
+        <div style={{float:"left",margin:"0px 25px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
@@ -67,7 +67,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
-        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"10px",marginTop:"2px"}}/>
+        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"20px",marginTop:"2px"}}/>
         </div>
         <div className="food-menu-qty"
         style={{
