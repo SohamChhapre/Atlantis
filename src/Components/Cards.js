@@ -7,6 +7,7 @@ import plus_icon from './../Icons/Icons-Footer/plus_math.png';
 import plus_icon2 from './../Icons/Icons-Footer/plus2.jpg';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
+import heart_icon from './../Icons/Icons-Footer/heart.png';
 import cart_icon from './../Icons/Icons-Footer/shopping_cart.png';
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
@@ -66,11 +67,12 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
+        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"10px",marginTop:"5px"}}/>
         </div>
         <div className="food-menu-qty"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-        marginTop:"-6px",fontFamily:"Poppins-SemiBold",color:"#828282",fontSize:"21px"}}>
+        marginTop:"-6px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
         250 grams
         </div>
             <div className="" style={{margin:"5px 5px 5px 0px"}}>
@@ -79,7 +81,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
 
-        <div style={{marginBottom:"5px"}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 24px 2px 24px"}}>Add</button></div>
+        <div style={{marginBottom:"5px",marginTop:"19px"}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 24px 0px 24px",fontFamily:"Poppins-Bold"}}>Add</button></div>
         </div>
         
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
@@ -123,7 +125,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     return (
 
         <div className="main-container"  style={{
-            maxHeight:"calc(100vh - 110px)",overflowY:"scroll",
+            maxHeight:"calc(100vh - 120px)",overflowY:"scroll",
             padding:"20px 0%",margin:"0",
             // backgroundColor:"#9BE0B8",
             marginLeft:"0px",marginRight:"0px"}}>

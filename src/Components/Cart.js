@@ -42,13 +42,13 @@ useEffect(()=>{
 },[])
     return(
 <div className="main-container"  style={{
-            height:"calc(100vh - 115px)",overflowY:"scroll",
+            height:"calc(100vh - 120px)",overflowY:"scroll",
             padding:"20px 0%",margin:"0",backgroundColor:"#9BE0B8",marginLeft:"0px",marginRight:"0px"}}>
 
 
        <h5 style={{marginLeft:"calc(1% + 10px)"}}>Cart</h5>
          
-        <div >
+        <div>
                   {/* <div className="flex-container" >
          
             <div className="food-icon-card" >
