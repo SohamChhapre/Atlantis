@@ -13,6 +13,9 @@
         margin-top: 37px;
         margin-bottom:4px;
     }
+    .food-heart{
+        height:25px;
+    }
 }
 @media all and (max-width:460px){
     /* .food-menu-name{
@@ -72,6 +75,9 @@
     .food-menu-btn{
         margin-top: 26px;
         margin-bottom:4px;
+    }
+    .food-heart{
+        height:15px;
     }
 }
 @media all and (max-width:380px){

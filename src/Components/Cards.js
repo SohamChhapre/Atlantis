@@ -67,7 +67,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
-        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"20px",marginTop:"2px"}}/>
+        <img src={heart_icon} className="food-heart"  style={{float:'right',marginRight:"20px",marginTop:"2px"}}/>
         </div>
         <div className="food-menu-qty"
         style={{
