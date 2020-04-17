@@ -1,12 +1,14 @@
 @media screen and (max-width:481px){
     .food-menu-name{
-        font-size: 32px;
+        font-size: 30px;
     }
-
+    .food-menu-qty{
+        font-size: 18px;
+    }
 }
 @media all and (max-width:420px){
     .food-menu-name{
-        font-size:28px;
+        font-size:27px;
     }
     .food-menu-qty{
         font-size: 17px;
@@ -14,7 +16,7 @@
 }
 @media all and (max-width:400px){
     .food-menu-name{
-        font-size: 26px;
+        font-size: 25px;
     }
     .food-menu-qty{
         font-size: 16px;
@@ -22,7 +24,7 @@
 }
 @media all and (max-width:380px){
     .food-menu-name{
-        font-size: 26px;
+        font-size: 24px;
     }
     .food-menu-qty{
         font-size: 15px;
@@ -30,7 +32,7 @@
 }
 @media all and (max-width:360px){
     .food-menu-name{
-        font-size: 24px;
+        font-size: 22px;
     }
     .food-menu-qty{
         font-size: 14px;
@@ -38,7 +40,7 @@
 }
 @media all and (max-width:340px){
     .food-menu-name{
-        font-size: 22px;
+        font-size: 20px;
     }
     .food-menu-qty{
         font-size: 13px;

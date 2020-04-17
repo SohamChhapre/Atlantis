@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import check_right from './../Icons/Icons-Footer/check_tick.jpg'
 import Swiper from 'react-id-swiper';
-import minus_icon from './../Icons/Icons-Footer/subtract.png';
-import plus_icon from './../Icons/Icons-Footer/plus_math.png';
+import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
+import plus_icon from './../Icons/Icons-Footer/green_plus.png';
 import plus_icon2 from './../Icons/Icons-Footer/plus2.jpg';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
@@ -64,10 +64,10 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:""}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px",marginTop:"-5px"}}
         >
         Nasi Goreng
-        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"10px",marginTop:"5px"}}/>
+        <img src={heart_icon} height="15px" style={{float:'right',marginRight:"10px",marginTop:"2px"}}/>
         </div>
         <div className="food-menu-qty"
         style={{
@@ -146,18 +146,18 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
                   <div className="flex-container" >
          
             <div className="food-icon-card" >
-            1
+            
             
             </div>
                         <div className="food-icon-card mg-left" >
-            1
+            
             
             </div>
             {/* <div className="food-icon-card mg-left" >
             </div> */}
             </div>
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        <p style={{margin:"20px 0px 0px 0px",fontSize:"36px",color:"#00A852"}} className="mt-4"> 1.Popular</p>
+        <p style={{margin:"20px 0px 0px 0px",fontSize:"36px",color:"#00A852"}} className="mt-4"> 1. Popular</p>
                 <div className="flex-container my-0" >
                 
                                        
