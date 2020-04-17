@@ -45,6 +45,11 @@
 	
 }
 @font-face {
+	font-family: 'Poppins-Bold';
+	src: url('./Icons/Font/Poppins-Bold.ttf'); 	
+	
+}
+@font-face {
 	font-family: 'Poppins-SemiBold';
 	src: url('./Icons/Font/Poppins-SemiBold.ttf'); 	
 	

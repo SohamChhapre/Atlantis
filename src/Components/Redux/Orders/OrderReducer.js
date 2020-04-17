@@ -27,7 +27,7 @@ const OrderReducer=(state=initialState,action)=>{
                 }
 
             if (flg)
-         neworder=state.orders.filter(e=>(e.category!==action.payload.category && e.id!==action.payload.id))
+         neworder=state.orders.filter(e=>( e.id!==action.payload.id))
         console.log(neworder)
         return {
             ...state,
