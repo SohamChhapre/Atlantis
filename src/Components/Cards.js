@@ -158,7 +158,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div> */}
             </div>
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        <p style={{margin:"20px 0px 0px 0px",fontSize:"30px",color:"#525252",fontFamily:"Poppins-SemiBold"}} className="mt-4"> Popular</p>
+        <p style={{margin:"20px 0px 0px 0px",fontSize:"30px",color:"#525252",fontFamily:"Poppins-SemiBold",marginRight:"60vw"}} className="mt-4 text-right"> Popular</p>
                 <div className="flex-container my-0" >
                 
                                        
