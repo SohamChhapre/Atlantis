@@ -64,7 +64,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:""}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px",marginTop:"-5px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
         <img src={heart_icon} height="15px" style={{float:'right',marginRight:"10px",marginTop:"2px"}}/>
@@ -75,15 +75,16 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
         marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
         250 grams
         </div>
-            <div className="" style={{margin:"5px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee",padding:"3px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee",padding:"3px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
+        <div className="">
+            <div className="food-menu-middle" style={{}}>
+            <img className="" src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <span style={{padding:"0px 20px"}}>{flag}</span>
+            <img className="" src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
 
-        <div style={{marginBottom:"5px",marginTop:"19px"}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 24px 0px 27px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
+        <div className="food-menu-btn" style={{}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
         </div>
-        
+        </div>
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
             <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px"}}>{flag}</span>
@@ -157,7 +158,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div> */}
             </div>
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        <p style={{margin:"20px 0px 0px 0px",fontSize:"36px",color:"#00A852"}} className="mt-4"> 1. Popular</p>
+        <p style={{margin:"20px 0px 0px 0px",fontSize:"30px",color:"#525252",fontFamily:"Poppins-SemiBold"}} className="mt-4"> Popular</p>
                 <div className="flex-container my-0" >
                 
                                        
