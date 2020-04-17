@@ -52,14 +52,14 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
 
     return (
         
-        <div className="horizontal-card" style={{display:"flex",backgroundColor:"white",height:"auto"}}  >
-        <div style={{float:"left",margin:"0px 10px 0px 10px",width:"35vw",height:"35vw"}}>
-        <img src={dummy_img} height='100%' width="100%"   />
+        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"",height:"auto"}}  >
+        <div style={{float:"left",margin:"0px 10px 0px 0px",backgroundColor:"#e5f5ee",width:"45vw",height:"45vw"}}>
+        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
         <div style={{
             // width:"calc(100% - 175px)",
-            paddingTop:"15px"}}>
+            paddingTop:""}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
         style={{fontSize:"34px",fontFamily:"Poppins-Bold",color:"#525252",lineHeight:"30px"}}
