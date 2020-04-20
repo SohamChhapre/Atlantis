@@ -131,17 +131,17 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             // backgroundColor:"#9BE0B8",
             marginLeft:"0px",marginRight:"0px"}}>
 
-        <Link to="/cart"> <div className="text-right"><img src={cart_icon}/><span className="text-center" style={{position:"relative",
-    right: '16px',
-    top: '-20px',
+        
+        <div className="card  dash-banner" style={{backgroundColor:"white",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
+            <Link to="/cart"> <div className="text-right"><img src={cart_icon} height="32px" width="32px" style={{margin:"0px -17px 0px 0px"}}/><span className="text-center" style={{position:"relative",
+    right: '0px',
+    top: '-16px',
     borderRadius: '50%',
     background: '#E5F5EE',
     color: '#00A852',
     padding: '0px 6px'
 
 }}>{order.length}</span></div></Link>
-        <div className="card  dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
-            
             </div>
          {/* <div className="flex-container" > */}
          
@@ -152,7 +152,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             {/* </div> */}
          {/* <Swiper {...params} > */}
         <div >
-                  <div className="flex-container" >
+                  {/* <div className="flex-container" >
          
             <div className="food-icon-card" >
             
@@ -162,9 +162,8 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             
             
             </div>
-            {/* <div className="food-icon-card mg-left" >
+           
             </div> */}
-            </div>
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
         <p style={{margin:"20px 0px 0px 0px",fontSize:"30px",color:"#525252",fontFamily:"Poppins-SemiBold",marginRight:"60vw"}} className="mt-4 text-right"> Popular</p>
                 <div className="flex-container my-0" >
