@@ -31,7 +31,7 @@
         font-size: 30px;
     }
     .food-select-unactive{
-        font-size:20px ;
+        font-size:18px ;
     }
 }
 @media all and (max-width:460px){
@@ -114,6 +114,9 @@
         margin-top: 26px;
         margin-bottom:4px;
     }
+    .food-popular-text{
+        font-size:26px
+    }
 }
 @media all and (max-width:360px){
     /* .food-menu-name{
@@ -148,7 +151,10 @@
         margin-bottom:4px;
     }
     .food-popular-text{
-        font-size: 26px;
+        font-size: 24px;
+    }
+    .food-select-unactive{
+        font-size:16px;
     }
 
 }

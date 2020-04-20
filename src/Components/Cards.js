@@ -54,7 +54,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
 
     return (
         
-        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"auto"}}  >
+        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"auto",margin:"15px 0px 5px 0px"}}  >
         <div style={{float:"left",margin:"0px 25px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
@@ -195,7 +195,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
 
                 <div className="flex-container my-0" >
                 
-                                       
+                                   content of {foodCat[0]}    
                    {initialdata.map((e,i)=>{return e.category==='cat1' && (<MenuCard item={e} AddOrder={AddOrder} key={i} RemoveOrder={RemoveOrder} order={order}/>)}) }
                                        
                                        {/* <MenuCard/> */}
