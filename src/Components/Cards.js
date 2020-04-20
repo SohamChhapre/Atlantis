@@ -82,7 +82,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             <img className="" src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
 
-        <div className="food-menu-btn" style={{}}>{item.id!==1?(<button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button>):(<button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold",margin:"0px 16px"}}>ADD</button>)}</div>
+        <div className="food-menu-btn" style={{}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
         </div>
         </div>
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
@@ -139,7 +139,8 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     borderRadius: '50%',
     background: '#E5F5EE',
     color: '#00A852',
-    padding: '0px 6px'
+    padding: '1px 7px',
+    border:"4px solid white"
 
 }}>{order.length}</span></div></Link>
             </div>
