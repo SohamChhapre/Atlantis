@@ -16,6 +16,7 @@ import {AddOrder,RemoveOrder} from './Redux/index.js';
 import {connect } from 'react-redux'
 import {initialdata} from './CategoryData.js'
 import './Cards.css'
+import Slide from 'react-reveal/Slide';
 // import 'mobiscroll/react/dist/css/mobiscroll.min.css';
 // import {SwipeableList,SwipeableListItem} from '@sandstreamdev/react-swipeable-list'
 // const MenuCard=({AddOrder,item})=>{
@@ -38,6 +39,47 @@ import './Cards.css'
         
 //     )
 // }
+const Textslider=({food,handlers,foodCat,swipe})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        setToggler(true)
+    },[])
+    useEffect(()=>{
+        setToggler(!toggler)
+    },[food])
+
+        return(
+        <div {...handlers} >
+            <Slide opposite left collapse when={toggler}>
+            <div>
+            <div {...handlers} class="scrolling-wrapper">
+      
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+            
+            </div>
+            </div>
+        </Slide>
+            <Slide opposite right collapse when={!toggler}>
+            <div>
+            <div {...handlers} class="scrolling-wrapper">
+      
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+            
+            </div>
+            </div>
+        </Slide>
+            
+        </div>
+        )
+}
  
 const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
     const [toggler,setToggler]=useState(true)
@@ -101,18 +143,22 @@ const defaultswipe={
     "right":false
 }
 const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
-    const [swipe,setSwipe]=useState(true)
+    const [swipe,setSwipe]=useState({"left":true,"right":false})
     const [food,setFood]=useState(true)
     const [foodCat,setFoodCat]=useState(["Popular","Balanced","Salad"]);
     const handlers = useSwipeable({
         onSwipedLeft: () => {console.log("left");
+        setSwipe({'left':true,"right":false})
+        setFood(!food)
         let cat=foodCat.slice(1,3);
         setFoodCat([...cat,foodCat[0]]);
         },
         onSwipedRight: () => {console.log("right");
+        setSwipe({"right":true,"left":false})
         let cat=foodCat.slice(0,2);
+        setFood(!food)
         setFoodCat([foodCat[2],...cat]);},
-        
+
         preventDefaultTouchmoveEvent: true,
         trackMouse: true
       });
@@ -183,19 +229,38 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
            
             </div> */}
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        
+        <Textslider handlers={handlers} foodCat={foodCat} swipe={swipe} food={food}/>
+        {/* <Slide left>
+        <div>
         <div {...handlers} class="scrolling-wrapper">
-       
-  <div class="card" style={{width:"38vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-right food-popular-text " > {foodCat[0]}</p></div>
-  <div class="card" style={{width:"38vw",border:"None"}}><p style={{marginLeft:"25px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-  <div class="card" style={{width:"38vw",border:"None"}}><p style={{marginLeft:"25px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className="  food-select-unactive" > {foodCat[2]}</p></div>
-  
- 
-</div>
+      
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+            
+            </div>
+            </div>
+        </Slide> */}
+        {/* <Slide right when={swipe.right} >
+        <div>
+        <div {...handlers} class="scrolling-wrapper">
+      
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+            
+            </div>
+            </div>
+        </Slide> */}
+
 
                 <div className="flex-container my-0" >
                 
-                                   content of {foodCat[0]}    
+                                       
                    {initialdata.map((e,i)=>{return e.category==='cat1' && (<MenuCard item={e} AddOrder={AddOrder} key={i} RemoveOrder={RemoveOrder} order={order}/>)}) }
                                        
                                        {/* <MenuCard/> */}
