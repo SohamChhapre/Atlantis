@@ -104,7 +104,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     const [swipe,setSwipe]=useState({"left":false,"right":true})
     const [cate1,setCate1]=useState([]);
     const handlers = useSwipeable({
-        onSwipedLeft: () => {console.log("left");document.write("left swipe")},
+        onSwipedLeft: () => {console.log("left");},
         onSwipedRight: () => {console.log("right")},
         
         preventDefaultTouchmoveEvent: true,
@@ -173,6 +173,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
            
             </div> */}
         <div {...handlers} style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
+        {/* <div  >
         <div class="scrolling-wrapper">
   <div class="card"><h2>Card</h2></div>
   <div class="card"><h2>Card</h2></div>
@@ -184,6 +185,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
   <div class="card"><h2>Card</h2></div>
   <div class="card"><h2>Card</h2></div>
 </div>
+</div> */}
         <p style={{margin:"20px 0px 0px 0px",color:"#525252",fontFamily:"Poppins-SemiBold",marginRight:"60vw"}} className="mt-4 text-right food-popular-text" {...handlers}> Popular</p>
                 <div className="flex-container my-0" >
                 
