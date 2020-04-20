@@ -1,12 +1,13 @@
 .scrolling-wrapper {
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
-  
+    margin-top: 20px;
     
   }
   .scrolling-wrapper .card {
     display: inline-block;
+    
   }
 @media screen and (max-width:481px){
     .food-menu-name{
@@ -28,6 +29,9 @@
     }
     .food-popular-text{
         font-size: 30px;
+    }
+    .food-select-unactive{
+        font-size:20px ;
     }
 }
 @media all and (max-width:460px){

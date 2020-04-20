@@ -101,20 +101,30 @@ const defaultswipe={
     "right":false
 }
 const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
-    const [swipe,setSwipe]=useState({"left":false,"right":true})
-    const [cate1,setCate1]=useState([]);
+    const [swipe,setSwipe]=useState(true)
+    const [food,setFood]=useState(true)
+    const [foodCat,setFoodCat]=useState(["Popular","Balanced","Salad"]);
     const handlers = useSwipeable({
-        onSwipedLeft: () => {console.log("left");},
-        onSwipedRight: () => {console.log("right")},
+        onSwipedLeft: () => {console.log("left");
+        let cat=foodCat.slice(1,3);
+        setFoodCat([...cat,foodCat[0]]);
+        },
+        onSwipedRight: () => {console.log("right");
+        let cat=foodCat.slice(0,2);
+        setFoodCat([foodCat[2],...cat]);},
         
         preventDefaultTouchmoveEvent: true,
         trackMouse: true
       });
     useEffect(()=>{
         setSwipe({"left":false,"right":true});
+        setFood({"popular":true,"salad":false,"balanced":false})
     },[])
     useEffect(()=>{
         console.log("UseEffect");
+        setTimeout(() => {
+            console.log("sds")
+        }, 100);
     },[swipe])
     const params = {
     pagination: {
@@ -172,21 +182,17 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div>
            
             </div> */}
-        <div {...handlers} style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        {/* <div  >
-        <div class="scrolling-wrapper">
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
-  <div class="card"><h2>Card</h2></div>
+        <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
+        
+        <div {...handlers} class="scrolling-wrapper">
+       
+  <div class="card" style={{width:"38vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-right food-popular-text " > {foodCat[0]}</p></div>
+  <div class="card" style={{width:"38vw",border:"None"}}><p style={{marginLeft:"25px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+  <div class="card" style={{width:"38vw",border:"None"}}><p style={{marginLeft:"25px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className="  food-select-unactive" > {foodCat[2]}</p></div>
+  
+ 
 </div>
-</div> */}
-        <p style={{margin:"20px 0px 0px 0px",color:"#525252",fontFamily:"Poppins-SemiBold",marginRight:"60vw"}} className="mt-4 text-right food-popular-text" {...handlers}> Popular</p>
+
                 <div className="flex-container my-0" >
                 
                                        
