@@ -8,7 +8,7 @@ import plus_icon2 from './../Icons/Icons-Footer/plus2.jpg';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
 import heart_icon from './../Icons/Icons-Footer/heart.png';
-import cart_icon from './../Icons/Icons-Footer/shopping_cart.png';
+import cart_icon from './../Icons/Icons-Footer/green_shopping_cart.png';
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
 import mobiscroll from 'mobiscroll';
@@ -67,7 +67,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
-        <img src={heart_icon} className="food-heart"  style={{float:'right',marginRight:"20px",marginTop:"2px"}}/>
+        <img src={heart_icon} className="food-heart"  style={{float:'right',marginRight:"20px"}}/>
         </div>
         <div className="food-menu-qty"
         style={{
@@ -82,7 +82,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             <img className="" src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
             </div>
 
-        <div className="food-menu-btn" style={{}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
+        <div className="food-menu-btn" style={{}}>{item.id!==1?(<button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button>):(<button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold",margin:"0px 16px"}}>ADD</button>)}</div>
         </div>
         </div>
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
@@ -131,7 +131,15 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             // backgroundColor:"#9BE0B8",
             marginLeft:"0px",marginRight:"0px"}}>
 
-        <Link to="/cart"> <div className="text-right"><img src={cart_icon}/><span className="text-center" style={{position:"relative",right:"32px"}}>{order.length}</span></div></Link>
+        <Link to="/cart"> <div className="text-right"><img src={cart_icon}/><span className="text-center" style={{position:"relative",
+    right: '16px',
+    top: '-20px',
+    borderRadius: '50%',
+    background: '#E5F5EE',
+    color: '#00A852',
+    padding: '0px 6px'
+
+}}>{order.length}</span></div></Link>
         <div className="card  dash-banner" style={{backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
             
             </div>
