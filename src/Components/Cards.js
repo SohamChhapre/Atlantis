@@ -139,7 +139,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     borderRadius: '50%',
     background: '#E5F5EE',
     color: '#00A852',
-    padding: '1px 7px',
+    padding: '2px 7px',
     border:"4px solid white",
     fontSize:"12px"
 
