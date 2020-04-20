@@ -133,14 +133,15 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
 
         
         <div className="card  dash-banner" style={{backgroundColor:"white",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
-            <Link to="/cart"> <div className="text-right"><img src={cart_icon} height="32px" width="32px" style={{margin:"0px -17px 0px 0px"}}/><span className="text-center" style={{position:"relative",
-    right: '0px',
+            <Link to="/cart"> <div className="text-right"><img src={cart_icon} height="24px" width="24px" style={{margin:"0px -25px 0px 0px"}}/><span className="text-center" style={{position:"relative",
+    right: '-9px',
     top: '-16px',
     borderRadius: '50%',
     background: '#E5F5EE',
     color: '#00A852',
     padding: '1px 7px',
-    border:"4px solid white"
+    border:"4px solid white",
+    fontSize:"12px"
 
 }}>{order.length}</span></div></Link>
             </div>
