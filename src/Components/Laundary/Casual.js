@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {Link} from 'react-router-dom';
-import cart_icon from './../Icons/Icons-Footer/green_shopping_cart.png';
+import cart_icon from './../../Icons/Icons-Footer/green_shopping_cart.png';
 
 const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
     const [toggler,setToggler]=useState(true)
@@ -49,7 +49,7 @@ top: 'calc(30vw - 30px)'}}><button className="btn btn-success" style={{borderRad
         
     )
 }
-const Laundary=()=>{
+const Casual=()=>{
 
     return (
         <div className="main-container"  style={{
@@ -72,19 +72,17 @@ const Laundary=()=>{
 
 }}>{1}</span></div></Link>
             </div>
-        <div style={{display:"flex",justifyContent:"center",margin:"20px 0px 0px 0px"}}>
-             <Link exact to="/casual" className="icon-card">
-             <div className=" swipper-card-1" >
-            </div >
-            </Link>
-            <Link exact to="/casual" className="icon-card mg-left">
-            <div className=" swipper-card-2 " >
-            </div>
-            </Link>
-        </div>
         
+        <div style={{margin:"30px 20px "}}>
+        <MenuCard/>
+        <MenuCard/>
+        <MenuCard/>
+        </div>
+        <div>
+        <button className="btn btn-success">Submit</button>
+        </div>
             </div>
     )
 }
 
-export default Laundary;
+export default Casual;

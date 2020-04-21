@@ -76,11 +76,14 @@ const Dashboard=()=>{
         <Swiper {...params} >
         <div style={{display:"flex",justifyContent:"center"}}>
              <Link exact to="/food" className="icon-card">
-             <div className="icon-card swipper-card-1" >
+             <div className="swipper-card-1" >
             </div >
             </Link>
-            <div className="icon-card swipper-card-2 mg-left" >
+            <Link exact to="/laundary" className="icon-card mg-left">
+            <div className="swipper-card-2 " >
             </div>
+            </Link>
+            
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
             <div className="icon-card swipper-card-2" >

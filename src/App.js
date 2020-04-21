@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
 import './App.css';
 import Dashboard from './Components/Dashboard.js';
+import Laundary from './Components/Laundary.js';
 import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
 // import Cards2 from './Components/Cards.js'
@@ -18,6 +19,7 @@ import default_food_delivery from './Icons/Icons-Footer/food_delivery_default.pn
 import {Provider} from 'react-redux';
 import store from './Components/Redux/Store.js';
 import Cart from './Components/Cart.js';
+import Casual from './Components/Laundary/Casual.js';
 const Initialdata=[{"category":"category1" ,id:"001"},{"category":"category1" ,id:"001"},{"category":"category1" ,id:"001"},
 {"category":"category2" ,id:"004"},{"category":"category2" ,id:"005"}]
 
@@ -73,13 +75,10 @@ function App() {
   exact path='/'
   render={(props) => <Dashboard {...props}  />}
     />
-    {/* <Route */}
-  //  path='/user'
-  // render={(props) => <Wrapper {...props} orders={orders} setOrders={setOrders} />}
-  //   />
+  
        <Route
   exact path='/food'
-  render={(props) => <Cards {...props} orders={orders} setOrders={setOrders} />}
+  render={(props) => <Cards {...props}  />}
     />
   <Route
   path='/cart'
@@ -87,7 +86,15 @@ function App() {
     />
     <Route
   path='/orders'
-  render={(props) => <Orders {...props} orders={orders} setOrders={setOrders} />}
+  render={(props) => <Orders {...props}  />}
+    />
+    <Route
+  exact path='/laundary'
+  render={(props) => <Laundary {...props}  />}
+    />
+    <Route
+  exact path='/casual'
+  render={(props) => <Casual {...props}  />}
     />
       
     </Switch>
