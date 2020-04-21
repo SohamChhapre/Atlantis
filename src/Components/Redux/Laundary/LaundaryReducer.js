@@ -2,7 +2,8 @@ import {ADD_LAUNDARY,UPDATE_LAUNDARY,REMOVE_LAUNDARY} from './LaundaryTypes.js'
 
 
 const initialState={
-    laundaryOrder:[]
+    laundaryOrder:[],
+    templaundaryOrder:[]
 }
 
 const LaundaryReducer=(state=initialState,action)=>{
@@ -12,18 +13,29 @@ const LaundaryReducer=(state=initialState,action)=>{
             console.log(action.payload)
             return {
                 ...state,
-                laundaryOrder:[...state.laundaryOrder,action.payload]
+                templaundaryOrder:[...state.templaundaryOrder,action.payload]
             }
         }
         case REMOVE_LAUNDARY:{
             if(action.payload.id==="all")
                 return {
                     ...state,
-                    laundaryOrder:[]
+                    templaundaryOrder:[]
                 }
             return {
                 ...state,
-                laundaryOrder:state.laundaryOrder.filter((e)=>(e.id!==action.payload.id))
+                templaundaryOrder:state.templaundaryOrder.filter((e)=>(e.id!==action.payload.id))
+            }
+        }
+        case UPDATE_LAUNDARY:{
+            if(action.payload.id=="all")
+            return {
+                ...state,
+                laundaryOrder:[]
+            }
+            return {
+                ...state,
+                laundaryOrder:state.templaundaryOrder
             }
         }
         default: return state

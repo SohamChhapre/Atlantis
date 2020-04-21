@@ -3,19 +3,20 @@ import {Link} from 'react-router-dom';
 import cart_icon from './../../Icons/Icons-Footer/green_shopping_cart.png';
 
 import {connect } from 'react-redux'
-import {AddLaundary,RemoveLaundary} from './../Redux/index.js';
+import {AddLaundary,RemoveLaundary,UpdateLaundary} from './../Redux/index.js';
 
-const data=[{id:1,name:"Wash & Fold"},{id:2,name:"Iron & Fold"},{id:3,name:"Dry Clean"}]
-const MenuCard=({item,AddLaundary,Laundaryorder,RemoveLaundary})=>{
+const data=[{id:1,name:"Wash & Fold",isset:false},{id:2,name:"Iron & Fold",isset:false},{id:3,name:"Dry Clean",isset:false}]
+
+const MenuCard=({item,AddLaundary,tempLaundaryorder,RemoveLaundary})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
     },[toggler])
     var flag=false;
     console.log(item);
-    for(var i=0;i<Laundaryorder.length;i++){
+    for(var i=0;i<tempLaundaryorder.length;i++){
 
-        if(Laundaryorder[i].id===item.id )
+        if(tempLaundaryorder[i].id===item.id )
                 flag=true
     }
 
@@ -52,6 +53,7 @@ top: 'calc(30vw - 30px)'}}><button className="btn btn-success"  style={{borderRa
         RemoveLaundary(item)
     }
     else{
+        if(tempLaundaryorder.length==0)
         AddLaundary(item)
     }
 }}>ADD</button></div>
@@ -62,10 +64,10 @@ top: 'calc(30vw - 30px)'}}><button className="btn btn-success"  style={{borderRa
         
     )
 }
-const Casual=({Laundaryorder,AddLaundary,RemoveLaundary})=>{
+const Casual=({tempLaundaryorder,AddLaundary,RemoveLaundary,UpdateLaundary,Laundaryorder})=>{
         useEffect(()=>{
 
-        },[Laundaryorder])
+        },[tempLaundaryorder])
     return (
         <div className="main-container"  style={{
             maxHeight:"calc(100vh - 120px)",overflowY:"scroll",
@@ -89,15 +91,17 @@ const Casual=({Laundaryorder,AddLaundary,RemoveLaundary})=>{
             </div>
         
         <div style={{margin:"30px 20px "}}>
-        {data.map((e,i)=>(<MenuCard item={e} RemoveLaundary={RemoveLaundary} Laundaryorder={Laundaryorder} AddLaundary={AddLaundary} />))}
+        {data.map((e,i)=>(<MenuCard item={e} RemoveLaundary={RemoveLaundary} tempLaundaryorder={tempLaundaryorder} AddLaundary={AddLaundary} />))}
         
         </div>
         {
-            Laundaryorder.length>0 && 
-        <div className="text-right">
-        <span style={{marginRight:"20px",color:"black",fontFamily:"Poppins-SemiBold"}} onClick={()=>{
+            tempLaundaryorder.length>0 && 
+        <div className="text-center">
+        <span style={{marginRight:"30px",color:"black",fontFamily:"Poppins-SemiBold",cursor:"pointer"}} onClick={()=>{
             RemoveLaundary({item:"",id:"all"})
-        }}>Remove</span><span style={{marginRight:"20px",color:"black",fontFamily:"Poppins-SemiBold"}}>Continue</span>
+        }}>Remove</span><span style={{marginRight:"",color:"black",fontFamily:"Poppins-SemiBold",cursor:"pointer"}} onClick={()=>{
+            UpdateLaundary()
+        }}>Continue</span>
         </div>
             }
             </div>
@@ -105,6 +109,7 @@ const Casual=({Laundaryorder,AddLaundary,RemoveLaundary})=>{
 }
 const mapStateToprops=state=>{
     return {
+        tempLaundaryorder:state.Laundaryorder.templaundaryOrder,
         Laundaryorder:state.Laundaryorder.laundaryOrder
     }
 }
@@ -112,8 +117,8 @@ const mapDispatchToprops=dispatch=>{
     return {
         //  RemoveOrder:(item) => dispatch(RemoveOrder(item)),
             AddLaundary:(item)=> dispatch(AddLaundary(item)),
-            RemoveLaundary:(item)=>dispatch(RemoveLaundary(item))
-           
+            RemoveLaundary:(item)=>dispatch(RemoveLaundary(item)),
+            UpdateLaundary:()=>dispatch(UpdateLaundary())
     }
 }
 
