@@ -181,7 +181,7 @@ useEffect(()=>{
 
 const mapStateToprops=state=>{
     return {
-        order:state.orders
+        order:state.Foodorder.orders
     }
 }
 const mapDispatchToprops=dispatch=>{

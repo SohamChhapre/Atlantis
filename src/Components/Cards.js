@@ -312,7 +312,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
 
 const mapStateToprops=state=>{
     return {
-        order:state.orders
+        order:state.Foodorder.orders
     }
 }
 const mapDispatchToprops=dispatch=>{
