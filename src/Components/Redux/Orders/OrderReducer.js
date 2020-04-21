@@ -1,5 +1,5 @@
 import {REMOVE_ORDER} from './OrderTypes.js';
-import {ADD_ORDER} from './OrderTypes.js';
+import {ADD_ORDER,UPDATE_ORDER} from './OrderTypes.js';
 
 const initialState={
     orders:[]
@@ -51,6 +51,13 @@ const OrderReducer=(state=initialState,action)=>{
                 neworder=[...state.orders,item];
         // console.log(neworder,action.payload)
                 }
+            return {
+                ...state,
+                orders:neworder
+            }
+        }
+        case UPDATE_ORDER:{
+            neworder=state.orders.filter(e=>( e.id!==action.payload.id))
             return {
                 ...state,
                 orders:neworder

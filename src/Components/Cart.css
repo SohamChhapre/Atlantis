@@ -1,0 +1,26 @@
+.cart-container{
+    background:white;
+    /* height: 300px; */
+    /* width:100%; */
+    margin:10px;
+    /* border:1px solid black; */
+}
+.big-container{
+    background: white;
+}
+.cart-circle{
+    height: 54px;
+width: 54px;
+background: green;
+margin: 10px 0px 15px 10px;
+}
+.cart-confirm-btn{
+    margin-left: calc(38vw + 157px);
+    margin-top: 50px;
+}
+@media all and (max-width:420px){
+    .cart-confirm-btn{
+        margin-left: calc(38vw + 90px);
+        margin-top: 50px;
+    }   
+}

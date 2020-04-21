@@ -9,6 +9,9 @@
     display: inline-block;
     
   }
+  .minus-plus-unactive{
+      opacity: 0.5;
+  }
 @media screen and (max-width:481px){
     .food-menu-name{
         font-size: 25px;

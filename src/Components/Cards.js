@@ -17,6 +17,7 @@ import {connect } from 'react-redux'
 import {initialdata} from './CategoryData.js'
 import './Cards.css'
 import Slide from 'react-reveal/Slide';
+import LightSpeed from 'react-reveal/LightSpeed';
 // import 'mobiscroll/react/dist/css/mobiscroll.min.css';
 // import {SwipeableList,SwipeableListItem} from '@sandstreamdev/react-swipeable-list'
 // const MenuCard=({AddOrder,item})=>{
@@ -40,17 +41,30 @@ import Slide from 'react-reveal/Slide';
 //     )
 // }
 const Textslider=({food,handlers,foodCat,swipe})=>{
-    const [toggler,setToggler]=useState(true)
+    const [toggler,setToggler]=useState({})
     useEffect(()=>{
-        setToggler(true)
+        setToggler({1:true,2:true})
     },[])
     useEffect(()=>{
-        setToggler(!toggler)
+        setToggler({1:!toggler[1],2:!toggler[2]})
     },[food])
 
         return(
         <div {...handlers} >
-            <Slide opposite left collapse when={toggler}>
+            {/* <LightSpeed  left collapse when={toggler[1] || toggler[2]} > */}
+            <div>
+            <div  class="scrolling-wrapper">
+      
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+            
+            </div>
+            </div>
+        {/* </LightSpeed> */}
+            {/* <LightSpeed  right collapse when={toggler[2] && swipe.right}>
             <div>
             <div {...handlers} class="scrolling-wrapper">
       
@@ -62,20 +76,7 @@ const Textslider=({food,handlers,foodCat,swipe})=>{
             
             </div>
             </div>
-        </Slide>
-            <Slide opposite right collapse when={!toggler}>
-            <div>
-            <div {...handlers} class="scrolling-wrapper">
-      
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
-
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
-            
-            
-            </div>
-            </div>
-        </Slide>
+        </LightSpeed> */}
             
         </div>
         )
@@ -119,9 +120,9 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
         </div>
         <div className="">
             <div className="food-menu-middle" style={{}}>
-            <img className="" src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 20px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
             </div>
 
         <div className="food-menu-btn" style={{}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
