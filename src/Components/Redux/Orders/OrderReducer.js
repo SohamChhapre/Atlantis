@@ -57,6 +57,7 @@ const OrderReducer=(state=initialState,action)=>{
             }
         }
         case UPDATE_ORDER:{
+            console.log(action.payload)
             neworder=state.orders.filter(e=>( e.id!==action.payload.id))
             return {
                 ...state,

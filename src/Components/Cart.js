@@ -11,7 +11,7 @@ import schedule_icon from './../Icons/Icons-Footer/watch.png';
 
 
 
-const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
+const MenuCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")

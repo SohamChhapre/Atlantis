@@ -17,10 +17,12 @@ margin: 10px 0px 15px 10px;
 .cart-confirm-btn{
     margin-left: calc(38vw + 157px);
     margin-top: 50px;
+    margin-bottom: 5px;
 }
 @media all and (max-width:420px){
     .cart-confirm-btn{
         margin-left: calc(38vw + 90px);
         margin-top: 50px;
+        margin-bottom: 5px;
     }   
 }
