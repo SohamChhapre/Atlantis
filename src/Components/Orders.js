@@ -7,7 +7,28 @@ import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
 import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
+import Barcode from 'react-barcode';
 
+
+const handlers={
+  width: 60,
+  height: 100,
+  format: "CODE128",
+  displayValue: false,
+  fontOptions: "",
+  font: "monospace",
+  textAlign: "center",
+  textPosition: "bottom",
+  textMargin: 2,
+  fontSize: 20,
+  background: "#ffffff",
+  lineColor: "#000000",
+  margin: 10,
+  marginTop: undefined,
+  marginBottom: undefined,
+  marginLeft: undefined,
+  marginRight: undefined
+}
 
 const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
     const [toggler,setToggler]=useState(true)
@@ -24,7 +45,7 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
 
     return (
         
-        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"38vw",margin:"35px 0px 5px 0px"}}  >
+        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"38vw",margin:"35px 0px 5px 0px",position:"relative"}}  >
         <div style={{float:"left",margin:"0px 25px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
@@ -45,8 +66,9 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
         250 grams
         </div>
-        <div className="">
-            
+        <div className="" style={{marginLeft:"calc(38vw + 16px)",position:"absolute"}}>
+            <Barcode value="#098@278" width="1"
+  flat={true}  displayValue={false} height="25"/>
 
         {/* <div className="food-menu-btn" style={{}}><button className="btn btn-warning" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",backgroundColor:"#F49901",fontFamily:"Poppins-SemiBold",color:"white"}}>Schedule</button><img src={schedule_icon} height="22px" style={{paddingLeft:"9px"}}/></div> */}
         </div>
@@ -89,9 +111,9 @@ const LaundaryCard=({item,UpdateLaundary})=>{
        
         </div>
         
-        <div className="">
-            
-
+            <div className="" style={{marginLeft:"calc(38vw + 16px)",position:"absolute"}}>
+            <Barcode value="#098@278" width="1"
+  flat={true}  displayValue={false} height="25"/>
         {/* <div className="" style={{position:"absolute",bottom:"1px",left:"calc(38vw + 25px)"}}><button className="btn btn-warning" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",backgroundColor:"#F49901",fontFamily:"Poppins-SemiBold",color:"white"}}>Schedule</button><img src={schedule_icon} height="22px" style={{paddingLeft:"9px"}}/></div> */}
         </div>
         </div>
