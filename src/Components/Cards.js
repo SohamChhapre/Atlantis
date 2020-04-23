@@ -45,7 +45,7 @@ const Food_category_data={
     'Balanced':false,
     'Salad':false
 }
-const Textslider=({food,handlers,foodcategory,swipe,setFoodcategory})=>{
+const Textslider=({food,foodcategory,swipe,setFoodcategory})=>{
     const [toggler,setToggler]=useState({})
     useEffect(()=>{
         setToggler({1:true,2:true})
@@ -55,7 +55,7 @@ const Textslider=({food,handlers,foodcategory,swipe,setFoodcategory})=>{
     },[foodcategory])
 
         return(
-        <div {...handlers} >
+        <div  >
             {/* <LightSpeed  left collapse when={toggler[1] || toggler[2]} > */}
             <div>
             <div  class="scrolling-wrapper">
@@ -259,7 +259,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div> */}
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
         {/* <Texttoggler handlers={handlers} foodCat={foodCat} swipe={swipe} food={food}/> */}
-        <Textslider handlers={handlers} foodcategory={foodcategory} setFoodcategory={setFoodcategory} swipe={swipe} food={food}/>
+        <Textslider  foodcategory={foodcategory} setFoodcategory={setFoodcategory} swipe={swipe} food={food}/>
         {/* <Slide left>
         <div>
         <div {...handlers} class="scrolling-wrapper">
