@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>img-electricity</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="81.2874038 62.6650518 81.2874038 53.7593806 90.193075 44.8537095 99.0987461 53.7593806 99.0987461 62.6650518"></polygon>
+        <filter x="-75.8%" y="-59.0%" width="251.6%" height="251.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.956862745   0 0 0 0 0.537254902   0 0 0 0 0.0980392157  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FBE236" offset="0%"></stop>
+            <stop stop-color="#F4C119" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="img-electricity" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-27" transform="translate(0.000000, 6.000000)">
+            <path d="M48.6332763,71.2016219 L50.3839653,80.8031715 C50.8984546,83.6248577 53.356575,85.6753061 56.2247822,85.6753061 L84.2468623,85.6753061 C87.5258398,85.6753061 90.1839763,83.0171696 90.1839763,79.738192 C90.1839763,79.7351615 90.183974,79.7321309 90.1839694,79.7291004 L90.1487472,56.7279377 L90.1487472,56.7279377" id="Path-41" stroke="#F4C119" stroke-width="2.96855704"></path>
+            <g id="Path-40">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#A9DCB5" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <path d="M78.2238529,17.0454545 L78.2238529,34.8567968 M69.3181818,25.9511257 L87.1295241,25.9511257" id="Combined-Shape" stroke="#A9DCB5" stroke-width="2.96855704"></path>
+            <path d="M6.81818182,43.1818182 L6.81818182,56.8181818 M8.18059071e-14,50 L13.6363636,50" id="Combined-Shape-Copy-3" stroke="#A9DCB5" stroke-width="2.27272727"></path>
+            <path d="M39.7276052,71.5707229 L41.8674591,77.9902847 C42.3408876,79.4105702 43.7978221,80.2560621 45.2658615,79.9624542 L54.2415208,78.1673223 C55.8491718,77.8457921 56.8917787,76.2818817 56.5702485,74.6742307 C56.5461083,74.5535298 56.5144842,74.4344472 56.4755593,74.3176725 L54.5703904,68.6021659 L54.5703904,68.6021659 L39.7276052,71.5707229 Z" id="Path-42" fill="#F48919"></path>
+            <g id="Group-3" transform="translate(42.960225, 43.699059) rotate(3.000000) translate(-42.960225, -43.699059) translate(15.960225, 6.199059)">
+                <path d="M0.0443751054,8.90567113 C-0.22897429,7.33391211 0.760544725,6.3443931 3.01293215,5.93711409 L38.6356167,0 L53.4784019,65.308255 L17.8557174,74.2139261 L14.8871603,74.2139261 C5.26531957,32.2468485 0.3177245,10.4774302 0.0443751054,8.90567113 Z" id="Path-34-Copy" fill="#136D29"></path>
+                <path d="M37.4985471,1.69426389 L4.79445084,7.1449466 L18.980912,72.4026681 L51.7090838,64.2206252 L37.4985471,1.69426389 Z" id="Path-34" stroke="#0D8D2C" stroke-width="2.96855704" fill="#26BA4A"></path>
+            </g>
+            <polygon id="Path-43" fill="url(#linearGradient-3)" transform="translate(44.380117, 40.407265) rotate(3.000000) translate(-44.380117, -40.407265) " points="36.9587247 24.0802009 48.8329529 21.1116439 45.8643959 35.9544291 51.8015099 38.9229861 45.8643959 59.7028854 45.8643959 44.8601002 36.9587247 41.8915432"></polygon>
+            <path d="M64.7727273,-2.04514768e-14 L64.7727273,9.09090909 M60.2272727,4.54545455 L69.3181818,4.54545455" id="Combined-Shape-Copy-4" stroke="#A9DCB5" stroke-width="1.51515152"></path>
+        </g>
+    </g>
+</svg>

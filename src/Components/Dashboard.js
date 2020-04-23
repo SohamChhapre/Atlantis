@@ -9,6 +9,10 @@ import default_payment from './../Icons/Icons-Footer/payment_default.png';
 import default_support from './../Icons/Icons-Footer/support_default.png';
 import default_food_delivery from './../Icons/Icons-Footer/food_delivery_default.png';
 import Swiper from 'react-id-swiper';
+import food_svg from './../Icons/Icons-Footer/img-food.svg';
+import laundry_svg from './../Icons/Icons-Footer/img-laundry.svg';
+import roomservice_svg from './../Icons/Icons-Footer/img-roomservice.svg';
+import electricity_svg from './../Icons/Icons-Footer/img-electricity.svg';
 // import 'swiper/css/swiper.css';
 const defaultState={
     "Home":false,
@@ -77,18 +81,24 @@ const Dashboard=()=>{
         <div style={{display:"flex",justifyContent:"center"}}>
              <Link exact to="/food" className="icon-card">
              <div className="swipper-card-1" >
+             <img src={food_svg} height="100%" width="100%"/>
             </div >
             </Link>
             <Link exact to="/laundary" className="icon-card mg-left">
             <div className="swipper-card-2 " >
+            <img src={laundry_svg} height="100%" width="100%"/>
             </div>
             </Link>
             
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
             <div className="icon-card swipper-card-2" >
+            <img src={roomservice_svg} height="100%" width="100%"/>
+            
             </div>
             <div className="icon-card swipper-card-3 mg-left" >
+            <img src={electricity_svg} height="100%" width="100%"/>
+            
             </div>
         </div>
         </Swiper>

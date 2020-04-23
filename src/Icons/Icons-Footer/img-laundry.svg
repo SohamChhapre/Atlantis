@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>img-laundry</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="65.2339355%" y1="-12.6933713%" x2="15.0977317%" y2="48.6536581%" id="linearGradient-1">
+            <stop stop-color="#26BA4A" offset="0%"></stop>
+            <stop stop-color="#136D29" offset="100%"></stop>
+        </linearGradient>
+        <path d="M0,57.8947368 L0,5.14961859 C1.34111417e-15,3.74134368 1.10868631,2.58266632 2.5155927,2.52059692 L44.7368421,0.657894737 L44.7368421,0.657894737 L44.7368421,52.6315789 L0,57.8947368 Z" id="path-2"></path>
+        <path d="M0,10.6849957 L0,25.5709641 C1.42214191e-15,29.9311069 3.53459408,33.4657009 7.89473684,33.4657009 C8.13170769,33.4657009 8.36855837,33.4550315 8.60456942,33.4337249 L21.999075,32.2244987 C27.4237861,31.7347679 31.5789474,27.1875897 31.5789474,21.7408176 L31.5789474,7.95435353 C31.5789474,3.59421076 28.0443533,0.0596166839 23.6842105,0.0596166839 C23.6644131,0.0596166839 23.6446158,0.059691152 23.6248189,0.0598400866 L10.447127,0.158977815 C4.66466835,0.202480108 -2.48452383e-15,4.90237345 0,10.6849957 Z" id="path-4"></path>
+    </defs>
+    <g id="img-laundry" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-22-Copy" transform="translate(0.000000, 8.000000)">
+            <circle id="Oval" fill-opacity="0.4" fill="#A9DCB5" cx="73.6842105" cy="31.5789474" r="10.5263158"></circle>
+            <circle id="Oval-Copy-11" fill-opacity="0.4" fill="#A9DCB5" cx="72.3684211" cy="3.94736842" r="3.94736842"></circle>
+            <circle id="Oval-Copy-10" fill-opacity="0.4" fill="#A9DCB5" cx="59.2105263" cy="11.8421053" r="6.57894737"></circle>
+            <ellipse id="Oval" fill-opacity="0.2" fill="#136D29" cx="56.5789474" cy="75" rx="43.4210526" ry="6.57894737"></ellipse>
+            <path d="M65.7894737,21.7105263 L37.3257903,18.4760168 C37.0040203,18.4394521 36.6795623,18.4326628 36.3565443,18.4557356 L3.05510839,20.8344096 C1.33370904,20.9573666 -5.33661044e-16,22.3897386 0,24.1155237 L0,68.7730248 C5.49699399e-15,70.144224 0.850568532,71.3715948 2.13446236,71.853055 L21.0526316,78.9473684 L21.0526316,78.9473684 L26.3157895,26.3157895 L65.7894737,21.7105263 Z" id="Path-35" fill="url(#linearGradient-1)"></path>
+            <g id="Group-10-+-Path-37-+-Oval-+-Path-40-Mask" transform="translate(21.052632, 21.052632)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Mask" fill="#26BA4A" xlink:href="#path-2"></use>
+                <g id="Group-10" mask="url(#mask-3)">
+                    <g transform="translate(5.263158, 15.789474)">
+                        <g id="Path-38" stroke-width="1" fill="none" transform="translate(2.631579, 0.000000)">
+                            <mask id="mask-5" fill="white">
+                                <use xlink:href="#path-4"></use>
+                            </mask>
+                            <use id="Mask" fill="#A9DCB5" xlink:href="#path-4"></use>
+                            <path d="M-2.63157895,25.6578947 C0.877192982,19.9561404 5.26315789,18.0555556 10.5263158,19.9561404 C18.4210526,22.8070175 18.4210526,17.1052632 26.3157895,17.1052632 C31.5789474,17.1052632 35.9649123,19.005848 39.4736842,22.8070175 L34.2105263,28.5087719 L15.7894737,34.2105263 L5.26315789,34.2105263 L-2.63157895,25.6578947 Z" fill-opacity="0.5" fill="#FFFFFF" mask="url(#mask-5)"></path>
+                        </g>
+                        <polygon id="Path-39" fill="#136D29" points="0 15.7894737 2.63157895 15.7894737 7.89473684 15.7894737 7.89473684 21.0526316 0 21.0526316"></polygon>
+                    </g>
+                </g>
+                <line x1="46.0526316" y1="11.8421053" x2="-1.31578947" y2="14.4736842" id="Path-37" stroke="#A9DCB5" stroke-width="1.31578947" mask="url(#mask-3)"></line>
+                <circle id="Oval-Copy-12" fill="#136D29" mask="url(#mask-3)" cx="7.89473684" cy="7.89473684" r="2.63157895"></circle>
+            </g>
+            <g id="Group-20" transform="translate(63.157895, 52.631579)" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.89473684">
+                <polyline id="Path-36" stroke="#F49719" points="0 18.4210526 15.7894737 21.0526316 31.5789474 18.4210526"></polyline>
+                <polyline id="Path-36-Copy" stroke="#F4A619" points="0 10.5263158 15.7894737 13.1578947 31.5789474 10.5263158"></polyline>
+                <polygon id="Path-36-Copy-2" stroke="#F4D119" points="0 2.63157895 15.7894737 5.26315789 31.5789474 2.63157895 15.7894737 0"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
