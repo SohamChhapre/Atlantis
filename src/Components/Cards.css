@@ -1,13 +1,21 @@
 .scrolling-wrapper {
-    overflow-x: hidden;
+    overflow-x: scroll;;
     overflow-y: hidden;
     white-space: nowrap;
-    /* margin-top: 20px; */
+    -webkit-overflow-scrolling: touch;
     margin-top: 20px;
 margin-bottom: 30px;
 padding: 2px 20px;
-    
+-ms-overflow-style: none;  /* Internet Explorer 10+ */
+scrollbar-width: none;
   }
+  .scrolling-wrapper::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent; 
+     
+        display: none;  /* Safari and Chrome */
+    /* Optional: just make scrollbar invisible */
+}
   .category-btn{
     cursor:pointer;
     color:#989898;
