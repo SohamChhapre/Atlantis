@@ -79,27 +79,31 @@ const Dashboard=()=>{
             <div className="swipper-sty">
         <Swiper {...params} >
         <div style={{display:"flex",justifyContent:"center"}}>
-             <Link exact to="/food" className="icon-card">
-             <div className="swipper-card-1" >
-             <img src={food_svg} height="100%" width="100%"/>
+             <Link exact to="/food" className="icon-card text-center" style={{backgroundColor:"white"}}>
+             <div className="swipper-card-1" style={{margin:"15% 0px"}}>
+             <img src={food_svg} height="70%" width="70%"/>
             </div >
             </Link>
-            <Link exact to="/laundary" className="icon-card mg-left">
-            <div className="swipper-card-2 " >
-            <img src={laundry_svg} height="100%" width="100%"/>
+            <Link exact to="/laundary" className="icon-card text-center mg-left" style={{backgroundColor:"white"}}>
+            <div className="swipper-card-2 " style={{margin:"15% 0px"}}>
+            <img src={laundry_svg} height="70%" width="70%"/>
             </div>
             </Link>
             
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
-            <div className="icon-card swipper-card-2" >
-            <img src={roomservice_svg} height="100%" width="100%"/>
+        <Link to="/food" className="icon-card  text-center" style={{backgroundColor:"white"}}>
+            <div className=" swipper-card-2 " style={{margin:"15% 0px"}}>
+            <img src={roomservice_svg} height="70%" width="70%"/>
             
             </div>
-            <div className="icon-card swipper-card-3 mg-left" >
-            <img src={electricity_svg} height="100%" width="100%"/>
+            </Link>
+            <Link to="/laundary" className="icon-card mg-left text-center" style={{backgroundColor:"white"}}>
+            <div className="swipper-card-3" style={{margin:"15% 0px"}}>
+            <img src={electricity_svg} height="70%" width="70%"/>
             
             </div>
+            </Link>
         </div>
         </Swiper>
         </div>
