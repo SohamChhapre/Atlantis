@@ -8,7 +8,7 @@ import './Cart.css'
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
-
+import Axios from 'axios';
 
 
 const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
@@ -149,6 +149,13 @@ const CartCard=({item,AddOrder,RemoveOrder})=>{
 
 const Cart =({Foodorder,AddOrder,RemoveOrder,UpdateOrder,Laundaryorder,UpdateLaundary})=>{
     
+    const senddata = async ()=>{
+        await Axios.post('http://localhost:3500/postorder',
+            Foodorder[0])
+        .then((data)=>{
+                console.log(data)
+        })
+    }
 useEffect(()=>{
 
 },[])
@@ -178,7 +185,7 @@ useEffect(()=>{
             
             </div>
             <div className="cart-confirm-btn">
-            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}}>Confirm</button>
+            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}} onClick={()=>senddata()}>Confirm</button>
             </div>
             </div>
             }

@@ -2,8 +2,29 @@
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
+    /* margin-top: 20px; */
     margin-top: 20px;
+margin-bottom: 30px;
+padding: 2px 20px;
     
+  }
+  .category-btn{
+    cursor:pointer;
+    color:#989898;
+    font-family:'Poppins-SemiBold';
+    padding:2px 13px;
+    border-radius:20px;
+    border:1px solid black
+  }
+  .category-btn-active{
+    cursor:pointer;
+
+    color:white;
+    font-family:'Poppins-SemiBold';
+    padding:2px 13px;
+    border-radius:20px;
+    border:1px solid green;
+    background-color: green;
   }
   .scrolling-wrapper .card {
     display: inline-block;

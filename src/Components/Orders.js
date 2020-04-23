@@ -8,7 +8,7 @@ import schedule_icon from './../Icons/Icons-Footer/watch.png';
 import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
 import Barcode from 'react-barcode';
-
+import Axios from 'axios';
 
 const handlers={
   width: 60,
@@ -67,11 +67,13 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         250 grams
         </div>
         <div className="" style={{marginLeft:"calc(38vw + 16px)",position:"absolute"}}>
-            <Barcode value="#098@278" width="1"
-  flat={true}  displayValue={false} height="25"/>
+            {/* <Barcode value="#098@278" width="1"
+  flat={true}  displayValue={false} height="25"/> */}
 
         {/* <div className="food-menu-btn" style={{}}><button className="btn btn-warning" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",backgroundColor:"#F49901",fontFamily:"Poppins-SemiBold",color:"white"}}>Schedule</button><img src={schedule_icon} height="22px" style={{paddingLeft:"9px"}}/></div> */}
         </div>
+        {item.otp}
+
         </div>
             
             
@@ -140,8 +142,22 @@ const MenuCard=({item})=>{
     )
 }
 
-const Orders=({RemoveOrder,Laundaryorder,Foodorder})=>{
-    
+const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
+
+    const [Foodorder,setFoodorder]=useState([])
+    useEffect( ()=>{
+        const func= async ()=>{
+        await Axios.get('http://localhost:3500/').then(
+        (data)=>{
+            setFoodorder(data.data.data)
+            console.log(data.data.data)
+        }    
+        ).catch((err)=>{
+                console.log(err)
+        })
+    }
+    func()
+    },[])
     
     return(
         

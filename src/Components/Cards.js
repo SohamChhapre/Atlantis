@@ -40,7 +40,55 @@ import LightSpeed from 'react-reveal/LightSpeed';
         
 //     )
 // }
-const Textslider=({food,handlers,foodCat,swipe})=>{
+const Food_category_data={
+    "Popular":false,
+    'Balanced':false,
+    'Salad':false
+}
+const Textslider=({food,handlers,foodcategory,swipe,setFoodcategory})=>{
+    const [toggler,setToggler]=useState({})
+    useEffect(()=>{
+        setToggler({1:true,2:true})
+    },[])
+    useEffect(()=>{
+        // setToggler({1:!toggler[1],2:!toggler[2]})
+    },[foodcategory])
+
+        return(
+        <div {...handlers} >
+            {/* <LightSpeed  left collapse when={toggler[1] || toggler[2]} > */}
+            <div>
+            <div  class="scrolling-wrapper">
+      <span  className={`food-select-unactive ${foodcategory.Popular?"category-btn-active":"category-btn"} `} onClick={()=>{
+          if(!foodcategory['Popular'])
+          setFoodcategory({...Food_category_data,"Popular":true})
+      }}>Popular</span>
+      
+            <span  className={`food-select-unactive ${foodcategory.Balanced?"category-btn-active":"category-btn"} `} style={{marginLeft:"20px"}} onClick={()=>{
+                if(!foodcategory['Balanced'])
+          setFoodcategory({...Food_category_data,"Balanced":true})
+
+            }}>Balanced</span>
+
+            <span  className={`food-select-unactive ${foodcategory.Salad?"category-btn-active":"category-btn"} `} style={{marginRight:"25px",marginLeft:"20px"}} onClick={()=>{
+                if(!foodcategory['Salad'])
+                setFoodcategory({...Food_category_data,"Salad":true})
+            }}>Salad</span>
+            
+            {/* <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
+            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+
+            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            
+             */}
+            </div>
+            </div>
+        
+            
+        </div>
+        )
+}
+const Texttoggler=({food,handlers,foodCat,swipe})=>{
     const [toggler,setToggler]=useState({})
     useEffect(()=>{
         setToggler({1:true,2:true})
@@ -50,33 +98,20 @@ const Textslider=({food,handlers,foodCat,swipe})=>{
     },[food])
 
         return(
-        <div {...handlers} >
+        <div {...handlers} style={{marginTop:"20px",marginBottom:"30px",marginLeft:"20px",marginRight:"8px"}} >
             {/* <LightSpeed  left collapse when={toggler[1] || toggler[2]} > */}
             <div>
-            <div  class="scrolling-wrapper">
+            <div  class="text-center">
+            <span style={{color:"white",backgroundColor:"green",fontFamily:"Poppins-SemiBold",padding:"2px 13px",borderRadius:"20px",border:"1px solid black"}} className=" text-center food-select-unactive " > {foodCat[0]}</span>
       
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
+            <span style={{color:"#989898",fontFamily:"Poppins-SemiBold",marginLeft:"20px",padding:"2px 13px",borderRadius:"20px",border:"1px solid black"}} className=" food-select-unactive" > {foodCat[1]}</span>
 
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
+            <span style={{marginLeft:"20px",color:"#989898",fontFamily:"Poppins-SemiBold",padding:"2px 13px",borderRadius:"20px",border:"1px solid black"}} className=" text-right food-select-unactive" > {foodCat[2]}</span>
             
             
             </div>
             </div>
-        {/* </LightSpeed> */}
-            {/* <LightSpeed  right collapse when={toggler[2] && swipe.right}>
-            <div>
-            <div {...handlers} class="scrolling-wrapper">
-      
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
-
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
-            
-            
-            </div>
-            </div>
-        </LightSpeed> */}
+        
             
         </div>
         )
@@ -147,42 +182,35 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     const [swipe,setSwipe]=useState({"left":true,"right":false})
     const [food,setFood]=useState(true)
     const [foodCat,setFoodCat]=useState(["Popular","Balanced","Salad"]);
+    const [foodcategory,setFoodcategory]=useState(Food_category_data);
     const handlers = useSwipeable({
-        onSwipedLeft: () => {console.log("left");
-        setSwipe({'left':true,"right":false})
-        setFood(!food)
-        let cat=foodCat.slice(1,3);
-        setFoodCat([...cat,foodCat[0]]);
-        },
-        onSwipedRight: () => {console.log("right");
-        setSwipe({"right":true,"left":false})
-        let cat=foodCat.slice(0,2);
-        setFood(!food)
-        setFoodCat([foodCat[2],...cat]);},
+        // onSwipedLeft: () => {console.log("left");
+        // setSwipe({'left':true,"right":false})
+        // setFood(!food)
+        // let cat=foodCat.slice(1,3);
+        // setFoodCat([...cat,foodCat[0]]);
+        // },
+        // onSwipedRight: () => {console.log("right");
+        // setSwipe({"right":true,"left":false})
+        // let cat=foodCat.slice(0,2);
+        // setFood(!food)
+        // setFoodCat([foodCat[2],...cat]);},
 
         preventDefaultTouchmoveEvent: true,
         trackMouse: true
       });
     useEffect(()=>{
         setSwipe({"left":false,"right":true});
-        setFood({"popular":true,"salad":false,"balanced":false})
+        setFoodcategory({Food_category_data,"Popular":true})
+        
     },[])
     useEffect(()=>{
         console.log("UseEffect");
         setTimeout(() => {
             console.log("sds")
         }, 100);
-    },[swipe])
-    const params = {
-    pagination: {
-      
-    },
-    // effect: 'fade',
-    // effect:"cube",
-  slidesPerView: 'auto',
-  paginationClickable: true,
-  spaceBetween: 15
-    }
+    },[swipe,foodcategory])
+    
 
     
 
@@ -230,7 +258,8 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
            
             </div> */}
         <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
-        <Textslider handlers={handlers} foodCat={foodCat} swipe={swipe} food={food}/>
+        {/* <Texttoggler handlers={handlers} foodCat={foodCat} swipe={swipe} food={food}/> */}
+        <Textslider handlers={handlers} foodcategory={foodcategory} setFoodcategory={setFoodcategory} swipe={swipe} food={food}/>
         {/* <Slide left>
         <div>
         <div {...handlers} class="scrolling-wrapper">
