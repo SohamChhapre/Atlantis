@@ -171,7 +171,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             
         </div>
         <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 26px 4px 26px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}}>ADD</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 26px 4px 26px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"2px solid #F49901"}}>Schedule</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 26px 4px 26px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Schedule</button>
         </div>
 
         </div>
