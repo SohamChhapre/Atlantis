@@ -49,7 +49,7 @@ scrollbar-width: none;
     width: calc(50vw - 20px);
     background: #e5f5ee;
     border-radius: 22px;
-    padding: 3px 8px 1px 8px;
+    padding: 4px 8px 3px 8px;
   }
 
   .card-content{
@@ -66,7 +66,7 @@ scrollbar-width: none;
 @media screen and (max-width:481px){
     .food-menu-name{
         font-size: 25px;
-        margin-top: -4px;
+        margin-top: 6px;
     }
     .food-menu-qty{
         font-size: 13px;
@@ -134,7 +134,7 @@ scrollbar-width: none;
 @media all and (max-width:400px){
     .food-menu-name{
         font-size: 17px;
-        margin-top: -6px;
+        margin-top: 0px;
     }
     .food-menu-qty{
         font-size: 9px;
@@ -202,7 +202,7 @@ scrollbar-width: none;
     } */
     .food-menu-name{
         font-size: 15px;
-        margin-top: -6px;
+        margin-top: 0px;
     }
     .food-menu-btn{
         margin-top: 16px;
