@@ -8,6 +8,7 @@ import plus_icon2 from './../Icons/Icons-Footer/plus2.jpg';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
 import home_icon from './../Icons/Icons-Footer/home.png';
 import heart_icon from './../Icons/Icons-Footer/heart.png';
+import heart_icon_2 from './../Icons/Icons-Food/heart_52px.png';
 import cart_icon from './../Icons/Icons-Footer/green_shopping_cart.png';
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
@@ -131,36 +132,35 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
     }
 
     return (
-        
-        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"auto",margin:"15px 0px 5px 0px"}}  >
-        <div style={{float:"left",margin:"0px 25px 0px 0px",backgroundColor:"#e5f5ee",width:"38vw",height:"38vw"}}>
+        <div style={{margin:"10px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"36vw",height:"36vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
         <div style={{
             // width:"calc(100% - 175px)",
-            paddingTop:""}}>
+            paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
-        <img src={heart_icon} className="food-heart"  style={{float:'right',marginRight:"20px"}}/>
+        <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/>
         </div>
-        <div className="food-menu-qty"
+        <div className="card-content"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
         marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
-        250 grams
+        <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
         </div>
-        <div className="">
+        <div className="text-center">
             <div className="food-menu-middle" style={{}}>
-            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 20px"}}>{flag}</span>
-            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
             </div>
 
-        <div className="food-menu-btn" style={{}}><button className="btn btn-success" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold"}}>ADD</button></div>
         </div>
         </div>
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
@@ -170,7 +170,11 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             </div> */}
             
         </div>
-        
+        <div className="food-menu-btn" style={{}}><button className="btn" style={{fontSize:"11px",borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold",backgroundColor:"white",border:"2px solid #28a765",color:"#28a765",float:"left",marginLeft:"20px"}}>ADD</button>
+        <button className="btn " style={{borderRadius:"20px 20px 20px 20px",fontSize:"11px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold",color:"#F49901",background:"white",border:"2px solid #F49901",float:"right",marginRight:"20px"}}>Schedule</button>
+        </div>
+
+        </div>
         
     )
 }
@@ -257,7 +261,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div>
            
             </div> */}
-        <div  style={{marginBottom :"10px",padding:"0px 8px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
+        <div  style={{marginBottom :"10px",padding:"0px 0px 12px 0px",borderRadius:"10px",marginLeft:"0%",marginRight:"0%"}}>
         {/* <Texttoggler handlers={handlers} foodCat={foodCat} swipe={swipe} food={food}/> */}
         <Textslider  foodcategory={foodcategory} setFoodcategory={setFoodcategory} swipe={swipe} food={food}/>
         {/* <Slide left>
@@ -295,7 +299,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
                                        
                                        {/* <MenuCard/> */}
                 </div>
-        <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p>
+        {/* <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p> */}
                     <div className="flex-container my-0" >
                 
                    {initialdata.map((e,i)=>{return e.category==='cat2' && (<MenuCard item={e} AddOrder={AddOrder} key={i} order={order} RemoveOrder={RemoveOrder}/>)}) }

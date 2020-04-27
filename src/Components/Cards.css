@@ -5,7 +5,7 @@
     -webkit-overflow-scrolling: touch;
     margin-top: 20px;
 margin-bottom: 30px;
-padding: 2px 20px;
+padding: 5px 20px;
 -ms-overflow-style: none;  /* Internet Explorer 10+ */
 scrollbar-width: none;
   }
@@ -41,6 +41,28 @@ scrollbar-width: none;
   .minus-plus-unactive{
       opacity: 0.5;
   }
+  .food-menu-middle{
+    position: absolute;
+    
+    left: calc(36vw + 30px);
+    bottom: 20px;
+    width: calc(50vw - 20px);
+    background: #e5f5ee;
+    border-radius: 10px;
+    padding: 3px 8px 1px 8px;
+  }
+
+  .card-content{
+    
+    line-height: 15px;
+    margin-top: -1px;
+    text-align: left;
+    font-family: "Poppins-SemiBold";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    color: rgba(142,142,142,1);
+}
 @media screen and (max-width:481px){
     .food-menu-name{
         font-size: 25px;
@@ -49,9 +71,9 @@ scrollbar-width: none;
     .food-menu-qty{
         font-size: 13px;
     }
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:38px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 37px;
         margin-bottom:4px;
@@ -74,18 +96,18 @@ scrollbar-width: none;
     .food-menu-qty{
         font-size: 13px;
     } */
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:32px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 35px;
         margin-bottom:4px;
     }
 }
 @media all and (max-width:440px){
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:33px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 27px;
         margin-bottom:4px;
@@ -101,9 +123,9 @@ scrollbar-width: none;
         font-size: 17px;
     } */
     
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:26px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 26px;
         margin-bottom:4px;
@@ -118,9 +140,9 @@ scrollbar-width: none;
         font-size: 9px;
     }
     
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:26px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 26px;
         margin-bottom:4px;
@@ -139,9 +161,9 @@ scrollbar-width: none;
 
     } */
     
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:19px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 26px;
         margin-bottom:4px;
@@ -159,9 +181,9 @@ scrollbar-width: none;
         font-size: 10px;
 
     } */
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:20px 5px 5px 0px
-    }
+    } */
     .food-menu-btn{
         margin-top: 17px;
         margin-bottom:4px;
@@ -175,8 +197,12 @@ scrollbar-width: none;
     .food-menu-qty{
         font-size: 9px;
     } */
-    .food-menu-middle{
+    /* .food-menu-middle{
         margin:14px 5px 5px 0px
+    } */
+    .food-menu-name{
+        font-size: 15px;
+        margin-top: -6px;
     }
     .food-menu-btn{
         margin-top: 16px;

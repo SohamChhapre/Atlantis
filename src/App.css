@@ -50,6 +50,16 @@
 	
 }
 @font-face {
+	font-family: 'Poppins-Thin';
+	src: url('./Icons/Font/Poppins-Thin.ttf'); 	
+	
+}
+@font-face {
+	font-family: 'Poppins-Medium';
+	src: url('./Icons/Font/Poppins-Medium.ttf'); 	
+	
+}
+@font-face {
 	font-family: 'Poppins-SemiBold';
 	src: url('./Icons/Font/Poppins-SemiBold.ttf'); 	
 	
