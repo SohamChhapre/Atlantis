@@ -60,6 +60,11 @@
 	
 }
 @font-face {
+	font-family: 'Poppins-MediumItalic';
+	src: url('./Icons/Font/Poppins-MediumItalic.ttf'); 	
+	
+}
+@font-face {
 	font-family: 'Poppins-SemiBold';
 	src: url('./Icons/Font/Poppins-SemiBold.ttf'); 	
 	

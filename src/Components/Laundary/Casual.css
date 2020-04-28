@@ -1,0 +1,23 @@
+
+
+
+.casual-card-bottom-text{
+    position:absolute;
+    bottom: 5px;
+    font-size: 8px;
+    font-family: "Poppins-MediumItalic";
+    left:calc(36vw + 30px);
+    width:calc(50vw - 20px);
+    text-align:center;
+    color:rgb(130, 130, 130)
+}
+.laundary-menu-middle{
+    position: absolute;
+    
+    left: calc(36vw + 30px);
+    bottom: 25px;
+    width: calc(50vw - 20px);
+    background: #e5f5ee;
+    border-radius: 22px;
+    padding: 4px 8px 3px 8px;
+}

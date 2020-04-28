@@ -133,7 +133,7 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
 
     return (
         <div style={{margin:"10px",width:"calc(100% - 28px)"}}>
-        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative"}}  >
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"36vw",height:"36vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
@@ -170,8 +170,8 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
             </div> */}
             
         </div>
-        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 26px 4px 26px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}}>ADD</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 26px 4px 26px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Schedule</button>
+        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}}>Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Schedule</button>
         </div>
 
         </div>

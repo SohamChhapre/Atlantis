@@ -77,7 +77,7 @@ const Laundary=()=>{
              <div className=" swipper-card-1" >
             </div >
             </Link>
-            <Link exact to="/casual" className="icon-card mg-left">
+            <Link exact to="/formal" className="icon-card mg-left">
             <div className=" swipper-card-2 " >
             </div>
             </Link>

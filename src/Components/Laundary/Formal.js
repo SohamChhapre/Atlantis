@@ -6,68 +6,10 @@ import plus_icon from './../../Icons/Icons-Footer/green_plus.png';
 import {connect } from 'react-redux'
 import {AddLaundary,RemoveLaundary,UpdateLaundary} from './../Redux/index.js';
 import './Casual.css';
-const data=[{id:1,name:"Wash & Fold",isset:false,desc:"Select number of clothes for wash and fold",amt:"Upto 50kg included"},{id:2,name:"Iron & Fold",isset:false,desc:"Select number of clothes for Iron & Fold ( Wash included )",amt:"Starts at just 8000 IDR"}]
+const data=[{id:1,name:"Wash & Fold",isset:false,desc:"Select number of clothes for wash and fold",amt:"Upto 50kg included"},{id:2,name:"Iron & Fold",isset:false,desc:"Select number of clothes for Iron & Fold ( Wash included )",amt:"Starts at just 12000 IDR"}]
 
 
-const MenuCard=({item,AddLaundary,tempLaundaryorder,RemoveLaundary})=>{
-    const [toggler,setToggler]=useState(true)
-    useEffect(()=>{
-        console.log("hello")
-    },[toggler])
-    var flag=false;
-    console.log(item);
-    for(var i=0;i<tempLaundaryorder.length;i++){
-
-        if(tempLaundaryorder[i].id===item.id )
-                flag=true
-    }
-
-    return (
-        
-        <div className="horizontal-card" style={{backgroundColor:"white",boxShadow:"0px 0px 0px",height:"30vw",margin:"25px 0px 5px 0px",position:"relative"}}  >
-        <div style={{float:"left",margin:"0px 25px 0px 0px",backgroundColor:"#e5f5ee",width:"30vw",height:"30vw"}}>
-        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
-        
-        </div>
-        <div style={{
-            // width:"calc(100% - 175px)",
-            paddingTop:""}}>
-        <div className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#525252",lineHeight:"30px",    position: 'absolute',
-    left: 'calc(25px + 30vw)',
-    top: '-2px'
-}} >
-       {item.name}
-
-        {/* <img src={heart_icon} className="food-heart"  style={{float:'right',marginRight:"20px"}}/> */}
-        </div>
-        
-            
-
-        
-        </div>
-        <div className="" style={{position: "absolute",
-left: 'calc(30vw + 25px)',
-bottom: '-34px',
-top: 'calc(30vw - 30px)'}}><button className="btn btn-success"  style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",fontFamily:"Poppins-Bold",opacity:flag?"0.5":"1"}} onClick={()=>{
-    
-    
-    if(flag){
-        RemoveLaundary(item)
-    }
-    else{
-        if(tempLaundaryorder.length==0)
-        AddLaundary(item)
-    }
-}}>ADD</button></div>
-            
-            
-        </div>
-        
-        
-    )
-}
-
-const CasualMenu=({item,AddOrder,RemoveOrder,order})=>{
+const FormalMenu=({item,AddOrder,RemoveOrder,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -124,7 +66,7 @@ const CasualMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
-const Casual=({tempLaundaryorder,AddLaundary,RemoveLaundary,UpdateLaundary,Laundaryorder})=>{
+const Formal=({tempLaundaryorder,AddLaundary,RemoveLaundary,UpdateLaundary,Laundaryorder})=>{
         useEffect(()=>{
 
         },[tempLaundaryorder])
@@ -151,7 +93,7 @@ const Casual=({tempLaundaryorder,AddLaundary,RemoveLaundary,UpdateLaundary,Laund
             </div>
         
         <div style={{}}>
-        {data.map((e,i)=>(<CasualMenu item={e} RemoveLaundary={RemoveLaundary} tempLaundaryorder={tempLaundaryorder} AddLaundary={AddLaundary} />))}
+        {data.map((e,i)=>(<FormalMenu item={e} RemoveLaundary={RemoveLaundary} tempLaundaryorder={tempLaundaryorder} AddLaundary={AddLaundary} />))}
         {/* <CasualMenu/> */}
         {/* <CasualMenu/> */}
         </div>
@@ -183,4 +125,4 @@ const mapDispatchToprops=dispatch=>{
     }
 }
 
-export default connect(mapStateToprops,mapDispatchToprops)(Casual);
+export default connect(mapStateToprops,mapDispatchToprops)(Formal);
