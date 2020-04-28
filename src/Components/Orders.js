@@ -30,6 +30,50 @@ const handlers={
   marginRight: undefined
 }
 
+const orderCategorydata={
+    "Cart":false,
+    "Upcoming":false,
+    "Completed":false
+}
+
+const Textslider=({orderCategory,setordercategory})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        setToggler(!toggler)
+    },[])
+    useEffect(()=>{
+        // setToggler({1:!toggler[1],2:!toggler[2]})
+    },[orderCategory])
+
+        return(
+        <div>
+            <div>
+            <div  class="scrolling-wrapper">
+      <span  className={`food-select-unactive ${orderCategory.Cart?"category-btn-active":"category-btn"} `} onClick={()=>{
+          if(!orderCategory['Cart'])
+          setordercategory({...orderCategorydata,"Cart":true})
+      }}>Cart</span>
+      
+            <span  className={`food-select-unactive ${orderCategory.Upcoming?"category-btn-active":"category-btn"} `} style={{marginLeft:"20px"}} onClick={()=>{
+                if(!orderCategory['Upcoming'])
+          setordercategory({...orderCategorydata,"Upcoming":true})
+
+            }}>Upcoming</span>
+
+            <span  className={`food-select-unactive ${orderCategory.Completed?"category-btn-active":"category-btn"} `} style={{marginRight:"25px",marginLeft:"20px"}} onClick={()=>{
+                if(!orderCategory['Completed'])
+                setordercategory({...orderCategorydata,"Completed":true})
+            }}>Complete</span>
+            
+            
+            </div>
+            </div>
+        
+            
+        </div>
+        )
+}
+
 const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
@@ -87,7 +131,7 @@ const LaundaryCard=({item,UpdateLaundary})=>{
     useEffect(()=>{
         console.log("hello")
     },[toggler])
-    var flag=item.items;
+    var flag=0;
     // console.log(item);
     // for(var i=0;i<order.length;i++){
     //         console.log(i,)
@@ -109,8 +153,7 @@ const LaundaryCard=({item,UpdateLaundary})=>{
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
       className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
         >
-        {item.name}
-       
+            Nasi Goreng       
         </div>
         
             <div className="" style={{marginLeft:"calc(38vw + 16px)",position:"absolute"}}>
@@ -145,6 +188,7 @@ const MenuCard=({item})=>{
 const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
 
     const [Foodorder,setFoodorder]=useState([])
+    const [orderCategory,setordercategory]=useState({})
     useEffect( ()=>{
         const func= async ()=>{
         await Axios.get('http://localhost:3500/').then(
@@ -157,6 +201,7 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
         })
     }
     func()
+    setordercategory({...orderCategorydata,"Cart":true})
     },[])
     
     return(
@@ -166,25 +211,19 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
             padding:"20px 0%",margin:"0",backgroundColor:"",marginLeft:"0px",marginRight:"0px"}}>
 
 
-       <h5 style={{marginLeft:"calc(1% + 10px)",marginBottom:"50px"}}>Orders</h5>
-         
-                  
-            <p className="mt-3 text-center" style={{display:"flex"}}> <div style={{width:"50vw"}} className="mx-auto">Upcoming</div>   |   <div style={{width:"50vw"}} className="mx-auto"> Completed</div> </p>
+        <Textslider orderCategory={orderCategory} setordercategory={setordercategory}/>
         
        { Foodorder.length>0 && 
             <div>
-             <div className="big-container" style={{margin:"50px 2% 0px 2%" ,}}>
+             <div className="big-container" style={{margin:"50px 15px 0px 15px" ,}}>
          
                     <div className="cart-circle rounded-circle">
                     </div>
 
-                    <div className="cart-container" >
-                    
-                    
-
-                    
+                    <div className="" >
                     {Foodorder && Foodorder.length>0 && Foodorder.map((e,i)=>(<FoodCard item={e} UpdateOrder={UpdateOrder} AddOrder={AddOrder} RemoveOrder={RemoveOrder} order={Foodorder} />))}
                     {/* <MenuCard/> */}
+                    
                     
                     </div>
             

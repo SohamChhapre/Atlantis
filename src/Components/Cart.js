@@ -8,6 +8,7 @@ import './Cart.css'
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
+import trash_icon from './../Icons/Icons-Food/garbage.svg';
 import Axios from 'axios';
 
 
@@ -90,6 +91,8 @@ const LaundaryCard=({item,UpdateLaundary})=>{
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
+          <div style={{float:'right',background:"red",width:"10vw"}}>
+        </div>
         <div style={{
             // width:"calc(100% - 175px)",
             paddingTop:""}}>
@@ -128,6 +131,8 @@ const CartCard=({item,AddOrder,RemoveOrder})=>{
         <img src={dummy_img} height='50px' width="60px"   />
         
         </div>
+      
+
         <div style={{width:"calc(100% - 175px)",paddingTop:"15px"}}>
         <div style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}>
         </div>
@@ -146,7 +151,124 @@ const CartCard=({item,AddOrder,RemoveOrder})=>{
         
     )
 }
+const CartMenu=({item,AddOrder,RemoveOrder,order})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        console.log("hello")
+    },[toggler])
+    var flag=0;
+    // console.log(item);
+    // for(var i=0;i<order.length;i++){
+    //         console.log(i,)
+    //     if(order[i].id===item.id && order[i].category===item.category )
+    //             flag=order[i].items;
+    // }
 
+    return (
+        <div style={{margin:"24px 14px 14px 14px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(18vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"18vw",height:"18vw",borderRadius:"10px"}}>
+        
+        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+        
+        </div>
+          <div className="trash-container" >
+          <img src={trash_icon} className="trash-wrapper"/>
+        </div>
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"10px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+        >
+        Nasi Goreng
+        {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
+        </div>
+       
+        <div className="text-center">
+            <div className="cart-menu-middle" style={{background:"#F5FBF8"}}>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
+            </div>
+            
+        </div>
+        
+        </div>
+           
+           
+        </div>
+        
+
+        </div>
+        
+    )
+}
+const UpcomingMenu=({item,AddOrder,RemoveOrder,order})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        console.log("hello")
+    },[toggler])
+    var flag=0;
+    // console.log(item);
+    // for(var i=0;i<order.length;i++){
+    //         console.log(i,)
+    //     if(order[i].id===item.id && order[i].category===item.category )
+    //             flag=order[i].items;
+    // }
+
+    return (
+        <div style={{margin:"24px 14px 14px 14px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(18vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"18vw",height:"18vw",borderRadius:"10px"}}>
+        
+        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+        
+        </div>
+          <div className="trash-container" >
+          <img src={trash_icon} className="trash-wrapper"/>
+        </div>
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"10px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+        >
+        Nasi Goreng
+        {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
+        </div>
+       
+        <div className="">
+            <div className="">
+                <div style={{float:"left",position:"absolute",left:"calc(18vw + 30px)",bottom:"10px",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
+                order
+                <div style={{marginTop:"5px",color:"#f49a04"}}>
+                #3465
+                </div>
+                </div>
+            <div style={{float:"right",position:"absolute",bottom:"10px",right:"calc(10vw + 20px)",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
+                Otp
+                <div style={{marginTop:"2px",padding:"1px 10px",backgroundColor:"#F5FBF8",borderRadius:"10px",color:"#00A852"}}>
+                9346
+                </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        </div>
+           
+           
+        </div>
+        
+
+        </div>
+        
+    )
+}
 const Cart =({Foodorder,AddOrder,RemoveOrder,UpdateOrder,Laundaryorder,UpdateLaundary})=>{
     
     const senddata = async ()=>{
@@ -160,27 +282,23 @@ useEffect(()=>{
 
 },[])
     return(
-<div className="main-container"  style={{
-            height:"calc(100vh - 120px)",overflowY:"scroll",
-            padding:"0px 0%",margin:"0",backgroundColor:"",marginLeft:"0px",marginRight:"0px"}}>
-
-
-       {/* <h5 style={{marginLeft:"calc(1% + 10px)"}}>Cart</h5> */}
-         { Foodorder.length>0 && 
+<div>
+        
             <div>
-             <div className="big-container" style={{margin:"80px 2% 0px 2%" ,}}>
+             <div className="big-container" style={{margin:"80px 0px 0px 0px" ,}}>
          
                     <div className="cart-circle rounded-circle">
                     </div>
 
-                    <div className="cart-container" >
+                    <div className="" >
                     
-                    
+                     <CartMenu/>
+                    <CartMenu/>
 
                     
                     {Foodorder && Foodorder.length>0 && Foodorder.map((e,i)=>(<FoodCard item={e} UpdateOrder={UpdateOrder} AddOrder={AddOrder} RemoveOrder={RemoveOrder} order={Foodorder} />))}
                     {/* <MenuCard/> */}
-                    
+                   
                     </div>
             
             </div>
@@ -188,31 +306,8 @@ useEffect(()=>{
             <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}} onClick={()=>senddata()}>Confirm</button>
             </div>
             </div>
-            }
-            { Laundaryorder.length>0 && 
-             <div>
-             <div className="big-container" style={{margin:"40px 2% 0px 2%" ,}}>
-         
-                    <div className="cart-circle rounded-circle">
-                    </div>
-
-                    <div className="cart-container" >
-                    
-                    
-
-
-                    {Laundaryorder.map((e,i)=><LaundaryCard  item={e} UpdateLaundary={UpdateLaundary}/>)}
-                    
-                    
-                    </div>
             
-            </div>
-            <div className="cart-confirm-btn">
-            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",padding:"1px 13px",borderRadius:"20px"}}>Confirm</button>
-            </div>
-            </div> 
 
-            }
             {/* <div> */}
         {/* <div  style={{backgroundColor:"",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"1%",marginRight:"1%"}}> */}
         {/* <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p> */}
