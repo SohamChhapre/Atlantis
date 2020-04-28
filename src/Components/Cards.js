@@ -10,6 +10,9 @@ import home_icon from './../Icons/Icons-Footer/home.png';
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import heart_icon_2 from './../Icons/Icons-Food/heart_52px.png';
 import cart_icon from './../Icons/Icons-Footer/green_shopping_cart.png';
+import like_icon from './../Icons/Icons-Food/like.svg';
+import heart_svg_icon from './../Icons/Icons-Food/heart.svg';
+
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
 import mobiscroll from 'mobiscroll';
@@ -146,7 +149,8 @@ const MenuCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
-        <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/>
+        <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/>
+        
         </div>
         <div className="card-content"
         style={{
