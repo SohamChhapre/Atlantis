@@ -32,10 +32,10 @@ const defaultState={
 
 }
 const NavActiveicon=({img,name})=>{
-
+// #00a852
     return (
-        <Link exact to="/"> 
-        <div className="text-center" style={{borderTop:"2px solid #00a852 ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
+        <Link exact to="/" style={{textDecoration:"none"}}> 
+        <div className="text-center" style={{borderTop:"2px solid white ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
         </Link>
     )
 }
@@ -48,7 +48,7 @@ const NavIcon=({img,name,setActive})=>{
     else
     path="/"
     return (
-        <Link exact to={`${path}`}><div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
+        <Link exact to={`${path}`} style={{textDecoration:"none"}}><div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
             setActive({...defaultState,[name]:true})
         }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
         </Link>
@@ -104,7 +104,7 @@ function App() {
       
     </Switch>
     <Route to="/">
-    <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 18px 18px",padding:"0px 1rem 0rem 1rem"}}>
+    <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"10px",padding:"0px 1rem 0rem 1rem"}}>
                
 
                 { active["Home"]?(<NavActiveicon img={home_icon} name={"Home"}/>):(<NavIcon img={default_home} name={"Home"} setActive={setActive}/>)}
