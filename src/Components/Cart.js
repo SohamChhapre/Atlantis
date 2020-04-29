@@ -291,9 +291,9 @@ const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
-          <div className="trash-container" >
+          {/* <div className="trash-container" >
           <img src={trash_icon} className="trash-wrapper"/>
-        </div>
+        </div> */}
         <div style={{
             // width:"calc(100% - 175px)",
             paddingTop:"10px"}}>
@@ -313,7 +313,7 @@ const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
                 #3465
                 </div>
                 </div>
-            <div style={{float:"right",position:"absolute",bottom:"10px",right:"calc(10vw + 20px)",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
+            <div style={{float:"right",position:"absolute",bottom:"10px",right:"calc(20px)",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
                
                 <div style={{marginTop:"2px",padding:"1px 10px",backgroundColor:"#F5FBF8",borderRadius:"10px",color:"#00A852"}}>
                 Completed
