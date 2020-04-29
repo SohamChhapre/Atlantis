@@ -92,7 +92,7 @@ const Dashboard=()=>{
             
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
-        <Link to="/food" className="icon-card  text-center" style={{backgroundColor:"white"}}>
+        <Link to="/service" className="icon-card  text-center" style={{backgroundColor:"white"}}>
             <div className=" swipper-card-2 " style={{margin:"15% 0px"}}>
             <img src={roomservice_svg} height="70%" width="70%"/>
             

@@ -6,16 +6,17 @@ import Dashboard from './Components/Dashboard.js';
 import Laundary from './Components/Laundary.js';
 import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
+import RoomService from './Components/RoomService.js';
 // import Cards2 from './Components/Cards.js'
 import Wrapper from './Components/Wrapper.js'
-import payment_icon from './Icons/Icons-Navbar/Payment - Active.svg';
-import home_icon from './Icons/Icons-Navbar/Home - Active.svg';
-import support_icon from './Icons/Icons-Navbar/Support - Active.svg';
-import food_icon from './Icons/Icons-Navbar/Order - Active.svg';
-import default_home from './Icons/Icons-Navbar/Home - Inactive.svg';
-import default_payment from './Icons/Icons-Navbar/Payment - Inactive.svg';
-import default_support from './Icons/Icons-Navbar/Support - Inactive.svg';
-import default_food_delivery from './Icons/Icons-Navbar/Order - Inactive.svg';
+import payment_icon from './Icons/Icons-Navbar/Payment - Active.png';
+import home_icon from './Icons/Icons-Navbar/Home - Active.png';
+import support_icon from './Icons/Icons-Navbar/Support - Active.png';
+import food_icon from './Icons/Icons-Navbar/Order - Active.png';
+import default_home from './Icons/Icons-Navbar/Home - Inactive.png';
+import default_payment from './Icons/Icons-Navbar/Payment - Inactive.png';
+import default_support from './Icons/Icons-Navbar/Support - Inactive.png';
+import default_food_delivery from './Icons/Icons-Navbar/Order - Inactive.png';
 import {Provider} from 'react-redux';
 import store from './Components/Redux/Store.js';
 import Cart from './Components/Cart.js';
@@ -100,6 +101,10 @@ function App() {
     <Route
   exact path='/formal'
   render={(props) => <Formal {...props}  />}
+    />
+    <Route
+  exact path='/service'
+  render={(props) => <RoomService {...props}  />}
     />
       
     </Switch>

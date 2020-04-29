@@ -15,35 +15,14 @@ import heart_svg_icon from './../Icons/Icons-Food/heart.svg';
 
 import './Cards.css'
 import { useSwipeable, Swipeable } from 'react-swipeable'
-import mobiscroll from 'mobiscroll';
+
 import {AddOrder,RemoveOrder} from './Redux/index.js';
 import {connect } from 'react-redux'
 import {initialdata} from './CategoryData.js'
 import './Cards.css'
 import Slide from 'react-reveal/Slide';
 import LightSpeed from 'react-reveal/LightSpeed';
-// import 'mobiscroll/react/dist/css/mobiscroll.min.css';
-// import {SwipeableList,SwipeableListItem} from '@sandstreamdev/react-swipeable-list'
-// const MenuCard=({AddOrder,item})=>{
-//     const handlers = useSwipeable({
-//     onSwipedLeft: () => {console.log("left")},
-//     // onSwipedRight: () => {};
-//     // console.log("right")},
-//     preventDefaultTouchmoveEvent: true,
-//     trackMouse: true
-//   });
-//     return (
-        
-//         <div className="horizontal-card"  {...handlers}  >
-//             <div className="float-right" style={{margin:"15px 5px 5px 0px"}} onClick={()=>{AddOrder({Category:"cat-1",id:"002",item:1})}}>
-//             <img className="" src={plus_icon} height="50px" width="50px" style={{border:"2px solid white"}}/>
-//             </div>
-            
-//         </div>
-        
-        
-//     )
-// }
+
 const Food_category_data={
     "Popular":false,
     'Balanced':false,
@@ -244,14 +223,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
 
 }}>{order.length}</span></div></Link>
             </div>
-         {/* <div className="flex-container" > */}
-         
-            {/* <div className="food-icon-card" > */}
-            {/* </div> */}
-            {/* <div className="food-icon-card mg-left" >
-            </div> */}
-            {/* </div> */}
-         {/* <Swiper {...params} > */}
+        
         <div >
                   {/* <div className="flex-container" >
          
@@ -312,32 +284,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
         </div>
         </div>
         
-            {/* <div className="flex-container">
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div>
-            <div className="flex-container">
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div>
-            <div className="flex-container">
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div> */}
-            {/* <div className="flex-container" >
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div> */}
-        
-        {/* </Swiper> */}
+            
 
         
 

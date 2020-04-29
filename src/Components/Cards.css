@@ -65,6 +65,16 @@ scrollbar-width: none;
     font-size: 8px;
     color: rgba(142,142,142,1);
 }
+.service-content{
+    line-height: 15px;
+    margin-top: -1px;
+    text-align: left;
+    font-family: "Poppins-SemiBold";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    color: rgba(142,142,142,1);
+}
 @media screen and (max-width:481px){
     .food-menu-name{
         font-size: 25px;
@@ -93,7 +103,9 @@ scrollbar-width: none;
     .card-content{
         padding-top: 8px;
     }
-    
+    .service-content{
+        margin-top:0px;
+    }
 }
 @media all and (max-width:460px){
     /* .food-menu-name{
@@ -178,6 +190,9 @@ scrollbar-width: none;
     .food-popular-text{
         font-size:26px
     }
+    .service-content{
+        margin-top: -4px;
+    }
    
 }
 @media all and (max-width:360px){
@@ -198,6 +213,9 @@ scrollbar-width: none;
     }
     .card-content{
         padding-top: 4px;
+    }
+    .service-content{
+        margin-top: -4px;
     }
 }
 @media all and (max-width:340px){
@@ -228,6 +246,9 @@ scrollbar-width: none;
     }
     .card-content{
         padding-top: 2px;
+    }
+    .service-content{
+        margin-top: -3px;
     }
 
 }
