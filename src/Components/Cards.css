@@ -90,6 +90,10 @@ scrollbar-width: none;
         font-size:13px;
         padding:4px 14px
     }
+    .card-content{
+        padding-top: 8px;
+    }
+    
 }
 @media all and (max-width:460px){
     /* .food-menu-name{
@@ -174,6 +178,7 @@ scrollbar-width: none;
     .food-popular-text{
         font-size:26px
     }
+   
 }
 @media all and (max-width:360px){
     /* .food-menu-name{
@@ -190,6 +195,9 @@ scrollbar-width: none;
     .food-menu-btn{
         margin-top: 17px;
         margin-bottom:4px;
+    }
+    .card-content{
+        padding-top: 4px;
     }
 }
 @media all and (max-width:340px){
@@ -217,6 +225,9 @@ scrollbar-width: none;
     .food-select-unactive{
         font-size:11px;
         padding:4px 14px;
+    }
+    .card-content{
+        padding-top: 2px;
     }
 
 }

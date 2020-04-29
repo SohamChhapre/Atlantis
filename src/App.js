@@ -8,14 +8,14 @@ import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
 // import Cards2 from './Components/Cards.js'
 import Wrapper from './Components/Wrapper.js'
-import payment_icon from './Icons/Icons-Footer/payment.png';
-import home_icon from './Icons/Icons-Footer/home.png';
-import support_icon from './Icons/Icons-Footer/online_support.png';
-import food_icon from './Icons/Icons-Footer/food_delivery.png';
-import default_home from './Icons/Icons-Footer/home_default.png';
-import default_payment from './Icons/Icons-Footer/payment_default.png';
-import default_support from './Icons/Icons-Footer/support_default.png';
-import default_food_delivery from './Icons/Icons-Footer/food_delivery_default.png';
+import payment_icon from './Icons/Icons-Navbar/Payment - Active.svg';
+import home_icon from './Icons/Icons-Navbar/Home - Active.svg';
+import support_icon from './Icons/Icons-Navbar/Support - Active.svg';
+import food_icon from './Icons/Icons-Navbar/Order - Active.svg';
+import default_home from './Icons/Icons-Navbar/Home - Inactive.svg';
+import default_payment from './Icons/Icons-Navbar/Payment - Inactive.svg';
+import default_support from './Icons/Icons-Navbar/Support - Inactive.svg';
+import default_food_delivery from './Icons/Icons-Navbar/Order - Inactive.svg';
 import {Provider} from 'react-redux';
 import store from './Components/Redux/Store.js';
 import Cart from './Components/Cart.js';

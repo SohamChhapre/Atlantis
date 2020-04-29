@@ -81,7 +81,7 @@ const CasualMenu=({item,AddOrder,RemoveOrder,order})=>{
     // }
 
     return (
-        <div style={{margin:"10px",width:"calc(100% - 28px)"}}>
+        <div style={{margin:"10px 10px 30px 10px",width:"calc(100% - 28px)"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"36vw",height:"36vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Order - Active Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Order---Active-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <line x1="4" y1="6.26530612" x2="45.244898" y2="6.26530612" id="Path-4" stroke="#A4BBA9" stroke-width="5.26530612" stroke-linecap="round" stroke-linejoin="round"></line>
+        <path d="M4,18.5510204 L30.3265306,18.5510204 C31.2958467,18.5510204 32.0816327,17.7652345 32.0816327,16.7959184 C32.0816327,15.8266023 31.2958467,15.0408163 30.3265306,15.0408163 L30.3265306,15.0408163 L4,15.0408163 L4,1 L39.1020408,1 L39.1020408,49.2653061 L4,49.2653061 L4,30.8367347 L21.5510204,30.8367347 C22.5203365,30.8367347 23.3061224,30.0509487 23.3061224,29.0816327 C23.3061224,28.1123166 22.5203365,27.3265306 21.5510204,27.3265306 L21.5510204,27.3265306 L4,27.3265306 L4,18.5510204 Z" id="Combined-Shape" fill="#CDE3D2"></path>
+        <line x1="4.87755102" y1="16.7959184" x2="29.4489796" y2="16.7959184" id="Path-5" stroke="#FFFFFF" stroke-width="2.63265306" stroke-linecap="round" stroke-linejoin="round"></line>
+        <circle id="Oval" fill="#A4BBA9" cx="38.2244898" cy="40.4897959" r="8.7755102"></circle>
+        <polyline id="Path-6" stroke="#CDE3D2" stroke-width="2.63265306" stroke-linecap="round" stroke-linejoin="round" points="34.7142857 40.4897959 38.2244898 44 40.8571429 36.9795918"></polyline>
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Home - Active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Home---Active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-Copy" transform="translate(3.000000, 5.000000)">
+            <path d="M3.79043127,18.1940701 L3.79043127,37.1462264 C3.79043127,38.8209443 5.14805837,40.1785714 6.82277628,40.1785714 L18.1940701,40.1785714 L18.1940701,40.1785714 L18.1940701,29.5653639 C18.1940701,27.890646 19.5516972,26.5330189 21.2264151,26.5330189 L23.5006739,26.5330189 C25.1753918,26.5330189 26.5330189,27.890646 26.5330189,29.5653639 L26.5330189,40.1785714 L26.5330189,40.1785714 L37.9043127,40.1785714 C39.5790306,40.1785714 40.9366577,38.8209443 40.9366577,37.1462264 L40.9366577,18.1940701 L40.9366577,18.1940701 L22.7425876,0 L3.79043127,18.1940701 Z" id="Path" fill="#16BC43"></path>
+            <polyline id="Path-2" stroke="#19652D" stroke-width="5.30660377" stroke-linecap="round" stroke-linejoin="round" points="0 21.9845013 22.7425876 0 44.7270889 21.9845013"></polyline>
+        </g>
+    </g>
+</svg>

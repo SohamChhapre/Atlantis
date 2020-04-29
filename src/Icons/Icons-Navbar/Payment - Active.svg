@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Payment - Active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Payment---Active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.500000, 9.500000)">
+            <path d="M0,1.40625 C-9.51122462e-17,0.629599571 0.629599571,1.42668369e-16 1.40625,0 L43.59375,0 C44.3704004,-1.42668369e-16 45,0.629599571 45,1.40625 L45,29.53125 C45,30.3079004 44.3704004,30.9375 43.59375,30.9375 L1.40625,30.9375 C0.629599571,30.9375 9.51122462e-17,30.3079004 0,29.53125 L0,9.84375 L35.15625,9.84375 C36.3212256,9.84375 37.265625,8.89935064 37.265625,7.734375 C37.265625,6.56939936 36.3212256,5.625 35.15625,5.625 L35.15625,5.625 L0,5.625 L0,1.40625 Z" id="Combined-Shape" fill="#15BC43"></path>
+            <g id="Group-2" transform="translate(29.531250, 20.390625)">
+                <circle id="Oval" fill="#A6DFB3" cx="3.515625" cy="3.515625" r="3.515625"></circle>
+                <circle id="Oval-Copy" fill="#0D6E23" cx="7.734375" cy="3.515625" r="3.515625"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -49,7 +49,7 @@ const Textslider=({orderCategory,setordercategory})=>{
         return(
         <div>
             <div>
-            <div  class="scrolling-wrapper">
+            <div  class="scrolling-wrapper" style={{overflowY:"none",overflowX:"none",textAlign:"center"}}>
       <span  className={`food-select-unactive ${orderCategory.Cart?"category-btn-active":"category-btn"} `} onClick={()=>{
           if(!orderCategory['Cart'])
           setordercategory({...orderCategorydata,"Cart":true})
@@ -61,7 +61,7 @@ const Textslider=({orderCategory,setordercategory})=>{
 
             }}>Upcoming</span>
 
-            <span  className={`food-select-unactive ${orderCategory.Completed?"category-btn-active":"category-btn"} `} style={{marginRight:"25px",marginLeft:"20px"}} onClick={()=>{
+            <span  className={`food-select-unactive ${orderCategory.Completed?"category-btn-active":"category-btn"} `} style={{marginLeft:"20px"}} onClick={()=>{
                 if(!orderCategory['Completed'])
                 setordercategory({...orderCategorydata,"Completed":true})
             }}>Complete</span>

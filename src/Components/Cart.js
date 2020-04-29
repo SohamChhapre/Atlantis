@@ -181,7 +181,7 @@ const CartMenu=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
         {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
@@ -235,7 +235,7 @@ const UpcomingMenu=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
         {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
@@ -291,15 +291,15 @@ const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
         
         </div>
-          {/* <div className="trash-container" >
+          <div className="trash-container" >
           <img src={trash_icon} className="trash-wrapper"/>
-        </div> */}
+        </div>
         <div style={{
             // width:"calc(100% - 175px)",
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         Nasi Goreng
         {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
@@ -395,7 +395,12 @@ useEffect(()=>{
             </div>
             <div className="cart-confirm-btn text-right" style={{marginRight:"70px"}}>
             
-            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}} onClick={()=>senddata()}>Confirm</button>
+            <button className="btn btn-success" style={{fontSize: "13px",
+                borderRadius: '4px',
+                padding: "4px 24px",
+                fontFamily: "Poppins-Medium",
+                color: "white"
+            }} onClick={()=>senddata()}>Confirm</button>
             </div>
             </div>
             
