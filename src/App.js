@@ -36,7 +36,7 @@ const NavActiveicon=({img,name})=>{
 // #00a852
     return (
         <Link exact to="/" style={{textDecoration:"none"}}> 
-        <div className="text-center" style={{borderTop:"2px solid white ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
+        <div className="text-center" style={{borderTop:"2px solid white ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" style={{border:name==="Orders"?"2px solid white":"none"}}/><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold",marginTop:"3px"}}>{name}</p></div>
         </Link>
     )
 }
@@ -51,7 +51,7 @@ const NavIcon=({img,name,setActive})=>{
     return (
         <Link exact to={`${path}`} style={{textDecoration:"none"}}><div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
             setActive({...defaultState,[name]:true})
-        }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
+        }}> <img src={img} className="nav-icon" alt="home" style={{border:name==="Orders"?"2px solid white":"none"}}/><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold",marginTop:"3px"}}>{name}</p></div>
         </Link>
     )
 }
