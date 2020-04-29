@@ -10,7 +10,8 @@ import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
 import trash_icon from './../Icons/Icons-Food/garbage.svg';
 import Axios from 'axios';
-
+import food_svg from './../Icons/Icons-Footer/img-food.svg';
+import laundry_svg from './../Icons/Icons-Footer/img-laundry.svg';
 
 const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
     const [toggler,setToggler]=useState(true)
@@ -269,7 +270,71 @@ const UpcomingMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
-const Cart =({Foodorder,AddOrder,RemoveOrder,UpdateOrder,Laundaryorder,UpdateLaundary})=>{
+const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        console.log("hello")
+    },[toggler])
+    var flag=0;
+    // console.log(item);
+    // for(var i=0;i<order.length;i++){
+    //         console.log(i,)
+    //     if(order[i].id===item.id && order[i].category===item.category )
+    //             flag=order[i].items;
+    // }
+
+    return (
+        <div style={{margin:"24px 14px 14px 14px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(18vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"18vw",height:"18vw",borderRadius:"10px"}}>
+        
+        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+        
+        </div>
+          {/* <div className="trash-container" >
+          <img src={trash_icon} className="trash-wrapper"/>
+        </div> */}
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"10px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px",marginTop:"-6px"}}
+        >
+        Nasi Goreng
+        {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
+        </div>
+       
+        <div className="">
+            <div className="">
+                <div style={{float:"left",position:"absolute",left:"calc(18vw + 30px)",bottom:"10px",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
+                order
+                <div style={{marginTop:"5px",color:"#f49a04"}}>
+                #3465
+                </div>
+                </div>
+            <div style={{float:"right",position:"absolute",bottom:"10px",right:"calc(10vw + 20px)",fontSize:"12px",fontFamily:"Poppins-SemiBold",color:"rgb(130,130,130)",textAlign:"center"}}>
+               
+                <div style={{marginTop:"2px",padding:"1px 10px",backgroundColor:"#F5FBF8",borderRadius:"10px",color:"#00A852"}}>
+                Completed
+                </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        </div>
+           
+           
+        </div>
+        
+
+        </div>
+        
+    )
+}
+export const Cart =({Foodorder,AddOrder,RemoveOrder,UpdateOrder,Laundaryorder,UpdateLaundary})=>{
     
     const senddata = async ()=>{
         await Axios.post('http://localhost:3500/postorder',
@@ -285,41 +350,57 @@ useEffect(()=>{
 <div>
         
             <div>
-             <div className="big-container" style={{margin:"80px 0px 0px 0px" ,}}>
-         
+             <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
                     <div className="cart-circle rounded-circle">
+                    <img src={food_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
+                    Food
+                    </div>
                     </div>
 
                     <div className="" >
                     
-                     <CartMenu/>
+                    <CartMenu/>
                     <CartMenu/>
 
                     
-                    {Foodorder && Foodorder.length>0 && Foodorder.map((e,i)=>(<FoodCard item={e} UpdateOrder={UpdateOrder} AddOrder={AddOrder} RemoveOrder={RemoveOrder} order={Foodorder} />))}
-                    {/* <MenuCard/> */}
                    
                     </div>
             
             </div>
-            <div className="cart-confirm-btn">
+            <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
+                    <div className="cart-circle rounded-circle">
+                   <img src={laundry_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
+                    Laundary
+                    </div>
+                    </div>
+
+                    <div className="" >
+                    
+                    <CartMenu/>
+                    <CartMenu/>
+
+                    
+                   
+                    </div>
+            
+            </div>
+            <div style={{fontFamily:"Poppins-SemiBold",marginTop:"30px",textAlign:"center",marginLeft:"20px",fontSize:"14px"}}>
+            <span style={{color:"#f49a04"}}>Total :</span> <span style={{color:"rgb(130,130,130)"}}>50.000 IDR</span>
+            </div>
+            <div className="cart-confirm-btn text-right" style={{marginRight:"70px"}}>
+            
             <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}} onClick={()=>senddata()}>Confirm</button>
             </div>
             </div>
             
 
-            {/* <div> */}
-        {/* <div  style={{backgroundColor:"",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginLeft:"1%",marginRight:"1%"}}> */}
-        {/* <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p> */}
-                {/* <div className="flex-container my-0" >
-                {order && order.length==0 && (<p className="text-danger my-5">No items in cart</p>)}               
-                  {order && order.length>0 && order.map((e,i)=>( <CartCard  item={e} key={i} AddOrder={AddOrder} RemoveOrder={RemoveOrder}/>
-))}                     
-                {order && order.length>0 && <div className="text-right"><button className="btn " style={{background: 'white',margin: '10px 0px 0px 70vw'}}>Confirm</button></div>}
-                </div> */}
-        
-        {/* </div> */}
-        {/* </div> */}
+            
         
 
         </div>
@@ -327,7 +408,122 @@ useEffect(()=>{
 
     )
 }
+export const Upcoming=()=>{
 
+    return (
+        <div>
+        
+            <div>
+             <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
+                    <div className="cart-circle rounded-circle">
+                    <img src={food_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:'Poppins-SemiBold'}}>
+                    Food
+                    </div>
+                    </div>
+
+                    <div className="" >
+                    
+                    <UpcomingMenu/>
+                    <UpcomingMenu/>
+
+                    
+                   
+                    </div>
+            
+            </div>
+            <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
+                    <div className="cart-circle rounded-circle">
+                   <img src={laundry_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
+                    Laundary
+                    </div>
+                    </div>
+
+                    <div className="" >
+                    
+                    <UpcomingMenu/>
+                    <UpcomingMenu/>
+
+                    
+                   
+                    </div>
+            
+            </div>
+           <div style={{fontFamily:"Poppins-SemiBold",marginTop:"30px",textAlign:"center",marginLeft:"20px",fontSize:"14px"}}>
+            <span style={{color:"#f49a04"}}>Total :</span> <span style={{color:"rgb(130,130,130)"}}>50.000 IDR</span>
+            </div>
+            </div>
+            
+
+            
+        
+
+        </div>
+    )
+}
+export const Completed=()=>{
+
+    return (
+        <div>
+        
+            <div>
+             <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
+                    <div className="cart-circle rounded-circle">
+                    <img src={food_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:'Poppins-SemiBold'}}>
+                    Food
+                    </div>
+                    </div>
+
+                    <div className="" >
+                    
+                    <CompletedMenu/>
+                    <CompletedMenu/>
+
+                    
+                   
+                    </div>
+            
+            </div>
+            <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
+                    <div style={{height:"54px"}}>
+                    <div className="cart-circle rounded-circle">
+                   <img src={laundry_svg} height="80%" width="80%"/>
+                    </div>
+                    <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
+                    Laundary
+                    </div>
+                    </div>
+
+                    <div className="" >
+                    
+                    <CompletedMenu/>
+                    <CompletedMenu/>
+
+                    
+                   
+                    </div>
+            
+            </div>
+           <div style={{fontFamily:"Poppins-SemiBold",marginTop:"30px",textAlign:"center",marginLeft:"20px",fontSize:"14px"}}>
+            <span style={{color:"#f49a04"}}>Total :</span> <span style={{color:"rgb(130,130,130)"}}>50.000 IDR</span>
+            </div>
+            </div>
+            
+
+            
+        
+
+        </div>
+    )
+}
 
 
 const mapStateToprops=state=>{

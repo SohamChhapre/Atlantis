@@ -9,6 +9,7 @@ import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
 import Barcode from 'react-barcode';
 import Axios from 'axios';
+import {Cart,Upcoming,Completed} from './Cart.js'
 
 const handlers={
   width: 60,
@@ -212,52 +213,11 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
 
 
         <Textslider orderCategory={orderCategory} setordercategory={setordercategory}/>
+        {orderCategory.Cart && <Cart/>}
+        {orderCategory.Upcoming && <Upcoming/>}
+        {orderCategory.Completed && <Completed/>}
         
-       { Foodorder.length>0 && 
-            <div>
-             <div className="big-container" style={{margin:"50px 15px 0px 15px" ,}}>
-         
-                    <div className="cart-circle rounded-circle">
-                    </div>
-
-                    <div className="" >
-                    {Foodorder && Foodorder.length>0 && Foodorder.map((e,i)=>(<FoodCard item={e} UpdateOrder={UpdateOrder} AddOrder={AddOrder} RemoveOrder={RemoveOrder} order={Foodorder} />))}
-                    {/* <MenuCard/> */}
-                    
-                    
-                    </div>
-            
-            </div>
-            {/* <div className="cart-confirm-btn">
-            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",borderRadius:"20px",padding:"1px 13px"}}>Confirm</button>
-            </div> */}
-            </div>
-            }
         
-        { Laundaryorder.length>0 && 
-             <div>
-             <div className="big-container" style={{margin:"40px 2% 0px 2%" ,}}>
-         
-                    <div className="cart-circle rounded-circle">
-                    </div>
-
-                    <div className="cart-container" >
-                    
-                    
-
-
-                    {Laundaryorder.map((e,i)=><LaundaryCard  item={e} UpdateLaundary={UpdateLaundary}/>)}
-                    
-                    
-                    </div>
-            
-            </div>
-            {/* <div className="cart-confirm-btn">
-            <button className="btn btn-success" style={{fontFamily:"Poppins-SemiBold",padding:"1px 13px",borderRadius:"20px"}}>Confirm</button>
-            </div> */}
-            </div> 
-
-            }
         </div>
 
     )
