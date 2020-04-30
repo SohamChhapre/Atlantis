@@ -1,0 +1,54 @@
+.payment-swipper > .swiper-container{
+    height:calc(50vw + 50px)
+}
+.payment-swipper > .swiper-pagination .customized-swiper-pagination{
+    color:black;
+    bottom: 0px;
+  }
+
+  .payment-swipper > .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+}
+.date-picker{
+    width:90%;
+    margin-left:5%;
+    /* opacity:0.6 */
+}
+.form-control{
+    opacity:0.7
+}
+a:hover{
+    text-decoration: none;
+    color:"auto"
+}
+
+/* .main-container{    
+-webkit-overflow-scrolling: touch;
+-ms-overflow-style: none;  
+scrollbar-width: none;
+  }
+
+  .main-container::-webkit-scrollbar {
+    width: 0px;  
+    background: transparent; 
+     
+    display: none; 
+
+} */
+.payment-container {
+    overflow-y: scroll;
+    /* padding-bottom: 140px; */
+    -webkit-overflow-scrolling: touch;
+-ms-overflow-style: none;  
+scrollbar-width: none;
+}
+
+.payment-container ::-webkit-scrollbar {
+    width: 0px;  
+    background: transparent; 
+     
+    display: none; 
+
+}

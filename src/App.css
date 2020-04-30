@@ -137,7 +137,11 @@ background-color: white;
   margin:5px 0px 0px 1%
 }
 }
-
+.credit-card{
+  /* background-image: url('./Icons/Icons-Payment/credit\ card.png');
+  background-size: contain; */
+  text-align: center;
+}
 @media screen and (max-width:480px){
 
   .desktop-block{

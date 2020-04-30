@@ -7,7 +7,7 @@ import Laundary from './Components/Laundary.js';
 import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
 import RoomService from './Components/RoomService.js';
-// import Cards2 from './Components/Cards.js'
+import Payments from './Components/Payments.js'
 import Wrapper from './Components/Wrapper.js'
 import payment_icon from './Icons/Icons-Navbar/Payment - Active.png';
 import home_icon from './Icons/Icons-Navbar/Home - Active.png';
@@ -34,20 +34,25 @@ const defaultState={
 }
 const NavActiveicon=({img,name})=>{
 // #00a852
+var path=name.slice(0,1).toUpperCase()+name.slice(1,);
+    if (path==="Home"){
+      path="/"
+    }
     return (
-        <Link exact to="/" style={{textDecoration:"none"}}> 
+        <Link exact to={`${path}`} style={{textDecoration:"none"}}> 
         <div className="text-center" style={{borderTop:"2px solid white ",paddingTop:"6px"}}> <img src={img} className="nav-icon" alt="home" style={{border:name==="Orders"?"2px solid white":"none"}}/><p className="mb-1 nav-p-sty" style={{color:"#00a852",fontFamily:"Poppins-SemiBold",marginTop:"3px"}}>{name}</p></div>
         </Link>
     )
 }
 
 const NavIcon=({img,name,setActive})=>{
-    var path;
-    if (name==="Orders"){
-      path="/orders"
+    var path=name.slice(0,1).toUpperCase()+name.slice(1,);
+    if (path==="Home"){
+      path="/"
     }
-    else
-    path="/"
+    // // else if
+    // else
+    // path="/"
     return (
         <Link exact to={`${path}`} style={{textDecoration:"none"}}><div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
             setActive({...defaultState,[name]:true})
@@ -105,6 +110,10 @@ function App() {
     <Route
   exact path='/service'
   render={(props) => <RoomService {...props}  />}
+    />
+    <Route
+  exact path='/payments'
+  render={(props) => <Payments {...props}  />}
     />
       
     </Switch>
