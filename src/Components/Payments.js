@@ -59,7 +59,7 @@ const params = {
             
  <div class="modal fade" id="myModal">
     <div class="modal-dialog" style={{margin:"0px",width:"100vw",height:"100%"}}>
-      <div class="modal-content" style={{height:"100%"}}>
+      <div class="modal-content" style={{height:"100%",maxHeight:"100%",overflowY:"scroll"}}>
       
        
         <div class="">
