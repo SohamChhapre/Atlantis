@@ -25,7 +25,7 @@ const params = {
 
     return(
         <div className="payment-container ">
-        <div className="main-container"  style={{
+        <div className=""  style={{
             // maxHeight:"calc(100vh - 120px)",overflowY:"scroll",
             padding:"20px 0% 120px 0%",margin:"0",
             // backgroundColor:"#9BE0B8",
