@@ -8,6 +8,7 @@ import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
 import RoomService from './Components/RoomService.js';
 import Payments from './Components/Payments.js'
+import PaymentsModels from './Components/Payments/PaymentsModels.js'
 import Wrapper from './Components/Wrapper.js'
 import payment_icon from './Icons/Icons-Navbar/Payment - Active.png';
 import home_icon from './Icons/Icons-Navbar/Home - Active.png';
@@ -60,10 +61,10 @@ const NavIcon=({img,name,setActive})=>{
         </Link>
     )
 }
-function App() {
+function App(props) {
   const [active,setActive]=useState({'Home':true,"Payments":false,"Orders":false,"Support":false})
   const [orders,setOrders]=useState([]);
-  
+  console.log(props,"APPP")
     useEffect(()=>{
         setActive({...defaultState,"Home":true})
         setOrders([])
@@ -115,9 +116,13 @@ function App() {
   exact path='/payments'
   render={(props) => <Payments {...props}  />}
     />
+    <Route
+  exact path='/payments/:id'
+  render={(props) => <PaymentsModels {...props}  />}
+    />
       
     </Switch>
-    <Route to="/">
+    <Route exact  path={['/', '/food', '/payments','/laundary','/orders','/casual','/formal']}>
     <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"10px",padding:"0px 1rem 0rem 1rem"}}>
                
 
