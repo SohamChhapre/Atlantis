@@ -22,12 +22,17 @@ const ADD1=({newcard,UpdateCard})=>{
         setIcon("")
     },[])
     useEffect(()=>{
+      
     if( number.length >1 && (!(number.startsWith("4") || number.startsWith("5"))) )
             setTimeout(() => {
             setErr("Invalid Card number")   
                     }, 50);
-    if (number.length > 16)
-    setErr("Exceeds 16 digits")
+    else if (number.length > 16)
+      setErr("Exceeds 16 digits")
+    else{
+      
+          setErr("")
+    }
     if(number.startsWith(5))
     setIcon(master_card);
     else if (number.startsWith(4))
@@ -35,7 +40,10 @@ const ADD1=({newcard,UpdateCard})=>{
     else{
     setIcon("")
     }
-                },[number,err])
+                },[number])
+      useEffect(()=>{
+
+      },[err])
    var inputvalue=number
    
     
@@ -115,7 +123,7 @@ const ADD2=({newcard,UpdateCard})=>{
     const [expirydate,setExpirydate]=useState({month:"",year:""});
     const [err,setErr]=useState("")
     useEffect(()=>{
-     setExpirydate({month:"",year:""})   ;
+     setExpirydate(newcard.expiry)   ;
      setErr('')
     },[])
     useEffect(()=>{
@@ -162,7 +170,7 @@ const ADD2=({newcard,UpdateCard})=>{
             height: "41px",borderRadius: '10px',
             padding: "0px 10px",
             textDecoration: "none"}} placeholder="Expiry Date"/> */}
-            <Datetime  inputProps={{ placeholder: 'Expiry Date' }} onChange={(e)=>{
+            <Datetime  inputProps={{  placeholder: 'Expiry Date' }}   onChange={(e)=>{
                     console.log(e);
                     var dateobj=e._d;
 
