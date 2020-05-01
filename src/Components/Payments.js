@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
 import Datetime from 'react-datetime';
 import Swipper from 'react-id-swiper';
@@ -11,17 +11,18 @@ const master_card="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbm
 const close_icon="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDA5LjgwNiA0MDkuODA2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MDkuODA2IDQwOS44MDY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjI4LjkyOSwyMDUuMDFMNDA0LjU5NiwyOS4zNDNjNi43OC02LjU0OCw2Ljk2OC0xNy4zNTIsMC40Mi0yNC4xMzJjLTYuNTQ4LTYuNzgtMTcuMzUyLTYuOTY4LTI0LjEzMi0wLjQyICAgIGMtMC4xNDIsMC4xMzctMC4yODIsMC4yNzctMC40MiwwLjQyTDIwNC43OTYsMTgwLjg3OEwyOS4xMjksNS4yMWMtNi43OC02LjU0OC0xNy41ODQtNi4zNi0yNC4xMzIsMC40MiAgICBjLTYuMzg4LDYuNjE0LTYuMzg4LDE3LjA5OSwwLDIzLjcxM0wxODAuNjY0LDIwNS4wMUw0Ljk5NywzODAuNjc3Yy02LjY2Myw2LjY2NC02LjY2MywxNy40NjgsMCwyNC4xMzIgICAgYzYuNjY0LDYuNjYyLDE3LjQ2OCw2LjY2MiwyNC4xMzIsMGwxNzUuNjY3LTE3NS42NjdsMTc1LjY2NywxNzUuNjY3YzYuNzgsNi41NDgsMTcuNTg0LDYuMzYsMjQuMTMyLTAuNDIgICAgYzYuMzg3LTYuNjE0LDYuMzg3LTE3LjA5OSwwLTIzLjcxMkwyMjguOTI5LDIwNS4wMXoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6IzVFNUU1RSIgZGF0YS1vbGRfY29sb3I9IiMwMDAwMDAiPjwvcGF0aD4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+"
 
 const Payments=()=>{
-const params = {
+const paramsdefault = {
     pagination: {
       el: '.swiper-pagination.customized-swiper-pagination',
       type: 'bullets',
       clickable: true
     },
   slidesPerView: 'auto',
-  paginationClickable: true,
-//   freeMode: true
-//   spaceBetween:0.2 
+  paginationClickable: true, 
     }
+    useEffect(()=>{
+     
+    },[])
 
 
     return(
@@ -39,6 +40,17 @@ const params = {
             
         </div>
         <div style={{marginTop:"30px"}} className="payment-swipper">
+            
+           <div className="" style={{margin:"0px 0%",display:"flex"}}>
+                <div className="credit-card">
+                <img src={Credit_card} width="90%" height="calc(100% - 20px)"/>
+
+                </div>
+
+           </div>
+           
+            </div>
+        {/* <div style={{marginTop:"30px"}} className="payment-swipper">
             <Swipper {...params}>
            <div className="" style={{margin:"0px 0%",display:"flex"}}>
                 <div className="credit-card">
@@ -55,7 +67,7 @@ const params = {
 
            </div>
             </Swipper>
-            </div>
+            </div> */}
           <div className="food-menu-btn text-center" style={{marginTop:"60px"}}>
             <Link exact to="/Payments/1">
             <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}} >Add Card</button>

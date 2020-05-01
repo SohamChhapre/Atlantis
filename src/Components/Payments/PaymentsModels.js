@@ -77,6 +77,8 @@ const ADD1=({newcard,UpdateCard})=>{
          </div>
          
         <div style={{textAlign:"center",width:"100%",marginTop:"50px"}}>
+                <p style={{color:"red",fontSize:"10px",textAlign:"center",marginBottom:"2px"}}>{err}</p>
+      
         <input className="form-control" type="number" style={{width: '90%',marginLeft:"5%"
             }} placeholder="Enter Card Number" value={inputvalue} onChange={(e)=>{
                 
@@ -86,7 +88,6 @@ const ADD1=({newcard,UpdateCard})=>{
                
             }}/>
 
-                <p style={{color:"red",fontSize:"10px",textAlign:"center"}}>{err}</p>
             
 
         <button className="btn " style={{opacity:"0",borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button>
@@ -134,7 +135,7 @@ const ADD2=({newcard,UpdateCard})=>{
 
     },[expirydate,err])
     var icon=newcard.card_no.startsWith("4")?visa_icon:master_card;
-    icon=!icon && newcard.card_no.startsWith("5")?master_card:""
+    // icon=!icon && newcard.card_no.startsWith("5")?master_card:""
     
     return (
 
@@ -170,6 +171,8 @@ const ADD2=({newcard,UpdateCard})=>{
             height: "41px",borderRadius: '10px',
             padding: "0px 10px",
             textDecoration: "none"}} placeholder="Expiry Date"/> */}
+        <p style={{fontSize:"10px",color:"red",marginBottom:"2px",textAlign:"center"}}>{err}</p>
+         
             <Datetime  inputProps={{  placeholder: 'Expiry Date' }}   onChange={(e)=>{
                     console.log(e);
                     var dateobj=e._d;
@@ -177,7 +180,6 @@ const ADD2=({newcard,UpdateCard})=>{
                     setExpirydate({month:dateobj.getMonth()+1,year:dateobj.getFullYear()})
 
             }} className="date-picker" dateFormat="MM/YYYY" timeFormat={false} />
-        <p style={{fontSize:"10px",color:"red",textAlign:"center"}}>{err}</p>
         <Link exact to="/payments/1">
         
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}}>Back</button>
@@ -220,8 +222,8 @@ const ADD3=({newcard,UpdateCard})=>{
     // console.log(newcard)
 
 
-    var icon=newcard.card_no.startsWith("4")?visa_icon:master_card;
-    icon=!icon && newcard.card_no.startsWith("5")?master_card:""
+    var icon=newcard.card_no.startsWith("4")?visa_icon:"";
+    // icon=!icon && newcard.card_no.startsWith("5")?master_card:""
     return (
          <div  >
     <div  style={{margin:"0px",width:"100vw",height:"100%"}}>
@@ -254,11 +256,12 @@ const ADD3=({newcard,UpdateCard})=>{
          <img src={Credit_card} height="100%" width="100%"/>
          </div>
          <div style={{textAlign:"center",width:"100%",marginTop:"50px"}}>
+        <p style={{fontSize:"10px",color:"red",marginBottom:"2px",textAlign:"center"}}>{err}</p>
+       
         <input className="form-control" type="text" value ={firstname} style={{width: '90%',marginLeft:"5%"
                 }} placeholder="Enter Firstname" onChange={(e)=>{
                     setFirstname(e.target.value)
                 }}/>
-        <p style={{fontSize:"10px",color:"red",textAlign:"center"}}>{err}</p>
         
     <Link exact to="/payments/2">    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button></Link>
         {/* <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button> */}
