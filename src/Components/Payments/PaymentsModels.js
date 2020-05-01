@@ -48,7 +48,7 @@ const ADD2=()=>{
 
        <div  >
     <div  style={{margin:"0px",width:"100vw",height:"100%"}}>
-      <div  style={{height:"100%",maxHeight:"100%",overflowY:"scroll"}}>
+      <div  style={{height:"100vh",maxHeight:"100vh",overflowY:"scroll"}}>
       
        
         <div >
@@ -57,7 +57,7 @@ const ADD2=()=>{
         </div>
         
        
-        <div class="modal-body" style={{padding:"10px"}}>
+        <div class="" style={{padding:"10px"}}>
           <div style={{height:"50vw",width:"100%",position:"relative",marginTop:"60px"}}>
           <img src={master_card} style={{position:"absolute",bottom:"2px",right:"5%",height:"22%"}}/>
          <p style={{position:"absolute",
