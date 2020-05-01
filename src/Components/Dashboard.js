@@ -59,8 +59,8 @@ const Dashboard=()=>{
     },[active])
     return(
             <div>
-            {/* <p className="view-block">Rotate to portrait mode </p>
-            <p className="desktop-block">We Support Mobile View Only</p> */}
+            <p className="view-block">Rotate to portrait mode </p>
+            <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" >
             
             <div className="mt-1 mb-4"> 

@@ -52,6 +52,9 @@ top: 'calc(30vw - 30px)'}}><button className="btn btn-success" style={{borderRad
 const Laundary=()=>{
 
     return (
+        <div>
+        <p className="view-block">Rotate to portrait mode </p>
+    <p className="desktop-block">We Support Mobile View Only</p>
         <div className="main-container"  style={{
             maxHeight:"calc(100vh - 120px)",overflowY:"scroll",
             padding:"20px 0%",margin:"0",
@@ -83,6 +86,7 @@ const Laundary=()=>{
             </Link>
         </div>
         
+            </div>
             </div>
     )
 }

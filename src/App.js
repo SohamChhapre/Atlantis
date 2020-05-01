@@ -75,8 +75,7 @@ function App(props) {
   return (
     <Provider store={store}>
     <div className="App mx-auto">
-    <p className="view-block">Rotate to portrait mode </p>
-            <p className="desktop-block">We Support Mobile View Only</p>
+    
     <BrowserRouter>
     <Switch>
     <Route
@@ -122,7 +121,7 @@ function App(props) {
     />
       
     </Switch>
-    <Route exact  path={['/', '/food', '/payments','/laundary','/orders','/casual','/formal']}>
+    <Route exact  path={['/', '/service','/food', '/payments','/laundary','/orders','/casual','/formal']}>
     <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"10px",padding:"0px 1rem 0rem 1rem"}}>
                
 

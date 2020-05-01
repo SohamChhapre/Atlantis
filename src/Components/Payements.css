@@ -37,18 +37,28 @@ scrollbar-width: none;
     display: none; 
 
 } */
-.payment-container {
-    overflow-y: scroll;
-    /* padding-bottom: 140px; */
-    -webkit-overflow-scrolling: touch;
--ms-overflow-style: none;  
-scrollbar-width: none;
+.Desktop-block{
+    display:none
 }
-
-.payment-container ::-webkit-scrollbar {
-    width: 0px;  
-    background: transparent; 
-     
-    display: none; 
-
+@media all and (min-width:481px){
+    .payment-modal-container{
+        display: none;
+    }
+    .Desktop-block{
+        display:block;
+        margin-top: 40vh;
+        text-align: center;
+        color: red;
+    }
+}
+@media all and (min-width:1000px){
+    .payment-modal-container{
+        display: none;
+    }
+    .Desktop-block{
+        display:block;
+        margin-top: 40vh;
+        text-align: center;
+        color: red;
+    }
 }

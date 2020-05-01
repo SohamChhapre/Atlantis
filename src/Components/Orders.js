@@ -206,7 +206,9 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
     },[])
     
     return(
-        
+        <div>
+        <p className="view-block">Rotate to portrait mode </p>
+    <p className="desktop-block">We Support Mobile View Only</p>
         <div className="main-container"  style={{
             maxHeight:"calc(100vh - 115px)",overflowY:"scroll",
             padding:"20px 0%",margin:"0",backgroundColor:"",marginLeft:"0px",marginRight:"0px"}}>
@@ -218,6 +220,7 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
         {orderCategory.Completed && <Completed/>}
         
         
+        </div>
         </div>
 
     )

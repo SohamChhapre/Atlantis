@@ -25,8 +25,10 @@ const params = {
 
 
     return(
-        <div className="payment-container ">
-        <div className=""  style={{
+      <div>
+      <p className="view-block">Rotate to portrait mode </p>
+    <p className="desktop-block">We Support Mobile View Only</p>
+        <div className="main-container"  style={{
             // maxHeight:"calc(100vh - 120px)",overflowY:"scroll",
             padding:"20px 0% 120px 0%",margin:"0",
             // backgroundColor:"#9BE0B8",
@@ -61,130 +63,11 @@ const params = {
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Remove</button>
         </div>
             
- <div class="modal fade" id="myModal">
-    <div class="modal-dialog" style={{margin:"0px",width:"100vw",height:"100%"}}>
-      <div class="modal-content" style={{height:"100%",maxHeight:"100%",overflowY:"scroll"}}>
-      
-       
-        <div class="">
-         
-          <img src={close_icon}  data-dismiss="modal" style={{float:"right",height:"15px",float:"right",margin:"5% 5% 0px 0px"}}/>
-        </div>
+ 
         
-       
-        <div class="modal-body" style={{padding:"10px"}}>
-         <div style={{height:"50vw",width:"100%",marginTop:"30px"}}>
-         <img src={Credit_card} height="100%" width="100%"/>
-         </div>
-         
-        <div style={{textAlign:"center",width:"100%",marginTop:"50px"}}>
-        <input className="form-control" type="number" style={{width: '90%',marginLeft:"5%"
-            }} placeholder="Enter Card Number"/>
-        <button className="btn " style={{opacity:"0",borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button>
-       
-        {/* <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginTop:"30px"}} data-toggle="modal" data-target="#myModal2">Next</button> */}
-       <a href="#myModal2" data-toggle="modal" data-dismiss="modal"> <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginTop:"30px"}} >Next</button></a>
-        </div>
-        </div>
-        
-        
-       
-        
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="myModal2">
-    <div class="modal-dialog" style={{margin:"0px",width:"100vw",height:"100%"}}>
-      <div class="modal-content" style={{height:"100%"}}>
-      
-       
-        <div class="">
-          <img src={close_icon}  data-dismiss="modal" style={{float:"right",height:"15px",float:"right",margin:"5% 5% 0px 0px"}}/>
-         
-        </div>
-        
-       
-        <div class="modal-body" style={{padding:"10px"}}>
-          <div style={{height:"50vw",width:"100%",position:"relative",marginTop:"30px"}}>
-          <img src={master_card} style={{position:"absolute",bottom:"2px",right:"5%",height:"22%"}}/>
-         <p style={{position:"absolute",
-                left: "10%",
-                color: "white",
-                fontFamily: "Poppins-SemiBold",
-                top: "48%",
-                marginBottom: "0px",
-                fontSize: "6vw"         
-         }}>
-         XXXX XXXX XXXX 4567</p>
-         <img src={Credit_card} height="100%" width="100%"/>
-         </div>
-         <div style={{textAlign:"center",width:"100%",marginTop:"50px"}}>
-        {/* <input type="month" style={{width: '90%',
-            height: "41px",borderRadius: '10px',
-            padding: "0px 10px",
-            textDecoration: "none"}} placeholder="Expiry Date"/> */}
-            <Datetime  inputProps={{ placeholder: 'Expiry Date' }} className="date-picker" dateFormat="MM/YYYY" timeFormat={false} />
-        <a href="#myModal" data-toggle="modal" data-dismiss="modal">
-        
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}}>Back</button>
-        </a>
-        {/* <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}}>Back</button> */}
-        {/* <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginTop:"30px"}} data-toggle="modal" data-target="#myModal3">Next</button> */}
-        <a href="#myModal3" data-toggle="modal" data-dismiss="modal">
-        <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginTop:"30px"}} >Next</button>
-        </a >
-        </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="myModal3">
-    <div class="modal-dialog" style={{margin:"0px",width:"100vw",height:"100%"}}>
-      <div class="modal-content" style={{height:"100%"}}>
-      
-       
-        <div class="">
-          <img src={close_icon}  data-dismiss="modal" style={{float:"right",height:"15px",float:"right",margin:"5% 5% 0px 0px"}}/>
-         
-        </div>
-        
-       
-        <div class="modal-body">
-         <div style={{height:"50vw",width:"100%",marginTop:"30px",position:"relative"}}>
-         <img src={master_card} style={{position:"absolute",bottom:"2px",right:"5%",height:"22%"}}/>
-         <p style={{position:"absolute",
-                left: "10%",
-                color: "#d6d6d6",
-                fontFamily: "Poppins-SemiBold",
-                top: "46%",
-                marginBottom: "0px",
-                fontSize: "6vw"         
-         }}>
-         XXXX XXXX XXXX 4567</p>
-         <p style={{position:"absolute",left:"74%",bottom:"23%",marginBottom:"0px",color:"#d6d6d6",fontFamily:"Poppins-SemiBold",fontSize:"4vw"}}>08/2020</p>
-         <p style={{position:"absolute",left:"10%",bottom:"6%",color:"#d6d6d6",fontFamily:"Poppins-SemiBold",fontSize:"4vw",marginBottom:"0px"}}>Elizabeth </p>
-         <img src={Credit_card} height="100%" width="100%"/>
-         </div>
-         <div style={{textAlign:"center",width:"100%",marginTop:"50px"}}>
-        <input className="form-control" type="text" style={{width: '90%',marginLeft:"5%"
-                }} placeholder="Enter Firstname"/>
-        <a href="#myModal2" data-toggle="modal" data-dismiss="modal">
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button>
-            </a>
-        {/* <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901",margin:"30px 50px 0px 0px"}} >Back</button> */}
-        <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginTop:"30px"}}  data-dismiss="modal">Next</button>
-        </div>
-        </div>
-        
-    
-        
-        
-      </div>
-    </div>
-  </div>
+  
 </div>
-            </div>
+</div>            
     )
 }
 
