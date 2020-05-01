@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Datetime from 'react-datetime';
 import Swipper from 'react-id-swiper';
 import Credit_card from './../Icons/Icons-Payment/credit card.png'
@@ -53,7 +54,10 @@ const params = {
            </div>
             </Swipper>
             </div>
-            <div className="food-menu-btn text-center" style={{marginTop:"60px"}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}} data-toggle="modal" data-target="#myModal">Add Card</button>
+          <div className="food-menu-btn text-center" style={{marginTop:"60px"}}>
+            <Link exact to="/Payments/1">
+            <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}} >Add Card</button>
+            </Link>
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Remove</button>
         </div>
             
