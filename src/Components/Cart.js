@@ -348,7 +348,20 @@ useEffect(()=>{
 },[])
     return(
 <div>
+        <div className="main-carousel" data-flickity='{ "freeScroll": true,
+"contain": true,
+"prevNextButtons": false,
+"pageDots": false 
+ }'>
+                    <div style={{width:"85%",marginRight:"0px"}}>
+                    <CartMenu/>
+                    </div>
+                    <div style={{width:"85%",marginRight:"0px"}}>
+                    <CartMenu/>
+                    </div>
+       
         
+        </div>
             <div>
              <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>

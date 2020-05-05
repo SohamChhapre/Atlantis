@@ -222,7 +222,7 @@ const ADD3=({newcard,UpdateCard})=>{
     // console.log(newcard)
 
 
-    var icon=newcard.card_no.startsWith("4")?visa_icon:"";
+    var icon=newcard.card_no.startsWith("4")?visa_icon:master_card;
     // icon=!icon && newcard.card_no.startsWith("5")?master_card:""
     return (
          <div  >
