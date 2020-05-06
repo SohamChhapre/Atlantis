@@ -18,6 +18,7 @@ import { useSwipeable, Swipeable } from 'react-swipeable'
 
 import {AddOrder,RemoveOrder} from './Redux/index.js';
 import {connect } from 'react-redux'
+
 import {initialdata} from './CategoryData.js'
 import './Cards.css'
 import Slide from 'react-reveal/Slide';
@@ -175,7 +176,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
     // }
 
     return (
-        <div style={{margin:"10px",width:"calc(100% - 28px)"}}>
+        <div style={{margin:"10px",width:"calc(100% - 8px)"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"36vw",height:"36vw"}}>
         {/* <img src={dummy_img} height='100%' width="100%"   /> */}
@@ -226,6 +227,17 @@ const defaultswipe={
     "left":false,
     "right":false
 }
+const params = {
+    // pagination: {
+    //   el: '.swiper-pagination.customized-swiper-pagination',
+    //   type: 'bullets',
+    //   clickable: true
+    // },
+  slidesPerView: 1.10,
+//   paginationClickable: true,
+  spaceBetween: 0,
+  freeMode: true
+    }
 const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     const [swipe,setSwipe]=useState({"left":true,"right":false})
     const [food,setFood]=useState(true)
@@ -329,19 +341,30 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             </div>
             </div>
         </Slide> */}
-          <div className="main-carousel" data-flickity='{ "freeScroll": true,
+          {/* <div className="main-carousel" data-flickity='{ "freeScroll": true,
 "contain": true,
 "prevNextButtons": false,
 "pageDots": false 
- }'>
+ }'> */}
+
+ <Swiper {...params}>
+                
                 <div style={{width:"89%",marginRight:"0px"}}>
                     <SliderCard item={{isfav:true}}/>
                     </div>
                     <div style={{width:"89%",marginRight:"0px"}}>
                     <SliderCard item={{isfav:true}}/>
                     </div>
+                    <div style={{width:"89%",marginRight:"0px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                <div>
+                    <div style={{width:"",marginRight:"10px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
                 </div>
-
+                {/* </div> */}
+</Swiper>
                 <div className="flex-container my-0" >
                 
                                        
