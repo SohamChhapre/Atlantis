@@ -34,6 +34,9 @@
 .swipper-sty{
   margin-top: 20px;
 }
+
+
+
 @font-face {
 	font-family: 'Anteb-Black';
 	src: url('./Icons/Font/Anteb-Black.otf'); 
@@ -82,7 +85,32 @@
   width:498px ;
   height:273px
 }
-
+.scrolling-wrapper-dash {
+  overflow-x: scroll;;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 20px;
+margin-bottom: 20px;
+/* padding: 5px 20px; */
+text-align:center;
+-ms-overflow-style: none;  /* Internet Explorer 10+ */
+scrollbar-width: none;
+}
+.scrolling-wrapper-dash::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent; 
+   
+      display: none;  /* Safari and Chrome */
+  /* Optional: just make scrollbar invisible */
+}
+.scrolling-wrapper-dash .icon{
+  display: inline-block;
+  font-family: "Poppins-SemiBold";
+  font-size: 12px;
+  color:"#434343";
+  cursor: pointer;
+}
 
 @media screen and (min-width:481px){
   .view-block{
@@ -119,7 +147,7 @@ background-color: white;
     height:74px ;
     margin-top: -68px;
     margin-left: -74px;
-    margin-right: 62px;
+    margin-right: 5%;
     float:right;
     width:74px;
     background-color:#9BE0B8
@@ -357,7 +385,7 @@ background-color: white;
   }
     .dash-banner{
       width:auto;
-      height: 25vh;
+      height: 18vh;
     }
     .mg-left{
       margin-left: 10%;
@@ -370,9 +398,7 @@ background-color: white;
       border-radius:5px;
       /* height:22vh; */
       height: calc(45vw - 20px);
-      /* height: calc(50vw - 50px); */
-      /* margin:5px 0px 0px 0px; */
-      /* flex-basis: 33%; */
+      
     }
     .dash-text{
       color:#00A852;

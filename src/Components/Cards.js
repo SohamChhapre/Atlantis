@@ -236,7 +236,8 @@ const params = {
   slidesPerView: 1.10,
 //   paginationClickable: true,
   spaceBetween: 0,
-  freeMode: true
+  freeMode: true,
+
     }
 const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     const [swipe,setSwipe]=useState({"left":true,"right":false})
@@ -244,17 +245,7 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
     const [foodCat,setFoodCat]=useState(["Popular","Balanced","Salad"]);
     const [foodcategory,setFoodcategory]=useState(Food_category_data);
     const handlers = useSwipeable({
-        // onSwipedLeft: () => {console.log("left");
-        // setSwipe({'left':true,"right":false})
-        // setFood(!food)
-        // let cat=foodCat.slice(1,3);
-        // setFoodCat([...cat,foodCat[0]]);
-        // },
-        // onSwipedRight: () => {console.log("right");
-        // setSwipe({"right":true,"left":false})
-        // let cat=foodCat.slice(0,2);
-        // setFood(!food)
-        // setFoodCat([foodCat[2],...cat]);},
+        
 
         preventDefaultTouchmoveEvent: true,
         trackMouse: true
@@ -271,9 +262,6 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
         }, 100);
     },[swipe,foodcategory])
     
-
-    
-
     return (
         <div>
         <p className="view-block">Rotate to portrait mode </p>
@@ -283,8 +271,6 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
             padding:"20px 0%",margin:"0",
             // backgroundColor:"#9BE0B8",
             marginLeft:"0px",marginRight:"0px"}}>
-
-        
         <div className="card  dash-banner" style={{backgroundColor:"white",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
             <Link to="/cart"> <div className="text-right"><img src={cart_icon} height="24px" width="24px" style={{margin:"0px -25px 0px 0px"}}/><span className="text-center" style={{position:"relative",
     right: '-9px',
@@ -350,6 +336,9 @@ const Cards=({setOrders,order,AddOrder,RemoveOrder})=>{
  <Swiper {...params}>
                 
                 <div style={{width:"89%",marginRight:"0px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    <div style={{width:"89%",marginRight:"0px"}}>
                     <SliderCard item={{isfav:true}}/>
                     </div>
                     <div style={{width:"89%",marginRight:"0px"}}>
