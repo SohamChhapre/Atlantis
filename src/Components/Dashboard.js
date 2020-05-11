@@ -15,7 +15,10 @@ import roomservice_svg from './../Icons/Icons-Footer/img-roomservice.svg';
 import electricity_svg from './../Icons/Icons-Footer/img-electricity.svg';
 import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
-// import 'swiper/css/swiper.css';
+import ic_food from './../Icons/Icons-Dash/ic-food-new.png';
+import ic_electricity from './../Icons/Icons-Dash/img-electricity.png'
+import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
+import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 const defaultState={
     "Food":false,
     "Laundary":false,
@@ -53,9 +56,9 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
     // }
 
     return (
-        <div style={{margin:"",width:"80vw"}}>
-        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(36vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
-        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"28vw",height:"36vw"}}>
+        <div style={{margin:"",width:"256px"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
         <img src="https://firebasestorage.googleapis.com/v0/b/rumakita.appspot.com/o/Food-Images%2Fnasi-kebuli-ayam.jpg?alt=media&token=67c3cd2d-ea15-4ff6-baf6-5804e5327a33" height='auto' width="100%"  style={{borderRadius:"5px"}} />
         
         </div>
@@ -64,9 +67,9 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px"}}
+      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px",fontSize:"18px"}}
         >
-        Nasi Goreng
+        Wash & Fold
         {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
         
         </div>
@@ -77,7 +80,9 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
         <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
         </div> */}
         <div className="text-center">
-            <div className="food-menu-middle" style={{background:"#F5FBF8",width:"37vw",left:"calc(28vw + 30px)"}}>
+            <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
+            // width:"37vw",left:"calc(28vw + 30px)"
+            }}>
             <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
             <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
@@ -92,28 +97,123 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             </div> */}
             
         </div>
-        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white"}}>Order Now</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Schedule</button>
+        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Schedule</button>
         </div>
 
         </div>
         
     )
 }
+const RoomServicedata=[{id:1,name:"Cleaning",content:["Dusting","Bedding","Floor","Washroom"],timing:"10AM - 6PM"},{id:2,name:"Repairs",content:["Furniture","AC","Washroom"],timing:"10AM - 6PM"}]
+const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
+    // const [toggler,setToggler]=useState(true)
+    // useEffect(()=>{
+    //     console.log("hello")
+    // },[toggler])
+    var contentarr=item.content.slice(0,item.content.length-1);
+    var flag=0;
+    // console.log(item);
+    // for(var i=0;i<order.length;i++){
+    //         console.log(i,)
+    //     if(order[i].id===item.id && order[i].category===item.category )
+    //             flag=order[i].items;
+    // }
+
+    return (
+        <div style={{margin:"14px 14px 34px 14px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(18vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"18vw",height:"18vw",borderRadius:"10px"}}>
+        
+        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+        
+        </div>
+          
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"10px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
+        >
+        {item.name}
+        </div>
+       
+            <div className="">
+                <div className="service-content">
+                 {contentarr.map((e,i)=>(<span key={i}> {e}<span style={{margin:"0px 5px"}}>|</span></span>))}
+                   {item.content[item.content.length-1]}
+              
+                </div>
+            <div style={{position:"absolute",bottom:"10px",left:"calc(18vw + 30px)",fontSize:"9px",fontFamily:"Poppins-MediumItalic",color:"rgb(130,130,130)",textAlign:"center"}}>
+               Timing : 10AM - 6PM
+                </div>
+
+            </div>
+            
+        </div>
+        
+           
+           
+        </div>
+        
+<div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}}>Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E"}}>Schedule</button>
+        </div>
+        </div>
+        
+    )
+}
+
 const FoodDash=()=>{
 
     const params = {
+   slidesPerView: 'auto',
+  spaceBetween: 15,
+//   freeMode: true,
+    }
+    return (<div style={{margin:"15px 0px"}}>
+
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Nasi Gang
+        <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"5%",bottom:"5px"}}>
+        View All >
+        </span>
+        </div>
+        <div style={{marginLeft:"3%"}}>
+        
+              <div className="scrolling-wrapper-dash">
+                
+                <div className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                     
+        
+                </div>
+        </div>
+        </div>)
+}
+const LaundaryDash=()=>{
+
+    const params = {
    slidesPerView: 1.15,
-  spaceBetween: 5,
+  spaceBetween: 15,
   freeMode: true,
     }
     return (<div style={{margin:"15px 0px"}}>
 
-        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold"}}>Nasi Gang
-        <span style={{fontFamily:"Poppins-Medium",fontSize:"9px",float:"right",marginRight:"5%"}}>
-        View All >
-        </span>
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Casual
+        
         </div>
+        <div style={{marginLeft:"3%"}}>
         
                 <Swiper {...params}>
                 
@@ -132,29 +232,37 @@ const FoodDash=()=>{
                      
         
                 </Swiper>
+        </div>
         </div>)
 }
-const LaundaryDash=()=>{
 
-    return (
-         <div style={{display:"flex",justifyContent:"center",margin:"20px 5% 0px 0px"}}>
-             <Link exact to="/casual" className="icon-card">
-             <div className=" swipper-card-1" >
-            </div >
-            </Link>
-            <Link exact to="/formal" className="icon-card mg-left">
-            <div className=" swipper-card-2 " >
-            </div>
-            </Link>
-        </div>
-    )
-}
 const CleaningDash=()=>{
     
-    
+    const params = {
+   slidesPerView: 1.15,
+  spaceBetween: 15,
+  freeMode: true,
+    }
     
     return (
-        <div>
+       <div style={{margin:"15px 0px"}}>
+
+      
+        <div style={{marginLeft:"3%"}}>
+        
+                <Swiper {...params}>
+                
+                <div style={{width:"",marginRight:"10px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    <div style={{width:"",marginRight:"10px"}}>
+                    <SliderCard item={{isfav:true}}/>
+                    </div>
+                    
+                     
+        
+                </Swiper>
+        </div>
         </div>
     )
 }
@@ -186,9 +294,9 @@ const Dashboard=()=>{
             <div>
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
-            <div className="main-container" style={{margin:"20px 0px 0px 5%"}}>
+            <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
             
-            <div className="mt-1 mb-4"> 
+            <div className="mt-2 mb-5" style={{marginLeft:"5%"}}> 
             <div className="text-left dash-text" >
            <span style={{fontFamily:"Anteb-Medium"}}> Hi</span>, <span style={{fontFamily:"Anteb-Black"}} >Alizabeth</span>
             </div>
@@ -198,29 +306,29 @@ const Dashboard=()=>{
             </div>
             </div>
         <div>
-        <div className="scrolling-wrapper-dash">
+        <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
             <div onClick={()=>{if(!active.Food)
                     setActive({...defaultState,Food:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}></div>Food</div>
+            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
             <div onClick={()=>{if(!active.Laundary)
                     setActive({...defaultState,Laundary:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}></div>laundary</div>
+            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
             <div onClick={()=>{if(!active.Cleaning)
                     setActive({...defaultState,Cleaning:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}></div>Service</div>
+            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
             <div onClick={()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})
-            }} className="icon" style={{margin:"0px 10px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}></div>Service</div>
+            }} className="icon" style={{margin:"0px 10px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
         
         </div> 
         </div>
-            <div className="card dash-banner" style={{marginRight:"5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
+            <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
             
             </div>
 
 
-            {active.Food && <FoodDash/>}
+            {active.Food && <div><FoodDash/><FoodDash/></div>}
 
             {active.Laundary && <LaundaryDash/>}
 

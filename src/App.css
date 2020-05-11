@@ -3,8 +3,11 @@
   bottom: 10px;
 }
 .swiper-container{
-  height: calc(50vw - 10px);
+  /* height: calc(50vw - 10px); */
+  /* padding:0px 5% */
 }
+
+
 .swiper-pagination-bullet{
   border-radius: 50%;
   /* color: #eee; */
@@ -31,9 +34,9 @@
 .swipper-card-3{
   padding:0px 0px 0px 2vw;
 } */
-.swipper-sty{
+/* .swipper-sty{
   margin-top: 20px;
-}
+} */
 
 
 
@@ -205,9 +208,9 @@ background-color: white;
       width:auto;
       height: 22vh;
     }
-    .swiper-container{
+    /* .swiper-container{
       height: calc(50vw + 20px);
-    }
+    } */
     .main-container{
       width:auto;
       margin:20px 5% 0px 5%;
@@ -278,9 +281,9 @@ background-color: white;
         width:auto;
         height: 25vh;
       }
-      .swiper-container {
+      /* .swiper-container {
         height: calc(50vw + 5px);
-    }
+    } */
       .mg-left{
         margin-left: 7%;
       }
@@ -343,12 +346,12 @@ background-color: white;
       
     }
     .dash-profile{
-      height:45px ;
+      height:54px ;
       margin-top: -42px;
       margin-left: -74px;
       /* margin-right: 62px; */
       float:right;
-      width:45px;
+      width:54px;
       background-color:#9BE0B8
   }
   .mg-left{
@@ -370,9 +373,9 @@ background-color: white;
     /* height: 20vh; */
     height: 30vh
   }
-  .swiper-container {
+  /* .swiper-container {
     height: calc(50vw + 5px);
-}
+} */
   
 
   }
@@ -406,12 +409,12 @@ background-color: white;
       
     }
     .dash-profile{
-      height:45px ;
+      height:54px ;
       margin-top: -42px;
       margin-left: -74px;
       /* margin-right: 62px; */
       float:right;
-      width:45px;
+      width:54px;
       background-color:#9BE0B8
   }
 
@@ -423,9 +426,9 @@ background-color: white;
     .nav-p-sty{
       font-size:9px;
   }
-  .swiper-container {
+  /* .swiper-container {
     height: calc(50vw);
-}
+} */
     .dash-banner{
       /* width:calc(100vw - 10px); */
       /* height: 25vh; */
@@ -473,12 +476,12 @@ background-color: white;
     }
   
     .dash-profile{
-      height:40px ;
+      height:54px ;
       margin-top: -36px;
       margin-left: -74px;
       /* margin-right: 62px; */
       float:right;
-      width:40px;
+      width:54px;
       background-color:#9BE0B8
   }
 
