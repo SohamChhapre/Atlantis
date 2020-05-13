@@ -8,7 +8,10 @@ const Login=()=>{
 
 
         <div className="main-container">
-        <div style={{maxWidth:"450px",margin:"45vh auto 0px auto"}}>
+
+        <div style={{height:"35vh",width:"100%"}}>
+        </div>
+        <div style={{maxWidth:"450px",margin:"20px auto 0px auto"}}>
             <form>
             <div class="form-group">
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username" />
