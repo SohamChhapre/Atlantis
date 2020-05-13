@@ -26,7 +26,7 @@ const Login=()=>{
                 color: "white",
                 marginBottom: "2px"}}
                 >Submit</button>
-            <div style={{float:"right",marginRight:"20px",width:"68px",marginTop:"-8px",textAlign:"left",textDecoration:"underline",fontSize:"14px"}}>
+            <div style={{float:"right",marginRight:"20px",width:"76px",marginTop:"-8px",textAlign:"left",textDecoration:"underline",fontSize:"14px"}}>
             Forgot Password ?
             </div>
             </div>
