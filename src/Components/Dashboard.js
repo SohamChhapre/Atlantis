@@ -20,7 +20,7 @@ import ic_electricity from './../Icons/Icons-Dash/img-electricity.png'
 import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
 import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 import {Fooddata} from './CategoryData.js';
-import banner_img from './../Icons/Icons-Dash/img-food-hero900.svg';
+import banner_img from './../Icons/Icons-Dash/img-food-640.png';
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 
@@ -273,6 +273,18 @@ const CleaningDash=()=>{
         </div>
     )
 }
+const OrderNowPopUp=()=>{
+
+
+    return(
+
+        <div>
+
+
+        </div>
+    )
+}
+
 const Dashboard=()=>{
     const params = {
 //     pagination: {

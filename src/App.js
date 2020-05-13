@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import logo from './logo.svg';
 import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
 import './App.css';
+import Login from './Components/Auth/Login.js'
 import Dashboard from './Components/Dashboard.js';
 import Laundary from './Components/Laundary.js';
 import Cards from './Components/Cards.js'
@@ -82,7 +83,10 @@ function App(props) {
   exact path='/'
   render={(props) => <Dashboard {...props}  />}
     />
-  
+    <Route
+  exact path='/login'
+  render={(props) => <Login {...props}  />}
+      />
        <Route
   exact path='/food'
   render={(props) => <Cards {...props}  />}
