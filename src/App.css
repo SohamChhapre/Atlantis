@@ -173,6 +173,16 @@ background-color: white;
   background-size: contain; */
   text-align: center;
 }
+.nav-icon{
+  height:2.0rem;
+}
+.dash-banner{
+  width:90%;
+  height:18vh;
+}
+.icon-container{
+  margin-right:calc((80vw - 248px )/ 3);
+}
 @media screen and (max-width:480px){
 
   .desktop-block{
@@ -202,7 +212,7 @@ background-color: white;
       background-color: white;
     }
     .nav-icon{
-      height:2.4rem;
+      height:1.8rem;
     }
     .dash-banner{
       width:auto;
@@ -279,7 +289,7 @@ background-color: white;
       }
       .dash-banner{
         width:auto;
-        height: 25vh;
+        height: 22vh;
       }
       /* .swiper-container {
         height: calc(50vw + 5px);
@@ -316,7 +326,7 @@ background-color: white;
   }
     .dash-banner{
       width:auto;
-      height: 23vh;
+      height: 20vh;
     }
     .mg-left{
       margin-left: 7%;
@@ -371,7 +381,7 @@ background-color: white;
   .dash-banner{
     width:auto;
     /* height: 20vh; */
-    height: 30vh
+    height: 19vh
   }
   /* .swiper-container {
     height: calc(50vw + 5px);
@@ -432,7 +442,7 @@ background-color: white;
     .dash-banner{
       /* width:calc(100vw - 10px); */
       /* height: 25vh; */
-      height :25vh;
+      height :18vh;
       padding:0px 10px 0px 10px
     }
     .mg-left{
@@ -488,6 +498,49 @@ background-color: white;
   }
   
 } 
+@media all and (max-width:480px){
+  .icon-container{
+    margin-right:calc((90vw - 248px )/ 3);
+  }
+  .scrolling-wrapper-dash {
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+  margin-bottom: 20px;
+  /* padding: 5px 20px; */
+  text-align:center;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  }
+}
+@media all and (max-width:380px){
+  .icon-container{
+    margin-right:12vw;
+  }
+  .scrolling-wrapper-dash {
+    overflow-x: scroll;;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+  margin-bottom: 20px;
+  /* padding: 5px 20px; */
+  text-align:center;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  }
+}
+@media all and (max-width:340px){
+  .icon-container{
+    margin-right:35px;
+  }
+}
+
+@media all and (max-width:330px){
+  .icon-container{
+    margin-right:30px;
+  }
+}
 @media screen and (orientation:landscape) {
   .view-block{
     display: block;

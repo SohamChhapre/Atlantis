@@ -8,7 +8,7 @@ import './Cart.css'
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
-import trash_icon from './../Icons/Icons-Food/garbage.svg';
+import trash_icon from './../Icons/Icons-Food/interface.png';
 import Axios from 'axios';
 import food_svg from './../Icons/Icons-Footer/img-food.svg';
 import laundry_svg from './../Icons/Icons-Footer/img-laundry.svg';
@@ -348,17 +348,7 @@ useEffect(()=>{
 },[])
     return(
         <div>
-<div>
-      
-                    <div style={{width:"85%",marginRight:"0px"}}>
-                    <CartMenu/>
-                    </div>
-                    <div style={{width:"85%",marginRight:"0px"}}>
-                    <CartMenu/>
-                    </div>
-       
-        
-        </div>
+
             <div>
              <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>

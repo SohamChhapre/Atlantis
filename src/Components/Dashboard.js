@@ -19,6 +19,8 @@ import ic_food from './../Icons/Icons-Dash/ic-food-new.png';
 import ic_electricity from './../Icons/Icons-Dash/img-electricity.png'
 import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
 import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
+import {Fooddata} from './CategoryData.js';
+
 const defaultState={
     "Food":false,
     "Laundary":false,
@@ -67,9 +69,9 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"30px",fontSize:"18px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
         >
-        Wash & Fold
+        Wash & Fold 
         {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
         
         </div>
@@ -84,7 +86,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             // width:"37vw",left:"calc(28vw + 30px)"
             }}>
             <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
             <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
             </div>
 
@@ -172,16 +174,18 @@ const FoodDash=()=>{
   spaceBetween: 15,
 //   freeMode: true,
     }
-    return (<div style={{margin:"15px 0px"}}>
+    return (<div style={{margin:"25px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Nasi Gang
-        <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"5%",bottom:"5px"}}>
-        View All >
+       <Link exact to="/food" style={{color:"#63364E"}}>
+        <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"1%",bottom:"5px"}}>
+        View All > 
         </span>
+        </Link>
         </div>
         <div style={{marginLeft:"3%"}}>
         
-              <div className="scrolling-wrapper-dash">
+              <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
                 
                 <div className="icon" style={{width:"%",marginRight:"25px"}}>
                     <SliderCard item={{isfav:true}}/>
@@ -295,31 +299,31 @@ const Dashboard=()=>{
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
-            
             <div className="mt-2 mb-5" style={{marginLeft:"5%"}}> 
-            <div className="text-left dash-text" >
-           <span style={{fontFamily:"Anteb-Medium"}}> Hi</span>, <span style={{fontFamily:"Anteb-Black"}} >Alizabeth</span>
-            </div>
-            <div className="rounded-circle dash-profile" style={{marginRight:"5%"}}  >
-                <div>
+                <div className="text-left dash-text" >
+                        <span style={{fontFamily:"Anteb-Medium"}}> Hi</span>, <span style={{fontFamily:"Anteb-Black"}} >Alizabeth</span>
+                </div>
+                <div className="rounded-circle dash-profile" style={{marginRight:"5%"}}  >
+                    <div>
+                    </div>
                 </div>
             </div>
-            </div>
         <div>
+        
         <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
             <div onClick={()=>{if(!active.Food)
                     setActive({...defaultState,Food:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
             <div onClick={()=>{if(!active.Laundary)
                     setActive({...defaultState,Laundary:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
             <div onClick={()=>{if(!active.Cleaning)
                     setActive({...defaultState,Cleaning:true})
-            }} className="icon" style={{margin:"0px 30px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
             <div onClick={()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})
-            }} className="icon" style={{margin:"0px 10px 0px 0px"}}><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
+            }} className="icon icon-container"><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
         
         </div> 
         </div>

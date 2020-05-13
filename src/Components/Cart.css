@@ -48,7 +48,8 @@ position: absolute;
     float:right;
     width:10vw;
     height:calc(22px + 18vw);
-    background:#ff5050;
+    /* background:#ff5050; */
+    background : #f8f8f8;
     border-radius: 0px 20px 20px 0px;
     /* text-align: center; */
 }
