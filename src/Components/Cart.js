@@ -12,6 +12,9 @@ import trash_icon from './../Icons/Icons-Food/interface.png';
 import Axios from 'axios';
 import food_svg from './../Icons/Icons-Footer/img-food.svg';
 import laundry_svg from './../Icons/Icons-Footer/img-laundry.svg';
+import ic_food from './../Icons/Icons-Dash/ic-food-new.png';
+import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
+import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 
 const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
     const [toggler,setToggler]=useState(true)
@@ -353,7 +356,7 @@ useEffect(()=>{
              <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>
                     <div className="cart-circle rounded-circle">
-                    <img src={food_svg} height="80%" width="80%"/>
+                    <img src={ic_food} height="80%" width="80%"/>
                     </div>
                     <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
                     Food
@@ -373,7 +376,7 @@ useEffect(()=>{
             <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>
                     <div className="cart-circle rounded-circle">
-                   <img src={laundry_svg} height="80%" width="80%"/>
+                   <img src={ic_laundary} height="80%" width="80%"/>
                     </div>
                     <div style={{paddingTop:"9px",fontFamily:"Poppins-SemiBold"}}>
                     Laundary

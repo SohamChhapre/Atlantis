@@ -381,7 +381,9 @@ background-color: white;
   .dash-banner{
     width:auto;
     /* height: 20vh; */
-    height: 19vh
+    height: 19vh;
+    /* background-image: url('./Icons/Icons-Dash/img-food-hero900.svg'); */
+    /* background-repeat: no-repeat; */
   }
   /* .swiper-container {
     height: calc(50vw + 5px);
@@ -443,7 +445,7 @@ background-color: white;
       /* width:calc(100vw - 10px); */
       /* height: 25vh; */
       height :18vh;
-      padding:0px 10px 0px 10px
+      /* padding:0px 10px 0px 10px */
     }
     .mg-left{
       margin-left: 10%;

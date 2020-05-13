@@ -20,6 +20,9 @@ import ic_electricity from './../Icons/Icons-Dash/img-electricity.png'
 import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
 import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 import {Fooddata} from './CategoryData.js';
+import banner_img from './../Icons/Icons-Dash/img-food-hero900.svg';
+import profile_men from './../Icons/Icons-Dash/profile_men.png';
+import logo from './../Icons/Icons-Dash/logo.png';
 
 const defaultState={
     "Food":false,
@@ -300,10 +303,16 @@ const Dashboard=()=>{
             <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
             <div className="mt-2 mb-5" style={{marginLeft:"5%"}}> 
-                <div className="text-left dash-text" >
-                        <span style={{fontFamily:"Anteb-Medium"}}> Hi</span>, <span style={{fontFamily:"Anteb-Black"}} >Alizabeth</span>
+                <div style={{float:"left"}}>
+                    <img src={logo} height="45px" width="45px"/>
                 </div>
+                <div className="text-left dash-text text-center" >
+                       <span style={{fontFamily:"Anteb-Black"}} >Good Evening</span>
+                         <span style={{fontFamily:"Anteb-Medium",width:"5%",opacity:0}}>Heyyyyy</span>
+                </div>
+                
                 <div className="rounded-circle dash-profile" style={{marginRight:"5%"}}  >
+                    <img src={profile_men} height="100%" width="100%"/>
                     <div>
                     </div>
                 </div>
@@ -313,22 +322,22 @@ const Dashboard=()=>{
         <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
             <div onClick={()=>{if(!active.Food)
                     setActive({...defaultState,Food:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
             <div onClick={()=>{if(!active.Laundary)
                     setActive({...defaultState,Laundary:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
             <div onClick={()=>{if(!active.Cleaning)
                     setActive({...defaultState,Cleaning:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
             <div onClick={()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})
-            }} className="icon icon-container"><div style={{backgroundColor:"#E5F5EE",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
+            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
         
         </div> 
         </div>
             <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
-            
+            <img src={banner_img} height="100%" width="100%"/>
             </div>
 
 
