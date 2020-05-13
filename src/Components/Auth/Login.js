@@ -7,7 +7,7 @@ const Login=()=>{
     return (
 
 
-        <div className="main-container">
+        <div className="main-container" style={{overflowY:"scroll",maxHeight:"100vh",minHeight:"530px"}}>
 
         <div style={{height:"35vh",width:"100%"}}>
         </div>

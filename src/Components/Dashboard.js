@@ -62,7 +62,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
 
     return (
         <div style={{margin:"",width:"256px"}}>
-        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
         <img src="https://firebasestorage.googleapis.com/v0/b/rumakita.appspot.com/o/Food-Images%2Fnasi-kebuli-ayam.jpg?alt=media&token=67c3cd2d-ea15-4ff6-baf6-5804e5327a33" height='auto' width="100%"  style={{borderRadius:"5px"}} />
         
