@@ -263,19 +263,11 @@ export const initialdata=[
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
-                    "url":"",
-                    "name":""
-                 },
-                 {
-                    "id":34,
-                    "category":"Ayam",
-                    "items":0,
-                    "isfav":true,
                     "url":"https://firebasestorage.googleapis.com/v0/b/rumakita.appspot.com/o/Food-Images%2Fmenu-ayam-rawon.jpg?alt=media&token=c04d35ae-2855-420b-8919-3d69692a21bb",
                     "name":"Ayam Rawon"
                  },
                  {
-                    "id":35,
+                    "id":34,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -283,7 +275,7 @@ export const initialdata=[
                     "name":"Ayam Penyet"
                  },
                  {
-                    "id":36,
+                    "id":35,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -291,7 +283,7 @@ export const initialdata=[
                     "name":"Ayam Panggang Klaten"
                  },
                  {
-                    "id":37,
+                    "id":36,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -299,7 +291,7 @@ export const initialdata=[
                     "name":"Ayam Lada Hitam"
                  },
                  {
-                    "id":38,
+                    "id":37,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -307,7 +299,7 @@ export const initialdata=[
                     "name":"Ayam Kung Pao"
                  },
                  {
-                    "id":39,
+                    "id":37,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -315,7 +307,7 @@ export const initialdata=[
                     "name":"Ayam-Gulai"
                  },
                  {
-                    "id":40,
+                    "id":39,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -323,7 +315,7 @@ export const initialdata=[
                     "name":"Ayam Goreng Mentega"
                  },
                  {
-                    "id":41,
+                    "id":40,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -331,7 +323,7 @@ export const initialdata=[
                     "name":"Ayam Goreng Lengkuas"
                  },
                  {
-                    "id":42,
+                    "id":41,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -339,7 +331,7 @@ export const initialdata=[
                     "name":"Ayam Goreng Kuning"
                  },
                  {
-                    "id":43,
+                    "id":42,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -347,7 +339,7 @@ export const initialdata=[
                     "name":""
                  },
                  {
-                    "id":44,
+                    "id":43,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -355,7 +347,7 @@ export const initialdata=[
                     "name":"Ayam Geprek"
                  },
                  {
-                    "id":45,
+                    "id":44,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -363,7 +355,7 @@ export const initialdata=[
                     "name":"Ayam Bakar Rendang Kecap"
                  },
                  {
-                    "id":46,
+                    "id":45,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -371,7 +363,7 @@ export const initialdata=[
                     "name":"Ayam Bacem"
                  },
                  {
-                    "id":47,
+                    "id":46,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
@@ -379,7 +371,7 @@ export const initialdata=[
                     "name":"Ayam Asam Padeh"
                  },
                  {
-                    "id":48,
+                    "id":47,
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,

@@ -23,6 +23,7 @@ import {Fooddata} from './CategoryData.js';
 import banner_img from './../Icons/Icons-Dash/img-food-640.png';
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
+import cross_icon from './../Icons/Icons-Dash/signs.png';
 
 const defaultState={
     "Food":false,
@@ -45,6 +46,74 @@ const NavIcon=({img,name,setActive})=>{
         <div className="text-center " style={{paddingTop:"8px"}} onClick={()=>{
             setActive({...defaultState,[name]:true})
         }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
+    )
+}
+const OrderNowPopUp=()=>{
+
+
+    return(
+
+        <div>
+<div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+      </div>
+      <div class="modal-body">
+        <textarea className="form-control" placeholder="Add a Note" rows="4"/>
+        <div style={{margin:"30px 0px"}}>
+            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+      </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        </div>
+    )
+}
+
+const SchedulePopUp=()=>{
+
+
+    return(
+
+        <div>
+<div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+      </div>
+      <div class="modal-body">
+      <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
+      <select  style={{float:"left",width:"40%"}} class="form-control">
+        <option selected>Today</option>
+        <option>Tommorow</option>
+      </select>
+      <select style={{float:"right",width:"40%"}}  class="form-control">
+        <option selected>Time</option>
+        <option>3:00 PM</option>
+      </select>
+      </div>
+      
+        <textarea className="form-control" placeholder="Add a Note" rows="4"/>
+        <div style={{margin:"30px 0px"}}>
+            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+      </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+      
     )
 }
 const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
@@ -102,10 +171,11 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             </div> */}
             
         </div>
-        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Order Now</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Schedule</button>
+        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal">Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal">Schedule</button>
         </div>
-
+        <OrderNowPopUp/>
+        <SchedulePopUp/>
         </div>
         
     )
@@ -273,17 +343,7 @@ const CleaningDash=()=>{
         </div>
     )
 }
-const OrderNowPopUp=()=>{
 
-
-    return(
-
-        <div>
-
-
-        </div>
-    )
-}
 
 const Dashboard=()=>{
     const params = {
@@ -348,8 +408,8 @@ const Dashboard=()=>{
         
         </div> 
         </div>
-            <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'5px'}}>
-            <img src={banner_img} height="100%" width="100%"/>
+            <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+            <img src={banner_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>
             </div>
 
 
