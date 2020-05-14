@@ -172,7 +172,7 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
             </div> */}
             
         </div>
-        <div className="food-menu-btn text-center" style={{opacity:flag?`1`:"0.5"}} ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal" disabled={!flag}>Order Now</button>
+        <div className="food-menu-btn text-center" style={{opacity:flag?`1`:"0.6"}} ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal" disabled={!flag}>Order Now</button>
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" disabled={!flag}>Schedule</button>
         </div>
         <OrderNowPopUp/>
@@ -203,10 +203,8 @@ const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
         </div>
           
         <div style={{
-            // width:"calc(100% - 175px)",
             paddingTop:"10px"}}>
         <div 
-        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
       className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         {item.name}
@@ -285,11 +283,15 @@ const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
                 {FoodCategory[e].slice(0,5).map((k,key)=>(
                     <div className="icon" style={{width:"%",marginRight:"25px"}}>
                     <SliderCard item={k} key={key} setToggler={setToggler} toggler={toggler} IncrementOrder={IncrementOrder} DecrementOrder={DecrementOrder} order={order}/>
+                   
                     </div>
+                    
                 ))
                 }
                 
-                    
+                  <div className="icon" style={{opacity:"0",width:"0px",height:"auto"}}>
+                  sk
+                    </div>  
                      
         
                 </div>
