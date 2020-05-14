@@ -50,37 +50,35 @@ const NavIcon=({img,name,setActive})=>{
         }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
     )
 }
-const OrderNowPopUp=()=>{
-
+const OrderNowPopUp=({item})=>{
 
     return(
 
         <div>
-<div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
-      </div>
-      <div class="modal-body">
-        <textarea className="form-control" placeholder="Add a Note" rows="4"/>
-        <div style={{margin:"30px 0px"}}>
-            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
-      </div>
+            <div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body">
+                    <textarea className="form-control" placeholder="Add a Note" rows="4"/>
+                    <div style={{margin:"30px 0px"}}>
+                        <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+                </div>
 
-      </div>
-      
-    </div>
-  </div>
-</div>
+                </div>
+                
+                </div>
+            </div>
+            </div>
 
         </div>
     )
 }
 
-const SchedulePopUp=()=>{
-
+const SchedulePopUp=({item})=>{
 
     return(
 
@@ -158,25 +156,21 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
             <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
             // width:"37vw",left:"calc(28vw + 30px)"
             }}>
-            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{DecrementOrder(item);setToggler(!toggler)}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementOrder(item);setToggler(!toggler)}}}/>
             <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
             <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementOrder(item);setToggler(!toggler)}}}/>
             </div>
 
         </div>
         </div>
-            {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
-            </div> */}
+            
             
         </div>
         <div className="food-menu-btn text-center" style={{opacity:flag?`1`:"0.6"}} ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal" disabled={!flag}>Order Now</button>
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" disabled={!flag}>Schedule</button>
         </div>
-        <OrderNowPopUp/>
-        <SchedulePopUp/>
+        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
+        <SchedulePopUp item={item} order={order} AddOrder={AddOrder} />
         </div>
         
     )
