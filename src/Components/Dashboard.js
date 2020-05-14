@@ -24,6 +24,8 @@ import banner_img from './../Icons/Icons-Dash/img-food-640.png';
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 import cross_icon from './../Icons/Icons-Dash/signs.png';
+import { AddOrder ,IncrementOrder,DecrementOrder} from "./Redux/index.js";
+import {connect} from 'react-redux';
 
 const defaultState={
     "Food":false,
@@ -133,7 +135,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
         <div style={{margin:"",width:"256px"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
-        <img src="https://firebasestorage.googleapis.com/v0/b/rumakita.appspot.com/o/Food-Images%2Fnasi-kebuli-ayam.jpg?alt=media&token=67c3cd2d-ea15-4ff6-baf6-5804e5327a33" height='auto' width="100%"  style={{borderRadius:"5px"}} />
+        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px"}} />
         
         </div>
         <div style={{
@@ -141,9 +143,10 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{whiteSpace:"normal",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
         >
-        Wash & Fold 
+        {/* Wash & Fold  */}
+        {item.name}
         {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
         
         </div>
@@ -239,17 +242,37 @@ const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
+const mapStateToprops = (state) => {
+  return {
+    order: state.Foodorder.orders,
+    FoodData:state.Foodorder.FoodInitial
+  };
+};
+const mapDispatchToprops = (dispatch) => {
+  return {
+    AddOrder: (item) => dispatch(AddOrder(item)),
+    IncrementOrder:(item)=> dispatch(IncrementOrder(item)),
+    DecrementOrder:(item)=> dispatch(DecrementOrder(item))
+  };
+};
+const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
 
-const FoodDash=()=>{
+    const [FoodCategory,setFoodcategory]=useState({"Bento":[],"Burger":[],"Light Meal":[],"Ayam":[]})
+    useEffect(()=>{
+        setFoodcategory({Bento:FoodData.slice(0,18),Burger:FoodData.slice(18,22),"Light Meal":FoodData.slice(22,27),"Ayam":FoodData.slice(27,)})
+    },[])
+    useEffect(()=>{
+        setFoodcategory({Bento:FoodData.slice(0,18),Burger:FoodData.slice(18,22),"Light Meal":FoodData.slice(22,27),"Ayam":FoodData.slice(27,)})
+    },[FoodData])
+    var category=["Bento","Burger","Light Meal","Ayam"];
+    return (
+    <div>
+    {
+     category.map((e,i)=>(
+          
+    <div style={{margin:"25px 0px"}}>
 
-    const params = {
-   slidesPerView: 'auto',
-  spaceBetween: 15,
-//   freeMode: true,
-    }
-    return (<div style={{margin:"25px 0px"}}>
-
-        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Nasi Gang
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>{e}
        <Link exact to="/food" style={{color:"#63364E"}}>
         <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"1%",bottom:"5px"}}>
         View All > 
@@ -259,25 +282,28 @@ const FoodDash=()=>{
         <div style={{marginLeft:"3%"}}>
         
               <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
+                {FoodCategory[e].slice(0,5).map((k,i)=>(
+                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCard item={k} key={i}/>
+                    </div>
+                ))
+                }
                 
-                <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={{isfav:true}}/>
-                    </div>
-                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={{isfav:true}}/>
-                    </div>
-                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={{isfav:true}}/>
-                    </div>
-                    <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={{isfav:true}}/>
-                    </div>
+                    
                      
         
                 </div>
         </div>
-        </div>)
+        </div>
+         
+     ))
+        }
+
+        </div>
+        )
 }
+
+const FoodDashwithProps = connect(mapStateToprops, mapDispatchToprops)(FoodDash);
 const LaundaryDash=()=>{
 
     const params = {
@@ -413,7 +439,7 @@ const Dashboard=()=>{
             </div>
 
 
-            {active.Food && <div><FoodDash/><FoodDash/></div>}
+            {active.Food && <div><FoodDashwithProps  /></div>}
 
             {active.Laundary && <LaundaryDash/>}
 
@@ -488,4 +514,6 @@ const Dashboard=()=>{
 }
 
 
-export default Dashboard;
+
+export default connect(mapStateToprops, mapDispatchToprops)(Dashboard);
+// export default Dashboard;

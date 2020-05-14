@@ -1,13 +1,11 @@
-import {REMOVE_ORDER} from './OrderTypes.js';
-import {ADD_ORDER,UPDATE_ORDER} from './OrderTypes.js';
-
+import {REMOVE_ORDER,ADD_ORDER,UPDATE_ORDER,INC_INIT_FOOD,DEC_INIT_FOOD} from './OrderTypes.js';
+import {initialdata} from './../../CategoryData.js'
 const initialState={
-    orders:[]
+    orders:[],
+    FoodInitial:initialdata
 }
 
 const OrderReducer=(state=initialState,action)=>{
-    
-    
     switch(action.type){
         case REMOVE_ORDER:{
         console.log(action.payload,"reducer")
@@ -49,7 +47,6 @@ const OrderReducer=(state=initialState,action)=>{
                  var item=action.payload;
                 item.items=1
                 neworder=[...state.orders,item];
-        // console.log(neworder,action.payload)
                 }
             return {
                 ...state,
@@ -64,11 +61,27 @@ const OrderReducer=(state=initialState,action)=>{
                 orders:neworder
             }
         }
-        // {
-            // ...state,
-            // orders:state.orders.filter(e=>e.category!=action.payload.category && e.id!=action.payload.id)
-        
-        // }
+        case INC_INIT_FOOD:{
+            var newFooddata=state.FoodInitial.map((e,i)=>{ if(e.id===action.payload.id){
+                        return {...e,items:e.items+1}
+                        return e;
+
+            }});
+            return {
+                ...state,
+                FoodInitial:newFooddata
+            }
+        }
+        case DEC_INIT_FOOD:{
+            var newFooddata=state.FoodInitial.map((e,i)=>{ if(e.id===action.payload.id){
+                        return {...e,items:e.items-1}
+                        return e;
+            }});
+            return {
+                ...state,
+                FoodInitial:newFooddata
+            }
+        }
         default:return state
     }
 }
