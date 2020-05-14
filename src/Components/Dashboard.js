@@ -199,7 +199,7 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</button>
         </div>
         <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
-        <SchedulePopUp item={item} order={order} AddOrder={AddOrder} />
+       {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
         </div>
         
     )
@@ -457,7 +457,7 @@ const Dashboard=()=>{
             }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
             <div onClick={()=>{if(!active.Cleaning)
                     setActive({...defaultState,Cleaning:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
+            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
             <div onClick={()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})

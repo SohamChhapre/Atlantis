@@ -247,11 +247,11 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
           >
             
             {item.name}
-            <img
+            {/* <img
               src={item.isfav ? like_icon : heart_svg_icon}
               className="food-heart"
               style={{ float: "right", marginRight: "16px", marginTop: "10px" }}
-            />
+            /> */}
           </div>
           <div
             className="card-content"
@@ -387,7 +387,8 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
         </button>
       </div>
        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
-        <SchedulePopUp item={item} order={order} AddOrder={AddOrder} />
+      {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
+      
     </div>
   );
 };
