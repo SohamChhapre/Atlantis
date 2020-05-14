@@ -22,8 +22,8 @@ import default_food_delivery from './Icons/Icons-Navbar/Order - Inactive.png';
 import {Provider} from 'react-redux';
 import store from './Components/Redux/Store.js';
 import Cart from './Components/Cart.js';
-import Casual from './Components/Laundary/Casual.js';
-import Formal from './Components/Laundary/Formal.js';
+// import Casual from './Components/Laundary/Casual.js';
+// import Formal from './Components/Laundary/Formal.js';
 const Initialdata=[{"category":"category1" ,id:"001"},{"category":"category1" ,id:"001"},{"category":"category1" ,id:"001"},
 {"category":"category2" ,id:"004"},{"category":"category2" ,id:"005"}]
 
@@ -103,14 +103,14 @@ function App(props) {
   exact path='/laundary'
   render={(props) => <Laundary {...props}  />}
     />
-    <Route
+    {/* <Route
   exact path='/casual'
   render={(props) => <Casual {...props}  />}
-    />
-    <Route
+    /> */}
+    {/* <Route
   exact path='/formal'
   render={(props) => <Formal {...props}  />}
-    />
+    /> */}
     <Route
   exact path='/service'
   render={(props) => <RoomService {...props}  />}

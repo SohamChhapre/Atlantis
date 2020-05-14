@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {connect} from 'react-redux';
 // import {RemoveOrder} from './Redux/index.js';
-import {AddOrder,RemoveOrder,UpdateOrder,UpdateLaundary} from './Redux/index.js';
+import {AddOrder,RemoveOrder,UpdateOrder} from './Redux/index.js';
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
@@ -232,15 +232,13 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
 const mapStateToprops=state=>{
     return {
         Foodorder:state.Foodorder.orders,
-        Laundaryorder:state.Laundaryorder.laundaryOrder
     }
 }
 const mapDispatchToprops=dispatch=>{
     return {
             AddOrder:(item)=> dispatch(AddOrder(item)),
             RemoveOrder:(item)=> dispatch(RemoveOrder(item)),
-            UpdateOrder:(item)=> dispatch(UpdateOrder(item)),
-            UpdateLaundary:(item)=>dispatch(UpdateLaundary(item))
+            UpdateOrder:(item)=> dispatch(UpdateOrder(item))
 
     }
 }

@@ -8,6 +8,7 @@ margin-bottom: 30px;
 padding: 5px 20px;
 -ms-overflow-style: none;  /* Internet Explorer 10+ */
 scrollbar-width: none;
+text-align:center
   }
   .scrolling-wrapper::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */

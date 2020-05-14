@@ -1,43 +1,43 @@
-import {ADD_LAUNDARY,UPDATE_LAUNDARY,REMOVE_LAUNDARY} from './LaundaryTypes.js'
+import {INC_LAUNDRY,DEC_LAUNDRY} from './LaundaryTypes.js'
 
 
 const initialState={
-    laundaryOrder:[],
-    templaundaryOrder:[]
+    LaundryInit:[{id:1,name:"Wash & Fold",items:0,category:"Casual"},{id:2,name:"Dry & Fold",items:0,category:"Casual"},{id:3,name:"Wash & Fold",items:0,category:"Formal"},{id:4,name:"Dry & Fold",items:0,category:"Formal"}]
 }
 
 const LaundaryReducer=(state=initialState,action)=>{
 
     switch(action.type){
-        case ADD_LAUNDARY:{
-            console.log(action.payload)
-            return {
-                ...state,
-                templaundaryOrder:[...state.templaundaryOrder,action.payload]
-            }
-        }
-        case REMOVE_LAUNDARY:{
-            if(action.payload.id==="all")
-                return {
-                    ...state,
-                    templaundaryOrder:[]
+        case INC_LAUNDRY:{
+            var newLaundry=state.LaundryInit;
+            for(let i=0;i<newLaundry.length;i++){
+                if(newLaundry[i].id===action.payload.id)
+                {
+                    newLaundry[i].items=newLaundry[i].items+1
+                    break
                 }
+            }
             return {
                 ...state,
-                templaundaryOrder:state.templaundaryOrder.filter((e)=>(e.id!==action.payload.id))
+                LaundryInit:newLaundry
+                            }
+        }
+        case DEC_LAUNDRY:{
+            var newLaundry=state.LaundryInit;
+            for(let i=0;i<newLaundry.length;i++){
+                if(newLaundry[i].id===action.payload.id)
+                {
+                    newLaundry[i].items=newLaundry[i].items+1
+                    break
+                }
+            }
+            
+            return {
+                ...state,
+                LaundryInit:newLaundry
             }
         }
-        case UPDATE_LAUNDARY:{
-            if(action.payload.id=="all")
-            return {
-                ...state,
-                laundaryOrder:[]
-            }
-            return {
-                ...state,
-                laundaryOrder:state.templaundaryOrder
-            }
-        }
+        
         default: return state
     }
 }

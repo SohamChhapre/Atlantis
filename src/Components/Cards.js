@@ -346,12 +346,12 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
         
       </div>
       <div className="food-menu-btn text-center" style={{}}>
-        <button
+        <div
           className="btn btn-success"
           style={{
             fontSize: "11px",
             borderRadius: "4px",
-            padding: "4px 24px 4px 24px",
+            padding: "6px 13px",
             fontFamily: "Poppins-Medium",
             color: "white",
             marginRight: "50px",
@@ -364,17 +364,17 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
         }}
         >
           Order Now
-        </button>
-        <button
+        </div>
+        <div
           className="btn "
           style={{
             borderRadius: "4px",
             fontSize: "11px",
-            padding: "4px 24px 4px 24px",
+            padding: "6px 16px ",
             fontFamily: "Poppins-Medium",
-            color: "#F49901",
+            color: "#63364E",
             background: "white",
-            border: "1px solid #F49901",
+            border: "1px solid #63364E",
           }}
         data-toggle="modal"
         data-target={flag?"#ScheduleModal":""}       
@@ -384,7 +384,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
         }}
         >
           Schedule
-        </button>
+        </div>
       </div>
        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
       {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}

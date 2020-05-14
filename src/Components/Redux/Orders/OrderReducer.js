@@ -3,6 +3,7 @@ import {initialdata} from './../../CategoryData.js'
 const initialState={
     orders:[],
     FoodInitial:initialdata
+
 }
 
 const OrderReducer=(state=initialState,action)=>{

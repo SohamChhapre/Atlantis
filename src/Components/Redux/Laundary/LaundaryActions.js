@@ -1,20 +1,15 @@
-import {ADD_LAUNDARY,REMOVE_LAUNDARY,UPDATE_LAUNDARY} from './LaundaryTypes.js';
+import {DEC_LAUNDRY,INC_LAUNDRY} from './LaundaryTypes.js';
 
-export const RemoveLaundary = (item={name:"",id:""})=>{
+export const DecrementLaundry = (item={name:"",id:""})=>{
     return {
-        type:REMOVE_LAUNDARY,
+        type:DEC_LAUNDRY,
         payload:item
     }
 }
-export const AddLaundary = (item={name:"",id:""})=>{
+export const IncrementLaundry = (item={name:"",id:""})=>{
     return {
-        type:ADD_LAUNDARY,
+        type:INC_LAUNDRY,
         payload:item
     }
 }
-export const UpdateLaundary=(item={name:"",id:""})=>{
-    return {
-        type:UPDATE_LAUNDARY,
-        payload:item
-    }
-}
+

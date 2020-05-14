@@ -544,8 +544,8 @@ const mapDispatchToprops=dispatch=>{
     return {
             AddOrder:(item)=> dispatch(AddOrder(item)),
             RemoveOrder:(item)=> dispatch(RemoveOrder(item)),
-            UpdateOrder:(item)=> dispatch(UpdateOrder(item)),
-            UpdateLaundary:(item)=>dispatch(UpdateLaundary(item))
+            UpdateOrder:(item)=> dispatch(UpdateOrder(item))
+            
 
     }
 }
