@@ -120,7 +120,7 @@ const OrderNowPopUp=({item})=>{
                     <textarea className="form-control" placeholder="Add a Note" rows="4"/>
                     <div style={{margin:"30px 0px"}}>
                         <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
                 </div>
 
                 </div>
@@ -167,7 +167,7 @@ const SchedulePopUp=({item})=>{
         <textarea className="form-control" placeholder="Add a Note" rows="4" />
         <div style={{margin:"30px 0px"}}>
             <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
       </div>
 
       </div>
@@ -330,7 +330,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
             </div>
           </div>
         </div>
-             {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
+             {err && <small  style={{color:"red",position:"absolute",bottom:"2px",width:"44vw",textAlign:"center"}}>{err}</small>}
         
       </div>
       <div className="food-menu-btn text-center" style={{}}>
@@ -448,18 +448,13 @@ const SliderCard = ({ item, AddOrder, RemoveOrder, order }) => {
           >
             <span style={{ fontFamily: "Poppins-Medium" }}> Fish </span>{" "}
             <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-              {" "}
-              |{" "}
             </span>{" "}
             <span style={{ fontFamily: "Poppins-Medium" }}> prawns </span>{" "}
             <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-              {" "}
-              |{" "}
             </span>{" "}
             <span style={{ fontFamily: "Poppins-Medium" }}>
-              {" "}
-              Tamatoes{" "}
-            </span>{" "}
+              Tamatoes
+            </span>
             <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
               {" "}
               |{" "}
