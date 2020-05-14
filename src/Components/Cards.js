@@ -12,9 +12,11 @@ import heart_icon_2 from "./../Icons/Icons-Food/heart_52px.png";
 import cart_icon from "./../Icons/Icons-Footer/green_shopping_cart.png";
 import like_icon from "./../Icons/Icons-Food/like.svg";
 import heart_svg_icon from "./../Icons/Icons-Food/heart.svg";
+import cross_icon from './../Icons/Icons-Dash/signs.png';
+
 import "./Cards.css";
 import { useSwipeable, Swipeable } from "react-swipeable";
-import { AddOrder, RemoveOrder } from "./Redux/index.js";
+import { AddOrder, RemoveOrder,IncrementOrder,DecrementOrder } from "./Redux/index.js";
 import { connect } from "react-redux";
 import { initialdata } from "./CategoryData.js";
 import "./Cards.css";
@@ -103,19 +105,95 @@ const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
   );
 };
 
+const OrderNowPopUp=({item})=>{
 
-const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
+    return(
+
+        <div>
+            <div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body">
+                    <textarea className="form-control" placeholder="Add a Note" rows="4"/>
+                    <div style={{margin:"30px 0px"}}>
+                        <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+                </div>
+
+                </div>
+                
+                </div>
+            </div>
+            </div>
+
+        </div>
+    )
+}
+
+const SchedulePopUp=({item})=>{
+    const [neworder,setNeworder]=useState({...item})
+
+    useEffect(()=>{
+            setNeworder({...item,note:""})
+    },[])
+
+    useEffect(()=>{
+
+    },[neworder])
+    return(
+
+        <div>
+<div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+      </div>
+      <div class="modal-body">
+      <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
+      <select  style={{float:"left",width:"40%"}} class="form-control">
+        <option selected>Today</option>
+        <option>Tommorow</option>
+      </select>
+      <select style={{float:"right",width:"40%"}}  class="form-control">
+        <option selected>Time</option>
+        <option>3:00 PM</option>
+      </select>
+      </div>
+      
+        <textarea className="form-control" placeholder="Add a Note" rows="4" />
+        <div style={{margin:"30px 0px"}}>
+            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
+      </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+      
+    )
+}
+const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder }) => {
   const [toggler, setToggler] = useState(true);
+  const [err,setErr]=useState("")
+  useEffect(()=>{
+      setErr("")
+  },[])
   useEffect(() => {
     console.log("hello");
+    if(item.items>0)
+    setErr("")
   }, [toggler]);
-  var flag = 0;
-  console.log(item);
-  for (var i = 0; i < order.length; i++) {
-    console.log(i);
-    if (order[i].id === item.id && order[i].category === item.category)
-      flag = order[i].items;
-  }
+  useEffect(()=>{
+
+  },[err])
+  var flag = item.items
 
   return (
     <div style={{ margin: "10px", width: "calc(100% - 28px)" }}>
@@ -210,8 +288,10 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
                   float: "left",
                 }}
                 onClick={() => {
-                  RemoveOrder(item);
+                  if(flag>0){
+                  DecrementOrder(item);
                   setToggler(!toggler);
+                  }
                 }}
               />
               <span
@@ -242,7 +322,7 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
                 }}
                 onClick={() => {
                   if (flag <= 2) {
-                    AddOrder(item);
+                    IncrementOrder(item);
                     setToggler(!toggler);
                   }
                 }}
@@ -250,11 +330,8 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             </div>
           </div>
         </div>
-        {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
-            </div> */}
+             {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
+        
       </div>
       <div className="food-menu-btn text-center" style={{}}>
         <button
@@ -267,6 +344,12 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             color: "white",
             marginRight: "50px",
           }}
+          data-toggle="modal"
+        data-target={flag?"#OrderModal":""}       
+        onClick={()=>{
+          if(flag===0)
+          setErr("Select Quantity")
+        }}
         >
           Order Now
         </button>
@@ -281,10 +364,18 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             background: "white",
             border: "1px solid #F49901",
           }}
+        data-toggle="modal"
+        data-target={flag?"#ScheduleModal":""}       
+        onClick={()=>{
+          if(flag===0)
+          setErr("Select Quantity")
+        }}
         >
           Schedule
         </button>
       </div>
+       <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
+        <SchedulePopUp item={item} order={order} AddOrder={AddOrder} />
     </div>
   );
 };
@@ -475,16 +566,8 @@ const SliderCard = ({ item, AddOrder, RemoveOrder, order }) => {
     </div>
   );
 };
-const defaultswipe = {
-  left: false,
-  right: false,
-};
-const params = {
-  slidesPerView: 1.1,
-  spaceBetween: 0,
-  freeMode: true,
-};
-const Cards = ({ setOrders, order, AddOrder, RemoveOrder ,location}) => {
+
+const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOrder,location}) => {
   const [swipe, setSwipe] = useState({ left: true, right: false });
   const [food, setFood] = useState(true);
   const [foodcategory, setFoodcategory] = useState(Food_category_data);
@@ -588,37 +671,7 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder ,location}) => {
               swipe={swipe}
               food={food}
             />
-            {/* <Slide left>
-        <div>
-        <div {...handlers} class="scrolling-wrapper">
-      
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
-
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
-            
-            
-            </div>
-            </div>
-        </Slide> */}
-            {/* <Slide right when={swipe.right} >
-        <div>
-        <div {...handlers} class="scrolling-wrapper">
-      
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
-            <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
-
-            <div class="card" style={{width:"28vw",border:"None"}}><p style={{marginRight:"5px",color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" text-right food-select-unactive" > {foodCat[2]}</p></div>
-            
-            
-            </div>
-            </div>
-        </Slide> */}
-            {/* <div className="main-carousel" data-flickity='{ "freeScroll": true,
-"contain": true,
-"prevNextButtons": false,
-"pageDots": false 
- }'> */}
+       
 
            
             <div className="flex-container my-0">
@@ -629,7 +682,9 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder ,location}) => {
                       item={e}
                       AddOrder={AddOrder}
                       key={i}
-                      RemoveOrder={RemoveOrder}
+                      DecrementOrder={DecrementOrder}
+                      IncrementOrder={IncrementOrder}
+                      FoodData={FoodData}
                       order={order}
                     />
                   )
@@ -647,51 +702,19 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder ,location}) => {
   );
 };
 
+
 const mapStateToprops = (state) => {
   return {
     order: state.Foodorder.orders,
+    FoodData:state.Foodorder.FoodInitial
   };
 };
 const mapDispatchToprops = (dispatch) => {
   return {
-    RemoveOrder: (item) => dispatch(RemoveOrder(item)),
     AddOrder: (item) => dispatch(AddOrder(item)),
+    IncrementOrder:(item)=> dispatch(IncrementOrder(item)),
+    DecrementOrder:(item)=> dispatch(DecrementOrder(item))
   };
 };
-
-// export default Orders;
 export default connect(mapStateToprops, mapDispatchToprops)(Cards);
-// export default Cards;
-// export default Cards2;
 
-// <div {...handlers} style={{display:swipe.right?'none':'block'}}>
-//          <div className="flex-container" >
-
-//             <div className="food-icon-card" >
-//             2
-
-//             </div>
-//             {/* <div className="food-icon-card mg-left" >
-//             </div> */}
-//             </div>
-//             <div></div>
-//         <div style={{backgroundColor:"white",marginBottom :"10px",padding:"0px 8px 12px 8px",borderRadius:"10px",marginRight:"4%"}}>
-
-//         <p style={{margin:"20px 0px 0px 0px"}} className="mt-4"> Category-1</p>
-//         <div className="flex-container my-0" >
-
-//             <MenuCard/>
-//             <MenuCard/>
-//         </div>
-//         <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p>
-//             <div className="flex-container my-0" >
-//            <MenuCard/>
-//            <MenuCard/>
-//            <MenuCard/>
-//            <MenuCard/>
-//            <MenuCard/>
-
-//         </div>
-//         </div>
-//         <div style={{backgroundColor:"white",width:"20px",float:"right"}}></div>
-//         </div>

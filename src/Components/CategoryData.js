@@ -335,8 +335,8 @@ export const initialdata=[
                     "category":"Ayam",
                     "items":0,
                     "isfav":true,
-                    "url":"",
-                    "name":""
+                    "url":"https://firebasestorage.googleapis.com/v0/b/rumakita.appspot.com/o/Food-Images%2Fmenu-ayam-bumbu-rujak.jpg?alt=media&token=47cb0d00-c7ee-49c7-8cf5-d5a35a60a381",
+                    "name":"Ayam Bumbu Rujak"
                  },
                  {
                     "id":43,
