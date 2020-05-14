@@ -67,14 +67,12 @@ const OrderNowPopUp=({item})=>{
                         <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
                     <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
                 </div>
-
+                </div>                
                 </div>
-                
-                </div>
+               </div>
             </div>
-            </div>
-
         </div>
+
     )
 }
 
@@ -88,38 +86,58 @@ const SchedulePopUp=({item})=>{
     useEffect(()=>{
 
     },[neworder])
+    var d = new Date().toISOString();
+    var k=new Date(d).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+
+    var Time=[];
+    var m=new Date(k)
+    m.setMinutes(0)
+    for(let i=0;i<24;i++){
+        
+        m.setMinutes(m.getMinutes()+30*i);
+        var mn= new Date(m)
+        var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
+        Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
+    }
+
     return(
 
         <div>
-<div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
-      </div>
-      <div class="modal-body">
-      <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
-      <select  style={{float:"left",width:"40%"}} class="form-control">
-        <option selected>Today</option>
-        <option>Tommorow</option>
-      </select>
-      <select style={{float:"right",width:"40%"}}  class="form-control">
-        <option selected>Time</option>
-        <option>3:00 PM</option>
-      </select>
-      </div>
-      
-        <textarea className="form-control" placeholder="Add a Note" rows="4" />
-        <div style={{margin:"30px 0px"}}>
-            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
-      </div>
+            <div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body">
+                <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
+                <select  style={{float:"left",width:"40%"}} class="form-control" onChange={(e)=>{
+                    
+                    setNeworder({...neworder,day:e.target.value})
+                    console.log(neworder)
+                }}>
+                    <option selected>Today</option>
+                    <option>Tommorow</option>
+                </select>
+                <select style={{float:"right",width:"40%"}}  class="form-control" onChange={(e)=>{
+                    setNeworder({...neworder,time:e.target.value})
+                    console.log(neworder)
+                }}>
+                    {Time.map((e,i)=>(<option >{e}</option>)) }
+                </select>
+                </div>
+                
+                    <textarea className="form-control" placeholder="Add a Note" rows="4" />
+                    <div style={{margin:"30px 0px"}}>
+                        <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
+                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
+                </div>
 
-      </div>
-      
-    </div>
-  </div>
-</div>
+                </div>
+                
+                </div>
+            </div>
+            </div>
 </div>
       
     )
