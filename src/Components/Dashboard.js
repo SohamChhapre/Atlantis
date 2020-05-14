@@ -79,7 +79,15 @@ const OrderNowPopUp=({item})=>{
 }
 
 const SchedulePopUp=({item})=>{
+    const [neworder,setNeworder]=useState({...item})
 
+    useEffect(()=>{
+            setNeworder({...item,note:""})
+    },[])
+
+    useEffect(()=>{
+
+    },[neworder])
     return(
 
         <div>
@@ -101,7 +109,7 @@ const SchedulePopUp=({item})=>{
       </select>
       </div>
       
-        <textarea className="form-control" placeholder="Add a Note" rows="4"/>
+        <textarea className="form-control" placeholder="Add a Note" rows="4" />
         <div style={{margin:"30px 0px"}}>
             <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}}>Cancel</button>
@@ -117,13 +125,16 @@ const SchedulePopUp=({item})=>{
     )
 }
 const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})=>{
-    // const [toggler,setToggler]=useState(true)
+    const [err,setErr]=useState("")
     
     useEffect(()=>{
-    
-
+    if(item.items>0)
+        setErr("")
         // console.log("hello")
     },[toggler])
+    useEffect(()=>{
+
+    },[err])
         var flag=item.items;
     
 
@@ -160,14 +171,14 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
             <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
             <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementOrder(item);setToggler(!toggler)}}}/>
             </div>
-
+               
         </div>
         </div>
+             {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
             
-            
         </div>
-        <div className="food-menu-btn text-center" style={{opacity:flag?`1`:"0.6"}} ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal" disabled={!flag}>Order Now</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" disabled={!flag}>Schedule</button>
+        <div className="food-menu-btn text-center" ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal":""} onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</button>
         </div>
         <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
         <SchedulePopUp item={item} order={order} AddOrder={AddOrder} />
