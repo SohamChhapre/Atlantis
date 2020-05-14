@@ -276,7 +276,13 @@ const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
     <div style={{margin:"25px 0px"}} key={i}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>{e}
-       <Link exact to="/food" style={{color:"#63364E"}}>
+       <Link exact to={{
+        pathname: '/food',
+        state: {
+            fromdash: e
+        }
+        }}
+    style={{color:"#63364E"}}>
         <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"1%",bottom:"5px"}}>
         View All > 
         </span>

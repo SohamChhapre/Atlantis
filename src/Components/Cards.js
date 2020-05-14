@@ -23,9 +23,10 @@ import LightSpeed from "react-reveal/LightSpeed";
 
 
 const Food_category_data = {
-  Popular: false,
-  Balanced: false,
-  Salad: false,
+  "Bento": false,
+  "Burger": false,
+  "Light Meal": false,
+  "Ayam": false,
 };
 const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
   const [toggler, setToggler] = useState({});
@@ -43,42 +44,53 @@ const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
         <div class="scrolling-wrapper">
           <span
             className={`food-select-unactive ${
-              foodcategory.Popular ? "category-btn-active" : "category-btn"
+              foodcategory.Bento ? "category-btn-active" : "category-btn"
             } `}
             onClick={() => {
-              if (!foodcategory["Popular"])
-                setFoodcategory({ ...Food_category_data, Popular: true });
+              if (!foodcategory["Bento"])
+                setFoodcategory({ ...Food_category_data, Bento: true });
             }}
           >
-            Popular
+            Bento
           </span>
 
           <span
             className={`food-select-unactive ${
-              foodcategory.Balanced ? "category-btn-active" : "category-btn"
+              foodcategory.Burger ? "category-btn-active" : "category-btn"
             } `}
             style={{ marginLeft: "20px" }}
             onClick={() => {
-              if (!foodcategory["Balanced"])
-                setFoodcategory({ ...Food_category_data, Balanced: true });
+              if (!foodcategory["Burger"])
+                setFoodcategory({ ...Food_category_data, Burger: true });
             }}
           >
-            Balanced
+            Burger
           </span>
 
           <span
             className={`food-select-unactive ${
-              foodcategory.Salad ? "category-btn-active" : "category-btn"
+              foodcategory["Light Meal"] ? "category-btn-active" : "category-btn"
             } `}
-            style={{ marginRight: "25px", marginLeft: "20px" }}
+            style={{ marginLeft: "20px" }}
             onClick={() => {
-              if (!foodcategory["Salad"])
-                setFoodcategory({ ...Food_category_data, Salad: true });
+              if (!foodcategory["Light Meal"])
+                setFoodcategory({ ...Food_category_data, "Light Meal": true });
             }}
           >
-            Salad
+            Light Meal
           </span>
-
+          <span
+            className={`food-select-unactive ${
+              foodcategory["Ayam"] ? "category-btn-active" : "category-btn"
+            } `}
+            style={{ marginRight: "20px", marginLeft: "20px" }}
+            onClick={() => {
+              if (!foodcategory["Ayam"])
+                setFoodcategory({ ...Food_category_data, "Ayam": true });
+            }}
+          >
+            Ayam
+          </span>
           {/* <div class="card" style={{width:"28vw",border:"None"}}><p style={{color:"#989898",fontFamily:"Poppins-SemiBold"}} className=" food-select-unactive" > {foodCat[1]}</p></div>
             <div class="card" style={{width:"44vw",border:"None"}}><p style={{color:"#525252",fontFamily:"Poppins-SemiBold"}} className=" text-center food-popular-text " > {foodCat[0]}</p></div>
 
@@ -122,11 +134,11 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             float: "left",
             margin: "11px 20px 11px 11px",
             backgroundColor: "#e5f5ee",
-            width: "36vw",
+            width: "28vw",
             height: "36vw",
           }}
         >
-          {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+          <img src={item.url} height='auto' width="100%"   />
         </div>
         <div
           style={{
@@ -140,10 +152,11 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             style={{
               fontFamily: "Poppins-SemiBold",
               color: "#00A852",
-              lineHeight: "30px",
+              lineHeight: "22px",
             }}
           >
-            Nasi Goreng
+            
+            {item.name}
             <img
               src={item.isfav ? like_icon : heart_svg_icon}
               className="food-heart"
@@ -179,13 +192,11 @@ const MenuCard = ({ item, AddOrder, RemoveOrder, order }) => {
             </span>{" "}
             <span style={{ fontFamily: "Poppins-Medium" }}>Rice</span>{" "}
             <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-              {" "}
-              |{" "}
             </span>{" "}
             <span style={{ fontFamily: "Poppins-Medium" }}> potatoes </span>
           </div>
           <div className="text-center">
-            <div className="food-menu-middle" style={{ background: "#F5FBF8" }}>
+            <div className="food-menu-middle" style={{ background: "#F5FBF8" ,left:"calc(28vw + 30px)"}}>
               <img
                 className={`${flag === 0 ? "minus-plus-unactive" : ""}`}
                 src={minus_icon}
@@ -473,25 +484,39 @@ const params = {
   spaceBetween: 0,
   freeMode: true,
 };
-const Cards = ({ setOrders, order, AddOrder, RemoveOrder }) => {
+const Cards = ({ setOrders, order, AddOrder, RemoveOrder ,location}) => {
   const [swipe, setSwipe] = useState({ left: true, right: false });
   const [food, setFood] = useState(true);
-  const [foodCat, setFoodCat] = useState(["Popular", "Balanced", "Salad"]);
   const [foodcategory, setFoodcategory] = useState(Food_category_data);
   const handlers = useSwipeable({
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
   useEffect(() => {
-    setSwipe({ left: false, right: true });
-    setFoodcategory({ Food_category_data, Popular: true });
+    if(location.state && location.state.fromdash){
+    var cat=location.state.fromdash
+    setFoodcategory({ ...Food_category_data,[cat]:true});
+    }
+    else
+    setFoodcategory({...Food_category_data,Bento:true})
   }, []);
   useEffect(() => {
     console.log("UseEffect");
     setTimeout(() => {
       console.log("sds");
     }, 100);
-  }, [swipe, foodcategory]);
+  }, [ foodcategory]);
+
+   var category;
+   if(foodcategory["Bento"])
+   category="Bento"
+   else if(foodcategory["Burger"])
+   category="Burger"
+   else if (foodcategory["Light Meal"])
+   category="Light Meal"
+   else
+   category="Ayam"
+
 
   return (
     <div>
@@ -547,18 +572,6 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder }) => {
         </div>
 
         <div>
-          {/* <div className="flex-container" >
-         
-            <div className="food-icon-card" >
-            
-            
-            </div>
-                        <div className="food-icon-card mg-left" >
-            
-            
-            </div>
-           
-            </div> */}
           <div
             style={{
               marginBottom: "10px",
@@ -607,31 +620,11 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder }) => {
 "pageDots": false 
  }'> */}
 
-            <Swiper {...params}>
-              <div style={{ width: "89%", marginRight: "0px" }}>
-                <SliderCard item={{ isfav: true }} />
-              </div>
-              <div style={{ width: "89%", marginRight: "0px" }}>
-                <SliderCard item={{ isfav: true }} />
-              </div>
-              <div style={{ width: "89%", marginRight: "0px" }}>
-                <SliderCard item={{ isfav: true }} />
-              </div>
-              <div style={{ width: "89%", marginRight: "0px" }}>
-                <SliderCard item={{ isfav: true }} />
-              </div>
-              <div>
-                <div style={{ width: "", marginRight: "10px" }}>
-                  <SliderCard item={{ isfav: true }} />
-                </div>
-              </div>
-
-              {/* </div> */}
-            </Swiper>
+           
             <div className="flex-container my-0">
               {initialdata.map((e, i) => {
                 return (
-                  e.category === "Bento" && (
+                  e.category === category  && (
                     <MenuCard
                       item={e}
                       AddOrder={AddOrder}
@@ -646,21 +639,7 @@ const Cards = ({ setOrders, order, AddOrder, RemoveOrder }) => {
               {/* <MenuCard/> */}
             </div>
             {/* <p style={{margin:"20px 0px 0px 0px"}} className="mt-5"> Category-2</p> */}
-            <div className="flex-container my-0">
-              {initialdata.map((e, i) => {
-                return (
-                  e.category === "cat2" && (
-                    <MenuCard
-                      item={e}
-                      AddOrder={AddOrder}
-                      key={i}
-                      order={order}
-                      RemoveOrder={RemoveOrder}
-                    />
-                  )
-                );
-              })}
-            </div>
+           
           </div>
         </div>
       </div>
