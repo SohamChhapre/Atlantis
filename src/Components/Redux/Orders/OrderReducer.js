@@ -62,21 +62,30 @@ const OrderReducer=(state=initialState,action)=>{
             }
         }
         case INC_INIT_FOOD:{
-            var newFooddata=state.FoodInitial.map((e,i)=>{ if(e.id===action.payload.id){
-                        return {...e,items:e.items+1}
-                        return e;
+            var newFooddata=state.FoodInitial
+            for (let i=0;i<newFooddata.length;i++){
+                if(newFooddata[i].id==action.payload.id)
+                    {
+                        newFooddata[i].items=newFooddata[i].items+1;
+                        break
+                    }
+            }
+            console.log(newFooddata,action.payload)
 
-            }});
             return {
                 ...state,
                 FoodInitial:newFooddata
             }
         }
         case DEC_INIT_FOOD:{
-            var newFooddata=state.FoodInitial.map((e,i)=>{ if(e.id===action.payload.id){
-                        return {...e,items:e.items-1}
-                        return e;
-            }});
+            var newFooddata=state.FoodInitial
+            for (let i=0;i<newFooddata.length;i++){
+                if(newFooddata[i].id==action.payload.id)
+                    {
+                        newFooddata[i].items=newFooddata[i].items-1;
+                        break
+                    }
+            }
             return {
                 ...state,
                 FoodInitial:newFooddata

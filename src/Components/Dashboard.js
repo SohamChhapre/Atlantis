@@ -118,18 +118,16 @@ const SchedulePopUp=()=>{
       
     )
 }
-const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
-    const [toggler,setToggler]=useState(true)
+const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})=>{
+    // const [toggler,setToggler]=useState(true)
+    
     useEffect(()=>{
-        console.log("hello")
+    
+
+        // console.log("hello")
     },[toggler])
-    var flag=0;
-    // console.log(item);
-    // for(var i=0;i<order.length;i++){
-    //         console.log(i,)
-    //     if(order[i].id===item.id && order[i].category===item.category )
-    //             flag=order[i].items;
-    // }
+        var flag=item.items;
+    
 
     return (
         <div style={{margin:"",width:"256px"}}>
@@ -146,7 +144,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
       className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
         >
         {/* Wash & Fold  */}
-        {item.name}
+        {item && item.name}
         {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
         
         </div>
@@ -160,9 +158,9 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
             // width:"37vw",left:"calc(28vw + 30px)"
             }}>
-            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{DecrementOrder(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
-            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementOrder(item);setToggler(!toggler)}}}/>
             </div>
 
         </div>
@@ -174,8 +172,8 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
             </div> */}
             
         </div>
-        <div className="food-menu-btn text-center" style={{}}><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal">Order Now</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal">Schedule</button>
+        <div className="food-menu-btn text-center" style={{opacity:flag?`1`:"0.5"}} ><button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target="#OrderModal" disabled={!flag}>Order Now</button>
+        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" disabled={!flag}>Schedule</button>
         </div>
         <OrderNowPopUp/>
         <SchedulePopUp/>
@@ -185,10 +183,7 @@ const SliderCard=({item,AddOrder,RemoveOrder,order})=>{
 }
 const RoomServicedata=[{id:1,name:"Cleaning",content:["Dusting","Bedding","Floor","Washroom"],timing:"10AM - 6PM"},{id:2,name:"Repairs",content:["Furniture","AC","Washroom"],timing:"10AM - 6PM"}]
 const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
-    // const [toggler,setToggler]=useState(true)
-    // useEffect(()=>{
-    //     console.log("hello")
-    // },[toggler])
+    
     var contentarr=item.content.slice(0,item.content.length-1);
     var flag=0;
     // console.log(item);
@@ -256,21 +251,26 @@ const mapDispatchToprops = (dispatch) => {
   };
 };
 const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
+    const [toggler,setToggler]=useState(true);
+
+  
 
     const [FoodCategory,setFoodcategory]=useState({"Bento":[],"Burger":[],"Light Meal":[],"Ayam":[]})
     useEffect(()=>{
         setFoodcategory({Bento:FoodData.slice(0,18),Burger:FoodData.slice(18,22),"Light Meal":FoodData.slice(22,27),"Ayam":FoodData.slice(27,)})
     },[])
+      
     useEffect(()=>{
         setFoodcategory({Bento:FoodData.slice(0,18),Burger:FoodData.slice(18,22),"Light Meal":FoodData.slice(22,27),"Ayam":FoodData.slice(27,)})
-    },[FoodData])
+    
+    },[FoodData,toggler])
     var category=["Bento","Burger","Light Meal","Ayam"];
     return (
     <div>
-    {
+    {(toggler || ! toggler) && 
      category.map((e,i)=>(
           
-    <div style={{margin:"25px 0px"}}>
+    <div style={{margin:"25px 0px"}} key={i}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>{e}
        <Link exact to="/food" style={{color:"#63364E"}}>
@@ -282,9 +282,9 @@ const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
         <div style={{marginLeft:"3%"}}>
         
               <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
-                {FoodCategory[e].slice(0,5).map((k,i)=>(
+                {FoodCategory[e].slice(0,5).map((k,key)=>(
                     <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={k} key={i}/>
+                    <SliderCard item={k} key={key} setToggler={setToggler} toggler={toggler} IncrementOrder={IncrementOrder} DecrementOrder={DecrementOrder} order={order}/>
                     </div>
                 ))
                 }
