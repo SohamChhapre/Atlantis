@@ -111,17 +111,17 @@ const SchedulePopUp=({item})=>{
                 </div>
                 <div class="modal-body">
                 <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
-                <select  style={{float:"left",width:"40%"}} class="form-control" onChange={(e)=>{
+                <select  style={{float:"left",width:"40%"}} defaultValue={Time[0]} class="form-control" onChange={(e)=>{
                     
                     setNeworder({...neworder,day:e.target.value})
-                    console.log(neworder)
+                    // console.log(neworder)
                 }}>
                     <option selected>Today</option>
                     <option>Tommorow</option>
                 </select>
-                <select style={{float:"right",width:"40%"}}  class="form-control" onChange={(e)=>{
+                <select style={{float:"right",width:"40%"}} defaultValue={Time[0]} class="form-control" onChange={(e)=>{
                     setNeworder({...neworder,time:e.target.value})
-                    console.log(neworder)
+                    // console.log(neworder)
                 }}>
                     {Time.map((e,i)=>(<option >{e}</option>)) }
                 </select>
@@ -462,7 +462,9 @@ const Dashboard=()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})
             }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
-        
+            <div className="icon" style={{opacity:"0",width:"0px",height:"auto",marginRight:"5%"}}>
+                  sk
+                    </div>  
         </div> 
         </div>
             <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
