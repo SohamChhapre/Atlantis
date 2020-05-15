@@ -161,13 +161,13 @@ const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,s
     return (
         <div style={{margin:"",width:"256px"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
-        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
-        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px"}} />
+        <div style={{float:"left",margin:"20px 20px 11px 11px",paddingTop:"10px",backgroundColor:"#e5f5ee",width:"94px",height:"96px",borderRadius:"5px"}}>
+        <img src={item.url} height='auto' width="80%"  style={{borderRadius:"5px",marginRight:"6px"}} />
         
         </div>
         <div style={{
             // width:"calc(100% - 175px)",
-            paddingTop:"10px"}}>
+            paddingTop:"20px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
       className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
@@ -184,7 +184,7 @@ const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,s
         <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
         </div> */}
         <div className="text-center">
-            <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
+            <div className="food-menu-middle" style={{width:"118px",left:"122px",bottom:"25px",background:"#F5FBF8",
             // width:"37vw",left:"calc(28vw + 30px)"
             }}>
             <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementLaundry(item);setToggler(!toggler)}}}/>
