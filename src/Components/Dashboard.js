@@ -161,7 +161,7 @@ const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,s
     return (
         <div style={{margin:"",width:"256px"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
-        <div style={{float:"left",margin:"3px 20px 11px 11px",paddingTop:"10px",backgroundColor:"",width:item.name==="Wash & Fold"?"97px":"94px",height:"96px",borderRadius:"5px"}}>
+        <div style={{float:"left",margin:"-1px 20px 11px 11px",paddingTop:"10px",backgroundColor:"",width:item.name==="Wash & Fold"?"97px":"94px",height:"96px",borderRadius:"5px"}}>
         <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
         
         </div>
