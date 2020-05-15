@@ -554,17 +554,17 @@ const Dashboard=()=>{
         <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
             <div onClick={()=>{if(!active.Food)
                     setActive({...defaultState,Food:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div>Food</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_food} height="80%" width="80%" style={{margin:"10% 0px"}} /></div><span style={{opacity:active.Food?1:0.6}}>Food</span></div>
             <div onClick={()=>{if(!active.Laundary)
                     setActive({...defaultState,Laundary:true})
-            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Laundary</div>
+            }} className="icon icon-container" ><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_laundary} height="70%" width="70%" style={{margin:"15% 0px"}}/></div><span style={{opacity:active.Laundary?1:0.6}}>Laundry</span></div>
             <div onClick={()=>{if(!active.Cleaning)
                     setActive({...defaultState,Cleaning:true})
-            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Cleaning</div>
+            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_roomservice} height="70%" width="70%" style={{margin:"15% 0px"}}/></div><span style={{opacity:active.Cleaning?1:0.6}}>Cleaning</span></div>
             <div onClick={()=>{
                 if(!active.Electricity)
                     setActive({...defaultState,Electricity:true})
-            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div>Electricity</div>
+            }} className="icon icon-container"><div style={{backgroundColor:"#f2faf6",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><img src={ic_electricity} height="70%" width="70%" style={{margin:"15% 0px"}}/></div><span style={{opacity:active.Electricity?1:0.6}}>Electricity</span></div>
             <div className="icon" style={{opacity:"0",width:"0px",height:"auto",marginRight:"5%"}}>
                   sk
                     </div>  
