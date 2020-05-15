@@ -27,11 +27,10 @@ const LaundaryReducer=(state=initialState,action)=>{
             for(let i=0;i<newLaundry.length;i++){
                 if(newLaundry[i].id===action.payload.id)
                 {
-                    newLaundry[i].items=newLaundry[i].items+1
+                    newLaundry[i].items=newLaundry[i].items-1
                     break
                 }
             }
-            
             return {
                 ...state,
                 LaundryInit:newLaundry

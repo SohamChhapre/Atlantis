@@ -144,6 +144,68 @@ const SchedulePopUp=({item})=>{
       
     )
 }
+const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,setToggler})=>{
+    const [err,setErr]=useState("")
+    
+    useEffect(()=>{
+    if(item.items>0)
+        setErr("")
+        // console.log("hello")
+    },[toggler])
+    useEffect(()=>{
+
+    },[err])
+        var flag=item.items;
+    
+
+    return (
+        <div style={{margin:"",width:"256px"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
+        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px"}} />
+        
+        </div>
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"10px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
+        >
+        {/* Wash & Fold  */}
+        {item && item.name}
+        {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
+        
+        </div>
+        {/* <div className="card-content"
+        style={{
+            // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
+        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
+        <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
+        </div> */}
+        <div className="text-center">
+            <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
+            // width:"37vw",left:"calc(28vw + 30px)"
+            }}>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementLaundry(item);setToggler(!toggler)}}}/>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementLaundry(item);setToggler(!toggler)}}}/>
+            </div>
+               
+        </div>
+        </div>
+             {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
+            
+        </div>
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal":""} onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Order Now</div>
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
+        </div>
+        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
+       {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
+        </div>
+        
+    )
+}
 const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})=>{
     const [err,setErr]=useState("")
     
@@ -218,7 +280,7 @@ const mapDispatchToprops = (dispatch) => {
     AddOrder: (item) => dispatch(AddOrder(item)),
     IncrementOrder:(item)=> dispatch(IncrementOrder(item)),
     DecrementOrder:(item)=> dispatch(DecrementOrder(item)),
-    IncrementLaundry:(item)=> dispatch(IncrementOrder(item)),
+    IncrementLaundry:(item)=> dispatch(IncrementLaundry(item)),
     DecrementLaundry:(item)=> dispatch(DecrementLaundry(item))
   };
 };
@@ -365,7 +427,7 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
                 LaundryInit.map((e,i)=>(
                     e.category==="Casual" &&
                     <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={e}  setToggler={setToggler} toggler={toggler} IncrementOrder={IncrementOrder} DecrementOrder={DecrementOrder} order={order}/>
+                    <SliderCardLaundry item={e}  setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} order={order}/>
                     </div>
                     
                 ))
@@ -391,7 +453,7 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
                 LaundryInit.map((e,i)=>(
                     e.category==="Formal" &&
                     <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} order={order}/>
+                    <SliderCardLaundry item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} order={order}/>
                     </div>
                     
                 ))
@@ -446,22 +508,20 @@ const CleaningDash=()=>{
 
 
 const Dashboard=()=>{
-    const params = {
-//     pagination: {
-//       el: '.swiper-pagination.customized-swiper-pagination',
-//       type: 'bullets',
-//       clickable: true
-//     },
-// //   slidesPerView: 2,
-//   paginationClickable: true,
-//   spaceBetween: 0
-   slidesPerView: 1.10,
-//   paginationClickable: true,
-  spaceBetween: 5,
-  freeMode: true,
-    }
     
     const [active,setActive]=useState({'Food':true,"Laundary":false,"Cleaning":false,"Electricity":false})
+    const [Yoffset,setYoffset]=useState(window.pageYOffset)
+    function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        console.log("Scroll down")
+        } else {
+            console.log("scroll top")
+    }
+    }
+    
+    window.onscroll = function() {scrollFunction()};
+
+     
     useEffect(()=>{
     setActive({...defaultState,"Food":true})
     },[])
