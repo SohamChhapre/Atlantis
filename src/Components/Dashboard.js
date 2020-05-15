@@ -83,7 +83,7 @@ var Time=[];
     m.setMinutes(0)
     for(let i=0;i<24;i++){
         
-        m.setMinutes(m.getMinutes()+30*i);
+        m.setMinutes(m.getMinutes()+30);
         var mn= new Date(m)
         var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
         Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
