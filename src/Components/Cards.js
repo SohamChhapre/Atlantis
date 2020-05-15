@@ -228,7 +228,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
             height: "36vw",
           }}
         >
-          <img src={item.url} height='auto' width="100%"   />
+          <img src={item.url} height='auto' width="100%" style={{borderRadius:"5px"}}  />
         </div>
         <div
           style={{
@@ -240,9 +240,10 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
             // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
             className="food-menu-name"
             style={{
-              fontFamily: "Poppins-SemiBold",
+              fontFamily: "Poppins-Bold",
               color: "#00A852",
               lineHeight: "22px",
+              fontSize:"18px"
             }}
           >
             
@@ -253,7 +254,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
               style={{ float: "right", marginRight: "16px", marginTop: "10px" }}
             /> */}
           </div>
-          <div
+          {/* <div
             className="card-content"
             style={{
               // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
@@ -284,7 +285,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
             <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
             </span>{" "}
             <span style={{ fontFamily: "Poppins-Medium" }}> potatoes </span>
-          </div>
+          </div> */}
           <div className="text-center">
             <div className="food-menu-middle" style={{ background: "#F5FBF8" ,left:"calc(28vw + 30px)"}}>
               <img
