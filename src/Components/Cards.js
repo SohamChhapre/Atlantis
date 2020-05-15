@@ -22,6 +22,7 @@ import { initialdata } from "./CategoryData.js";
 import "./Cards.css";
 import Slide from "react-reveal/Slide";
 import LightSpeed from "react-reveal/LightSpeed";
+import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 
 
 const Food_category_data = {
@@ -632,10 +633,11 @@ const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOr
             backgroundColor: "white",
             border: "0px",
             borderRadius: "5px",
-            margin: "0px 5% 0px 5%",
+            margin: "0px 5% 30px 5%"
           }}
         >
-          <Link to="/cart">
+        <img src={banner_food_img} width="100%" height="100%" style={{ borderRadius:"5px" }}/>
+          {/* <Link to="/cart">
             <div className="text-right">
               <img
                 src={cart_icon}
@@ -660,7 +662,7 @@ const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOr
                 {order.length}
               </span>
             </div>
-          </Link>
+          </Link> */}
         </div>
 
         <div>
