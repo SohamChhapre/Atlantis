@@ -4,6 +4,7 @@ import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
 import './App.css';
 import Login from './Components/Auth/Login.js'
 import Dashboard from './Components/Dashboard.js';
+import Profile from './Components/Profile.js';
 import Laundary from './Components/Laundary.js';
 import Cards from './Components/Cards.js'
 import Orders from './Components/Orders.js'
@@ -92,8 +93,8 @@ function App(props) {
   render={(props) => <Cards {...props}  />}
     />
   <Route
-  path='/cart'
-  render={(props) => <Cart {...props}  />}
+  path='/profile'
+  render={(props) => <Profile {...props}  />}
     />
     <Route
   path='/orders'

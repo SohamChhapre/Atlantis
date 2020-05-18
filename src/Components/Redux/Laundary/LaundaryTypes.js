@@ -1,2 +1,4 @@
 export const INC_LAUNDRY='INC_LAUNDRY';
 export const DEC_LAUNDRY='DEC_LAUNDRY';
+export const INC_CLEANING='INC_CLEANING';
+export const DEC_CLEANING='DEC_CLEANING';

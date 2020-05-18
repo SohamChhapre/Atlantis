@@ -16,7 +16,7 @@ import cross_icon from './../Icons/Icons-Dash/signs.png';
 
 import "./Cards.css";
 import { useSwipeable, Swipeable } from "react-swipeable";
-import { AddOrder, RemoveOrder,IncrementOrder,DecrementOrder } from "./Redux/index.js";
+import { AddCart,IncrementFood,DecrementFood } from "./Redux/index.js";
 import { connect } from "react-redux";
 import { initialdata } from "./CategoryData.js";
 import "./Cards.css";
@@ -44,7 +44,7 @@ const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
     <div>
       {/* <LightSpeed  left collapse when={toggler[1] || toggler[2]} > */}
       <div>
-        <div class="scrolling-wrapper">
+        <div class="scrolling-wrapper" style={{marginBottom:"6px"}}>
           <span
             className={`food-select-unactive ${
               foodcategory.Bento ? "category-btn-active" : "category-btn"
@@ -192,7 +192,7 @@ const SchedulePopUp=({item})=>{
       
     )
 }
-const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder }) => {
+const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) => {
   const [toggler, setToggler] = useState(true);
   const [err,setErr]=useState("")
   useEffect(()=>{
@@ -303,7 +303,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
                 }}
                 onClick={() => {
                   if(flag>0){
-                  DecrementOrder(item);
+                  DecrementFood(item);
                   setToggler(!toggler);
                   }
                 }}
@@ -336,7 +336,7 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
                 }}
                 onClick={() => {
                   if (flag <= 2) {
-                    IncrementOrder(item);
+                    IncrementFood(item);
                     setToggler(!toggler);
                   }
                 }}
@@ -388,196 +388,15 @@ const MenuCard = ({ item, AddOrder, order,FoodData,IncrementOrder,DecrementOrder
           Schedule
         </div>
       </div>
-       <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
-      {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
+       <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} />
+      {flag>0?<SchedulePopUp item={item} cart={cart} AddCart={AddCart} />:""}
       
     </div>
   );
 };
-const SliderCard = ({ item, AddOrder, RemoveOrder, order }) => {
-  const [toggler, setToggler] = useState(true);
-  useEffect(() => {
-    console.log("hello");
-  }, [toggler]);
-  var flag = 0;
-  // console.log(item);
-  // for(var i=0;i<order.length;i++){
-  //         console.log(i,)
-  //     if(order[i].id===item.id && order[i].category===item.category )
-  //             flag=order[i].items;
-  // }
 
-  return (
-    <div style={{ margin: "10px", width: "calc(100% - 8px)" }}>
-      <div
-        className="horizontal-card"
-        style={{
-          backgroundColor: "white",
-          height: "calc(36vw + 22px)",
-          margin: "15px 0px 15px 0px",
-          position: "relative",
-          boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",
-        }}
-      >
-        <div
-          style={{
-            float: "left",
-            margin: "11px 20px 11px 11px",
-            backgroundColor: "#e5f5ee",
-            width: "36vw",
-            height: "36vw",
-          }}
-        >
-          {/* <img src={dummy_img} height='100%' width="100%"   /> */}
-        </div>
-        <div
-          style={{
-            // width:"calc(100% - 175px)",
-            paddingTop: "10px",
-          }}
-        >
-          <div
-            // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-            className="food-menu-name"
-            style={{
-              fontFamily: "Poppins-SemiBold",
-              color: "#00A852",
-              lineHeight: "30px",
-            }}
-          >
-            Nasi Goreng
-            <img
-              src={item.isfav ? like_icon : heart_svg_icon}
-              className="food-heart"
-              style={{ float: "right", marginRight: "16px", marginTop: "10px" }}
-            />
-          </div>
-          <div
-            className="card-content"
-            style={{
-              // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-              marginTop: "-3px",
-              fontFamily: "Poppins-SemiBold",
-              color: "#828282",
-            }}
-          >
-            <span style={{ fontFamily: "Poppins-Medium" }}> Fish </span>{" "}
-            <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-            </span>{" "}
-            <span style={{ fontFamily: "Poppins-Medium" }}> prawns </span>{" "}
-            <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-            </span>{" "}
-            <span style={{ fontFamily: "Poppins-Medium" }}>
-              Tamatoes
-            </span>
-            <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-              {" "}
-              |{" "}
-            </span>{" "}
-            <span style={{ fontFamily: "Poppins-Medium" }}>Rice</span>{" "}
-            <span style={{ fontFamily: "Poppins-Thin", margin: "0px 5px" }}>
-              {" "}
-              |{" "}
-            </span>{" "}
-            <span style={{ fontFamily: "Poppins-Medium" }}> potatoes </span>
-          </div>
-          <div className="text-center">
-            <div
-              className="food-menu-middle"
-              style={{ background: "#F5FBF8", width: "35vw" }}
-            >
-              <img
-                className={`${flag === 0 ? "minus-plus-unactive" : ""}`}
-                src={minus_icon}
-                alt="dhf"
-                height="23px"
-                width="23px"
-                style={{
-                  backgroundColor: "#",
-                  padding: "3px",
-                  borderRadius: "8px",
-                  float: "left",
-                }}
-                onClick={() => {
-                  RemoveOrder(item);
-                  setToggler(!toggler);
-                }}
-              />
-              <span
-                style={{
-                  padding: "0px 10px",
-                  position: "relative",
-                  bottom: "2px",
-                  color: "#00A852",
-                  fontFamily: "Poppins-SemiBold",
-                  fontSize: "14px",
-                  background: "#F5FBF8",
-                  borderRadius: "20px",
-                }}
-              >
-                {flag}
-              </span>
-              <img
-                className={`${flag >= 3 ? "minus-plus-unactive" : ""}`}
-                src={plus_icon}
-                alt="dhf"
-                height="23px"
-                width="23px"
-                style={{
-                  backgroundColor: "#",
-                  padding: "6px",
-                  borderRadius: "8px",
-                  float: "right",
-                }}
-                onClick={() => {
-                  if (flag <= 2) {
-                    AddOrder(item);
-                    setToggler(!toggler);
-                  }
-                }}
-              />
-            </div>
-          </div>
-        </div>
-        {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
-            <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
-            </div> */}
-      </div>
-      <div className="food-menu-btn text-center" style={{}}>
-        <button
-          className="btn btn-success"
-          style={{
-            fontSize: "11px",
-            borderRadius: "4px",
-            padding: "4px 24px 4px 24px",
-            fontFamily: "Poppins-Medium",
-            color: "white",
-          }}
-        >
-          Order Now
-        </button>
-        <button
-          className="btn "
-          style={{
-            borderRadius: "4px",
-            fontSize: "11px",
-            padding: "4px 24px 4px 24px",
-            fontFamily: "Poppins-Medium",
-            color: "#F49901",
-            background: "white",
-            border: "1px solid #F49901",
-          }}
-        >
-          Schedule
-        </button>
-      </div>
-    </div>
-  );
-};
 
-const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOrder,location}) => {
+const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location}) => {
   const [swipe, setSwipe] = useState({ left: true, right: false });
   const [food, setFood] = useState(true);
   const [foodcategory, setFoodcategory] = useState(Food_category_data);
@@ -691,12 +510,12 @@ const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOr
                   e.category === category  && (
                     <MenuCard
                       item={e}
-                      AddOrder={AddOrder}
+                      AddCart={AddCart}
                       key={i}
-                      DecrementOrder={DecrementOrder}
-                      IncrementOrder={IncrementOrder}
+                      DecrementFood={DecrementFood}
+                      IncrementFood={IncrementFood}
                       FoodData={FoodData}
-                      order={order}
+                      cart={cart}
                     />
                   )
                 );
@@ -716,15 +535,15 @@ const Cards = ({ setOrders, order, AddOrder ,FoodData,IncrementOrder,DecrementOr
 
 const mapStateToprops = (state) => {
   return {
-    order: state.Foodorder.orders,
+    cart: state.Foodorder.cart,
     FoodData:state.Foodorder.FoodInitial
   };
 };
 const mapDispatchToprops = (dispatch) => {
   return {
-    AddOrder: (item) => dispatch(AddOrder(item)),
-    IncrementOrder:(item)=> dispatch(IncrementOrder(item)),
-    DecrementOrder:(item)=> dispatch(DecrementOrder(item))
+    AddCart: (item) => dispatch(AddCart(item)),
+    IncrementFood:(item)=> dispatch(IncrementFood(item)),
+    DecrementFood:(item)=> dispatch(DecrementFood(item))
   };
 };
 export default connect(mapStateToprops, mapDispatchToprops)(Cards);

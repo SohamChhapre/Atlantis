@@ -22,10 +22,11 @@ import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 import {Fooddata} from './CategoryData.js';
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
+import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 import cross_icon from './../Icons/Icons-Dash/signs.png';
-import { AddOrder ,IncrementOrder,DecrementOrder,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
+import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
 
 const defaultState={
@@ -33,7 +34,6 @@ const defaultState={
     "Laundary":false,
     "Cleaning":false,
     "Electricity":false
-
 }
 
 const NavActiveicon=({img,name})=>{
@@ -129,7 +129,7 @@ const SchedulePopUp=({item})=>{
                 </select>
                 </div>
                 
-                    <textarea className="form-control" placeholder="Add a Note" rows="4" />
+                    {/* <textarea className="form-control" placeholder="Add a Note" rows="4" /> */}
                     <div style={{margin:"30px 0px"}}>
                         <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
                     <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
@@ -144,7 +144,7 @@ const SchedulePopUp=({item})=>{
       
     )
 }
-const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,setToggler})=>{
+const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
     const [err,setErr]=useState("")
     
     useEffect(()=>{
@@ -197,16 +197,83 @@ const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,order,toggler,s
              {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
             
         </div>
-        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal":""} onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Order Now</div>
-        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal87":""} 
+        onClick={()=>{if(flag===0)
+                        setErr("Select Quantity")
+                      else
+                        AddCart({...item,orderCat:"Laundry"})
+                    }} >Order Now</div>
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } 
+        onClick={()=>{if(flag===0)
+                setErr("Select Quantity")}} >Schedule</div>
         </div>
-        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
-       {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
+        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
+       {flag>0?<SchedulePopUp item={item}  AddCart={AddCart} />:""}
         </div>
         
     )
 }
-const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})=>{
+const SliderCardCleaning=({item,toggler,setToggler})=>{
+    
+    
+        
+    
+
+    return (
+        <div style={{margin:"",width:"256px"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
+        <div style={{float:"left",margin:"-1px 20px 11px 11px",paddingTop:"10px",backgroundColor:"",width:item.name==="Wash & Fold"?"97px":"94px",height:"96px",borderRadius:"5px"}}>
+        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
+        
+        </div>
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"20px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
+        >
+        {/* Wash & Fold  */}
+        {item && item.name}
+        {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
+        
+        </div>
+        {/* <div className="card-content"
+        style={{
+            // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
+        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
+        <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
+        </div> */}
+        {/* <div className="text-center">
+            <div className="food-menu-middle" style={{width:"118px",left:"122px",bottom:"25px",background:"#F5FBF8",
+            // width:"37vw",left:"calc(28vw + 30px)"
+            }}>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementLaundry(item);setToggler(!toggler)}}}/>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementLaundry(item);setToggler(!toggler)}}}/>
+            </div>
+               
+        </div> */}
+        </div>
+             {/* {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>} */}
+            
+        </div>
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} 
+        onClick={()=>{
+                        AddCart({...item,orderCat:"Cleaning"})
+                    }} >Order Now</div>
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" 
+         >Schedule</div>
+        </div>
+        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
+        <SchedulePopUp item={item}  AddCart={AddCart} />
+        </div>
+        
+    )
+}
+
+
+const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddCart})=>{
     const [err,setErr]=useState("")
     
     useEffect(()=>{
@@ -249,9 +316,9 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
             <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
             // width:"37vw",left:"calc(28vw + 30px)"
             }}>
-            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>0){DecrementFood(item);setToggler(!toggler)}}}/>
             <span style={{padding:"0px 10px",position:"relative",bottom:"-2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
-            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="27px" width="27px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementFood(item);setToggler(!toggler)}}}/>
             </div>
                
         </div>
@@ -259,41 +326,52 @@ const SliderCard=({item,IncrementOrder,DecrementOrder,order,toggler,setToggler})
              {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
             
         </div>
-        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal":""} onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Order Now</div>
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal78":""} 
+        onClick={()=>{if(flag===0)
+                   setErr("Select Quantity")
+                   else
+                       {
+                           console.log("add order")
+                           AddCart({...item,orderCat:"Food"})
+                       }
+                   }} >Order Now</div>
         <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
         </div>
-        <OrderNowPopUp item={item} order={order} AddOrder={AddOrder} />
-       {flag>0?<SchedulePopUp item={item} order={order} AddOrder={AddOrder} />:""}
+        
+        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
+
+       {flag>0?<SchedulePopUp item={item} cart={cart} AddCart={AddCart} />:""}
         </div>
         
     )
 }
 const mapStateToprops = (state) => {
   return {
-    order: state.Foodorder.orders,
+    cart: state.Foodorder.cart,
     FoodData:state.Foodorder.FoodInitial,
-    LaundryInit:state.Laundaryorder.LaundryInit
+    LaundryInit:state.Laundaryorder.LaundryInit,
+    CleaningInit:state.Laundaryorder.CleaningInit
   };
 };
 const mapDispatchToprops = (dispatch) => {
   return {
-    AddOrder: (item) => dispatch(AddOrder(item)),
-    IncrementOrder:(item)=> dispatch(IncrementOrder(item)),
-    DecrementOrder:(item)=> dispatch(DecrementOrder(item)),
+    AddCart: (item) => dispatch(AddCart(item)),
+    IncrementFood:(item)=> dispatch(IncrementFood(item)),
+    DecrementFood:(item)=> dispatch(DecrementFood(item)),
     IncrementLaundry:(item)=> dispatch(IncrementLaundry(item)),
     DecrementLaundry:(item)=> dispatch(DecrementLaundry(item))
   };
 };
 const RoomServicedata=[{id:1,name:"Cleaning",content:["Dusting","Bedding","Floor","Washroom"],timing:"10AM - 6PM"},{id:2,name:"Repairs",content:["Furniture","AC","Washroom"],timing:"10AM - 6PM"}]
-const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
+const ServiceMenu=({item,AddCart,RemoveOrder,cart})=>{
     
     var contentarr=item.content.slice(0,item.content.length-1);
     var flag=0;
     // console.log(item);
-    // for(var i=0;i<order.length;i++){
+    // for(var i=0;i<cart.length;i++){
     //         console.log(i,)
-    //     if(order[i].id===item.id && order[i].category===item.category )
-    //             flag=order[i].items;
+    //     if(cart[i].id===item.id && cart[i].category===item.category )
+    //             flag=cart[i].items;
     // }
 
     return (
@@ -308,7 +386,7 @@ const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
         <div style={{
             paddingTop:"10px"}}>
         <div 
-      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
+      className="cart-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
         {item.name}
         </div>
@@ -339,7 +417,7 @@ const ServiceMenu=({item,AddOrder,RemoveOrder,order})=>{
     )
 }
 
-const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
+const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart})=>{
     const [toggler,setToggler]=useState(true);
 
   
@@ -374,12 +452,15 @@ const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
         </span>
         </Link>
         </div>
-        <div style={{marginLeft:"3%"}}>
+        <div style={{}}>
         
               <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
+               <div style={{width:"4%",opacity:"0"}}>
+               dhfdj
+               </div>
                 {FoodCategory[e].slice(0,5).map((k,key)=>(
                     <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={k} key={key} setToggler={setToggler} toggler={toggler} IncrementOrder={IncrementOrder} DecrementOrder={DecrementOrder} order={order}/>
+                    <SliderCard item={k} key={key} setToggler={setToggler} toggler={toggler} AddCart={AddCart} IncrementFood={IncrementFood} DecrementFood={DecrementFood} cart={cart}/>
                    
                     </div>
                     
@@ -403,7 +484,7 @@ const FoodDash=({FoodData,IncrementOrder,DecrementOrder,order})=>{
 }
 
 const FoodDashwithProps = connect(mapStateToprops, mapDispatchToprops)(FoodDash);
-const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
+const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart})=>{
     const [toggler,setToggler]=useState(true);
 
     useEffect(()=>{
@@ -420,14 +501,16 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Casual
 
         </div>
-        <div style={{marginLeft:"3%"}}>
+        <div >
         
               <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
+                <div style={{width:"4%",opacity:"0"}}>sh</div>
+
                 {
                 LaundryInit.map((e,i)=>(
                     e.category==="Casual" &&
                     <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCardLaundry item={e}  setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} order={order}/>
+                    <SliderCardLaundry item={e}  setToggler={setToggler} toggler={toggler} AddCart={AddCart} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} cart={cart}/>
                     </div>
                     
                 ))
@@ -446,14 +529,16 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Formal
 
         </div>
-        <div style={{marginLeft:"3%"}}>
+        <div >
         
               <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
+                <div style={{width:"4%",opacity:"0"}}>sh</div>
+               
                 {
                 LaundryInit.map((e,i)=>(
                     e.category==="Formal" &&
                     <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCardLaundry item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} order={order}/>
+                    <SliderCardLaundry item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} cart={cart} AddCart={AddCart}/>
                     </div>
                     
                 ))
@@ -475,8 +560,16 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,order})=>{
     )
 }
 const LaundaryDashwithProps=connect(mapStateToprops, mapDispatchToprops)(LaundaryDash)
-const CleaningDash=()=>{
-    
+const CleaningDash=({CleaningInit,cart})=>{
+    const [toggler,setToggler]=useState(true);
+
+    useEffect(()=>{
+        setToggler(true)
+    },[])
+
+    useEffect(()=>{
+
+    },[toggler])
     const params = {
    slidesPerView: 1.15,
   spaceBetween: 15,
@@ -484,27 +577,38 @@ const CleaningDash=()=>{
     }
     
     return (
-       <div style={{margin:"15px 0px"}}>
+        <div style={{margin:"25px 0px"}}>
 
-      
-        <div style={{marginLeft:"3%"}}>
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
+
+        </div>
+        <div >
         
-                <Swiper {...params}>
-                
-                <div style={{width:"",marginRight:"10px"}}>
-                    <SliderCard item={{isfav:true}}/>
-                    </div>
-                    <div style={{width:"",marginRight:"10px"}}>
-                    <SliderCard item={{isfav:true}}/>
+              <div className="scrolling-wrapper-dash" style={{marginTop:"0px",marginBottom:"10px"}}>
+                <div style={{width:"4%",opacity:"0"}}>sh</div>
+             
+                {
+                CleaningInit.map((e,i)=>(
+                    
+                    <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
+                    <SliderCardCleaning item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} cart={cart} AddCart={AddCart}/>
+                    
                     </div>
                     
+                ))
+                }
+                
+                  <div className="icon" style={{opacity:"0",width:"0px",height:"auto"}}>
+                  sk
+                    </div>  
                      
         
-                </Swiper>
+                </div>
         </div>
         </div>
     )
 }
+const CleaningDashwithProps=connect(mapStateToprops, mapDispatchToprops)(CleaningDash)
 
 
 const Dashboard=()=>{
@@ -573,7 +677,7 @@ const Dashboard=()=>{
             <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
             {active.Food && <img src={banner_food_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             { active.Laundary && <img src={banner_laundry_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
-            {active.Cleaning && <img src={banner_food_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
+            {active.Cleaning && <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             
             </div>
 
@@ -582,7 +686,7 @@ const Dashboard=()=>{
 
             {active.Laundary && <LaundaryDashwithProps/>}
 
-            {active.Cleaning && <CleaningDash/> }
+            {active.Cleaning && <CleaningDashwithProps/> }
 
 
             {/* <div className="swipper-sty">

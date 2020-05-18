@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {connect} from 'react-redux';
 // import {RemoveOrder} from './Redux/index.js';
-import {AddOrder,RemoveOrder,UpdateOrder} from './Redux/index.js';
 import heart_icon from './../Icons/Icons-Footer/heart.png';
 import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
@@ -9,7 +8,7 @@ import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
 import Barcode from 'react-barcode';
 import Axios from 'axios';
-import {Cart,Upcoming,Completed} from './Cart.js'
+import {Cartwithprops,Upcoming,Completed} from './Cart.js'
 
 const handlers={
   width: 60,
@@ -186,7 +185,7 @@ const MenuCard=({item})=>{
     )
 }
 
-const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
+const Orders=({})=>{
 
     const [Foodorder,setFoodorder]=useState([])
     const [orderCategory,setordercategory]=useState({})
@@ -201,7 +200,7 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
                 console.log(err)
         })
     }
-    func()
+    // func()
     setordercategory({...orderCategorydata,"Cart":true})
     },[])
     
@@ -215,7 +214,7 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
 
 
         <Textslider orderCategory={orderCategory} setordercategory={setordercategory}/>
-        {orderCategory.Cart && <Cart/>}
+        {orderCategory.Cart && <Cartwithprops/>}
         {orderCategory.Upcoming && <Upcoming/>}
         {orderCategory.Completed && <Completed/>}
         
@@ -229,18 +228,6 @@ const Orders=({RemoveOrder,Laundaryorder,foodorder})=>{
 
 
 
-const mapStateToprops=state=>{
-    return {
-        Foodorder:state.Foodorder.orders,
-    }
-}
-const mapDispatchToprops=dispatch=>{
-    return {
-            AddOrder:(item)=> dispatch(AddOrder(item)),
-            RemoveOrder:(item)=> dispatch(RemoveOrder(item)),
-            UpdateOrder:(item)=> dispatch(UpdateOrder(item))
 
-    }
-}
 
-export default connect(mapStateToprops,mapDispatchToprops)(Orders);
+export default Orders;

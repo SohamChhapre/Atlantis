@@ -1,67 +1,79 @@
-import {REMOVE_ORDER,ADD_ORDER,UPDATE_ORDER,INC_INIT_FOOD,DEC_INIT_FOOD} from './OrderTypes.js';
-import {initialdata} from './../../CategoryData.js'
+import {ADD_CART_ITEM,REMOVE_CART_ITEM,INC_CART,DEC_CART,INC_INIT_FOOD,DEC_INIT_FOOD} from './OrderTypes.js';
+import {initialdata} from './../../CategoryData.js';
+
 const initialState={
-    orders:[],
+    cart:[],
     FoodInitial:initialdata
 
 }
 
 const OrderReducer=(state=initialState,action)=>{
     switch(action.type){
-        case REMOVE_ORDER:{
-        console.log(action.payload,"reducer")
-        var neworder =state.orders;
-                var flg=false;
-                
-                for(var i=0;i<state.orders.length;i++){
-                    console.log(neworder[i])
-                    if(neworder[i].category===action.payload.category && action.payload.id===neworder[i].id ){
-                        if(neworder[i].items>1){
-                            neworder[i].items=neworder[i].items-1;
-                            break;
-                        }
-                        else
-                            flg=true;
-                    }
+        case ADD_CART_ITEM:{
+            let flg=true
+            let tempcart=state.cart
+            for(var i=0;i<tempcart.length;i++){
+                if(action.payload.id===tempcart[i].id)
+                {
+                    tempcart[i].items=action.payload.items;
+                    flg=false
+                    break;
                 }
+            }
 
-            if (flg)
-         neworder=state.orders.filter(e=>( e.id!==action.payload.id))
-        console.log(neworder)
+            
+            if(!flg)
+            return {
+                ...state,
+                cart:tempcart
+            }
+            tempcart.push(action.payload);
+            console.log(tempcart)
+            return {
+                ...state,
+                cart:tempcart
+            }
+        }
+        case REMOVE_CART_ITEM:{
+            var updatedcart=state.cart.filter((e,i)=>(e.id!==action.payload.id));
+
         return {
             ...state,
-            orders:neworder
+            cart:updatedcart
         }
         }
-        case ADD_ORDER:{
-                var neworder =state.orders;
+        case INC_CART:{
+                var newcart =state.cart;
                 var flg=true;
-                for(var i=0;i<state.orders.length;i++){
-                    console.log(neworder[i])
-                    if(neworder[i].category===action.payload.category && action.payload.id===neworder[i].id){
-                        neworder[i].items=neworder[i].items+1;
-                        flg=false
+                for(var i=0;i<newcart.length;i++){
+                    if(action.payload.id===newcart[i].id){
+                        newcart[i].items=newcart[i].items+1;
+                        break
                     }
                 }
-               
-                if(flg){
-                 var item=action.payload;
-                item.items=1
-                neworder=[...state.orders,item];
+                console.log("Increment",action.payload)
+            return {
+                ...state,
+                cart:newcart
+            }
+        }
+        case DEC_CART:{
+         var newcart =state.cart;
+                var flg=true;
+                for(var i=0;i<newcart.length;i++){
+                    if(action.payload.id===newcart[i].id){
+                        newcart[i].items=newcart[i].items-1;
+                        break
+                    }
                 }
+                console.log("Decrement",action.payload)
+
             return {
                 ...state,
-                orders:neworder
+                cart:newcart
             }
         }
-        case UPDATE_ORDER:{
-            console.log(action.payload)
-            neworder=state.orders.filter(e=>( e.id!==action.payload.id))
-            return {
-                ...state,
-                orders:neworder
-            }
-        }
+
         case INC_INIT_FOOD:{
             var newFooddata=state.FoodInitial
             for (let i=0;i<newFooddata.length;i++){

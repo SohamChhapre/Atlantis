@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
 import dummy_img from './../Icons/Icons-Footer/dummyimage.png';
-import {AddOrder,RemoveOrder,UpdateOrder,UpdateLaundary} from './Redux/index.js';
+import {AddCart,RemoveCart,IncrementCart,DecrementCart} from './Redux/index.js';
 import {connect } from 'react-redux'
 import './Cart.css'
 import heart_icon from './../Icons/Icons-Footer/heart.png';
@@ -16,7 +16,7 @@ import ic_food from './../Icons/Icons-Dash/ic-food-new.png';
 import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
 import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 
-const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
+const FoodCard=({item,AddCart,IncrementCart,order,DecrementCart})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -45,7 +45,7 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         >
         Nasi Goreng
         <img src={delete_icon} className="food-heart"  style={{float:'right',marginRight:"5px",marginTop:"5px"}} onClick={()=>{
-            UpdateOrder(item);setToggler(!toggler)
+            DecrementCart(item);setToggler(!toggler)
         }}/>
         </div>
         <div className="food-menu-qty"
@@ -56,18 +56,18 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         </div>
         <div className="">
             <div className="food-menu-middle" style={{}}>
-            <img className="" src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"3px",borderRadius:"8px"}} onClick={()=>{IncrementCart(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 20px"}}>{flag}</span>
-            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#e5f5ee",padding:"6px",borderRadius:"8px"}} onClick={()=>{if(flag<=2){AddCart(item);setToggler(!toggler)}}}/>
             </div>
 
         <div className="food-menu-btn" style={{}}><button className="btn btn-warning" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",backgroundColor:"#F49901",fontFamily:"Poppins-SemiBold",color:"white"}}>Schedule</button><img src={schedule_icon} height="22px" style={{paddingLeft:"9px"}}/></div>
         </div>
         </div>
             {/* <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{IncrementCart(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px"}}>{flag}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white",backgroundColor:"#e5f5ee"}} onClick={()=>{AddCart(item);setToggler(!toggler)}}/>
             </div> */}
             
         </div>
@@ -75,7 +75,7 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         
     )
 }
-const LaundaryCard=({item,UpdateLaundary})=>{
+const LaundaryCard=({item,RemoveCart})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -106,7 +106,7 @@ const LaundaryCard=({item,UpdateLaundary})=>{
         >
         {item.name}
         <img src={delete_icon} className="food-heart"  style={{float:'right',marginRight:"5px",marginTop:"5px"}} onClick={()=>{
-            UpdateLaundary({id:"all",name:""});setToggler(!toggler)
+            RemoveCart({id:"all",name:""});setToggler(!toggler)
         }}/>
         </div>
         
@@ -123,7 +123,7 @@ const LaundaryCard=({item,UpdateLaundary})=>{
         
     )
 }
-const CartCard=({item,AddOrder,RemoveOrder})=>{
+const CartCard=({item,AddCart,IncrementCart})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -145,9 +145,9 @@ const CartCard=({item,AddOrder,RemoveOrder})=>{
         </div>
         
             <div className="float-right" style={{margin:"25px 5px 5px 0px"}}>
-            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={minus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{IncrementCart(item);setToggler(!toggler)}}/>
             <span style={{padding:"0px 10px"}}>{item.items}</span>
-            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{AddOrder(item);setToggler(!toggler)}}/>
+            <img className="" src={plus_icon} alt="dhf" height="25px" width="25px" style={{border:"2px solid white"}} onClick={()=>{AddCart(item);setToggler(!toggler)}}/>
             </div>
             
         </div>
@@ -155,25 +155,20 @@ const CartCard=({item,AddOrder,RemoveOrder})=>{
         
     )
 }
-const CartMenu=({item,AddOrder,RemoveOrder,order})=>{
+const CartMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
     },[toggler])
-    var flag=0;
-    // console.log(item);
-    // for(var i=0;i<order.length;i++){
-    //         console.log(i,)
-    //     if(order[i].id===item.id && order[i].category===item.category )
-    //             flag=order[i].items;
-    // }
+    var flag=item.items;
+    
 
     return (
         <div style={{margin:"24px 14px 14px 14px",width:"calc(100% - 28px)"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(18vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"18vw",height:"18vw",borderRadius:"10px"}}>
         
-        {/* <img src={dummy_img} height='100%' width="100%"   /> */}
+        <img src={item.url} height='100%' width="100%"   />
         
         </div>
           <div className="trash-container" >
@@ -186,15 +181,15 @@ const CartMenu=({item,AddOrder,RemoveOrder,order})=>{
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
       className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"30px"}}
         >
-        Nasi Goreng
+        {item.name}
         {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
         </div>
        
         <div className="text-center">
             <div className="cart-menu-middle" style={{background:"#F5FBF8"}}>
-            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{RemoveOrder(item);setToggler(!toggler)}}/>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>=2){DecrementCart(item);setToggler(!toggler)}}}/>
             <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
-            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){AddOrder(item);setToggler(!toggler)}}}/>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementCart(item);setToggler(!toggler)}}}/>
             </div>
             
         </div>
@@ -209,7 +204,7 @@ const CartMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
-const UpcomingMenu=({item,AddOrder,RemoveOrder,order})=>{
+const UpcomingMenu=({item,AddCart,IncrementCart,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -273,7 +268,7 @@ const UpcomingMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
-const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
+const CompletedMenu=({item,AddCart,IncrementCart,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         console.log("hello")
@@ -337,22 +332,32 @@ const CompletedMenu=({item,AddOrder,RemoveOrder,order})=>{
         
     )
 }
-export const Cart =({Foodorder,AddOrder,RemoveOrder,UpdateOrder,Laundaryorder,UpdateLaundary})=>{
+const Cart =({cart,Foodorder,AddCart,IncrementCart,DecrementCart,Laundaryorder,RemoveCart})=>{
     
-    const senddata = async ()=>{
-        await Axios.post('http://localhost:3500/postorder',
-            Foodorder[0])
-        .then((data)=>{
-                console.log(data)
-        })
-    }
-useEffect(()=>{
+        useEffect(()=>{
 
-},[])
+        },[])
+
+        console.log(cart);
+//     const senddata = async ()=>{
+//         await Axios.post('http://localhost:3500/postorder',
+//             Foodorder[0])
+//         .then((data)=>{
+//                 console.log(data)
+//         })
+//     }
+// useEffect(()=>{
+
+// },[])
+    var FoodCart=cart.filter((e,i)=>(e.orderCat==="Food"))
+    var LaundaryCart=cart.filter((e,i)=>(e.orderCat==="Laundry"));
+    var CleaningCart=cart.filter((e,i)=>(e.orderCat==="Cleaning"));
     return(
         <div>
 
             <div>
+            {
+                FoodCart.length>0 && 
              <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>
                     <div className="cart-circle rounded-circle">
@@ -364,15 +369,17 @@ useEffect(()=>{
                     </div>
 
                     <div className="" >
-                    
-                    <CartMenu/>
-                    <CartMenu/>
-
+                    {cart.map((e,i)=>(
+                    e.orderCat==="Food" && 
+                    <CartMenu item={e} key= {i} IncrementCart={IncrementCart} DecrementCart={DecrementCart} RemoveCart={RemoveCart} />
+                    ))}
                     
                    
                     </div>
             
             </div>
+        }
+        { LaundaryCart.length>0 &&
             <div className="big-container" style={{margin:"30px 0px 0px 0px" ,}}>
                     <div style={{height:"54px"}}>
                     <div className="cart-circle rounded-circle">
@@ -384,15 +391,16 @@ useEffect(()=>{
                     </div>
 
                     <div className="" >
-                    
-                    <CartMenu/>
-                    <CartMenu/>
+{/*                     
+                    <CartMenu item={}/>
+                    <CartMenu /> */}
 
                     
                    
                     </div>
             
             </div>
+            }
             <div style={{fontFamily:"Poppins-SemiBold",marginTop:"30px",textAlign:"center",marginLeft:"20px",fontSize:"14px"}}>
             <span style={{color:"#f49a04"}}>Total :</span> <span style={{color:"rgb(130,130,130)"}}>50.000 IDR</span>
             </div>
@@ -403,12 +411,12 @@ useEffect(()=>{
                 padding: "4px 24px",
                 fontFamily: "Poppins-Medium",
                 color: "white"
-            }} onClick={()=>senddata()}>Confirm</button>
+            }} >Confirm</button>
             </div>
             </div>
             
 
-            
+           
         
 
         </div>
@@ -416,6 +424,23 @@ useEffect(()=>{
 
     )
 }
+const mapStateToprops=state=>{
+    return {
+        // Foodorder:state.Foodorder.orders,
+        cart :state.Foodorder.cart,
+        Laundaryorder:state.Laundaryorder.laundaryOrder
+    }
+}
+const mapDispatchToprops=dispatch=>{
+    return {
+            AddCart:(item)=> dispatch(AddCart(item)),
+            RemoveCart:(item)=> dispatch(RemoveCart(item)),
+            IncrementCart:(item)=> dispatch(IncrementCart(item)),
+            DecrementCart:(item)=> dispatch(DecrementCart(item))
+    }
+}
+
+export const Cartwithprops=connect(mapStateToprops,mapDispatchToprops)(Cart);
 export const Upcoming=()=>{
 
     return (
@@ -534,19 +559,5 @@ export const Completed=()=>{
 }
 
 
-const mapStateToprops=state=>{
-    return {
-        Foodorder:state.Foodorder.orders,
-        Laundaryorder:state.Laundaryorder.laundaryOrder
-    }
-}
-const mapDispatchToprops=dispatch=>{
-    return {
-            AddOrder:(item)=> dispatch(AddOrder(item)),
-            RemoveOrder:(item)=> dispatch(RemoveOrder(item)),
-            UpdateOrder:(item)=> dispatch(UpdateOrder(item))
-            
 
-    }
-}
 export default connect(mapStateToprops,mapDispatchToprops)(Cart);

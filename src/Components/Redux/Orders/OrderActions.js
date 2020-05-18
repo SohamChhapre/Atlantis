@@ -1,31 +1,36 @@
-import {REMOVE_ORDER} from './OrderTypes.js';
-import {ADD_ORDER,UPDATE_ORDER,INC_INIT_FOOD,DEC_INIT_FOOD} from './OrderTypes.js';
+import {INC_CART,DEC_CART,REMOVE_CART_ITEM,INC_INIT_FOOD,DEC_INIT_FOOD,ADD_CART_ITEM} from './OrderTypes.js';
 
-export const RemoveOrder = (item={category:"",id:""})=>{
+export const AddCart = (item={category:"",id:""})=>{
     return {
-        type:REMOVE_ORDER,
+        type:ADD_CART_ITEM,
         payload:item
     }
 }
-export const AddOrder = (item={category:"",id:""})=>{
+export const RemoveCart = (item={category:"",id:""})=>{
     return {
-        type:ADD_ORDER,
+        type:REMOVE_CART_ITEM,
         payload:item
     }
 }
-export const UpdateOrder=(item={category:"",id:""})=>{
+export const IncrementCart = (item={category:"",id:""})=>{
     return {
-        type:UPDATE_ORDER,
+        type:INC_CART,
         payload:item
     }
 }
-export const IncrementOrder=(item={category:"",id:""})=>{
+export const DecrementCart=(item={category:"",id:""})=>{
+    return {
+        type:DEC_CART,
+        payload:item
+    }
+}
+export const IncrementFood=(item={category:"",id:""})=>{
     return {
         type:INC_INIT_FOOD,
         payload:item
     }
 }
-export const DecrementOrder=(item={category:"",id:""})=>{
+export const DecrementFood=(item={category:"",id:""})=>{
     return {
         type:DEC_INIT_FOOD,
         payload:item
