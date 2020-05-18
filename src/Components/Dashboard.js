@@ -273,7 +273,7 @@ const SliderCardCleaning=({item,toggler,setToggler})=>{
 }
 
 
-const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddCart})=>{
+const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddCart,setLoading})=>{
     const [err,setErr]=useState("")
     
     useEffect(()=>{
@@ -291,7 +291,7 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
         <div style={{margin:"",width:"256px"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
         <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"#e5f5ee",width:"86px",height:"112px"}}>
-        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px"}} />
+        <img src={item.url} height='auto' width="100%" onLoad={()=>setLoading(false)} style={{borderRadius:"5px"}} />
         
         </div>
         <div style={{
@@ -417,7 +417,7 @@ const ServiceMenu=({item,AddCart,RemoveOrder,cart})=>{
     )
 }
 
-const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart})=>{
+const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=>{
     const [toggler,setToggler]=useState(true);
 
   
@@ -460,7 +460,7 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart})=>{
                </div>
                 {FoodCategory[e].slice(0,5).map((k,key)=>(
                     <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={k} key={key} setToggler={setToggler} toggler={toggler} AddCart={AddCart} IncrementFood={IncrementFood} DecrementFood={DecrementFood} cart={cart}/>
+                    <SliderCard item={k} key={key} setToggler={setToggler} setLoading={setLoading} toggler={toggler} AddCart={AddCart} IncrementFood={IncrementFood} DecrementFood={DecrementFood} cart={cart}/>
                    
                     </div>
                     
@@ -619,25 +619,26 @@ const Dashboard=()=>{
      
     useEffect(()=>{
     setActive({...defaultState,"Food":true})
-    setTimeout(() => {
-        setLoading(false)
-    }, 3000);
+    setLoading(true)
+    // setTimeout(() => {
+    //     setLoading(true)
+    // }, 3000);
 
     },[])
     useEffect(()=>{
             
-    },[active])
+    },[active,loading])
 
     return(
         <div>
-            { loading?<DashboardSkeleton/>:
-            <div>
+            { loading && <DashboardSkeleton/>}
+            <div style={{opacity:loading?"0":"1"}}>
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
             <div className="mt-2 mb-5" style={{marginLeft:"5%"}}> 
                 <div style={{float:"left"}}>
-                    <img src={logo} height="45px" width="45px"/>
+                    <img src={logo} height="45px" width="45px" />
                 </div>
                 <div className="text-left dash-text text-center" >
                        <span style={{fontFamily:"Anteb-Black"}} >Good Evening</span>
@@ -672,14 +673,14 @@ const Dashboard=()=>{
         </div> 
         </div>
             <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
-            {active.Food && <img src={banner_food_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
+            {active.Food && <img src={banner_food_img}  height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             { active.Laundary && <img src={banner_laundry_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             {active.Cleaning && <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             
             </div>
 
 
-            {active.Food && <div><FoodDashwithProps  /></div>}
+            {active.Food && <div><FoodDashwithProps setLoading={setLoading} /></div>}
 
             {active.Laundary && <LaundaryDashwithProps/>}
 
@@ -689,7 +690,7 @@ const Dashboard=()=>{
             </div>        
 
             </div>
-                }
+                
             </div>
 
     )
