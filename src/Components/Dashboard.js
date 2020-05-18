@@ -23,6 +23,7 @@ import {Fooddata} from './CategoryData.js';
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
 import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
+import banner_electricity_img from './../Icons/Icons-Dash/Electricity-Illustration.jpg'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 import formal_logo from './../Icons/Icons-Dash/formal_logo.png'
@@ -503,7 +504,7 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
         {
             page["first"] && 
         <div className="flex-container" style={{marginLeft:"5%",marginRight:"5%"}}>
-        <div style={{textAlign:"center",fontSize:"19px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div style={{textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
         <div className="icon-card" onClick={()=>{
             setPage({"first":false,"casual":true,"formal":false})
         }} style={{marginBottom:"10px",width:"40vw", height:"40vw",background:"white",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px"}}>
@@ -511,13 +512,13 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
         </div>
         Casual
         </div>
-        <div style={{marginLeft:"10%",textAlign:"center",fontSize:"19px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div style={{marginLeft:"10%",textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
         <div className="icon-card" onClick={()=>{
             setPage({"first":false,"casual":false,"formal":true})
         }} style={{marginBottom:"10px",width:"40vw",height:"40vw",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px",background:"white" }}>
         <img src={formal_logo} height="70%" width="auto" style={{margin:"15% 0px 0px 0"}}/>
         </div>
-        Formal
+        Formals
         </div>
         </div>
         }
@@ -525,11 +526,11 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
         <div>
         <div onClick={()=>{
             setPage({...page,first:true,casual:false})
-        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"5px 0px 0px 5%",color:"black",fontFamily:"Poppins-SemiBold",float:"left"}}>back</div>
+        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"15px 0px 0px 5%",color:"black",fontFamily:"Poppins-Medium",float:"left"}}> back ></div>
 
         <div style={{padding:"35px 0px"}}>
 
-        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Casual
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
 
         </div>
         <div >
@@ -561,11 +562,11 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
         <div>
         <div onClick={()=>{
             setPage({...page,formal:false,first:true})
-        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"5px 0px 0px 5%",color:"black",fontFamily:"Poppins-SemiBold",float:"left"}}>back</div>
+        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"15px 0px 0px 5%",color:"black",fontFamily:"Poppins-Medium",float:"left"}}>back ></div>
          
          <div style={{padding:"35px 0px"}}>
 
-        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Formal
+        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
 
         </div>
         <div >
@@ -721,6 +722,7 @@ const Dashboard=()=>{
             {active.Food && <img src={banner_food_img}  height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             { active.Laundary && <img src={banner_laundry_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             {active.Cleaning && <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
+            {active.Electricity && <img src={banner_electricity_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             
             </div>
 
