@@ -23,7 +23,7 @@ const Profile=()=>{
                 </div>
             </div>
         <div>
-                    <form>
+                    <form  className="profile-container">
             <div class="form-row">
                 <div class="form-group col">
                 <label for="inputEmail4">First Name</label>

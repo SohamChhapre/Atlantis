@@ -394,7 +394,10 @@ const Cart =({cart,Foodorder,AddCart,IncrementCart,DecrementCart,Laundaryorder,R
 {/*                     
                     <CartMenu item={}/>
                     <CartMenu /> */}
-
+                    {cart.map((e,i)=>(
+                    e.orderCat==="Food" && 
+                    <CartMenu item={e} key= {i} IncrementCart={IncrementCart} DecrementCart={DecrementCart} RemoveCart={RemoveCart} />
+                    ))}
                     
                    
                     </div>

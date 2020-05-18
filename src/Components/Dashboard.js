@@ -28,7 +28,7 @@ import logo from './../Icons/Icons-Dash/logo.png';
 import cross_icon from './../Icons/Icons-Dash/signs.png';
 import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
-
+import DashboardSkeleton from './Skeletons/DashboardSkeleton.js';
 const defaultState={
     "Food":false,
     "Laundary":false,
@@ -614,26 +614,23 @@ const CleaningDashwithProps=connect(mapStateToprops, mapDispatchToprops)(Cleanin
 const Dashboard=()=>{
     
     const [active,setActive]=useState({'Food':true,"Laundary":false,"Cleaning":false,"Electricity":false})
-    const [Yoffset,setYoffset]=useState(window.pageYOffset)
-    function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        console.log("Scroll down")
-        } else {
-            console.log("scroll top")
-    }
-    }
-    
-    window.onscroll = function() {scrollFunction()};
+    const [loading,setLoading]=useState(true)    
 
      
     useEffect(()=>{
     setActive({...defaultState,"Food":true})
+    setTimeout(() => {
+        setLoading(false)
+    }, 3000);
+
     },[])
     useEffect(()=>{
             
     },[active])
 
     return(
+        <div>
+            { loading?<DashboardSkeleton/>:
             <div>
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
@@ -689,68 +686,10 @@ const Dashboard=()=>{
             {active.Cleaning && <CleaningDashwithProps/> }
 
 
-            {/* <div className="swipper-sty">
-        <Swiper {...params} >
-        <div style={{display:"flex",justifyContent:"center"}}>
-             <Link exact to="/food" className="icon-card text-center" style={{backgroundColor:"white"}}>
-             <div className="swipper-card-1" style={{margin:"15% 0px"}}>
-             <img src={food_svg} height="70%" width="70%"/>
-            </div >
-            </Link>
-            <Link exact to="/laundary" className="icon-card text-center mg-left" style={{backgroundColor:"white"}}>
-            <div className="swipper-card-2 " style={{margin:"15% 0px"}}>
-            <img src={laundry_svg} height="70%" width="70%"/>
-            </div>
-            </Link>
-            
-        </div>
-        <div style={{display:"flex",justifyContent:"center"}}>
-        <Link to="/service" className="icon-card  text-center" style={{backgroundColor:"white"}}>
-            <div className=" swipper-card-2 " style={{margin:"15% 0px"}}>
-            <img src={roomservice_svg} height="70%" width="70%"/>
-            
-            </div>
-            </Link>
-            <Link to="/laundary" className="icon-card mg-left text-center" style={{backgroundColor:"white"}}>
-            <div className="swipper-card-3" style={{margin:"15% 0px"}}>
-            <img src={electricity_svg} height="70%" width="70%"/>
-            
-            </div>
-            </Link>
-        </div>
-        </Swiper>
-        </div> */}
-         
-            {/* <div className="flex-container" >
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div>
-            <div className="flex-container">
-            <div className="icon-card" >
-            </div>
-            <div className="icon-card mg-left" >
-            </div>
-            </div> */}
+            </div>        
 
-            
-
-            
-            
-            {/* <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"0px 0px 18px 18px",padding:"0px 1rem 0rem 1rem"}}>
-               
-
-                { active["Home"]?(<NavActiveicon img={home_icon} name={"Home"}/>):(<NavIcon img={default_home} name={"Home"} setActive={setActive}/>)}
-                { active["Payments"]?(<NavActiveicon img={payment_icon} name={"Payments"}/>):(<NavIcon img={default_payment} name={"Payments"} setActive={setActive}/>)}
-                { active["Orders"]?(<NavActiveicon img={food_icon} name={"Orders"}/>):(<NavIcon img={default_food_delivery} name={"Orders"} setActive={setActive}/>)}
-                { active["Support"]?(<NavActiveicon img={support_icon} name={"Support"}/>):(<NavIcon img={default_support} name={"Support"} setActive={setActive}/>)}
-            
-            
-            </nav>  */}
-
-            
             </div>
+                }
             </div>
 
     )

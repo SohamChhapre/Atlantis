@@ -2,4 +2,16 @@ label{
     margin-bottom:12px;
     font-size:13px;
     font-family: "Poppins-SemiBold";
+    color:#00a852
+}
+  input[type="text"]:disabled{background-color:white;}
+ input[type="email"]:disabled{background-color:white;}
+
+ .profile-container > .form-group .form-control{
+
+    border:0px
+}
+ .form-row .form-group .form-control{
+
+    border:0px
 }
