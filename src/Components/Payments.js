@@ -39,7 +39,7 @@ const paramsdefault = {
         <div className="card  dash-banner" style={{backgroundColor:"#e5f5ee",border:"0px",borderRadius:'5px',margin:"0px 5% 0px 5%"}}>
             
         </div>
-        <div style={{marginTop:"30px"}} className="payment-swipper">
+        {/* <div style={{marginTop:"30px"}} className="payment-swipper">
             
            <div className="" style={{margin:"0px 0%",display:"flex"}}>
                 <div className="credit-card">
@@ -49,7 +49,7 @@ const paramsdefault = {
 
            </div>
            
-            </div>
+            </div> */}
         {/* <div style={{marginTop:"30px"}} className="payment-swipper">
             <Swipper {...params}>
            <div className="" style={{margin:"0px 0%",display:"flex"}}>
@@ -68,12 +68,12 @@ const paramsdefault = {
            </div>
             </Swipper>
             </div> */}
-          <div className="food-menu-btn text-center" style={{marginTop:"60px"}}>
+          {/* <div className="food-menu-btn text-center" style={{marginTop:"60px"}}>
             <Link exact to="/Payments/1">
             <button className="btn btn-success" style={{fontSize:"11px",borderRadius:"4px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"white",marginRight:"50px"}} >Add Card</button>
             </Link>
         <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"4px 24px 4px 24px",fontFamily:"Poppins-Medium",color:"#F49901",background:"white",border:"1px solid #F49901"}}>Remove</button>
-        </div>
+        </div> */}
             
  
         

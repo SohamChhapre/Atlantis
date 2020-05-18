@@ -25,6 +25,8 @@ import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
 import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
+import formal_logo from './../Icons/Icons-Dash/formal_logo.png'
+import casual_logo from './../Icons/Icons-Dash/casual_logo.png'
 import cross_icon from './../Icons/Icons-Dash/signs.png';
 import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
@@ -326,7 +328,7 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
              {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
             
         </div>
-        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal78":""} 
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}
         onClick={()=>{if(flag===0)
                    setErr("Select Quantity")
                    else
@@ -486,17 +488,46 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
 const FoodDashwithProps = connect(mapStateToprops, mapDispatchToprops)(FoodDash);
 const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart})=>{
     const [toggler,setToggler]=useState(true);
+    const [page,setPage]=useState({"first":true,"formal":false,"casual":false})
 
     useEffect(()=>{
         setToggler(true)
+        setPage({"first":true,"formal":false,"casual":false})
     },[])
     useEffect(()=>{
 
-    },[toggler])
+    },[toggler,page])
 
     return (
         <div>
-        <div style={{margin:"25px 0px"}}>
+        {
+            page["first"] && 
+        <div className="flex-container" style={{marginLeft:"5%",marginRight:"5%"}}>
+        <div style={{textAlign:"center",fontSize:"19px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div className="icon-card" onClick={()=>{
+            setPage({"first":false,"casual":true,"formal":false})
+        }} style={{marginBottom:"10px",width:"40vw", height:"40vw",background:"white",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px"}}>
+        <img src={casual_logo} height="70%" width="auto" style={{margin:"15% 0px 0px 0%"}}/>
+        </div>
+        Casual
+        </div>
+        <div style={{marginLeft:"10%",textAlign:"center",fontSize:"19px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div className="icon-card" onClick={()=>{
+            setPage({"first":false,"casual":false,"formal":true})
+        }} style={{marginBottom:"10px",width:"40vw",height:"40vw",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px",background:"white" }}>
+        <img src={formal_logo} height="70%" width="auto" style={{margin:"15% 0px 0px 0"}}/>
+        </div>
+        Formal
+        </div>
+        </div>
+        }
+        {page["casual"] && 
+        <div>
+        <div onClick={()=>{
+            setPage({...page,first:true,casual:false})
+        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"5px 0px 0px 5%",color:"black",fontFamily:"Poppins-SemiBold",float:"left"}}>back</div>
+
+        <div style={{padding:"35px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Casual
 
@@ -524,7 +555,15 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
                 </div>
         </div>
         </div>
-         <div style={{margin:"25px 0px"}}>
+        </div>
+            }
+        { page["formal"] && 
+        <div>
+        <div onClick={()=>{
+            setPage({...page,formal:false,first:true})
+        }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"5px 0px 0px 5%",color:"black",fontFamily:"Poppins-SemiBold",float:"left"}}>back</div>
+         
+         <div style={{padding:"35px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>Formal
 
@@ -552,6 +591,8 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
                 </div>
         </div>
         </div>
+        </div>
+            }
          </div>
     
     
@@ -616,13 +657,16 @@ const Dashboard=()=>{
     const [active,setActive]=useState({'Food':true,"Laundary":false,"Cleaning":false,"Electricity":false})
     const [loading,setLoading]=useState(true)    
 
-     
+    const showpage=()=>{
+        setTimeout(() => {
+        setLoading(false)
+    }, 5000);
+
+    }
     useEffect(()=>{
     setActive({...defaultState,"Food":true})
     setLoading(true)
-    // setTimeout(() => {
-    //     setLoading(true)
-    // }, 3000);
+    
 
     },[])
     useEffect(()=>{
@@ -633,6 +677,7 @@ const Dashboard=()=>{
         <div>
             { loading && <DashboardSkeleton/>}
             <div style={{opacity:loading?"0":"1"}}>
+            {showpage()}
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
