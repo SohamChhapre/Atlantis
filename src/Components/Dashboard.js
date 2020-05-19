@@ -81,14 +81,21 @@ const OrderNowPopUp=({item})=>{
 }
 const OrderFoodPopUp=({item})=>{
     const [neworder,setNeworder]=useState({...item})
-    console.log(item);
+    var spiceinit={"high":false,"low":false,"medium":false}
+    
+    const [spice,setSpice]=useState(spiceinit);
+    const [garlic,setGarlic]=useState({yes:false,no:false})
+    const [curry,setCurry]=useState({mixed:false,seperate:false})
     useEffect(()=>{
             setNeworder({...item,note:""})
+            setSpice(spiceinit)
+            setGarlic({yes:false,no:false})
+            setCurry({mixed:false,seperate:false})
     },[])
 
     useEffect(()=>{
 
-    },[neworder])
+    },[neworder,spice,garlic,curry])
 
     return(
 
@@ -104,25 +111,42 @@ const OrderFoodPopUp=({item})=>{
                 
                   
                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"0px",fontSize:"14px" }}>SPICE</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Low</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Medium</div>  
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>High</div>  
+                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,low:!spice.low})
+                }}>Low</div>
+                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,medium:!spice.medium})
+                }}>Medium</div>  
+                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,high:!spice.high})    
+                }} >High</div>  
                 
 
                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Yes</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>No</div>  
+                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({no:false,yes:!garlic.yes})
+                }}>Yes</div>
+                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({yes:false,no:!garlic.no})
+                }}>No</div>  
+                
                 { item.category && item.category!="Burger" && 
                 <div>
+
                 <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Mixed</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Seperate</div>
+                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({seperate:false,mixed:!curry.mixed})
+                }}>Mixed</div>
+                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({mixed:false,seperate:!curry.seperate})
+                }}>Seperate</div>  
+
                 </div>
                 }
                 
                 </div>
                 
-                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
                                     OK
                 </div>
 
@@ -150,14 +174,15 @@ const OrderFoodPopUp=({item})=>{
 
 const ScheduleLaundryPopUp=({item})=>{
     const [neworder,setNeworder]=useState({...item})
-
+    const [daytime,setDaytime]=useState({day:"",time:""})
     useEffect(()=>{
             setNeworder({...item,note:""})
+            setDaytime({day:"",time:""})
     },[])
 
     useEffect(()=>{
 
-    },[neworder])
+    },[neworder,daytime])
 
 
     
@@ -174,20 +199,33 @@ const ScheduleLaundryPopUp=({item})=>{
                 <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
                 <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
                 <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>DAY</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Today</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Tommorow</div>  
+                <div className="btn" style={{background:daytime.day==="today"?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:daytime.day==="today"?"white":"#606060",border:daytime.day==='today'?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"today"})
+                }}>Today</div>
+                <div className="btn" style={{background:daytime.day==="tommorow"?"#00A852":"", marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:daytime.day==="tommorow"?"white":"#606060",border:daytime.day==="tommorow"?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"tommorow"})
+                }}>Tommorow</div>  
+              
                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>TIME</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>9AM - 12PM</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>12PM - 3PM</div>  
-               <div style={{marginTop:"15px"}}>
-                <div className="btn" style={{padding:"2px 11px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>12PM - 3PM</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 12px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>3PM - 9PM</div>
+                <div className="btn" style={{background:daytime.time==1?"#00A852":"", padding:"2px 10px",fontSize:"14px",color:daytime.time===1?"white":"#606060",border:daytime.time===1?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,time:1})
+                }}>9AM - 12PM</div>
+                <div className="btn" style={{marginLeft:"15px",background:daytime.time==2?"#00A852":"", padding:"2px 10px",fontSize:"14px",color:daytime.time===2?"white":"#606060",border:daytime.time===2?"1px solid #00A852":`1px solid #606060`}} onClick={()=>{
+                    setDaytime({...daytime,time:2})
+                }}>12PM - 3PM</div>
+                <div style={{marginTop:"10px"}}>
+                <div className="btn" style={{background:daytime.time==3?"#00A852":"", padding:"2px 12px",fontSize:"14px",color:daytime.time===3?"white":"#606060",border:daytime.time===3?"1px solid #00A852":`1px solid #606060`}} onClick={()=>{
+                    setDaytime({...daytime,time:3})
+                }}>3PM - 6PM</div>
+                <div className="btn" style={{marginLeft:"15px",background:daytime.time==4?"#00A852":"", padding:"2px 12px",fontSize:"14px",color:daytime.time===4?"white":"#606060",border:daytime.time===4?"1px solid #00A852":`1px solid #606060`}} onClick={()=>{
+                    setDaytime({...daytime,time:4})
+                }}>6PM - 9PM</div>
                 </div>
 
                 </div>
                 
 
-                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
                                     OK
                 </div>
 
@@ -202,14 +240,21 @@ const ScheduleLaundryPopUp=({item})=>{
 }
 const ScheduleFoodPopUp=({item})=>{
     const [neworder,setNeworder]=useState({...item})
-    console.log(item);
+    var spiceinit={"high":false,"low":false,"medium":false}
+    
+    const [spice,setSpice]=useState(spiceinit);
+    const [garlic,setGarlic]=useState({yes:false,no:false})
+    const [curry,setCurry]=useState({mixed:false,seperate:false})
+    const [daytime,setDaytime]=useState({day:"",time:""})
     useEffect(()=>{
             setNeworder({...item,note:""})
+            setSpice(spiceinit)
+            setGarlic({yes:false,no:false})
+            setCurry({mixed:false,seperate:false})
     },[])
-
     useEffect(()=>{
 
-    },[neworder])
+    },[neworder,curry,garlic,spice,daytime])
 
 
     
@@ -226,33 +271,59 @@ const ScheduleFoodPopUp=({item})=>{
                 <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
                 <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
                 <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>DAY</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Today</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Tommorow</div>  
+                <div className="btn" style={{background:daytime.day==="today"?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:daytime.day==="today"?"white":"#606060",border:daytime.day==='today'?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"today"})
+                }}>Today</div>
+                <div className="btn" style={{background:daytime.day==="tommorow"?"#00A852":"", marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:daytime.day==="tommorow"?"white":"#606060",border:daytime.day==="tommorow"?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"tommorow"})
+                }}>Tommorow</div>  
+               
+               
                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>TIME</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Lunch</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Dinner</div>  
-                
+                <div className="btn" style={{background:daytime.time==="lunch"?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:daytime.time==="lunch"?"white":"#606060",border:daytime.time==='lunch'?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,time:"lunch"})
+                }}>Lunch</div>
+                <div className="btn" style={{background:daytime.time==="dinner"?"#00A852":"", marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:daytime.time==="dinner"?"white":"#606060",border:daytime.time==="dinner"?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,time:"dinner"})
+                }}>Dinner</div>  
                   
-               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>SPICE</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Low</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Medium</div>  
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>High</div>  
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,low:!spice.low})
+                }}>Low</div>
+                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,medium:!spice.medium})
+                }}>Medium</div>  
+                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,high:!spice.high})    
+                }} >High</div>  
                 
 
                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Yes</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>No</div>  
+                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({no:false,yes:!garlic.yes})
+                }}>Yes</div>
+                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({yes:false,no:!garlic.no})
+                }}>No</div>  
+                
                 { item.category && item.category!="Burger" && 
                 <div>
+
                 <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
-                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Mixed</div>
-                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Seperate</div>
+                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({seperate:false,mixed:!curry.mixed})
+                }}>Mixed</div>
+                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({mixed:false,seperate:!curry.seperate})
+                }}>Seperate</div>  
+
                 </div>
                 }
                 
                 </div>
                 
-                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
                                     OK
                 </div>
 
