@@ -79,19 +79,76 @@ const OrderNowPopUp=({item})=>{
 
     )
 }
-    var d = new Date().toISOString();
-    var k=new Date(d).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
-var Time=[];
-    var m=new Date(k)
-    m.setMinutes(0)
-    for(let i=0;i<24;i++){
+const OrderFoodPopUp=({item})=>{
+    const [neworder,setNeworder]=useState({...item})
+    console.log(item);
+    useEffect(()=>{
+            setNeworder({...item,note:""})
+    },[])
+
+    useEffect(()=>{
+
+    },[neworder])
+
+    return(
+
+        <div>
+            <div class="modal fade" id={`OrderModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                
+                  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"0px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Low</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Medium</div>  
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>High</div>  
+                
+
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Yes</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>No</div>  
+                { item.category && item.category!="Burger" && 
+                <div>
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Mixed</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Seperate</div>
+                </div>
+                }
+                
+                </div>
+                
+                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                                    OK
+                </div>
+
+                </div>
+                
+                </div>
+            </div>
+            </div>
+</div>
+      
+    )
+}
+//     var d = new Date().toISOString();
+//     var k=new Date(d).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+// var Time=[];
+//     var m=new Date(k)
+//     m.setMinutes(0)
+//     for(let i=0;i<24;i++){
         
-        m.setMinutes(m.getMinutes()+30);
-        var mn= new Date(m)
-        var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
-        Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
-    }
-const SchedulePopUp=({item})=>{
+//         m.setMinutes(m.getMinutes()+30);
+//         var mn= new Date(m)
+//         var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
+//         Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
+//     }
+
+const ScheduleLaundryPopUp=({item})=>{
     const [neworder,setNeworder]=useState({...item})
 
     useEffect(()=>{
@@ -108,34 +165,30 @@ const SchedulePopUp=({item})=>{
     return(
 
         <div>
-            <div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`ScheduleModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
                 </div>
-                <div class="modal-body">
-                <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
-                <select  style={{float:"left",width:"40%"}} defaultValue={Time[0]} class="form-control" onChange={(e)=>{
-                    
-                    setNeworder({...neworder,day:e.target.value})
-                    // console.log(neworder)
-                }}>
-                    <option selected>Today</option>
-                    <option>Tommorow</option>
-                </select>
-                <select style={{float:"right",width:"40%"}} defaultValue={Time[0]} class="form-control" onChange={(e)=>{
-                    setNeworder({...neworder,time:e.target.value})
-                    // console.log(neworder)
-                }}>
-                    {Time.map((e,i)=>(<option >{e}</option>)) }
-                </select>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>DAY</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Today</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Tommorow</div>  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>TIME</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>9AM - 12PM</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>12PM - 3PM</div>  
+               <div style={{marginTop:"15px"}}>
+                <div className="btn" style={{padding:"2px 11px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>12PM - 3PM</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 12px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>3PM - 9PM</div>
+                </div>
+
                 </div>
                 
-                    {/* <textarea className="form-control" placeholder="Add a Note" rows="4" /> */}
-                    <div style={{margin:"30px 0px"}}>
-                        <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
+
+                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                                    OK
                 </div>
 
                 </div>
@@ -147,7 +200,73 @@ const SchedulePopUp=({item})=>{
       
     )
 }
-const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
+const ScheduleFoodPopUp=({item})=>{
+    const [neworder,setNeworder]=useState({...item})
+    console.log(item);
+    useEffect(()=>{
+            setNeworder({...item,note:""})
+    },[])
+
+    useEffect(()=>{
+
+    },[neworder])
+
+
+    
+
+    return(
+
+        <div>
+            <div class="modal fade" id={`ScheduleModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>DAY</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Today</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Tommorow</div>  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>TIME</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Lunch</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Dinner</div>  
+                
+                  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Low</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Medium</div>  
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>High</div>  
+                
+
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Yes</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>No</div>  
+                { item.category && item.category!="Burger" && 
+                <div>
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Mixed</div>
+                <div className="btn" style={{marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}}>Seperate</div>
+                </div>
+                }
+                
+                </div>
+                
+                    <div style={{margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                                    OK
+                </div>
+
+                </div>
+                
+                </div>
+            </div>
+            </div>
+</div>
+      
+    )
+}
+
+const SliderCardLaundry=({cart,item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
     const [err,setErr]=useState("")
     
     useEffect(()=>{
@@ -205,13 +324,13 @@ const SliderCardLaundry=({item,IncrementLaundry,DecrementLaundry,toggler,setTogg
                         setErr("Select Quantity")
                       else
                         AddCart({...item,orderCat:"Laundry"})
-                    }} >Order Now</div>
-        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } 
+                    }} data-target={`#OrderModal${item.id}`} data-toggle="modal" >Order Now</div>
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?`#ScheduleModal${item.id}`:"" } 
         onClick={()=>{if(flag===0)
                 setErr("Select Quantity")}} >Schedule</div>
         </div>
-        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
-       {flag>0?<SchedulePopUp item={item}  AddCart={AddCart} />:""}
+        <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} />
+       {flag>0?<ScheduleLaundryPopUp item={item}  AddCart={AddCart} />:""}
         </div>
         
     )
@@ -265,11 +384,11 @@ const SliderCardCleaning=({item,toggler,setToggler})=>{
         onClick={()=>{
                         AddCart({...item,orderCat:"Cleaning"})
                     }} >Order Now</div>
-        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target="#ScheduleModal" 
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={`#ScheduleModal${item.id}`}
          >Schedule</div>
         </div>
         {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
-        <SchedulePopUp item={item}  AddCart={AddCart} />
+        <ScheduleLaundryPopUp item={item}  AddCart={AddCart} />
         </div>
         
     )
@@ -337,13 +456,13 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
                            console.log("add order")
                            AddCart({...item,orderCat:"Food"})
                        }
-                   }} >Order Now</div>
-        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#ScheduleModal":"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
+                   }} data-target={flag?`#OrderModal${item.id}`:""} data-toggle="modal" >Order Now</div>
+        <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?`#ScheduleModal${item.id}`:"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
         </div>
         
-        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
+       {flag>0 ? <OrderFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
 
-       {flag>0?<SchedulePopUp item={item} cart={cart} AddCart={AddCart} />:""}
+       {flag>0? <ScheduleFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
         </div>
         
     )
@@ -504,21 +623,21 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
         {
             page["first"] && 
         <div className="flex-container" style={{marginLeft:"5%",marginRight:"5%"}}>
-        <div style={{textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div style={{textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"#00a852"}}>
         <div className="icon-card" onClick={()=>{
             setPage({"first":false,"casual":true,"formal":false})
         }} style={{marginBottom:"10px",width:"40vw", height:"40vw",background:"white",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px"}}>
         <img src={casual_logo} height="70%" width="auto" style={{margin:"15% 0px 0px 0%"}}/>
         </div>
-        Casual
+        CASUAL
         </div>
-        <div style={{marginLeft:"10%",textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"rgb(99, 54, 78)"}}>
+        <div style={{marginLeft:"10%",textAlign:"center",fontSize:"16px",fontFamily:"Poppins-SemiBold",color:"#00a852"}}>
         <div className="icon-card" onClick={()=>{
             setPage({"first":false,"casual":false,"formal":true})
         }} style={{marginBottom:"10px",width:"40vw",height:"40vw",boxShadow:"rgba(154, 154, 154, 0.1) 0px 5px 31.54px 6.46px",background:"white" }}>
         <img src={formal_logo} height="70%" width="auto" style={{margin:"15% 0px 0px 0"}}/>
         </div>
-        Formals
+        FORMALS
         </div>
         </div>
         }
