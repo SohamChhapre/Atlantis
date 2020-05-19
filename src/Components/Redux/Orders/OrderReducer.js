@@ -20,8 +20,7 @@ const OrderReducer=(state=initialState,action)=>{
                     break;
                 }
             }
-
-            
+            console.log(tempcart,action.payload)
             if(!flg)
             return {
                 ...state,
@@ -36,7 +35,6 @@ const OrderReducer=(state=initialState,action)=>{
         }
         case REMOVE_CART_ITEM:{
             var updatedcart=state.cart.filter((e,i)=>(e.id!==action.payload.id));
-
         return {
             ...state,
             cart:updatedcart

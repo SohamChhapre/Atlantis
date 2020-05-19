@@ -155,6 +155,56 @@ const CartCard=({item,AddCart,IncrementCart})=>{
         
     )
 }
+const CartFoodMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
+    const [toggler,setToggler]=useState(true)
+    useEffect(()=>{
+        console.log("hello")
+    },[toggler])
+    var flag=item.items;
+    
+
+    return (
+        <div style={{margin:"24px 14px 14px 14px",width:"calc(100% - 28px)"}}>
+        <div className="horizontal-card" style={{backgroundColor:"white",borderRadius:"20px",height:"calc(23vw + 22px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)"}}  >
+        <div style={{float:"left",margin:"11px 20px 11px 11px",backgroundColor:"",width:"18vw",height:"24vw",borderRadius:"10px"}}>
+        
+        <img src={item.url} height='auto' width="100%" style={{borderRadius:"5px"}}  />
+        
+        </div>
+          <div className="trash-container" style={{height:"calc(23vw + 22px)"}}>
+          <img src={trash_icon} className="trash-wrapper" style={{marginTop:"12vw"}}/>
+        </div>
+        <div style={{
+            // width:"calc(100% - 175px)",
+            paddingTop:"12px"}}>
+        <div 
+        // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
+      className="order-menu-name"  style={{fontFamily:"Poppins-SemiBold",color:"#00A852",lineHeight:"18px",position: "absolute",left: "calc(18vw + 30px)",
+                width: "calc(72vw - 60px)",top: "16px"}}
+        >
+        {item.name}
+        {/* <img src={heart_icon_2} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"5px"}}/> */}
+        </div>
+       
+        <div className="text-center">
+            <div className="cart-menu-middle" style={{background:"#F5FBF8"}}>
+            <img className={`${flag===0 ? "minus-plus-unactive" : ""}`} src={minus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"3px",borderRadius:"8px",float:"left"}} onClick={()=>{if(flag>=2){DecrementCart(item);setToggler(!toggler)}}}/>
+            <span style={{padding:"0px 10px",position:"relative",bottom:"2px",color:"#00A852",fontFamily:"Poppins-SemiBold",fontSize:"14px",background:"#F5FBF8",borderRadius:"20px"}}>{flag}</span>
+            <img className={`${flag>=3 ? "minus-plus-unactive" : ""}`} src={plus_icon} alt="dhf" height="23px" width="23px" style={{backgroundColor:"#",padding:"6px",borderRadius:"8px",float:"right"}} onClick={()=>{if(flag<=2){IncrementCart(item);setToggler(!toggler)}}}/>
+            </div>
+            
+        </div>
+        
+        </div>
+           
+           
+        </div>
+        
+
+        </div>
+        
+    )
+}
 const CartMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
@@ -371,7 +421,7 @@ const Cart =({cart,Foodorder,AddCart,IncrementCart,DecrementCart,Laundaryorder,R
                     <div className="" >
                     {cart.map((e,i)=>(
                     e.orderCat==="Food" && 
-                    <CartMenu item={e} key= {i} IncrementCart={IncrementCart} DecrementCart={DecrementCart} RemoveCart={RemoveCart} />
+                    <CartFoodMenu item={e} key= {i} IncrementCart={IncrementCart} DecrementCart={DecrementCart} RemoveCart={RemoveCart} />
                     ))}
                     
                    
@@ -394,8 +444,8 @@ const Cart =({cart,Foodorder,AddCart,IncrementCart,DecrementCart,Laundaryorder,R
 {/*                     
                     <CartMenu item={}/>
                     <CartMenu /> */}
-                    {cart.map((e,i)=>(
-                    e.orderCat==="Food" && 
+                    {LaundaryCart.map((e,i)=>(
+                    
                     <CartMenu item={e} key= {i} IncrementCart={IncrementCart} DecrementCart={DecrementCart} RemoveCart={RemoveCart} />
                     ))}
                     

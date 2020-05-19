@@ -23,7 +23,7 @@ import {Fooddata} from './CategoryData.js';
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
 import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
-import banner_electricity_img from './../Icons/Icons-Dash/Electricity-Illustration.jpg'
+import banner_electricity_img from './../Icons/Icons-Dash/Electricity_banner.jpg'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 import formal_logo from './../Icons/Icons-Dash/formal_logo.png'
@@ -213,7 +213,7 @@ const ScheduleLaundryPopUp=({item})=>{
                 <div className="btn" style={{marginLeft:"15px",background:daytime.time==2?"#00A852":"", padding:"2px 10px",fontSize:"14px",color:daytime.time===2?"white":"#606060",border:daytime.time===2?"1px solid #00A852":`1px solid #606060`}} onClick={()=>{
                     setDaytime({...daytime,time:2})
                 }}>12PM - 3PM</div>
-                <div style={{marginTop:"10px"}}>
+                <div style={{marginTop:"20px"}}>
                 <div className="btn" style={{background:daytime.time==3?"#00A852":"", padding:"2px 12px",fontSize:"14px",color:daytime.time===3?"white":"#606060",border:daytime.time===3?"1px solid #00A852":`1px solid #606060`}} onClick={()=>{
                     setDaytime({...daytime,time:3})
                 }}>3PM - 6PM</div>
@@ -337,7 +337,7 @@ const ScheduleFoodPopUp=({item})=>{
     )
 }
 
-const SliderCardLaundry=({cart,item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
+const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
     const [err,setErr]=useState("")
     
     useEffect(()=>{
@@ -390,7 +390,7 @@ const SliderCardLaundry=({cart,item,IncrementLaundry,DecrementLaundry,toggler,se
              {err && <small  style={{color:"red",position:"absolute",bottom:"2px",left:"142px"}}>{err}</small>}
             
         </div>
-        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} data-toggle="modal" data-target={flag?"#OrderModal87":""} 
+        <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} 
         onClick={()=>{if(flag===0)
                         setErr("Select Quantity")
                       else
@@ -400,7 +400,7 @@ const SliderCardLaundry=({cart,item,IncrementLaundry,DecrementLaundry,toggler,se
         onClick={()=>{if(flag===0)
                 setErr("Select Quantity")}} >Schedule</div>
         </div>
-        <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} />
+        {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
        {flag>0?<ScheduleLaundryPopUp item={item}  AddCart={AddCart} />:""}
         </div>
         
@@ -492,19 +492,20 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"18px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"15px",paddingRight:"4px"}}
         >
         {/* Wash & Fold  */}
         {item && item.name}
         {/* <img src={item.isfav?like_icon:heart_svg_icon} className="food-heart"  style={{float:'right',marginRight:"16px",marginTop:"10px"}}/> */}
         
         </div>
-        {/* <div className="card-content"
+        {item.id===2 && <div className="card-content"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"#828282"}}>
-        <span style={{fontFamily:"Poppins-Medium"}}> Fish </span> <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>   <span style={{fontFamily:"Poppins-Medium"}}> prawns </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> Tamatoes </span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}> |  </span>  <span style={{fontFamily:"Poppins-Medium"}}>Rice</span>  <span style={{fontFamily:"Poppins-Thin",margin:"0px 5px"}}>  |  </span>  <span style={{fontFamily:"Poppins-Medium"}}> potatoes </span>
-        </div> */}
+        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"rgb(60,60,60)",fontSize:"8px",lineHeight:"10px",paddingRight:"4px",whiteSpace:"initial"}}>
+        Nasi Goreng Saus Tiram dengan telus mata sapi dan slice chicken BBQ
+        </div>
+            }
         <div className="text-center">
             <div className="food-menu-middle" style={{width:"118px",left:"118px",background:"#F5FBF8",
             // width:"37vw",left:"calc(28vw + 30px)"
@@ -632,15 +633,15 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
           
     <div style={{margin:"25px 0px"}} key={i}>
 
-        <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>{e}
+        <div style={{fontSize:"20px",color:"rgb(60,60,60)",fontFamily:"Poppins-SemiBold",margin:"0px 10%",position:"relative"}}>{e}
        <Link exact to={{
         pathname: '/food',
         state: {
             fromdash: e
         }
         }}
-    style={{color:"#63364E"}}>
-        <span style={{fontFamily:"Poppins-Medium",fontSize:"11px",float:"right",textDecoration:"Underline",position:"absolute",right:"1%",bottom:"5px"}}>
+    style={{color:"rgb(60,60,60)"}}>
+        <span style={{fontFamily:"Poppins-Medium",fontSize:"12px",float:"right",textDecoration:"Underline",position:"absolute",right:"2%",bottom:"5px"}}>
         View All > 
         </span>
         </Link>
