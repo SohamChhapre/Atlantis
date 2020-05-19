@@ -24,6 +24,7 @@ import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
 import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
 import banner_electricity_img from './../Icons/Icons-Dash/Electricity_banner.jpg'
+import main_banner from './../Icons/Icons-Dash/Dash_banner.jpg'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
 import logo from './../Icons/Icons-Dash/logo.png';
 import formal_logo from './../Icons/Icons-Dash/formal_logo.png'
@@ -492,7 +493,7 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
             paddingTop:"10px"}}>
         <div 
         // style={{backgroundColor:"#c0c0c0",height:"15px",width:"36vw" ,float:"",margin:"0px 0px"}}
-      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"15px",paddingRight:"4px"}}
+      className="food-menu-name"  style={{whiteSpace:"normal",textAlign:"left",fontFamily:"Poppins-Bold",color:"#00A852",lineHeight:"20px",fontSize:"14px",paddingRight:"4px"}}
         >
         {/* Wash & Fold  */}
         {item && item.name}
@@ -502,7 +503,7 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
         {item.id===2 && <div className="card-content"
         style={{
             // backgroundColor:"#c0c0c0",height:"15px",width:"25vw" ,float:"",margin:"0px 0px",
-        marginTop:"-3px",fontFamily:"Poppins-SemiBold",color:"rgb(60,60,60)",fontSize:"8px",lineHeight:"10px",paddingRight:"4px",whiteSpace:"initial"}}>
+        marginTop:"1px",fontFamily:"Poppins-Medium",color:"rgb(60,60,60)",fontSize:"8px",lineHeight:"9px",paddingRight:"8px",whiteSpace:"initial"}}>
         Nasi Goreng Saus Tiram dengan telus mata sapi dan slice chicken BBQ
         </div>
             }
@@ -873,23 +874,28 @@ const Dashboard=()=>{
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
             <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
-            <div className="mt-2 mb-5" style={{marginLeft:"5%"}}> 
-                <div style={{float:"left"}}>
-                    <img src={logo} height="45px" width="45px" />
+            <div className="mt-2 mb-4" style={{marginLeft:"5%"}}> 
+               
+                <div className="text-left dash-text" style={{color:"rgb(60,60,60)",lineHeight:"16px"}} >
+                       <span style={{fontFamily:"Poppins-SemiBold",fontSize:"14px"}} >Hello,</span>
+                       <br/>
+                         <span style={{fontFamily:"Anteb-Black"}}>Elizabeth</span>
                 </div>
-                <div className="text-left dash-text text-center" >
-                       <span style={{fontFamily:"Anteb-Black"}} >Good Evening</span>
-                         <span style={{fontFamily:"Anteb-Medium",width:"5%",opacity:0}}>Heyyyyy</span>
-                </div>
-                
-                <div className="rounded-circle dash-profile" style={{marginRight:"5%"}}  >
+                <div className="rounded-circle dash-profile" style={{marginTop:"-46px",marginRight:"5%"}}  >
+                <Link  to="/profile" >
+
                     <img src={profile_men} height="100%" width="100%"/>
+                    </Link>
+
                     <div>
+
                     </div>
                 </div>
             </div>
         <div>
-        
+        <div className="card dash-banner" style={{margin:"0 5%",height:"auto",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+            <img src={main_banner} height="auto" width="100%"/>
+            </div>
         <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
             <div onClick={()=>{if(!active.Food)
                     setActive({...defaultState,Food:true})
