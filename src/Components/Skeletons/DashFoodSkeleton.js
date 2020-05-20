@@ -47,53 +47,18 @@ const CardSkeleton=()=>{
     )
 }
 
-const DashboardSkeleton=()=>{
+
+
+export const DashFoodSkeleton=()=>{
     const Category={"Bento":[1,2,3,4],Burger:[1,2,3,4],"Light Meal":[1,2,3,4],"Ayam":[1,2,3,4]}
     const catarr=["Bento","Burger","Light Meal","Ayam"]
     return (
-<div>
-            <p className="view-block">Rotate to portrait mode </p>
-            <p className="desktop-block">We Support Mobile View Only</p>
-            <div className="main-container" style={{margin:"20px 0px 90px 0%"}}>
-           <div className="mt-2 mb-4" style={{marginLeft:"5%"}}> 
-               
-                <div className="text-left dash-text" style={{color:"rgb(60,60,60)",lineHeight:"16px"}} >
-                     
-                       <Skeleton width={60} height={17}/>
-                      
-                       <br style={{padding:"5px 0px"}}/>
-                        
-                       <Skeleton width={90} height={20} style={{marginTop:"5px"}}/>
-                        
-                </div>
-                <div className="rounded-circle dash-profile" style={{backgroundColor:"white",marginTop:"-46px",marginRight:"5%"}}  >
-               
-
-                    <Skeleton width={50} height={50} circle={true} />
-                    
-                </div>
-            </div>
-        <div>
-        <div className="card dash-banner" style={{margin:"0 2%",height:"auto",backgroundColor:"",border:"0px",borderRadius:'10px'}}>
-            <Skeleton height={"18vh"} width={"100%"}/>
-            </div>
-        
-        <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
-            <div  className="icon icon-container" ><div style={{backgroundColor:"#",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><Skeleton  count={1} circle={true} width={62} height={62} /></div><Skeleton  count={1}  width={55} height={8} /></div>
-            <div  className="icon icon-container" ><div style={{backgroundColor:"#",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><Skeleton  count={1} circle={true} width={62} height={62} /></div><Skeleton  count={1}  width={55} height={8} /></div>
-            <div  className="icon icon-container"><div style={{backgroundColor:"#",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><Skeleton  count={1} circle={true} width={62} height={62} /></div><Skeleton  count={1}  width={55} height={8} /></div>
-            <div  className="icon icon-container"><div style={{backgroundColor:"#",width:"62px",height:"62px",borderRadius:"50%",marginBottom:"5px"}}><Skeleton  count={1} circle={true} width={62} height={62} /></div><Skeleton  count={1}  width={55} height={8} /></div>
-            <div className="icon" style={{opacity:"0",width:"0px",height:"auto",marginRight:"5%"}}>
-                  sk
-                    </div>  
-        </div> 
-        </div>
-            <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"white",border:"0px",borderRadius:'10px'}}>
-           <Skeleton  count={1} width={"100%"} height={"18vh"} />
-            </div>
-
-
-{ catarr.map((e,i)=>(
+    <div>
+           
+    <div className="dash-banner" style={{background:"",margin:"0 5%"}}>
+    <Skeleton height={"100%"} width={"100%"} />
+    </div>
+    { catarr.map((e,i)=>(
             <div style={{margin:"25px 0px"}} key={i}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 10%",position:"relative"}}><Skeleton height={30} width={80}/>
@@ -135,11 +100,18 @@ const DashboardSkeleton=()=>{
 
             
             </div>
-            </div>
+           
 
 
     )
 }
 
 
-export default DashboardSkeleton;
+export const LaundrySkeleton=()=>{
+
+
+    return (
+        <div>
+        </div>
+    )
+}

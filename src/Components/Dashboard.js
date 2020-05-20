@@ -33,6 +33,7 @@ import cross_icon from './../Icons/Icons-Dash/signs.png';
 import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
 import DashboardSkeleton from './Skeletons/DashboardSkeleton.js';
+import {DashFoodSkeleton} from './Skeletons/DashFoodSkeleton.js';
 const defaultState={
     "Food":false,
     "Laundary":false,
@@ -101,7 +102,7 @@ const OrderFoodPopUp=({item})=>{
     return(
 
         <div>
-            <div class="modal fade" id={`OrderModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`OrderModal${item.id}`} style={{marginTop:"calc(50vh - 170px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px",padding:"20px"}} data-dismiss="modal" >
@@ -192,7 +193,7 @@ const ScheduleLaundryPopUp=({item})=>{
     return(
 
         <div>
-            <div class="modal fade" id={`ScheduleModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`ScheduleModal${item.id}`} style={{marginTop:"calc(50vh - 144px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
@@ -264,7 +265,7 @@ const ScheduleFoodPopUp=({item})=>{
     return(
 
         <div>
-            <div class="modal fade" id={`ScheduleModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`ScheduleModal${item.id}`} style={{marginTop:"calc(50vh - 220px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
@@ -610,9 +611,9 @@ const ServiceMenu=({item,AddCart,RemoveOrder,cart})=>{
     )
 }
 
-const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=>{
+const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading,loading})=>{
     const [toggler,setToggler]=useState(true);
-
+    const [loadingfood,setLoadingfood]=useState(true)
   
 
     const [FoodCategory,setFoodcategory]=useState({"Bento":[],"Burger":[],"Light Meal":[],"Ayam":[]})
@@ -625,8 +626,17 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
     
     },[FoodData,toggler])
     var category=["Bento","Burger","Light Meal","Ayam"];
+    const setbothLoading=(e)=>{
+        setLoading(false);
+        setLoadingfood(false)
+    }
     return (
-    <div>
+        <div>
+        {loadingfood && <DashFoodSkeleton/> }
+    <div style={{opacity:loading?"0":1}}>
+     <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+             <img src={banner_food_img}  height="100%" width="100%" style={{borderRadius:"5px"}}/>
+    </div>
     {(toggler || ! toggler) && 
      category.map((e,i)=>(
           
@@ -653,7 +663,7 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
                </div>
                 {FoodCategory[e].slice(0,5).map((k,key)=>(
                     <div className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCard item={k} key={key} setToggler={setToggler} setLoading={setLoading} toggler={toggler} AddCart={AddCart} IncrementFood={IncrementFood} DecrementFood={DecrementFood} cart={cart}/>
+                    <SliderCard item={k} key={key} setToggler={setToggler} setLoading={setbothLoading} toggler={toggler} AddCart={AddCart} IncrementFood={IncrementFood} DecrementFood={DecrementFood} cart={cart}/>
                    
                     </div>
                     
@@ -673,6 +683,7 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
         }
 
         </div>
+        </div>
         )
 }
 
@@ -691,6 +702,10 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
 
     return (
         <div>
+        <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+             <img src={banner_laundry_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>
+            
+            </div>
         {
             page["first"] && 
         <div className="flex-container" style={{marginLeft:"5%",marginRight:"5%"}}>
@@ -809,6 +824,11 @@ const CleaningDash=({CleaningInit,cart})=>{
     }
     
     return (
+        <div>
+        <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+             <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>
+            
+            </div>
         <div style={{margin:"25px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
@@ -838,10 +858,17 @@ const CleaningDash=({CleaningInit,cart})=>{
                 </div>
         </div>
         </div>
+        </div>
     )
 }
 const CleaningDashwithProps=connect(mapStateToprops, mapDispatchToprops)(CleaningDash)
-
+const ElectricityDash=()=>{
+    return (
+        <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+             <img src={banner_electricity_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>
+            </div>
+    )
+}
 
 const Dashboard=()=>{
     
@@ -911,22 +938,22 @@ const Dashboard=()=>{
                     </div>  
         </div> 
         </div>
-            <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+            {/* <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
             {active.Food && <img src={banner_food_img}  height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             { active.Laundary && <img src={banner_laundry_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             {active.Cleaning && <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             {active.Electricity && <img src={banner_electricity_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>}
             
-            </div>
+            </div> */}
 
 
-            {active.Food && <div><FoodDashwithProps setLoading={setLoading} /></div>}
+            {active.Food && <div><FoodDashwithProps loading={loading} setLoading={setLoading} /></div>}
 
             {active.Laundary && <LaundaryDashwithProps/>}
 
             {active.Cleaning && <CleaningDashwithProps/> }
 
-
+            {active.Electricity && <ElectricityDash/>}
             </div>        
 
             </div>
