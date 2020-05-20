@@ -265,7 +265,7 @@ const ScheduleFoodPopUp=({item})=>{
     return(
 
         <div>
-            <div class="modal fade" id={`ScheduleModal${item.id}`} style={{marginTop:"calc(50vh - 220px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`ScheduleModal${item.id}`} style={{marginTop:"calc(50vh - 255px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
