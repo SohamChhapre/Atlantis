@@ -110,7 +110,7 @@ scrollbar-width: none;
 }
 .scrolling-wrapper-dash .icon{
   /* display: inline-block; */
-  font-family: "Poppins-SemiBold";
+  font-family: "Poppins-Bold";
   font-size: 12px;
   color:"#434343";
   cursor: pointer;

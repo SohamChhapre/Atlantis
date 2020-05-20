@@ -64,7 +64,7 @@ const OrderNowPopUp=({item})=>{
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                    <img src={cross_icon} data-dismiss="modal" height="15px" width="15px" style={{float:"right",margin:"15px"}} />
                 </div>
                 <div class="modal-body">
                     <textarea className="form-control" placeholder="Add a Note" rows="4"/>
@@ -104,8 +104,9 @@ const OrderFoodPopUp=({item})=>{
             <div class="modal fade" id={`OrderModal${item.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
-                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                <div class="text-right" style={{height:"20px",padding:"20px"}} data-dismiss="modal" >
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"0px"}} data-dismiss="modal" />
+
                 </div>
                 <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
                 <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
@@ -195,7 +196,7 @@ const ScheduleLaundryPopUp=({item})=>{
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                    <img src={cross_icon} data-dismiss="modal" height="13px" width="13px" style={{float:"right",margin:"15px"}} />
                 </div>
                 <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
                 <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
@@ -267,7 +268,7 @@ const ScheduleFoodPopUp=({item})=>{
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
                 <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                    <img src={cross_icon} data-dismiss="modal" height="13px" width="13px" style={{float:"right",margin:"15px"}} />
                 </div>
                 <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
                 <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
@@ -473,7 +474,7 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
     useEffect(()=>{
     if(item.items>0)
         setErr("")
-        // console.log("hello")
+    
     },[toggler])
     useEffect(()=>{
 
@@ -524,18 +525,15 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
         <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}
         onClick={()=>{if(flag===0)
                    setErr("Select Quantity")
-                   else
-                       {
-                           console.log("add order")
-                           AddCart({...item,orderCat:"Food"})
-                       }
+                 
                    }} data-target={flag?`#OrderModal${item.id}`:""} data-toggle="modal" >Order Now</div>
         <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?`#ScheduleModal${item.id}`:"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
         </div>
         
-       {flag>0 ? <OrderFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
+       {flag>0 ? <OrderFoodPopUp item={item} cart={cart} AddCart={AddCart} /> :""}
 
-       {flag>0? <ScheduleFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
+       {flag>0 ? <ScheduleFoodPopUp item={item} cart={cart} AddCart={AddCart} /> :""}
+        
         </div>
         
     )
@@ -634,7 +632,7 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading})=
           
     <div style={{margin:"25px 0px"}} key={i}>
 
-        <div style={{fontSize:"20px",color:"rgb(60,60,60)",fontFamily:"Poppins-SemiBold",margin:"0px 10%",position:"relative"}}>{e}
+        <div style={{fontSize:"20px",color:"rgb(60,60,60)",fontFamily:"Poppins-Bold",margin:"0px 10%",position:"relative"}}>{e}
        <Link exact to={{
         pathname: '/food',
         state: {
@@ -887,13 +885,11 @@ const Dashboard=()=>{
                     <img src={profile_men} height="100%" width="100%"/>
                     </Link>
 
-                    <div>
-
-                    </div>
+                    
                 </div>
             </div>
         <div>
-        <div className="card dash-banner" style={{margin:"0 5%",height:"auto",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
+        <div className="card dash-banner" style={{margin:"0 0%",height:"auto",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
             <img src={main_banner} height="auto" width="100%"/>
             </div>
         <div className="scrolling-wrapper-dash" style={{marginLeft:"5%"}}>
