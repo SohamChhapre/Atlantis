@@ -2,8 +2,18 @@ import React from 'react';
 import './Profile.css'
 
 
-const Profile=()=>{
+const Profile=({history})=>{
 
+
+    const handleLogout=()=>{
+        
+        
+        
+        localStorage.removeItem("token");
+
+        
+
+    }
 
     return (
 
@@ -48,7 +58,9 @@ const Profile=()=>{
             </div>
            
            <div className="text-center" >
-            <button type="submit" className="btn" style={{padding:"6px 13px",margin:"20px 0px",backgroundColor:"red",fontFamily:"Poppins-SemiBold",fontSize:"11px",color:"white"}} >Logout</button>
+            <button type="submit" className="btn" style={{padding:"6px 13px",margin:"20px 0px",backgroundColor:"red",fontFamily:"Poppins-SemiBold",fontSize:"11px",color:"white"}} onClick={()=>{
+                handleLogout()
+            }} >Logout</button>
             </div>
             </form>        
         </div>

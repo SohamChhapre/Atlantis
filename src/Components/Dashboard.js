@@ -64,7 +64,7 @@ const NavIcon=({img,name,setActive})=>{
 const AddedToast=()=>{
     toast.notify(({ onClose }) => (
                 <a href="#" css={{color:"white", textDecoration: "none",background:"#00A852" }} onClick={onClose}>
-                   <div style={{backgroundColor:"#00A852",color:"white",padding:"10px 15px",fontFamily:"Poppins-SemiBold",borderRadius:"5px"}}> Added To Cart <img src={Checked} height="20px" width="20px" style={{color:"white"}}/>
+                   <div style={{backgroundColor:"#00A852",color:"white",padding:"10px 15px",fontFamily:"Poppins-SemiBold",borderRadius:"5px"}}> Added To Cart <img src={Checked} height="20" width="20" style={{color:"white"}}/>
                     </div>
                         
                 </a>
@@ -425,6 +425,7 @@ const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,to
         
     )
 }
+
 const SliderCardCleaning=({item,toggler,setToggler})=>{
     
     

@@ -1,8 +1,9 @@
 import React,{useEffect,useState} from 'react';
 import logo from './logo.svg';
-import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
+import {BrowserRouter,Route,Link,Switch,Redirect} from 'react-router-dom'
 import './App.css';
 import Login from './Components/Auth/Login.js'
+import Welcome from './Components/Auth/Welcome.js'
 import Dashboard from './Components/Dashboard.js';
 import Profile from './Components/Profile.js';
 import Laundary from './Components/Laundary.js';
@@ -65,28 +66,45 @@ const NavIcon=({img,name,setActive})=>{
 }
 function App(props) {
   const [active,setActive]=useState({'Home':true,"Payments":false,"Orders":false,"Support":false})
-  const [orders,setOrders]=useState([]);
-  console.log(props,"APPP")
+  const [token,setToken]=useState("");
     useEffect(()=>{
         setActive({...defaultState,"Home":true})
-        setOrders([])
+        var tkn=localStorage["token"]
+        if(tkn)
+          setToken(tkn)
+        else
+          setToken("Invalid")
     },[])
     useEffect(()=>{
             console.log(10);
-    },[active,orders])
+    },[active,token])
+    const renderRedirect=()=>{
+      
+    if(token === "Invalid"  ){
+      return <Redirect exact to="/login" />
+       } 
+  }
+
+
   return (
     <Provider store={store}>
     <div className="App mx-auto">
     
     <BrowserRouter>
+         {/* {renderRedirect()} */}
     <Switch>
+
     <Route
   exact path='/'
   render={(props) => <Dashboard {...props}  />}
     />
     <Route
   exact path='/login'
-  render={(props) => <Login {...props}  />}
+  render={(props) => <Login {...props} setToken={setToken} />}
+      />
+      <Route
+  exact path='/Welcome'
+  render={(props) => <Welcome {...props} setToken={setToken} />}
       />
        <Route
   exact path='/food'
@@ -104,14 +122,7 @@ function App(props) {
   exact path='/laundary'
   render={(props) => <Laundary {...props}  />}
     />
-    {/* <Route
-  exact path='/casual'
-  render={(props) => <Casual {...props}  />}
-    /> */}
-    {/* <Route
-  exact path='/formal'
-  render={(props) => <Formal {...props}  />}
-    /> */}
+   
     <Route
   exact path='/service'
   render={(props) => <RoomService {...props}  />}
@@ -126,7 +137,7 @@ function App(props) {
     />
       
     </Switch>
-    <Route exact  path={['/', '/service','/food', '/payments','/laundary','/orders','/casual','/formal']}>
+    <Route exact  path={['/','/profile', '/service','/food', '/payments','/laundary','/orders','/casual','/formal']}>
     <nav className="navbar fixed-bottom dash-nav" style={{borderRadius:"10px",padding:"0px 1rem 0rem 1rem"}}>
                
 
