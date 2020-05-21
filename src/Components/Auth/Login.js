@@ -74,7 +74,7 @@ const Login=({setToken,history})=>{
                     handleClick(e)
                     setLoading(true)
                 }}
-                >Login</button>:
+                >Login</button>
                
 
             <div style={{color:"#3c3c3c",float:"right",marginRight:"20px",width:"76px",marginTop:"-8px",textAlign:"left",textDecoration:"underline",fontSize:"14px"}}>
