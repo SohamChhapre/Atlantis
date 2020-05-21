@@ -30,10 +30,15 @@ import logo from './../Icons/Icons-Dash/logo.png';
 import formal_logo from './../Icons/Icons-Dash/formal_logo.png'
 import casual_logo from './../Icons/Icons-Dash/casual_logo.png'
 import cross_icon from './../Icons/Icons-Dash/signs.png';
+import Checked from './../Icons/Icons-Dash/checked_480.png';
 import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
 import DashboardSkeleton from './Skeletons/DashboardSkeleton.js';
 import {DashFoodSkeleton} from './Skeletons/DashFoodSkeleton.js';
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
+
+
 const defaultState={
     "Food":false,
     "Laundary":false,
@@ -55,6 +60,15 @@ const NavIcon=({img,name,setActive})=>{
             setActive({...defaultState,[name]:true})
         }}> <img src={img} className="nav-icon" alt="home" /><p className="mb-1 nav-p-sty" style={{color:"#b8bcc7",fontFamily:"Poppins-SemiBold"}}>{name}</p></div>
     )
+}
+const AddedToast=()=>{
+    toast.notify(({ onClose }) => (
+                <a href="#" css={{color:"white", textDecoration: "none",background:"#00A852" }} onClick={onClose}>
+                   <div style={{backgroundColor:"#00A852",color:"white",padding:"10px 15px",fontFamily:"Poppins-SemiBold",borderRadius:"5px"}}> Added To Cart <img src={Checked} height="20px" width="20px" style={{color:"white"}}/>
+                    </div>
+                        
+                </a>
+                ));
 }
 const OrderNowPopUp=({item})=>{
 
@@ -187,9 +201,6 @@ const ScheduleLaundryPopUp=({item})=>{
 
     },[neworder,daytime])
 
-
-    
-
     return(
 
         <div>
@@ -228,7 +239,9 @@ const ScheduleLaundryPopUp=({item})=>{
                 </div>
                 
 
-                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}} onClick={()=>{
+                        AddedToast()                                   
+                    }}>
                                     OK
                 </div>
 
@@ -397,7 +410,10 @@ const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,to
         onClick={()=>{if(flag===0)
                         setErr("Select Quantity")
                       else
-                        AddCart({...item,orderCat:"Laundry"})
+                       { 
+                         AddCart({...item,orderCat:"Laundry"})
+                         AddedToast()
+                       }
                     }} data-target={`#OrderModal${item.id}`} data-toggle="modal" >Order Now</div>
         <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?`#ScheduleModal${item.id}`:"" } 
         onClick={()=>{if(flag===0)
@@ -806,7 +822,8 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
     
     )
 }
-const LaundaryDashwithProps=connect(mapStateToprops, mapDispatchToprops)(LaundaryDash)
+const LaundaryDashwithProps=connect(mapStateToprops, mapDispatchToprops)(LaundaryDash);
+
 const CleaningDash=({CleaningInit,cart})=>{
     const [toggler,setToggler]=useState(true);
 

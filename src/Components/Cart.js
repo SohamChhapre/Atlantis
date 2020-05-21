@@ -15,6 +15,7 @@ import laundry_svg from './../Icons/Icons-Footer/img-laundry.svg';
 import ic_food from './../Icons/Icons-Dash/ic-food-new.png';
 import ic_roomservice from './../Icons/Icons-Dash/img-roomservice.png'
 import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
+import cross_icon from './../Icons/Icons-Dash/signs.png';
 
 const FoodCard=({item,AddCart,IncrementCart,order,DecrementCart})=>{
     const [toggler,setToggler]=useState(true)
@@ -155,6 +156,53 @@ const CartCard=({item,AddCart,IncrementCart})=>{
         
     )
 }
+
+
+
+const RemovePopup=({item})=>{
+    useEffect(()=>{
+       
+       },[])
+    
+
+
+    
+
+    return(
+
+        <div>
+            <div class="modal fade" id={`RemoveModal${item.id}`} style={{marginTop:"calc(50vh - 77px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
+                    <img src={cross_icon} data-dismiss="modal" height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 10px 0px",height:"auto",textAlign:"center"}}>
+                <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>Are you sure ?</div>
+                <div style={{marginTop:"20px"}}>
+                <div className="btn" style={{padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}} onClick={()=>{
+                    
+                }}>Yes</div>
+                <div className="btn" style={{ marginLeft:"45px",padding:"2px 10px",fontSize:"14px",color:"#606060",border:"1px solid #606060"}} >No</div>  
+               </div>
+               
+                
+                
+                
+                </div>
+                
+                    
+
+                </div>
+                
+                </div>
+            </div>
+            </div>
+</div>
+      
+    )
+}
 const CartFoodMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
@@ -221,7 +269,7 @@ const CartMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
         <img src={item.url} height='100%' width="100%"   />
         
         </div>
-          <div className="trash-container" >
+          <div className="trash-container" data-toggle="modal" data-target={`#RemoveModal${item.id}`} >
           <img src={trash_icon} className="trash-wrapper"/>
         </div>
         <div style={{
@@ -248,7 +296,7 @@ const CartMenu=({item,AddCart,IncrementCart,DecrementCart,order})=>{
            
            
         </div>
-        
+        <RemovePopup item={item} />
 
         </div>
         

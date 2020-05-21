@@ -23,7 +23,7 @@ import "./Cards.css";
 import Slide from "react-reveal/Slide";
 import LightSpeed from "react-reveal/LightSpeed";
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
-
+import FoodSkeleton from './Skeletons/FoodSkeleton';
 
 const Food_category_data = {
   "Bento": false,
@@ -105,23 +105,76 @@ const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
     </div>
   );
 };
+const OrderFoodPopUp=({item})=>{
+    const [neworder,setNeworder]=useState({...item})
+    var spiceinit={"high":false,"low":false,"medium":false}
+    
+    const [spice,setSpice]=useState(spiceinit);
+    const [garlic,setGarlic]=useState({yes:false,no:false})
+    const [curry,setCurry]=useState({mixed:false,seperate:false})
+    useEffect(()=>{
+            setNeworder({...item,note:""})
+            setSpice(spiceinit)
+            setGarlic({yes:false,no:false})
+            setCurry({mixed:false,seperate:false})
+    },[])
 
-const OrderNowPopUp=({item})=>{
+    useEffect(()=>{
+
+    },[neworder,spice,garlic,curry])
 
     return(
 
         <div>
-            <div class="modal fade" id="OrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id={`OrderModal${item.id}`} style={{marginTop:"calc(50vh - 170px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-                    <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px",padding:"20px"}} data-dismiss="modal" >
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"0px"}} data-dismiss="modal" />
+
                 </div>
-                <div class="modal-body">
-                    <textarea className="form-control" placeholder="Add a Note" rows="4"/>
-                    <div style={{margin:"30px 0px"}}>
-                        <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-                    <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                
+                  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"0px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,low:!spice.low})
+                }}>Low</div>
+                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,medium:!spice.medium})
+                }}>Medium</div>  
+                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,high:!spice.high})    
+                }} >High</div>  
+                
+
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
+                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({no:false,yes:!garlic.yes})
+                }}>Yes</div>
+                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({yes:false,no:!garlic.no})
+                }}>No</div>  
+                
+                { item.category && item.category!="Burger" && 
+                <div>
+
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
+                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({seperate:false,mixed:!curry.mixed})
+                }}>Mixed</div>
+                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({mixed:false,seperate:!curry.seperate})
+                }}>Seperate</div>  
+
+                </div>
+                }
+                
+                </div>
+                
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                                    OK
                 </div>
 
                 </div>
@@ -129,70 +182,110 @@ const OrderNowPopUp=({item})=>{
                 </div>
             </div>
             </div>
-
-        </div>
+</div>
+      
     )
 }
-
-const SchedulePopUp=({item})=>{
+const ScheduleFoodPopUp=({item})=>{
     const [neworder,setNeworder]=useState({...item})
-
+    var spiceinit={"high":false,"low":false,"medium":false}
+    
+    const [spice,setSpice]=useState(spiceinit);
+    const [garlic,setGarlic]=useState({yes:false,no:false})
+    const [curry,setCurry]=useState({mixed:false,seperate:false})
+    const [daytime,setDaytime]=useState({day:"",time:""})
     useEffect(()=>{
             setNeworder({...item,note:""})
+            setSpice(spiceinit)
+            setGarlic({yes:false,no:false})
+            setCurry({mixed:false,seperate:false})
     },[])
-
     useEffect(()=>{
 
-    },[neworder])
-    var d = new Date().toISOString();
-    var k=new Date(d).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+    },[neworder,curry,garlic,spice,daytime])
 
-    var Time=[];
-    var m=new Date(k)
-    m.setMinutes(0)
-    for(let i=0;i<24;i++){
-        
-        m.setMinutes(m.getMinutes()+30*i);
-        var mn= new Date(m)
-        var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
-        Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
-    }
+
+    
+
     return(
 
         <div>
-<div class="modal fade" id="ScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="text-right" style={{height:"40px"}} data-dismiss="modal">
-        <img src={cross_icon} height="15px" width="15px" style={{float:"right",margin:"15px"}} />
-      </div>
-      <div class="modal-body">
-      <div style={{margin:"10px 0px 30px 0px",height:"36px"}}>
-      <select  style={{float:"left",width:"40%"}} class="form-control">
-        <option selected>Today</option>
-        <option>Tommorow</option>
-      </select>
-      <select style={{float:"right",width:"40%"}}  class="form-control">
-         {Time.map((e,i)=>(<option >{e}</option>)) }
-      </select>
-      </div>
-      
-        <textarea className="form-control" placeholder="Add a Note" rows="4" />
-        <div style={{margin:"30px 0px"}}>
-            <button className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}}>Confirm</button>
-        <button className="btn " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-dismiss="modal">Cancel</button>
-      </div>
+            <div class="modal fade" id={`ScheduleModal${item.id}`} style={{marginTop:"calc(50vh - 255px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px"}} data-dismiss="modal">
+                    <img src={cross_icon} data-dismiss="modal" height="13px" width="13px" style={{float:"right",margin:"15px"}} />
+                </div>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                <div style={{color:"#00A852",marginBottom:"10px",fontSize:"14px" }}>DAY</div>
+                <div className="btn" style={{background:daytime.day==="today"?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:daytime.day==="today"?"white":"#606060",border:daytime.day==='today'?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"today"})
+                }}>Today</div>
+                <div className="btn" style={{background:daytime.day==="tommorow"?"#00A852":"", marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:daytime.day==="tommorow"?"white":"#606060",border:daytime.day==="tommorow"?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,day:"tommorow"})
+                }}>Tommorow</div>  
+               
+               
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>TIME</div>
+                <div className="btn" style={{background:daytime.time==="lunch"?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:daytime.time==="lunch"?"white":"#606060",border:daytime.time==='lunch'?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,time:"lunch"})
+                }}>Lunch</div>
+                <div className="btn" style={{background:daytime.time==="dinner"?"#00A852":"", marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:daytime.time==="dinner"?"white":"#606060",border:daytime.time==="dinner"?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setDaytime({...daytime,time:"dinner"})
+                }}>Dinner</div>  
+                  
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,low:!spice.low})
+                }}>Low</div>
+                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,medium:!spice.medium})
+                }}>Medium</div>  
+                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,high:!spice.high})    
+                }} >High</div>  
+                
 
-      </div>
-      
-    </div>
-  </div>
-</div>
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
+                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({no:false,yes:!garlic.yes})
+                }}>Yes</div>
+                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({yes:false,no:!garlic.no})
+                }}>No</div>  
+                
+                { item.category && item.category!="Burger" && 
+                <div>
+
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
+                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({seperate:false,mixed:!curry.mixed})
+                }}>Mixed</div>
+                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({mixed:false,seperate:!curry.seperate})
+                }}>Seperate</div>  
+
+                </div>
+                }
+                
+                </div>
+                
+                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                                    OK
+                </div>
+
+                </div>
+                
+                </div>
+            </div>
+            </div>
 </div>
       
     )
 }
-const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) => {
+
+const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood ,setLoading}) => {
   const [toggler, setToggler] = useState(true);
   const [err,setErr]=useState("")
   useEffect(()=>{
@@ -229,7 +322,7 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) 
             height: "36vw",
           }}
         >
-          <img src={item.url} height='auto' width="100%" style={{borderRadius:"5px"}}  />
+          <img src={item.url} onLoad={()=>setLoading(false)} height='auto' width="100%" style={{borderRadius:"5px"}}  />
         </div>
         <div
           style={{
@@ -359,7 +452,7 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) 
             marginRight: "50px",
           }}
           data-toggle="modal"
-        data-target={flag?"#OrderModal":""}       
+        data-target={flag?`#OrderModal${item.id}`:""}       
         onClick={()=>{
           if(flag===0)
           setErr("Select Quantity")
@@ -379,7 +472,7 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) 
             border: "1px solid #63364E",
           }}
         data-toggle="modal"
-        data-target={flag?"#ScheduleModal":""}       
+        data-target={flag?`#ScheduleModal${item.id}`:""}       
         onClick={()=>{
           if(flag===0)
           setErr("Select Quantity")
@@ -388,8 +481,8 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) 
           Schedule
         </div>
       </div>
-       <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} />
-      {flag>0?<SchedulePopUp item={item} cart={cart} AddCart={AddCart} />:""}
+       {flag>0?<OrderFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
+      {flag>0?<ScheduleFoodPopUp item={item} cart={cart} AddCart={AddCart} />:""}
       
     </div>
   );
@@ -397,13 +490,13 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood }) 
 
 
 const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location}) => {
-  const [swipe, setSwipe] = useState({ left: true, right: false });
   const [food, setFood] = useState(true);
   const [foodcategory, setFoodcategory] = useState(Food_category_data);
   const handlers = useSwipeable({
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
+  const [loading,setLoading]=useState(true)
   useEffect(() => {
     if(location.state && location.state.fromdash){
     var cat=location.state.fromdash
@@ -411,6 +504,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
     }
     else
     setFoodcategory({...Food_category_data,Bento:true})
+    setLoading(true)
   }, []);
   useEffect(() => {
     console.log("UseEffect");
@@ -418,6 +512,11 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
       console.log("sds");
     }, 100);
   }, [ foodcategory]);
+  useEffect(()=>{
+    setTimeout(() => {
+      
+    }, 1000);
+  },[loading])
 
    var category;
    if(foodcategory["Bento"])
@@ -432,15 +531,17 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
 
   return (
     <div>
+       {loading &&  <FoodSkeleton/>}
+    <div style={{opacity:loading?"0":"1"}}>
+
       <p className="view-block">Rotate to portrait mode </p>
       <p className="desktop-block">We Support Mobile View Only</p>
       <div
         className="main-container"
         style={{
-          maxHeight: "calc(100vh - 120px)",
-          overflowY: "scroll",
-          padding: "20px 0%",
-          margin: "0",
+         
+          padding: "20px 0% 0px 0px",
+          margin: "0px 0px 90px 0px",
           // backgroundColor:"#9BE0B8",
           marginLeft: "0px",
           marginRight: "0px",
@@ -498,7 +599,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
             <Textslider
               foodcategory={foodcategory}
               setFoodcategory={setFoodcategory}
-              swipe={swipe}
+             
               food={food}
             />
        
@@ -516,6 +617,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
                       IncrementFood={IncrementFood}
                       FoodData={FoodData}
                       cart={cart}
+                      setLoading={setLoading}
                     />
                   )
                 );
@@ -528,6 +630,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
