@@ -22,7 +22,7 @@ import ic_laundary from  './../Icons/Icons-Dash/ic-laundry-new.png'
 import {Fooddata} from './CategoryData.js';
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import banner_laundry_img from './../Icons/Icons-Dash/img-cleaning-hero640.png'
-import banner_cleaning_img from './../Icons/Icons-Dash/banner-cleaning-cropped.png'
+import banner_cleaning_img from './../Icons/Icons-Dash/Cleaning_banner.jpg'
 import banner_electricity_img from './../Icons/Icons-Dash/Electricity_banner.jpg'
 import main_banner from './../Icons/Icons-Dash/Dash_banner.jpg'
 import profile_men from './../Icons/Icons-Dash/profile_men.png';
@@ -34,10 +34,10 @@ import Checked from './../Icons/Icons-Dash/checked_480.png';
 import {AddCart, IncrementCart,DecrementCart,RemoveCart ,IncrementFood,DecrementFood,IncrementLaundry,DecrementLaundry } from "./Redux/index.js";
 import {connect} from 'react-redux';
 import DashboardSkeleton from './Skeletons/DashboardSkeleton.js';
-import {DashFoodSkeleton} from './Skeletons/DashFoodSkeleton.js';
+import {DashFoodSkeleton,CleaningSkeleton,SliderCleaningSkeleton} from './Skeletons/DashUtilsSkeleton.js';
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
-
+import {isAuth,LoginRequiredToast} from './Apiconfig.js'
 
 const defaultState={
     "Food":false,
@@ -95,24 +95,67 @@ const OrderNowPopUp=({item})=>{
 
     )
 }
-const OrderFoodPopUp=({item})=>{
-    const [neworder,setNeworder]=useState({...item})
+const OrderFoodPopUp=({item,AddCart})=>{
+    const [neworder,setNeworder]=useState({...item,orderCat:"food",note:{
+        spice:"",
+        garlic:"",
+        curry:""
+    }})
     var spiceinit={"high":false,"low":false,"medium":false}
     
     const [spice,setSpice]=useState(spiceinit);
     const [garlic,setGarlic]=useState({yes:false,no:false})
     const [curry,setCurry]=useState({mixed:false,seperate:false})
     useEffect(()=>{
-            setNeworder({...item,note:""})
+            setNeworder({...item,orderCat:"Food",note:{
+                    spice:"",
+                    garlic:"",
+                    curry:""
+                }})
             setSpice(spiceinit)
             setGarlic({yes:false,no:false})
             setCurry({mixed:false,seperate:false})
     },[])
-
     useEffect(()=>{
 
-    },[neworder,spice,garlic,curry])
+    },[neworder,spice,curry,garlic])
 
+    const Addtocart=()=>{
+        var cartitem={...neworder}
+        if(spice.high)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"high"
+        }}
+        else if(spice.low)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"low"
+        }}
+        else if(spice.medium)
+       cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"medium"
+        }}
+        if(curry.mixed)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"mixed"
+        }}
+        else if(curry.seperate)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"seperate"
+        }}
+        if(garlic.yes)
+         cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"yes"
+        }}
+        else if(garlic.no)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"no"
+        }}
+        console.log(cartitem);
+        AddCart(cartitem)
+        AddedToast()
+            
+
+    }
     return(
 
         <div>
@@ -163,8 +206,12 @@ const OrderFoodPopUp=({item})=>{
                 
                 </div>
                 
-                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
-                                    OK
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}} data-dismiss="modal" onClick={()=>{
+                           Addtocart()
+                            
+
+                    }}>
+                        OK
                 </div>
 
                 </div>
@@ -176,30 +223,51 @@ const OrderFoodPopUp=({item})=>{
       
     )
 }
+
 //     var d = new Date().toISOString();
 //     var k=new Date(d).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
 // var Time=[];
-//     var m=new Date(k)
+    // var m=new Date(k)
 //     m.setMinutes(0)
-//     for(let i=0;i<24;i++){
-        
+//     for(let i=0;i<24;i++){        
 //         m.setMinutes(m.getMinutes()+30);
 //         var mn= new Date(m)
 //         var k=mn.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[1].split(" ")
 //         Time.push(k[1].split(":")[0]+":"+k[1].split(":")[1]+" "+ k[2])
-//     }
+    // }
 
-const ScheduleLaundryPopUp=({item})=>{
+const ScheduleLaundryPopUp=({item,AddCart,orderCat})=>{
     const [neworder,setNeworder]=useState({...item})
     const [daytime,setDaytime]=useState({day:"",time:""})
+    const [err,setErr]=useState("")
     useEffect(()=>{
-            setNeworder({...item,note:""})
+            if(orderCat)
+            setNeworder({...item,daytime:daytime,id:item.id+100,orderCat:"Cleaning"})
+                
+            else            
+            setNeworder({...item,daytime:daytime,id:item.id+100,orderCat:"Laundry"})
             setDaytime({day:"",time:""})
+            setErr("")
     },[])
-
+    var timearr=["9AM - 12PM","12PM - 3PM","3PM - 6PM","6PM - 9PM"]
+    useEffect(()=>{
+        setErr("")
+    },[neworder,daytime])
     useEffect(()=>{
 
-    },[neworder,daytime])
+    },[err])
+        const Addtocart=()=>{
+                
+                if(daytime.day=="" || daytime.time==="")
+                    setErr("Select Day and Time")
+                else{
+                    var cartitem={...neworder,daytime:{...daytime,time:timearr[daytime.time-1]}};
+                    console.log(cartitem);
+                    AddCart(cartitem);
+                    AddedToast()
+                }
+        }
+
 
     return(
 
@@ -238,9 +306,9 @@ const ScheduleLaundryPopUp=({item})=>{
 
                 </div>
                 
-
-                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}} onClick={()=>{
-                        AddedToast()                                   
+            {err && <small className="text-danger">{err}</small>}
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}} data-dismiss={daytime.day && daytime.time ?"modal":""} onClick={()=>{
+                        Addtocart()                                 
                     }}>
                                     OK
                 </div>
@@ -254,26 +322,76 @@ const ScheduleLaundryPopUp=({item})=>{
       
     )
 }
-const ScheduleFoodPopUp=({item})=>{
-    const [neworder,setNeworder]=useState({...item})
+const ScheduleFoodPopUp=({item,AddCart})=>{
+    console.log(item,"items")
+    const [daytime,setDaytime]=useState({day:"",time:""})
+    
+    const [neworder,setNeworder]=useState({...item,orderCat:"Food",note:{
+        spice:"",
+        garlic:"",
+        curry:""
+    }})
     var spiceinit={"high":false,"low":false,"medium":false}
     
     const [spice,setSpice]=useState(spiceinit);
     const [garlic,setGarlic]=useState({yes:false,no:false})
     const [curry,setCurry]=useState({mixed:false,seperate:false})
-    const [daytime,setDaytime]=useState({day:"",time:""})
+    const [err,setErr]=useState("")
     useEffect(()=>{
-            setNeworder({...item,note:""})
+            setNeworder({...item,id:item.id+100,daytime:daytime,orderCat:"Food",note:{
+                    spice:"",
+                    garlic:"",
+                    curry:""
+                }})
+            setDaytime({day:"",time:""})
             setSpice(spiceinit)
             setGarlic({yes:false,no:false})
             setCurry({mixed:false,seperate:false})
     },[])
     useEffect(()=>{
+            setErr("")
+    },[neworder,daytime,spice,garlic,curry])
+    const Addtocart=()=>{
+        var cartitem={...neworder}
+        if(spice.high)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"high"
+        }}
+        else if(spice.low)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"low"
+        }}
+        else if(spice.medium)
+       cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"medium"
+        }}
+        if(curry.mixed)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"mixed"
+        }}
+        else if(curry.seperate)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"seperate"
+        }}
+        if(garlic.yes)
+         cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"yes"
+        }}
+        else if(garlic.no)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"no"
+        }}
+        cartitem={...cartitem,daytime:daytime}
+        console.log(cartitem)
+        if(daytime.day=="" || daytime.time==="")
+            setErr("Select Day and Time")
+        else
+            {
+                AddCart(cartitem)
+                AddedToast()
+            }
 
-    },[neworder,curry,garlic,spice,daytime])
-
-
-    
+    }
 
     return(
 
@@ -337,9 +455,13 @@ const ScheduleFoodPopUp=({item})=>{
                 </div>
                 }
                 
+
                 </div>
-                
-                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
+                {err && <small className="text-danger" >{err}</small>}
+                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}} data-dismiss={daytime.day && daytime.time ? "modal":""} onClick={()=>{
+
+                        Addtocart()
+                    }}>
                                     OK
                 </div>
 
@@ -355,10 +477,14 @@ const ScheduleFoodPopUp=({item})=>{
 
 const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,toggler,setToggler})=>{
     const [err,setErr]=useState("")
-    
+    const [loading,setLoading]=useState(true)
+    // useEffect(()=>{
+    //     setLoading(false)
+    // },[])
     useEffect(()=>{
     if(item.items>0)
         setErr("")
+
         // console.log("hello")
     },[toggler])
     useEffect(()=>{
@@ -368,10 +494,16 @@ const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,to
     
 
     return (
-        <div style={{margin:"",width:"256px"}}>
+        <div>
+        {loading && <SliderCleaningSkeleton/> }
+        <div style={{margin:"",width:"256px",display:loading?"none":"block"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
         <div style={{float:"left",margin:"-1px 20px 11px 11px",paddingTop:"10px",backgroundColor:"",width:item.name==="Wash & Fold"?"97px":"94px",height:"96px",borderRadius:"5px"}}>
-        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
+        <img src={item.url} height='auto' width="100%"  onLoad={()=>{
+             setTimeout(() => {
+            setLoading(false)    
+            }, 500);
+        }}  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
         
         </div>
         <div style={{
@@ -422,21 +554,22 @@ const SliderCardLaundry=({AddCart,cart,item,IncrementLaundry,DecrementLaundry,to
         {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
        {flag>0?<ScheduleLaundryPopUp item={item}  AddCart={AddCart} />:""}
         </div>
-        
+        </div>
     )
 }
 
-const SliderCardCleaning=({item,toggler,setToggler})=>{
-    
-    
-        
-    
+const SliderCardCleaning=({item,toggler,setToggler,AddCart,setLoading})=>{
+
 
     return (
         <div style={{margin:"",width:"256px"}}>
         <div className="horizontal-card" style={{backgroundColor:"white",height:"calc(137px)",margin:"15px 0px 15px 0px",position:"relative",boxShadow: "0px 5px 31.54px 6.46px rgba(154, 154, 154, 0.1)",borderRadius:"10px"}}  >
         <div style={{float:"left",margin:"-1px 20px 11px 11px",paddingTop:"10px",backgroundColor:"",width:item.name==="Wash & Fold"?"97px":"94px",height:"96px",borderRadius:"5px"}}>
-        <img src={item.url} height='auto' width="100%"  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
+        <img src={item.url} onLoad={()=>{
+            setTimeout(() => {
+                setLoading(false)
+            }, 500);
+        }} height='auto' width="100%"  style={{borderRadius:"5px",marginRight:item.name==="Iron & Fold"?"6px":"0px"}} />
         
         </div>
         <div style={{
@@ -474,12 +607,13 @@ const SliderCardCleaning=({item,toggler,setToggler})=>{
         <div className="food-menu-btn text-center" ><div className="btn btn-success" style={{fontSize:"11px",float:"left",marginLeft:"10%",borderRadius:"4px",padding:"6px 13px",fontFamily:"Poppins-Medium",color:"white",marginBottom:"2px"}} 
         onClick={()=>{
                         AddCart({...item,orderCat:"Cleaning"})
+                        AddedToast()
                     }} >Order Now</div>
         <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={`#ScheduleModal${item.id}`}
          >Schedule</div>
         </div>
         {/* <OrderNowPopUp item={item} cart={cart} AddCart={AddCart} /> */}
-        <ScheduleLaundryPopUp item={item}  AddCart={AddCart} />
+        <ScheduleLaundryPopUp item={item}  AddCart={AddCart} orderCat={"Cleaning"}/>
         </div>
         
     )
@@ -488,17 +622,20 @@ const SliderCardCleaning=({item,toggler,setToggler})=>{
 
 const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddCart,setLoading})=>{
     const [err,setErr]=useState("")
-    
+    const [flag,setFlag]=useState(item.items)
+    useEffect(()=>{
+            setFlag(item.items)
+    },[])
     useEffect(()=>{
     if(item.items>0)
         setErr("")
-    
+        setFlag(item.items)
     },[toggler])
     useEffect(()=>{
 
-    },[err])
-        var flag=item.items;
-    
+    },[err,flag])
+        
+    var ispopup=false
 
     return (
         <div style={{margin:"",width:"256px"}}>
@@ -548,9 +685,9 @@ const SliderCard=({item,IncrementFood,DecrementFood,cart,toggler,setToggler,AddC
         <div className=" " style={{borderRadius:"4px",fontSize:"11px",padding:"6px 16px",float:"right",marginRight:"10%",fontFamily:"Poppins-Medium",color:"#63364E",background:"white",border:"1px solid #63364E",marginBottom:"2px"}} data-toggle="modal" data-target={flag?`#ScheduleModal${item.id}`:"" } onClick={()=>{if(flag===0)setErr("Select Quantity")}} >Schedule</div>
         </div>
         
-       {flag>0 ? <OrderFoodPopUp item={item} cart={cart} AddCart={AddCart} /> :""}
+       { flag>0 ? <OrderFoodPopUp item={item}  AddCart={AddCart} />:"" }
 
-       {flag>0 ? <ScheduleFoodPopUp item={item} cart={cart} AddCart={AddCart} /> :""}
+       {flag>0 ? <ScheduleFoodPopUp item={item}  AddCart={AddCart} /> :""}
         
         </div>
         
@@ -578,12 +715,7 @@ const ServiceMenu=({item,AddCart,RemoveOrder,cart})=>{
     
     var contentarr=item.content.slice(0,item.content.length-1);
     var flag=0;
-    // console.log(item);
-    // for(var i=0;i<cart.length;i++){
-    //         console.log(i,)
-    //     if(cart[i].id===item.id && cart[i].category===item.category )
-    //             flag=cart[i].items;
-    // }
+    
 
     return (
         <div style={{margin:"14px 14px 34px 14px",width:"calc(100% - 28px)"}}>
@@ -650,7 +782,7 @@ const FoodDash=({FoodData,IncrementFood,DecrementFood,cart,AddCart,setLoading,lo
     return (
         <div>
         {loadingfood && <DashFoodSkeleton/> }
-    <div style={{opacity:loading?"0":1}}>
+    <div style={{opacity:loading?"0":1,display:loading?"none":"block"}}>
      <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
              <img src={banner_food_img}  height="100%" width="100%" style={{borderRadius:"5px"}}/>
     </div>
@@ -750,7 +882,7 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
             setPage({...page,first:true,casual:false})
         }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"15px 0px 0px 5%",color:"black",fontFamily:"Poppins-Medium",float:"left"}}> back ></div>
 
-        <div style={{padding:"35px 0px"}}>
+        <div style={{padding:"35px 0px 0px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
 
@@ -786,7 +918,7 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
             setPage({...page,formal:false,first:true})
         }} style={{textDecoration:"underline",cursor:"pointer",fontSize:"11px",margin:"15px 0px 0px 5%",color:"black",fontFamily:"Poppins-Medium",float:"left"}}>back ></div>
          
-         <div style={{padding:"35px 0px"}}>
+         <div style={{padding:"35px 0px 0px 0px"}}>
 
         <div style={{fontSize:"19px",color:"#63364E",fontFamily:"Poppins-SemiBold",margin:"0px 5%",position:"relative"}}>
 
@@ -825,24 +957,23 @@ const LaundaryDash=({LaundryInit,IncrementLaundry,DecrementLaundry,cart,AddCart}
 }
 const LaundaryDashwithProps=connect(mapStateToprops, mapDispatchToprops)(LaundaryDash);
 
-const CleaningDash=({CleaningInit,cart})=>{
+const CleaningDash=({CleaningInit,AddCart})=>{
     const [toggler,setToggler]=useState(true);
-
+    const [loading,setLoading]=useState(false)
     useEffect(()=>{
         setToggler(true)
+        setLoading(true)
     },[])
 
     useEffect(()=>{
 
     },[toggler])
-    const params = {
-   slidesPerView: 1.15,
-  spaceBetween: 15,
-  freeMode: true,
-    }
+   
     
     return (
         <div>
+            {loading && <CleaningSkeleton/>}
+        <div style={{display:loading?"none":"block"}}>
         <div className="card dash-banner" style={{margin:"0 5%",backgroundColor:"#E5F5EE",border:"0px",borderRadius:'10px'}}>
              <img src={banner_cleaning_img} height="100%" width="100%" style={{borderRadius:"5px"}}/>
             
@@ -861,7 +992,7 @@ const CleaningDash=({CleaningInit,cart})=>{
                 CleaningInit.map((e,i)=>(
                     
                     <div key={i} className="icon" style={{width:"%",marginRight:"25px"}}>
-                    <SliderCardCleaning item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} cart={cart} AddCart={AddCart}/>
+                    <SliderCardCleaning item={e} setToggler={setToggler} toggler={toggler} IncrementLaundry={IncrementLaundry} DecrementLaundry={DecrementLaundry} AddCart={AddCart} setLoading={setLoading}/>
                     
                     </div>
                     
@@ -877,6 +1008,7 @@ const CleaningDash=({CleaningInit,cart})=>{
         </div>
         </div>
         </div>
+        </div>
     )
 }
 const CleaningDashwithProps=connect(mapStateToprops, mapDispatchToprops)(CleaningDash)
@@ -888,7 +1020,7 @@ const ElectricityDash=()=>{
     )
 }
 
-const Dashboard=()=>{
+const Dashboard=({history})=>{
     
     const [active,setActive]=useState({'Food':true,"Laundary":false,"Cleaning":false,"Electricity":false})
     const [loading,setLoading]=useState(true)    
@@ -900,19 +1032,28 @@ const Dashboard=()=>{
 
     }
     useEffect(()=>{
-    setActive({...defaultState,"Food":true})
-    setLoading(true)
+        if(!isAuth()){
+      LoginRequiredToast()
+      history.push('/login')
+
+    }
+        setActive({...defaultState,"Food":true})
+        setLoading(true)
     
 
     },[])
     useEffect(()=>{
             
     },[active,loading])
+    if(isAuth())
+    var {name}=JSON.parse(localStorage["data"])
+    else
+    var name="Elizabeth"
 
     return(
         <div>
             { loading && <DashboardSkeleton/>}
-            <div style={{opacity:loading?"0":"1"}}>
+            <div style={{opacity:loading?"0":"1",display:loading?"none":"block"}}>
             {showpage()}
             <p className="view-block">Rotate to portrait mode </p>
             <p className="desktop-block">We Support Mobile View Only</p>
@@ -922,7 +1063,7 @@ const Dashboard=()=>{
                 <div className="text-left dash-text" style={{color:"rgb(60,60,60)",lineHeight:"16px"}} >
                        <span style={{fontFamily:"Poppins-SemiBold",fontSize:"14px"}} >Hello,</span>
                        <br/>
-                         <span style={{fontFamily:"Anteb-Black"}}>Elizabeth</span>
+                         <span style={{fontFamily:"Anteb-Black"}}>{name.firstname}</span>
                 </div>
                 <div className="rounded-circle dash-profile" style={{marginTop:"-46px",marginRight:"5%"}}  >
                 <Link  to="/profile" >

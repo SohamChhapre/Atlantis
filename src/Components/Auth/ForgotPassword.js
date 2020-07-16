@@ -1,39 +1,40 @@
 import React,{useState,useEffect} from 'react';
-import {Link} from 'react-router-dom'
 import main_banner from './../../Icons/Icons-Dash/Dash_banner.jpg'
 import Axios from 'axios';
 import toast from 'toasted-notes' 
 import 'toasted-notes/src/styles.css';
-const Login=({setToken,history})=>{
+const ForgotPassword=({setToken,history})=>{
         const [data,setData]=useState({})
         const [loading,setLoading]=useState(true)
-        const [err,setErr]=useState("")
+        const [errSucc,setErr]=useState({err:"",success:""})
         useEffect(()=>{
-            setData({username:"",password:""})
+            setData({email:""})
             setLoading(false)
-            setErr("")
+            setErr({err:"",success:""})
         },[])
 
+
+
         useEffect(()=>{
-                setErr("")
+                setErr({err:"",success:""})
         },[data]);
         useEffect(()=>{
                 
-        },[loading,err])
+        },[loading,errSucc])
 
         const handleClick=async (e)=>{
                 e.preventDefault()
                 console.log(data)
-                await Axios.post('http://192.168.43.168:3500/user/login',data).then((res)=>{
+                await Axios.put('http://192.168.43.168:3500/password/reset',data).then((res)=>{
                     console.log(res)
-                    localStorage.setItem("token",res.data.token);
-                    setToken(res.data.token)
-                    localStorage.setItem("data",JSON.stringify(res.data.data))
-                    setLoading(false)
-                    history.push("/welcome")
 
+                    setErr({...errSucc,success:res.data.message});
+                    setLoading(false)
+                    
                 }).catch((err)=>{
-                    setErr(err.response.data.errMessage)
+                    console.log(err)
+                    console.log(err.response.data)
+                    setErr({...errSucc,"err":err.response.data.errMessage})
                     setLoading(false)
 
 
@@ -54,35 +55,34 @@ const Login=({setToken,history})=>{
         </div>
 
         <div style={{maxWidth:"280px",margin:"0px auto"}}>
-            {err && <small className="text-danger" style={{fontFamily:"Poppins-SemiBold"}}>{err}</small> }
+            {errSucc.err && <small className="text-danger" style={{fontFamily:"Poppins-SemiBold"}}>{errSucc.err}</small> }
+            {errSucc.success && <small className="text-success" style={{fontFamily:"Poppins-SemiBold"}}>{errSucc.success}</small> }
             
             <form onSubmit={(e)=>{
                     handleClick(e)
                     setLoading(true)
-                }}>
+            }}>
             <div class="form-group">
-                <input type="text" class="form-control" onChange={(e)=>setData({...data,username:e.target.value})} style={{border:"1px solid #00ba66",opacity:"1",fontWeight:"502",color:"black"}} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User Name" required />
+                <input type="email" class="form-control" onChange={(e)=>setData({email:e.target.value})} style={{border:"1px solid #00ba66",opacity:"1",fontWeight:"502",color:"black"}} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Registered Email " required/>
             </div>
-            <div class="form-group" style={{marginTop:"30px",marginBottom:"30px"}}>
-                <input type="password" onChange={(e)=>setData({...data,password:e.target.value})} style={{border:"1px solid #00ba66",opacity:"1",fontWeight:"502",color:"black"}} class="form-control" id="exampleInputPassword1" placeholder="Password" required />
-            </div>
+            
             <div className="mt-4">
             <button type="submit" class="btn btn-success" style={{
                 fontSize: "12px",
-                marginLeft: "20px",
+                marginRight: "20px",
                 borderRadius: "4px",
                 padding: "6px 23px",
                 fontFamily: "Poppins-Medium",
                 color: "white",
-                marginBottom: "2px"}}
+                marginBottom: "2px",
+                float:"right"
+                }}
                 
-                >Login</button>
+                >Submit</button>
+                {loading && <small style={{fontFamily:"Poppins-Medium"}}>Sending Request ...</small>}
                
-            <Link exact to="/forgot">
-            <div style={{color:"#3c3c3c",float:"right",marginRight:"20px",width:"76px",marginTop:"-8px",textAlign:"left",textDecoration:"underline",fontSize:"14px"}}>
-            Forgot Password ?
-            </div>
-            </Link>
+
+            
             </div>
             </form>
         </div>
@@ -94,4 +94,4 @@ const Login=({setToken,history})=>{
 
 
 
-export default Login;
+export default ForgotPassword;

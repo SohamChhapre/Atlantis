@@ -5,7 +5,7 @@
     -webkit-overflow-scrolling: touch;
     margin-top: 20px;
 margin-bottom: 30px;
-padding: 5px 20px;
+padding: 5px 34px;
 -ms-overflow-style: none;  /* Internet Explorer 10+ */
 scrollbar-width: none;
 text-align:center
@@ -156,6 +156,10 @@ text-align:center
         font-size: 17px;
         margin-top: 0px;
     }
+    .food-select-unactive{
+        font-size:15px;
+        padding:4px 14px
+    }
     .food-menu-qty{
         font-size: 9px;
     }
@@ -242,7 +246,7 @@ text-align:center
         font-size: 24px;
     }
     .food-select-unactive{
-        font-size:18px;
+        font-size:15px;
         padding:4px 14px;
     }
     .card-content{

@@ -13,7 +13,8 @@ import cart_icon from "./../Icons/Icons-Footer/green_shopping_cart.png";
 import like_icon from "./../Icons/Icons-Food/like.svg";
 import heart_svg_icon from "./../Icons/Icons-Food/heart.svg";
 import cross_icon from './../Icons/Icons-Dash/signs.png';
-
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 import "./Cards.css";
 import { useSwipeable, Swipeable } from "react-swipeable";
 import { AddCart,IncrementFood,DecrementFood } from "./Redux/index.js";
@@ -24,7 +25,8 @@ import Slide from "react-reveal/Slide";
 import LightSpeed from "react-reveal/LightSpeed";
 import banner_food_img from './../Icons/Icons-Dash/img-food-640.png';
 import FoodSkeleton from './Skeletons/FoodSkeleton';
-
+import Checked from './../Icons/Icons-Dash/checked_480.png';
+import {isAuth,LoginRequiredToast} from './Apiconfig.js'
 const Food_category_data = {
   "Bento": false,
   "Burger": false,
@@ -105,107 +107,85 @@ const Textslider = ({ food, foodcategory, swipe, setFoodcategory }) => {
     </div>
   );
 };
-const OrderFoodPopUp=({item})=>{
-    const [neworder,setNeworder]=useState({...item})
-    var spiceinit={"high":false,"low":false,"medium":false}
-    
-    const [spice,setSpice]=useState(spiceinit);
-    const [garlic,setGarlic]=useState({yes:false,no:false})
-    const [curry,setCurry]=useState({mixed:false,seperate:false})
-    useEffect(()=>{
-            setNeworder({...item,note:""})
-            setSpice(spiceinit)
-            setGarlic({yes:false,no:false})
-            setCurry({mixed:false,seperate:false})
-    },[])
-
-    useEffect(()=>{
-
-    },[neworder,spice,garlic,curry])
-
-    return(
-
-        <div>
-            <div class="modal fade" id={`OrderModal${item.id}`} style={{marginTop:"calc(50vh - 170px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
-                <div class="text-right" style={{height:"20px",padding:"20px"}} data-dismiss="modal" >
-                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"0px"}} data-dismiss="modal" />
-
-                </div>
-                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
-                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
-                
-                  
-               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"0px",fontSize:"14px" }}>SPICE</div>
-                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setSpice({...spiceinit,low:!spice.low})
-                }}>Low</div>
-                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setSpice({...spiceinit,medium:!spice.medium})
-                }}>Medium</div>  
-                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setSpice({...spiceinit,high:!spice.high})    
-                }} >High</div>  
-                
-
-               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
-                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setGarlic({no:false,yes:!garlic.yes})
-                }}>Yes</div>
-                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setGarlic({yes:false,no:!garlic.no})
-                }}>No</div>  
-                
-                { item.category && item.category!="Burger" && 
-                <div>
-
-                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
-                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setCurry({seperate:false,mixed:!curry.mixed})
-                }}>Mixed</div>
-                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
-                    setCurry({mixed:false,seperate:!curry.seperate})
-                }}>Seperate</div>  
-
-                </div>
-                }
-                
-                </div>
-                
-                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
-                                    OK
-                </div>
-
-                </div>
-                
-                </div>
-            </div>
-            </div>
-</div>
-      
-    )
+const AddedToast=()=>{
+    toast.notify(({ onClose }) => (
+                <a href="#" css={{color:"white", textDecoration: "none",background:"#00A852" }} onClick={onClose}>
+                   <div style={{backgroundColor:"#00A852",color:"white",padding:"10px 15px",fontFamily:"Poppins-SemiBold",borderRadius:"5px"}}> Added To Cart <img src={Checked} height="20" width="20" style={{color:"white"}}/>
+                    </div>
+                        
+                </a>
+                ));
 }
-const ScheduleFoodPopUp=({item})=>{
-    const [neworder,setNeworder]=useState({...item})
+const ScheduleFoodPopUp=({item,AddCart})=>{
+    console.log(item,"items")
+    const [daytime,setDaytime]=useState({day:"",time:""})
+    
+    const [neworder,setNeworder]=useState({...item,orderCat:"Food",note:{
+        spice:"",
+        garlic:"",
+        curry:""
+    }})
     var spiceinit={"high":false,"low":false,"medium":false}
     
     const [spice,setSpice]=useState(spiceinit);
     const [garlic,setGarlic]=useState({yes:false,no:false})
     const [curry,setCurry]=useState({mixed:false,seperate:false})
-    const [daytime,setDaytime]=useState({day:"",time:""})
+    const [err,setErr]=useState("")
     useEffect(()=>{
-            setNeworder({...item,note:""})
+            setNeworder({...item,id:item.id+100,daytime:daytime,orderCat:"Food",note:{
+                    spice:"",
+                    garlic:"",
+                    curry:""
+                }})
+            setDaytime({day:"",time:""})
             setSpice(spiceinit)
             setGarlic({yes:false,no:false})
             setCurry({mixed:false,seperate:false})
     },[])
     useEffect(()=>{
+            setErr("")
+    },[neworder,daytime,spice,garlic,curry])
+    const Addtocart=()=>{
+        var cartitem={...neworder}
+        if(spice.high)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"high"
+        }}
+        else if(spice.low)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"low"
+        }}
+        else if(spice.medium)
+       cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"medium"
+        }}
+        if(curry.mixed)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"mixed"
+        }}
+        else if(curry.seperate)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"seperate"
+        }}
+        if(garlic.yes)
+         cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"yes"
+        }}
+        else if(garlic.no)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"no"
+        }}
+        cartitem={...cartitem,daytime:daytime}
+        console.log(cartitem)
+        if(daytime.day=="" || daytime.time==="")
+            setErr("Select Day and Time")
+        else
+            {
+                AddCart(cartitem)
+                AddedToast()
+            }
 
-    },[neworder,curry,garlic,spice,daytime])
-
-
-    
+    }
 
     return(
 
@@ -269,10 +249,142 @@ const ScheduleFoodPopUp=({item})=>{
                 </div>
                 }
                 
+
+                </div>
+                {err && <small className="text-danger" >{err}</small>}
+                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}} data-dismiss={daytime.day && daytime.time ? "modal":""} onClick={()=>{
+
+                        Addtocart()
+                    }}>
+                                    OK
+                </div>
+
                 </div>
                 
-                    <div style={{margin:"30px 10px 0px 5px",fontFamily:"Poppins-SemiBold",fontSize:"14px",textAlign:"right",color:"#00A852"}}>
-                                    OK
+                </div>
+            </div>
+            </div>
+</div>
+      
+    )
+}
+const OrderFoodPopUp=({item,AddCart})=>{
+    const [neworder,setNeworder]=useState({...item,orderCat:"food",note:{
+        spice:"",
+        garlic:"",
+        curry:""
+    }})
+    var spiceinit={"high":false,"low":false,"medium":false}
+    
+    const [spice,setSpice]=useState(spiceinit);
+    const [garlic,setGarlic]=useState({yes:false,no:false})
+    const [curry,setCurry]=useState({mixed:false,seperate:false})
+    useEffect(()=>{
+            setNeworder({...item,orderCat:"Food",note:{
+                    spice:"",
+                    garlic:"",
+                    curry:""
+                }})
+            setSpice(spiceinit)
+            setGarlic({yes:false,no:false})
+            setCurry({mixed:false,seperate:false})
+    },[])
+    useEffect(()=>{
+
+    },[neworder,spice,curry,garlic])
+
+    const Addtocart=()=>{
+        var cartitem={...neworder}
+        if(spice.high)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"high"
+        }}
+        else if(spice.low)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"low"
+        }}
+        else if(spice.medium)
+       cartitem={...cartitem,note:{
+            ...cartitem.note,spice:"medium"
+        }}
+        if(curry.mixed)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"mixed"
+        }}
+        else if(curry.seperate)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,curry:"seperate"
+        }}
+        if(garlic.yes)
+         cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"yes"
+        }}
+        else if(garlic.no)
+        cartitem={...cartitem,note:{
+            ...cartitem.note,garlic:"no"
+        }}
+        console.log(cartitem);
+        AddCart(cartitem)
+        AddedToast()
+            
+
+    }
+    return(
+
+        <div>
+            <div class="modal fade" id={`OrderModal${item.id}`} style={{marginTop:"calc(50vh - 170px)"}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style={{maxWidth:"298px",margin:"auto auto"}}>
+                <div class="text-right" style={{height:"20px",padding:"20px"}} data-dismiss="modal" >
+                    <img src={cross_icon} height="13px" width="13px" style={{float:"right",margin:"0px"}} data-dismiss="modal" />
+
+                </div>
+                <div class="modal-body" style={{margin:"0px auto",fontFamily:"Poppins-Medium"}}>
+                <div style={{margin:"0px 0px 30px 0px",height:"auto",textAlign:"left"}}>
+                
+                  
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"0px",fontSize:"14px" }}>SPICE</div>
+                <div className="btn" style={{background:spice.low?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:spice.low?"white":"#606060",border:spice.low?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,low:!spice.low})
+                }}>Low</div>
+                <div className="btn" style={{background:spice.medium?"#00A852":"",color:spice.medium?"white":"#606060",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",border:spice.medium?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,medium:!spice.medium})
+                }}>Medium</div>  
+                <div className="btn" style={{background:spice.high?"#00A852":"" ,marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:spice.high?"white":"#606060",border:spice.high?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setSpice({...spiceinit,high:!spice.high})    
+                }} >High</div>  
+                
+
+               <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>GARLIC</div>
+                <div className="btn" style={{background:garlic.yes?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:garlic.yes?"white":"#606060",border:garlic.yes?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({no:false,yes:!garlic.yes})
+                }}>Yes</div>
+                <div className="btn" style={{background:garlic.no?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:garlic.no?"white":"#606060",border:garlic.no?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setGarlic({yes:false,no:!garlic.no})
+                }}>No</div>  
+                
+                { item.category && item.category!="Burger" && 
+                <div>
+
+                <div style={{color:"#00A852",marginBottom:"10px",marginTop:"20px",fontSize:"14px" }}>CURRRY</div>
+                <div className="btn" style={{background:curry.mixed?"#00A852":"",padding:"2px 10px",fontSize:"14px",color:curry.mixed?"white":"#606060",border:curry.mixed?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({seperate:false,mixed:!curry.mixed})
+                }}>Mixed</div>
+                <div className="btn" style={{background:curry.seperate?"#00A852":"",marginLeft:"15px",padding:"2px 10px",fontSize:"14px",color:curry.seperate?"white":"#606060",border:curry.seperate?"1px solid #00A852":"1px solid #606060"}} onClick={()=>{
+                    setCurry({mixed:false,seperate:!curry.seperate})
+                }}>Seperate</div>  
+
+                </div>
+                }
+                
+                </div>
+                
+                    <div style={{fontFamily:"Poppins-SemiBold",margin:"30px 10px 0px 5px",fontSize:"14px",textAlign:"right",color:"#00A852"}} data-dismiss="modal" onClick={()=>{
+                           Addtocart()
+                            
+
+                    }}>
+                        OK
                 </div>
 
                 </div>
@@ -336,7 +448,7 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood ,se
             style={{
               fontFamily: "Poppins-Bold",
               color: "#00A852",
-              lineHeight: "22px",
+              lineHeight: "17px",
               fontSize:"18px"
             }}
           >
@@ -489,7 +601,7 @@ const MenuCard = ({ item, AddCart, cart,FoodData,IncrementFood,DecrementFood ,se
 };
 
 
-const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location}) => {
+const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location,history}) => {
   const [food, setFood] = useState(true);
   const [foodcategory, setFoodcategory] = useState(Food_category_data);
   const handlers = useSwipeable({
@@ -498,6 +610,11 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
   });
   const [loading,setLoading]=useState(true)
   useEffect(() => {
+    if(!isAuth()){
+      LoginRequiredToast()
+      history.push('/login')
+    }
+    else{
     if(location.state && location.state.fromdash){
     var cat=location.state.fromdash
     setFoodcategory({ ...Food_category_data,[cat]:true});
@@ -505,6 +622,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
     else
     setFoodcategory({...Food_category_data,Bento:true})
     setLoading(true)
+    }
   }, []);
   useEffect(() => {
     console.log("UseEffect");
@@ -532,7 +650,7 @@ const Cards = ({  cart, AddCart ,FoodData,IncrementFood,DecrementFood,location})
   return (
     <div>
        {loading &&  <FoodSkeleton/>}
-    <div style={{opacity:loading?"0":"1"}}>
+    <div style={{display:loading?"none":"block"}}>
 
       <p className="view-block">Rotate to portrait mode </p>
       <p className="desktop-block">We Support Mobile View Only</p>

@@ -6,10 +6,12 @@ import delete_icon from './../Icons/Icons-Footer/delete.png';
 import schedule_icon from './../Icons/Icons-Footer/watch.png';
 import minus_icon from './../Icons/Icons-Footer/green_subtract.png';
 import plus_icon from './../Icons/Icons-Footer/green_plus.png';
-import Barcode from 'react-barcode';
+import {URL,Config,isAuth,checkAuth,LoginRequiredToast} from './Apiconfig.js';
 import Axios from 'axios';
 import {Cartwithprops,Upcoming,Completed} from './Cart.js'
-
+import {RemoveCart} from './Redux/index.js'
+import toast from 'toasted-notes' 
+import 'toasted-notes/src/styles.css';
 const handlers={
   width: 60,
   height: 100,
@@ -36,24 +38,25 @@ const orderCategorydata={
     "Completed":false
 }
 
-const Textslider=({orderCategory,setordercategory})=>{
+const Textslider=({orderCategory,setordercategory,cart})=>{
     const [toggler,setToggler]=useState(true)
     useEffect(()=>{
         setToggler(!toggler)
     },[])
     useEffect(()=>{
-        // setToggler({1:!toggler[1],2:!toggler[2]})
+       
     },[orderCategory])
+    
 
         return(
         <div>
             <div>
             <div  class="scrolling-wrapper" style={{overflowY:"none",overflowX:"none",textAlign:"center"}}>
-      <span  className={`food-select-unactive ${orderCategory.Cart?"category-btn-active":"category-btn"} `} onClick={()=>{
+    { cart.length!==0 && <span  className={`food-select-unactive ${orderCategory.Cart?"category-btn-active":"category-btn"} `} onClick={()=>{
           if(!orderCategory['Cart'])
           setordercategory({...orderCategorydata,"Cart":true})
       }}>Cart</span>
-      
+        } 
             <span  className={`food-select-unactive ${orderCategory.Upcoming?"category-btn-active":"category-btn"} `} style={{marginLeft:"20px"}} onClick={()=>{
                 if(!orderCategory['Upcoming'])
           setordercategory({...orderCategorydata,"Upcoming":true})
@@ -80,12 +83,7 @@ const FoodCard=({item,AddOrder,RemoveOrder,order,UpdateOrder})=>{
         console.log("hello")
     },[toggler])
     var flag=item.items;
-    // console.log(item);
-    // for(var i=0;i<order.length;i++){
-    //         console.log(i,)
-    //     if(order[i].id===item.id && order[i].category===item.category )
-    //             flag=order[i].items;
-    // }
+  
 
     return (
         
@@ -157,8 +155,7 @@ const LaundaryCard=({item,UpdateLaundary})=>{
         </div>
         
             <div className="" style={{marginLeft:"calc(38vw + 16px)",position:"absolute"}}>
-            <Barcode value="#098@278" width="1"
-  flat={true}  displayValue={false} height="25"/>
+            
         {/* <div className="" style={{position:"absolute",bottom:"1px",left:"calc(38vw + 25px)"}}><button className="btn btn-warning" style={{borderRadius:"20px 20px 20px 20px",padding:"0px 13px 0px 13px",backgroundColor:"#F49901",fontFamily:"Poppins-SemiBold",color:"white"}}>Schedule</button><img src={schedule_icon} height="22px" style={{paddingLeft:"9px"}}/></div> */}
         </div>
         </div>
@@ -184,39 +181,79 @@ const MenuCard=({item})=>{
         
     )
 }
+const AddedToast=(msg)=>{
+    toast.notify(({ onClose }) => (
+                <a href="#" css={{color:"white", textDecoration: "none",background:"#00A852" }} onClick={onClose}>
+                   <div style={{backgroundColor:"red",color:"white",padding:"10px 15px",fontFamily:"Poppins-SemiBold",borderRadius:"5px"}}>{msg}
+                    </div>
+                        
+                </a>
+                ));
+}
+const Orders=({cart,history})=>{
 
-const Orders=({})=>{
-
-    const [Foodorder,setFoodorder]=useState([])
+    const [upcomingData,setUpcomingdata]=useState([])
+    const [completedData,setCompleteddata]=useState([])
     const [orderCategory,setordercategory]=useState({})
-    useEffect( ()=>{
-        const func= async ()=>{
-        await Axios.get('http://localhost:3500/').then(
+    console.log(Config,"checking")
+    var token=localStorage.getItem("token")
+    const getOrdersData= async ()=>{
+        await Axios.get(`${URL}/order`,Config()).then(
         (data)=>{
-            setFoodorder(data.data.data)
-            console.log(data.data.data)
+            console.log(data)
+            setUpcomingdata(data.data.Upcoming);
+            setCompleteddata(data.data.Completed);
         }    
         ).catch((err)=>{
-                console.log(err)
+                // console.log(err.response)
+                
+                checkAuth(err.response.status,history)
+                if(err.response.status===401){
+                 history.push('/login')   
+                }
+                AddedToast(err.response.data.errMessage)
+                
         })
     }
-    // func()
-    setordercategory({...orderCategorydata,"Cart":true})
+    useEffect( ()=>{
+        if(!isAuth()){
+            LoginRequiredToast()
+            history.push('/login')
+        }
+      
+        if(isAuth())
+        getOrdersData()
+        setordercategory({...orderCategorydata,"Cart":true})
     },[])
+   
+    useEffect(()=>{
+        console.log("Upcomung completed Updated")
+    },[upcomingData,completedData])
+   useEffect(()=>{
+
+        if(cart.length===0)
+            {
+                console.log("inside cardt")
+            setordercategory({...orderCategory,Upcoming:true})
+            if(isAuth())
+            getOrdersData()
+            }
+    },[cart])
+    
     
     return(
         <div>
         <p className="view-block">Rotate to portrait mode </p>
-    <p className="desktop-block">We Support Mobile View Only</p>
+        <p className="desktop-block">We Support Mobile View Only</p>
         <div className="main-container"  style={{
-            maxHeight:"calc(100vh - 115px)",overflowY:"scroll",
-            padding:"20px 0%",margin:"0",backgroundColor:"",marginLeft:"0px",marginRight:"0px"}}>
+            
+            padding:"20px 0% 90px 0px",margin:"0",backgroundColor:"",marginLeft:"0px",marginRight:"0px"}}>
 
 
-        <Textslider orderCategory={orderCategory} setordercategory={setordercategory}/>
-        {orderCategory.Cart && <Cartwithprops/>}
-        {orderCategory.Upcoming && <Upcoming/>}
-        {orderCategory.Completed && <Completed/>}
+        <Textslider orderCategory={orderCategory} cart={cart} setordercategory={setordercategory}/>
+        {orderCategory.Cart && <Cartwithprops  />}
+        {orderCategory.Upcoming && <Upcoming upcomingData={upcomingData}/>}
+        {orderCategory.Completed && <Completed completedData={completedData}/>}
         
         
         </div>
@@ -227,7 +264,20 @@ const Orders=({})=>{
 
 
 
+const mapStateToprops=state=>{
+    return {
+        // Foodorder:state.Foodorder.orders,
+        cart :state.Foodorder.cart,
+        
+    }
+}
+const mapDispatchToprops=dispatch=>{
+    return {
+            
+            RemoveCart:(item)=> dispatch(RemoveCart(item))
+            
+    }
+}
 
 
-
-export default Orders;
+export default connect(mapStateToprops,mapDispatchToprops)(Orders);

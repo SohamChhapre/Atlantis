@@ -12,15 +12,17 @@ const OrderReducer=(state=initialState,action)=>{
         case ADD_CART_ITEM:{
             let flg=true
             let tempcart=state.cart
+        // console.log(action.payload,"In reducer")
+
             for(var i=0;i<tempcart.length;i++){
                 if(action.payload.id===tempcart[i].id)
                 {
-                    tempcart[i].items=action.payload.items;
+                    tempcart[i]=action.payload
                     flg=false
                     break;
                 }
             }
-            console.log(tempcart,action.payload)
+            
             if(!flg)
             return {
                 ...state,
@@ -34,7 +36,15 @@ const OrderReducer=(state=initialState,action)=>{
             }
         }
         case REMOVE_CART_ITEM:{
+            console.log(action.payload,action.payload.id==="all")
+            if(action.payload.id=="all")
+                return {
+                ...state,
+                cart:[]
+                }
+
             var updatedcart=state.cart.filter((e,i)=>(e.id!==action.payload.id));
+            
         return {
             ...state,
             cart:updatedcart
