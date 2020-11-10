@@ -1045,8 +1045,12 @@ const Dashboard=({history})=>{
     useEffect(()=>{
             
     },[active,loading])
-    if(isAuth())
-    var {name}=JSON.parse(localStorage["data"])
+    if(isAuth()){
+        if(localStorage["data"])
+            var {name}=JSON.parse(localStorage["data"])
+        else
+            var name=""
+    }
     else
     var name="Elizabeth"
 
